@@ -29,7 +29,7 @@ $THEME->name = 'shoelace';
 
 //
 $THEME->doctype = 'html5';
-$THEME->parents = array('bootstrapbase');
+$THEME->parents = array('bootstrap');
 $THEME->sheets = array('font', 'moodle', 'editor', 'custom');
 $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();
@@ -37,8 +37,8 @@ $THEME->yuicssmodules = array();
 $THEME->editor_sheets = array();
 
 $THEME->parents_exclude_sheets = array(
-    'bootstrapbase' => array(
-        'moodle',
+    'bootstrap' => array(
+        'generated',
         'editor',
     )
 );

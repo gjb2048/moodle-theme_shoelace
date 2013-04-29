@@ -36,14 +36,6 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
     $settings->add($setting);
 
-    // Logo file setting.
-    $name = 'theme_shoelace/logo';
-    $title = get_string('logo','theme_shoelace');
-    $description = get_string('logodesc', 'theme_shoelace');
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
-
     // Custom CSS file.
     $name = 'theme_shoelace/customcss';
     $title = get_string('customcss', 'theme_shoelace');

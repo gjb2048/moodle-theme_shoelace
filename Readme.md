@@ -4,9 +4,12 @@ Shoelace theme with a light feel through colour and font selection.
 
 Required version of Moodle
 ==========================
-This version works with Moodle version 2013042600.00 release 2.5beta+ (Build: 20130426) and above until the next release.
+This version works with Moodle version 2012120303.10 release 2.4.3+ (Build: 20130425) and above until the next release.
 
-NOTE: This is a pre-release Moodle 2.5 Beta version that must NOT be used on production servers.  It is subject to change
+You must have the Bootstrap theme installed from which this theme depends.
+Available from https://moodle.org/plugins/view.php?plugin=theme_bootstrap
+
+NOTE: This is a pre-release Moodle 2.4 Beta version that must NOT be used on production servers.  It is subject to change
 at any time without notice.
 
 Installation
@@ -59,6 +62,9 @@ Version Information
       as tables.
   5.  Mary Evans now on board as a maintainer and co-developer :).
   6.  Please perform a 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches' when upgrading.
+
+29th April 2013 - Version 2.4.0.1 - Beta.
+  1.  Backport to Moodle 2.4.3.
 
 Thanks
 ======

@@ -36,8 +36,6 @@ $hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->regio
 $showsidepre = ($hassidepre && !$PAGE->blocks->region_completely_docked('side-pre', $OUTPUT));
 $showsidepost = ($hassidepost && !$PAGE->blocks->region_completely_docked('side-post', $OUTPUT));
 
-$haslogo = (!empty($PAGE->theme->settings->logo));
-
 $hasfootnote = (!empty($PAGE->theme->settings->footnote));
 $navbar_inverse = '';
 if (!empty($PAGE->theme->settings->invert)) {
@@ -119,14 +117,7 @@ echo $OUTPUT->doctype() ?>
         <?php echo $OUTPUT->navbar(); ?>
     <?php } ?>
 
-        <?php
-    if (!$haslogo) { ?>
-        <h1><?php echo $PAGE->heading ?></h1>
-        <?php
-    } else { ?>
-         <a class="logo" href="<?php echo $CFG->wwwroot; ?>" title="<?php print_string('home'); ?>"></a>
-        <?php
-    } ?>
+    <h1><?php echo $PAGE->heading ?></h1>
 
     <?php if (!empty($courseheader)) { ?>
         <div id="course-header"><?php echo $courseheader; ?></div>

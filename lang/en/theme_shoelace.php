@@ -35,8 +35,9 @@ $string['choosereadme'] = '
 <h3>About</h3>
 <p>Shoelace is a modified Moodle bootstrap theme which inherits styles and renderers from its parent theme.</p>
 <h3>Parents</h3>
-<p>This theme is based upon the Bootstrap theme, which was created for Moodle 2.5, with the help of:<br>
+<p>This theme is based upon the Bootstrap theme, which was created for Moodle 2.4, with the help of:<br>
 Stuart Lamour, Mark Aberdour, Paul Hibbitts, Mary Evans.</p>
+<p>Available from <a href="https://moodle.org/plugins/view.php?plugin=theme_bootstrap">moodle.org/plugins/view.php?plugin=theme_bootstrap</a></p>
 <h3>Theme Credits</h3>
 <p>Author: G J Barnard<br>
 Contact: <a href="http://moodle.org/user/profile.php?id=442195">Moodle profile</a><br>
@@ -58,11 +59,6 @@ $string['footnotedesc'] = 'Whatever you add to this textarea will be displayed i
 
 $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
-
-$string['logo'] = 'Logo';
-$string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>
-If the height of your logo is more than 75px add the following CSS rule to the Custom CSS box below.<br>
-a.logo {height: 100px;} or whatever height in pixels the logo is.';
 
 $string['pluginname'] = 'Shoelace';
 
