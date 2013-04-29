@@ -4,7 +4,7 @@ Shoelace theme with a light feel through colour and font selection.
 
 Required version of Moodle
 ==========================
-This version works with Moodle version 2013040500.00 release 2.5beta+ (Build: 20130405) and above until the next release.
+This version works with Moodle version 2013042600.00 release 2.5beta+ (Build: 20130426) and above until the next release.
 
 NOTE: This is a pre-release Moodle 2.5 Beta version that must NOT be used on production servers.  It is subject to change
 at any time without notice.
@@ -47,8 +47,18 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
-24th April 2013 - Version 2.5.0.1
+24th April 2013 - Version 2.5.0.1 - Beta
   1.  Initial version for Moodle 2.5beta.
+
+29th April 2013 - Version 2.5.0.2 - Beta
+  1.  Updated to using 'Bootstrapbase' as a parent theme, thus requiring Moodle version 2013042600.00 release 2.5beta+ (Build: 20130426).
+  2.  Updated 'general.php' layout file from new 'Clean' theme that was renamed from 'Simple'.  Appears to have fixed logo not showing issue
+  3.  Changed 'config.php' to no longer exclude settings and navigation sheets.  Excluding them means that the naviagation block does not
+      render correctly.
+  4.  Adapted the css such that there is now a clean white background whilst retaining the sandy colour for the header and other elements such
+      as tables.
+  5.  Mary Evans now on board as a maintainer and co-developer :).
+  6.  Please perform a 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches' when upgrading.
 
 Thanks
 ======
@@ -59,6 +69,6 @@ And again to Mary Evans for the 'Clean' theme.
 
 Me
 ==
-G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE. - 24th April 2013.
+G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE. - 29th April 2013.
 Moodle profile: http://moodle.org/user/profile.php?id=442195.
 Web profile   : http://about.me/gjbarnard
