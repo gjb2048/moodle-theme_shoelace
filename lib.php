@@ -31,6 +31,9 @@ function shoelace_process_css($css, $theme) {
     $logo = $theme->setting_file_url('logo', 'logo');
     $css = shoelace_set_logo($css, $logo);
 
+    // Set the font path.
+    $css = shoelace_set_fontwww($css);
+
     // Set custom CSS.
     if (!empty($theme->settings->customcss)) {
         $customcss = $theme->settings->customcss;
@@ -62,6 +65,13 @@ function theme_shoelace_pluginfile($course, $cm, $context, $filearea, $args, $fo
     } else {
         send_file_not_found();
     }
+}
+
+function shoelace_set_fontwww($css) {
+    global $CFG;
+    $tag = '[[setting:fontwww]]';
+    $css = str_replace($tag, $CFG->wwwroot . '/theme/shoelace/style/font/', $css);
+    return $css;
 }
 
 function shoelace_set_customcss($css, $customcss) {

@@ -31,5 +31,5 @@
     font-family: 'Quicksand Book'; 
     font-weight: normal;
     font-style: normal;
-    src: url('/theme/shoelace/style/font/Quicksand_Book.otf');
+    src: url('[[setting:fontwww]]Quicksand_Book.otf');
 }

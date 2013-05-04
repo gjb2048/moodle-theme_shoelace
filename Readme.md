@@ -73,7 +73,8 @@ Version Information
   2.  Changed colour of form headings from black to blue.
   3.  Added 'Upgrading' instructions and made some improvements to this readme.
   4.  Changed as many core images to blue as possible.
-  5.  Please perform a 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches' when upgrading.
+  5.  Fixed font path issue when Moodle is in a sub-folder.
+  6.  Please perform a 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches' when upgrading.
 
 Thanks
 ======
