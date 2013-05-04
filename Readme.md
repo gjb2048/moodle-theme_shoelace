@@ -18,11 +18,21 @@ Installation
     theme relies on underlying core code that is out of my control.
  2. Ensure that you have the Bootstrap theme installed in '/theme/bootstrap', otherwise download from
     https://moodle.org/plugins/view.php?plugin=theme_bootstrap then install.
- 3. Put Moodle in 'Maintenance Mode' so that there are no users using it bar you as the administrator.
- 4. Copy 'shoelace' to '/theme/' if you have not already done so.
- 5. Login as an administrator and follow standard the 'plugin' update notification.  If needed, go to
-    'Site administration' -> 'Notifications' if this does not happen.
+ 3. Login as an administrator and put Moodle in 'Maintenance Mode' so that there are no users using it bar you as the administrator.
+ 4. Copy the extracted 'shoelace' folder to the '/theme/' folder.
+ 5. Go to 'Site administration' -> 'Notifications' and follow standard the 'plugin' update notification.
  6. Select as the theme for the site.
+ 7. Put Moodle out of Maintenance Mode.
+
+Upgrading
+=========
+ 1. Ensure you have the version of Moodle as stated above in 'Required version of Moodle'.  This is essential as the
+    theme relies on underlying core code that is out of my control.
+ 2. Login as an administrator and put Moodle in 'Maintenance Mode' so that there are no users using it bar you as the administrator.
+ 3. Make a backup of your old 'shoelace' folder in '/theme/' and then delete the folder.
+ 4. Copy the replacement extracted 'shoelace' folder to the '/theme/' folder.
+ 5. Go to 'Site administration' -> 'Notifications' and follow standard the 'plugin' update notification.
+ 6. Perform a 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches'.
  7. Put Moodle out of Maintenance Mode.
 
 Uninstallation
@@ -66,6 +76,14 @@ Version Information
 29th April 2013 - Version 2.4.0.1 - Beta.
   1.  Backport to Moodle 2.4.3.
 
+4th May 2013 - Version 2.4.0.2 - Beta.
+  1.  Added bootstrap dependency in 'config.php'.
+  2.  Changed colour of form headings from black to blue.
+  3.  Added 'Upgrading' instructions and made some improvements to this readme.
+  4.  Changed as many core images to blue as possible.
+  5.  Fixed font path issue when Moodle is in a sub-folder.
+  6.  Please perform a 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches' when upgrading.
+
 Thanks
 ======
 My thanks go to all the creators and participants of the Bootstrap theme:
@@ -75,6 +93,6 @@ And again to Mary Evans for the 'Clean' theme.
 
 Me
 ==
-G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE. - 29th April 2013.
+G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE. - 4th May 2013.
 Moodle profile: http://moodle.org/user/profile.php?id=442195.
 Web profile   : http://about.me/gjbarnard

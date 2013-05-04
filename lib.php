@@ -26,6 +26,8 @@
  */
 
 function shoelace_process_css($css, $theme) {
+    $css = shoelace_set_fontwww($css);
+
     // Set custom CSS.
     if (!empty($theme->settings->customcss)) {
         $customcss = $theme->settings->customcss;
@@ -34,6 +36,13 @@ function shoelace_process_css($css, $theme) {
     }
     $css = shoelace_set_customcss($css, $customcss);
 
+    return $css;
+}
+
+function shoelace_set_fontwww($css) {
+    global $CFG;
+    $tag = '[[setting:fontwww]]';
+    $css = str_replace($tag, $CFG->wwwroot . '/theme/shoelace/style/font/', $css);
     return $css;
 }
 
