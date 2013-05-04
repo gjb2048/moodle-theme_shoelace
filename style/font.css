@@ -33,7 +33,3 @@
     font-style: normal;
     src: url('/theme/shoelace/style/font/Quicksand_Book.otf');
 }
-
-h1, h2, h3, h4, h5, h6, p, ul, ol, dl, input, textarea, html, body {
-    font-family: "Quicksand Book", Helvetica, Arial, sans-serif;
-}

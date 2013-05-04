@@ -39,7 +39,7 @@ $THEME->editor_sheets = array();
 $THEME->parents_exclude_sheets = array(
     'bootstrapbase' => array(
         'moodle',
-        'editor',
+        'editor'
     )
 );
 
