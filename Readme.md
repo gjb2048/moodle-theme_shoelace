@@ -27,7 +27,8 @@ Upgrading
  3. Make a backup of your old 'shoelace' folder in '/theme/' and then delete the folder.
  4. Copy the replacement extracted 'shoelace' folder to the '/theme/' folder.
  5. Go to 'Site administration' -> 'Notifications' and follow standard the 'plugin' update notification.
- 6. Perform a 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches'.
+ 6. If automatic 'Purge all caches' appears not to work by lack of display etc. then perform a manual 'Purge all caches'
+   under 'Home -> Site administration -> Development -> Purge all caches'.
  7. Put Moodle out of Maintenance Mode.
 
 Uninstallation
@@ -76,6 +77,13 @@ Version Information
   5.  Fixed font path issue when Moodle is in a sub-folder.
   6.  Please perform a 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches' when upgrading.
 
+8th May 2013 - Version 2.5.0.4 - Beta.
+  1.  Added and adapted image from flexible sections course format.
+  2.  Added and adapted missing move here image from core.
+  3.  Added display of language menu when required.
+  4.  Added automatic 'Purge all caches' when upgrading.  If this appears not to work by lack of display etc. then perform a
+      manual 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches'.
+
 Thanks
 ======
 My thanks go to all the creators and participants of the Bootstrap theme:
@@ -85,6 +93,6 @@ And again to Mary Evans for the 'Clean' theme.
 
 Me
 ==
-G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE. - 4th May 2013.
+G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE. - 8th May 2013.
 Moodle profile: http://moodle.org/user/profile.php?id=442195.
 Web profile   : http://about.me/gjbarnard

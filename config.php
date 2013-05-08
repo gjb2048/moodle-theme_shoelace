@@ -43,6 +43,115 @@ $THEME->parents_exclude_sheets = array(
     )
 );
 
+$THEME->layouts = array(
+    'base' => array(
+        'file' => 'general.php',
+        'regions' => array('side-pre', 'side-post'),
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true)
+    ),
+    'standard' => array(
+        'file' => 'general.php',
+        'regions' => array('side-pre', 'side-post'),
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true)
+    ),
+    'course' => array(
+        'file' => 'general.php',
+        'regions' => array('side-pre', 'side-post'),
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true)
+    ),
+    'coursecategory' => array(
+        'file' => 'general.php',
+        'regions' => array('side-pre', 'side-post'),
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true)
+    ),
+    'incourse' => array(
+        'file' => 'general.php',
+        'regions' => array('side-pre', 'side-post'),
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true)
+    ),
+    'frontpage' => array(
+        'file' => 'general.php',
+        'regions' => array('side-pre'),
+        'defaultregion' => 'side-pre',
+         'options' => array('nonavbar' => true),
+        'options' => array('langmenu' => true)
+    ),
+    'admin' => array(
+        'file' => 'general.php',
+        'regions' => array('side-pre'),
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true)
+    ),
+    'mydashboard' => array(
+        'file' => 'general.php',
+        'regions' => array('side-pre', 'side-post'),
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true),
+        'options' => array('langmenu' => true)
+    ),
+    'mypublic' => array(
+        'file' => 'general.php',
+        'regions' => array('side-pre', 'side-post'),
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true)
+    ),
+    'login' => array(
+        'file' => 'general.php',
+        'regions' => array(),
+        'options' => array('langmenu' => true),
+        'options' => array('nonavbar' => true, 'noheader' => true)
+    ),
+    'popup' => array(
+        'file' => 'general.php',
+        'regions' => array(),
+        'options' => array('nofooter' => true, 'noblocks' => true, 'nonavbar' => true)
+    ),
+    'frametop' => array(
+        'file' => 'general.php',
+        'regions' => array(),
+        'options' => array('nofooter' => true)
+    ),
+    'maintenance' => array(
+        'file' => 'general.php',
+        'regions' => array(),
+        'options' => array('nofooter' => true, 'nonavbar' => true)
+    ),
+    'embedded' => array(
+        'theme' => 'canvas',
+        'file' => 'embedded.php',
+        'regions' => array(),
+        'options' => array('nofooter' => true, 'nonavbar' => true)
+    ),
+    'print' => array(
+        'file' => 'general.php',
+        'regions' => array(),
+        'options' => array('nofooter' => true, 'nonavbar' => false, 'noblocks' => true)
+    ),
+    'redirect' => array(
+        'file' => 'general.php',
+        'regions' => array(),
+        'options' => array('nofooter' => true, 'nonavbar' => false, 'noblocks' => true)
+    ),
+    'report' => array(
+        'file' => 'general.php',
+        'regions' => array('side-pre'),
+        'defaultregion' => 'side-pre'
+    ),
+    // The pagelayout used for safebrowser and securewindow.
+    'secure' => array(
+        'file' => 'general.php',
+        'regions' => array('side-pre', 'side-post'),
+        'defaultregion' => 'side-pre',
+        'options' => array('nofooter' => true, 'nonavbar' => true, 'nocustommenu' => true,
+                           'nologinlinks' => true, 'nocourseheaderfooter' => true)
+    )
+);
+
 $THEME->plugins_exclude_sheets = array(
     'block' => array(
         'html'

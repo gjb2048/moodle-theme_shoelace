@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -25,13 +26,12 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
+function xmldb_theme_shoelace_upgrade($oldversion = 0) {
 
-$plugin->version   = 2013050800;
-$plugin->requires  = 2013050200.00; // 2.5beta+ (Build: 20130502).
-$plugin->component = 'theme_shoelace';
-$plugin->maturity = MATURITY_BETA;
-$plugin->release = '2.5.0.4';
-$plugin->dependencies = array(
-    'theme_bootstrapbase'  => 2013050100
-);
+    // Automatic 'Purge all caches'....
+    if ($oldversion < 2013050800) {
+        purge_all_caches();
+    }
+
+    return true;
+}
