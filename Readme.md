@@ -84,6 +84,10 @@ Version Information
   4.  Added automatic 'Purge all caches' when upgrading.  If this appears not to work by lack of display etc. then perform a
       manual 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches'.
 
+12th May 2013 - Version 2.5.0.5 - Beta.
+  1.  Removed language menu as appears to now rendering from Bootstrap Base.
+  2.  Made configuration of maintenance template like other standard themes.
+
 Thanks
 ======
 My thanks go to all the creators and participants of the Bootstrap theme:

@@ -26,7 +26,6 @@
  */
 
 function shoelace_process_css($css, $theme) {
-
     // Set the background image for the logo.
     $logo = $theme->setting_file_url('logo', 'logo');
     $css = shoelace_set_logo($css, $logo);

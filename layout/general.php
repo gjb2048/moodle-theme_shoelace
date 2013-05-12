@@ -104,9 +104,6 @@ echo $OUTPUT->doctype() ?>
             <ul class="nav pull-right">
             <li><?php echo $PAGE->headingmenu ?></li>
             <li class="navbar-text"><?php echo $OUTPUT->login_info() ?></li>
-            <?php if (!empty($PAGE->layout_options['langmenu'])) { ?>
-                <li class="navbar-text"><?php echo $OUTPUT->lang_menu();?></li>
-            <?php } ?>
             </ul>
             </div>
         </div>

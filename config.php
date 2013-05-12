@@ -119,7 +119,7 @@ $THEME->layouts = array(
     'maintenance' => array(
         'file' => 'general.php',
         'regions' => array(),
-        'options' => array('nofooter' => true, 'nonavbar' => true)
+        'options' => array('noblocks' => true, 'nofooter' => true, 'nonavbar' => true, 'nocustommenu' => true, 'nocourseheaderfooter' => true),
     ),
     'embedded' => array(
         'theme' => 'canvas',
