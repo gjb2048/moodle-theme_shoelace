@@ -84,9 +84,11 @@ Version Information
   4.  Added automatic 'Purge all caches' when upgrading.  If this appears not to work by lack of display etc. then perform a
       manual 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches'.
 
-12th May 2013 - Version 2.5.0.5 - Beta.
+13th May 2013 - Version 2.5.0.5 - Beta.
   1.  Removed language menu as appears to now rendering from Bootstrap Base.
   2.  Made configuration of maintenance template like other standard themes.
+  3.  Updated moodle.css in line with updates in Bootstrap Base.
+  4.  Made font easier to change.
 
 Thanks
 ======
@@ -97,6 +99,6 @@ And again to Mary Evans for the 'Clean' theme.
 
 Me
 ==
-G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE. - 8th May 2013.
+G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE. - 13th May 2013.
 Moodle profile: http://moodle.org/user/profile.php?id=442195.
 Web profile   : http://about.me/gjbarnard
