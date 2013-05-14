@@ -27,11 +27,11 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2013051200;
-$plugin->requires  = 2013050200.00; // 2.5beta+ (Build: 20130502).
+$plugin->version   = 2013051400;
+$plugin->requires  = 2013051400.00; // 2.5 (Build: 20130514).
 $plugin->component = 'theme_shoelace';
-$plugin->maturity = MATURITY_BETA;
-$plugin->release = '2.5.0.5';
+$plugin->maturity = MATURITY_STABLE;
+$plugin->release = '2.5.1';
 $plugin->dependencies = array(
     'theme_bootstrapbase'  => 2013050100
 );

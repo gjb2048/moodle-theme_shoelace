@@ -4,10 +4,10 @@ Shoelace theme with a light feel through colour and font selection.
 
 Required version of Moodle
 ==========================
-This version works with Moodle version 2013050200.00 release 2.5beta+ (Build: 20130502) and above until the next release.
+This version works with Moodle version 2013051400.00 release 2.5 (Build: 20130514) and above until the next release.
 
-NOTE: This is a pre-release Moodle 2.5 Beta version that must NOT be used on production servers.  It is subject to change
-at any time without notice.
+Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
+'docs.moodle.org/25/en/Installing_Moodle'.
 
 Installation
 ============
@@ -90,6 +90,9 @@ Version Information
   3.  Updated moodle.css in line with updates in Bootstrap Base.
   4.  Made font easier to change.
 
+14th May 2013 Version 2.5.1 - Stable
+  1.  First stable version for Moodle 2.5 stable.
+
 Thanks
 ======
 My thanks go to all the creators and participants of the Bootstrap theme:
@@ -97,8 +100,12 @@ Bas Brands, David Scotson, Stuart Lamour, Mark Aberdour, Paul Hibbitts and Mary 
 
 And again to Mary Evans for the 'Clean' theme.
 
-Me
+Us
 ==
-G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE. - 13th May 2013.
+G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
 Moodle profile: http://moodle.org/user/profile.php?id=442195.
 Web profile   : http://about.me/gjbarnard
+
+Mary Evans
+Moodle profile: http://moodle.org/user/profile.php?id=713800.
+Web profile   : http://visible-expression.co.uk
