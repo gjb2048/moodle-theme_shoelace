@@ -90,8 +90,9 @@ Version Information
   3.  Updated moodle.css in line with updates in Bootstrap Base.
   4.  Made font easier to change.
 
-14th May 2013 Version 2.5.1 - Stable
+15th May 2013 Version 2.5.1 - Stable
   1.  First stable version for Moodle 2.5 stable.
+  2.  Updated 'general.php' file from 'bootstrapbase'.
 
 Thanks
 ======
