@@ -47,6 +47,13 @@ if ($PAGE->user_is_editing()) {
     }
 }
 
+$haslogo = (!empty($PAGE->theme->settings->logo));
+
+$hasfootnote = (!empty($PAGE->theme->settings->footnote));
+$navbar_inverse = '';
+if (!empty($PAGE->theme->settings->invert)) {
+    $navbar_inverse = 'navbar-inverse';
+}
 $custommenu = $OUTPUT->custom_menu();
 $hascustommenu = (empty($PAGE->layout_options['nocustommenu']) && !empty($custommenu));
 
@@ -88,15 +95,15 @@ echo $OUTPUT->doctype() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body id="<?php p($PAGE->bodyid) ?>" class="<?php p($PAGE->bodyclasses.' '.join($bodyclasses)) ?>">
+<body id="<?php p($PAGE->bodyid) ?>" class="<?php p($PAGE->bodyclasses.' '.join(' ', $bodyclasses)) ?>">
 
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
-<header role="banner" class="navbar navbar-fixed-top">
+<header role="banner" class="navbar <?php echo $navbar_inverse ?> navbar-fixed-top">
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
             <a class="brand" href="<?php echo $CFG->wwwroot;?>"><?php echo $SITE->shortname; ?></a>
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <a class="btn btn-navbar" data-toggle="workaround-collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -122,7 +129,15 @@ echo $OUTPUT->doctype() ?>
         <nav class="breadcrumb-button"><?php echo $PAGE->button; ?></nav>
         <?php echo $OUTPUT->navbar(); ?>
     <?php } ?>
-    <h1><?php echo $PAGE->heading ?></h1>
+
+        <?php
+    if (!$haslogo) { ?>
+        <h1><?php echo $PAGE->heading ?></h1>
+        <?php
+    } else { ?>
+         <a class="logo" href="<?php echo $CFG->wwwroot; ?>" title="<?php print_string('home'); ?>"></a>
+        <?php
+    } ?>
 
     <?php if (!empty($courseheader)) { ?>
         <div id="course-header"><?php echo $courseheader; ?></div>
@@ -164,7 +179,8 @@ echo $OUTPUT->doctype() ?>
                     echo $OUTPUT->blocks_for_region('side-pre');
                 } else if ($hassidepost) {
                     echo $OUTPUT->blocks_for_region('side-post');
-                } ?>
+                }
+          ?>
           </div>
           </div>
           </aside>
@@ -190,6 +206,15 @@ echo $OUTPUT->doctype() ?>
 
 <footer id="page-footer">
     <p class="helplink"><?php echo page_doc_link(get_string('moodledocslink')) ?></p>
+
+    <?php
+if ($hasfootnote) { ?>
+   <div class="footnote text-center">
+   <?php echo $PAGE->theme->settings->footnote; ?>
+   </div>
+    <?php
+} ?>
+
     <?php echo $OUTPUT->standard_footer_html(); ?>
 </footer>
 

@@ -56,8 +56,38 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
-24th April 2013 - Version 2.5.0.1 - Beta
-  1.  Initial version for Moodle 2.5beta.
+31st May 2013 Version 2.5.1.1
+  1.  Tweaked css for course search box on the course category page.
+  2.  Updated layouts from core.
+  3.  Adjusted custom css setting so that when it changes its effects are applied immediately.
+  4.  Fixed inverse setting.
+  5.  Fixed no purge when setting footnote.
+  6.  Reversed this version information list to make the latest updates easier to find.
+
+15th May 2013 Version 2.5.1 - Stable
+  1.  First stable version for Moodle 2.5 stable.
+  2.  Updated 'general.php' file from 'bootstrapbase'.
+
+13th May 2013 - Version 2.5.0.5 - Beta.
+  1.  Removed language menu as appears to now rendering from Bootstrap Base.
+  2.  Made configuration of maintenance template like other standard themes.
+  3.  Updated moodle.css in line with updates in Bootstrap Base.
+  4.  Made font easier to change.
+
+8th May 2013 - Version 2.5.0.4 - Beta.
+  1.  Added and adapted image from flexible sections course format.
+  2.  Added and adapted missing move here image from core.
+  3.  Added display of language menu when required.
+  4.  Added automatic 'Purge all caches' when upgrading.  If this appears not to work by lack of display etc. then perform a
+      manual 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches'.
+
+4th May 2013 - Version 2.5.0.3 - Beta.
+  1.  Added bootstrapbase dependency in 'config.php'.
+  2.  Changed colour of form headings from black to blue.
+  3.  Added 'Upgrading' instructions and made some improvements to this readme.
+  4.  Changed as many core images to blue as possible.
+  5.  Fixed font path issue when Moodle is in a sub-folder.
+  6.  Please perform a 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches' when upgrading.
 
 29th April 2013 - Version 2.5.0.2 - Beta
   1.  Updated to using 'Bootstrapbase' as a parent theme, thus requiring Moodle version 2013042600.00 release 2.5beta+ (Build: 20130426).
@@ -69,30 +99,8 @@ Version Information
   5.  Mary Evans now on board as a maintainer and co-developer :).
   6.  Please perform a 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches' when upgrading.
 
-4th May 2013 - Version 2.5.0.3 - Beta.
-  1.  Added bootstrapbase dependency in 'config.php'.
-  2.  Changed colour of form headings from black to blue.
-  3.  Added 'Upgrading' instructions and made some improvements to this readme.
-  4.  Changed as many core images to blue as possible.
-  5.  Fixed font path issue when Moodle is in a sub-folder.
-  6.  Please perform a 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches' when upgrading.
-
-8th May 2013 - Version 2.5.0.4 - Beta.
-  1.  Added and adapted image from flexible sections course format.
-  2.  Added and adapted missing move here image from core.
-  3.  Added display of language menu when required.
-  4.  Added automatic 'Purge all caches' when upgrading.  If this appears not to work by lack of display etc. then perform a
-      manual 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches'.
-
-13th May 2013 - Version 2.5.0.5 - Beta.
-  1.  Removed language menu as appears to now rendering from Bootstrap Base.
-  2.  Made configuration of maintenance template like other standard themes.
-  3.  Updated moodle.css in line with updates in Bootstrap Base.
-  4.  Made font easier to change.
-
-15th May 2013 Version 2.5.1 - Stable
-  1.  First stable version for Moodle 2.5 stable.
-  2.  Updated 'general.php' file from 'bootstrapbase'.
+24th April 2013 - Version 2.5.0.1 - Beta
+  1.  Initial version for Moodle 2.5beta.
 
 Thanks
 ======
