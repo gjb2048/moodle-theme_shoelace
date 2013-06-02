@@ -56,6 +56,10 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+2nd June 2013 Version 2.5.1.2
+  1.  Adjusted layout such that both pre and post blocks appear on the left for left to right languages and on the right
+      for right to left languages.
+
 31st May 2013 Version 2.5.1.1
   1.  Tweaked css for course search box on the course category page.
   2.  Updated layouts from core.

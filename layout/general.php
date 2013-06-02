@@ -147,60 +147,43 @@ echo $OUTPUT->doctype() ?>
 
 <div id="page-content" class="row-fluid">
 
-<?php if ($layout === 'pre-and-post') { ?>
-    <div id="region-bs-main-and-pre" class="span9">
-    <div class="row-fluid">
-    <section id="region-main" class="span8 pull-right">
-<?php } else if ($layout === 'side-post-only') { ?>
-    <section id="region-main" class="span9">
-<?php } else if ($layout === 'side-pre-only') { ?>
-    <section id="region-main" class="span9 pull-right">
-<?php } else if ($layout === 'content-only') { ?>
+<?php if ($layout === 'content-only') { ?>
     <section id="region-main" class="span12">
-<?php } ?>
-
+<?php } else if (!right_to_left()) { ?>
+    <section id="region-main" class="span9 pull-right">
+<?php } else { ?>
+    <section id="region-main" class="span9">
+    <?php } ?>
 
     <?php echo $coursecontentheader; ?>
     <?php echo $OUTPUT->main_content() ?>
     <?php echo $coursecontentfooter; ?>
     </section>
 
-
-<?php if ($layout !== 'content-only') {
-          if ($layout === 'pre-and-post') { ?>
-            <aside class="span4 desktop-first-column">
-    <?php } else if ($layout === 'side-pre-only') { ?>
-            <aside class="span3 desktop-first-column">
-    <?php } ?>
-          <div id="region-pre" class="block-region">
-          <div class="region-content">
-          <?php
-                if (!right_to_left()) {
+<?php if ($layout !== 'content-only') { ?>
+    <aside class="span3 <?php if (!right_to_left()) { echo 'desktop-first-column'; } ?>">
+        <?php if ($layout === 'pre-and-post' OR $layout === 'side-pre-only') { ?>
+            <div id="region-pre" class="block-region">
+            <div class="region-content">
+            <?php
+                if ($hassidepre) {
                     echo $OUTPUT->blocks_for_region('side-pre');
-                } else if ($hassidepost) {
-                    echo $OUTPUT->blocks_for_region('side-post');
-                }
-          ?>
-          </div>
-          </div>
-          </aside>
-    <?php if ($layout === 'pre-and-post') {
-          ?></div></div><?php // Close row-fluid and span9.
-   }
+                } ?>
+            </div>
+            </div>
+        <?php } ?>
 
-    if ($layout === 'side-post-only' OR $layout === 'pre-and-post') { ?>
-        <aside class="span3">
-        <div id="region-post" class="block-region">
-        <div class="region-content">
-        <?php if (!right_to_left()) {
-                  echo $OUTPUT->blocks_for_region('side-post');
-              } else {
-                  echo $OUTPUT->blocks_for_region('side-pre');
-              } ?>
-        </div>
-        </div>
-        </aside>
-    <?php } ?>
+        <?php if ($layout === 'pre-and-post' OR $layout === 'side-post-only') { ?>
+            <div id="region-post" class="block-region">
+            <div class="region-content">
+            <?php
+                if ($hassidepost) {
+                    echo $OUTPUT->blocks_for_region('side-post');
+                } ?>
+            </div>
+            </div>
+        <?php } ?>
+    </aside>
 <?php } ?>
 </div>
 
