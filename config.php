@@ -181,3 +181,5 @@ if (!empty($_SERVER['HTTP_USER_AGENT'])) {
 if (strpos($useragent, 'MSIE 8') || strpos($useragent, 'MSIE 7')) {
     $THEME->javascripts[] = 'html5shiv';
 }
+
+$THEME->javascripts_footer[] = 'shoelace';

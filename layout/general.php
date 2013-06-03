@@ -161,8 +161,8 @@ echo $OUTPUT->doctype() ?>
     </section>
 
 <?php if ($layout !== 'content-only') { ?>
-    <aside class="span3 <?php if (!right_to_left()) { echo 'desktop-first-column'; } ?>">
-        <?php if ($layout === 'pre-and-post' OR $layout === 'side-pre-only') { ?>
+    <aside id="shoelace-blocks" class="span3 <?php if (!right_to_left()) { echo 'desktop-first-column'; } ?>">
+        <?php if (!right_to_left() AND ($layout === 'pre-and-post' OR $layout === 'side-pre-only')) { ?>
             <div id="region-pre" class="block-region">
             <div class="region-content">
             <?php
@@ -183,6 +183,18 @@ echo $OUTPUT->doctype() ?>
             </div>
             </div>
         <?php } ?>
+
+        <?php if (right_to_left() AND ($layout === 'pre-and-post' OR $layout === 'side-pre-only')) { ?>
+            <div id="region-pre" class="block-region">
+            <div class="region-content">
+            <?php
+                if ($hassidepre) {
+                    echo $OUTPUT->blocks_for_region('side-pre');
+                } ?>
+            </div>
+            </div>
+        <?php } ?>
+
     </aside>
 <?php } ?>
 </div>
