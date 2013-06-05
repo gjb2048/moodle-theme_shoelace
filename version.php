@@ -27,7 +27,7 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2013060300;
+$plugin->version   = 2013060500;
 $plugin->requires  = 2013051400.00; // 2.5 (Build: 20130514).
 $plugin->component = 'theme_shoelace';
 $plugin->maturity = MATURITY_STABLE;

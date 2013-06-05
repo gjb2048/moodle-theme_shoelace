@@ -148,17 +148,21 @@ echo $OUTPUT->doctype() ?>
 <div id="page-content" class="row-fluid">
 
 <?php if ($layout === 'content-only') { ?>
-    <section id="region-main" class="span12">
+    <div id="region-main-shoelace" class="span12">
+    <section id="region-main" class="row-fluid">
 <?php } else if (!right_to_left()) { ?>
-    <section id="region-main" class="span9 pull-right">
+    <div id="region-main-shoelace" class="span9 pull-right">
+    <section id="region-main" class="row-fluid">
 <?php } else { ?>
-    <section id="region-main" class="span9">
+    <div id="region-main-shoelace" class="span9">
+    <section id="region-main" class="row-fluid">
     <?php } ?>
 
     <?php echo $coursecontentheader; ?>
     <?php echo $OUTPUT->main_content() ?>
     <?php echo $coursecontentfooter; ?>
     </section>
+    </div>
 
 <?php if ($layout !== 'content-only') { ?>
     <aside id="shoelace-blocks" class="span3 <?php if (!right_to_left()) { echo 'desktop-first-column'; } ?>">
