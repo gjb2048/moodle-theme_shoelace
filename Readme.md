@@ -56,7 +56,7 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
-5th June 2013 Version 2.5.1.2
+6th June 2013 Version 2.5.1.2
   1.  Adjusted layout such that both pre and post blocks appear on the left for left to right languages and on the right
       for right to left languages.
   2.  Added paper effect.
