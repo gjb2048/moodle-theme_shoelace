@@ -30,29 +30,12 @@ $html = theme_shoelace_get_html_for_settings($OUTPUT, $PAGE);
 
 $hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT));
 $hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT));
-$twocolumn = false;
+$contentclass = 'span8';
+$blockclass = 'span4';
 if (!($hassidepre AND $hassidepost)) {
-    $twocolumn = true;
-    $ltr = (!right_to_left());  // Also used to know if to add 'pull-right' and 'desktop-first-column' classes in the layout for LTR.
-    $pre = 'side-pre';
-    $post = 'side-post';
-    if (!$ltr) { // In RTL the sides are reversed.
-        // Swap....
-        $temp = $pre;
-        $pre = $post;
-        $post = $temp;
-    }
-    /* This copes with the value of 'regions' being 'side-pre' or 'side-post' in 'config.php'.
-       If there is a 'side-pre' then use it, the RTL logic above means that 'side-post' will be in $useblock but then this
-       will be converted back to 'side-pre' by the swapping code in the method 'block' as it uses the '$THEME->blockrtlmanipulations'
-       array in 'config.php'.  If there is not a 'side-pre' and a 'side-post' has not been defined then this is a developers coding
-       fault in 'config.php' and therefore would need to be reported.
-    */
-    if ($hassidepre) {
-        $useblock = $pre;
-    } else {
-        $useblock = $post;
-    }
+    // Two columns.
+    $contentclass = 'span9';
+    $blockclass = 'span3';
 }
 
 echo $OUTPUT->doctype() ?>
@@ -102,10 +85,9 @@ echo $OUTPUT->doctype() ?>
     </header>
 
     <div id="page-content" class="row-fluid">
-        <?php if ($twocolumn == false) { ?>
         <div id="region-bs-main-and-pre" class="span9">
             <div class="row-fluid">
-                <div id="region-main-shoelace" class="span8 pull-right">
+                <div id="region-main-shoelace" class="<?php echo $contentclass; ?> pull-right">
                     <section id="region-main" class="row-fluid">
                         <?php
                         echo $OUTPUT->course_content_header();
@@ -114,29 +96,10 @@ echo $OUTPUT->doctype() ?>
                         ?>
                     </section>
                 </div>
-                <?php echo $OUTPUT->blocks('side-pre', 'span4 desktop-first-column'); ?>
+                <?php echo $OUTPUT->blocks('side-pre', $blockclass.' desktop-first-column'); ?>
             </div>
         </div>
-        <?php echo $OUTPUT->blocks('side-post', 'span3');
-        } else {
-        ?>
-        <div id="region-main-shoelace" class="span9<?php if ($ltr) { echo ' pull-right'; } ?>">
-            <section id="region-main" class="row-fluid">
-                <?php
-                echo $OUTPUT->course_content_header();
-                echo $OUTPUT->main_content();
-                echo $OUTPUT->course_content_footer();
-                ?>
-            </section>
-        </div>
-        <?php
-            $classextra = '';
-            if ($ltr) {
-                $classextra = ' desktop-first-column';
-            }
-            echo $OUTPUT->blocks($useblock, 'span3'.$classextra);
-        }
-        ?>
+        <?php echo $OUTPUT->blocks('side-post', 'span3'); ?>
     </div>
 
     <div id="page-content" class="row-fluid">
