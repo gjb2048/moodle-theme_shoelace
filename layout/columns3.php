@@ -102,9 +102,6 @@ echo $OUTPUT->doctype() ?>
         <?php echo $OUTPUT->blocks('side-post', 'span3'); ?>
     </div>
 
-    <div id="page-content" class="row-fluid">
-    </div>
-
     <footer id="page-footer">
         <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
         <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
