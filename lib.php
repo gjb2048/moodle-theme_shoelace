@@ -25,13 +25,13 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-function shoelace_process_css($css, $theme) {
+function theme_shoelace_process_css($css, $theme) {
     // Set the background image for the logo.
     $logo = $theme->setting_file_url('logo', 'logo');
-    $css = shoelace_set_logo($css, $logo);
+    $css = theme_shoelace_set_logo($css, $logo);
 
     // Set the font path.
-    $css = shoelace_set_fontwww($css);
+    $css = theme_shoelace_set_fontwww($css);
 
     // Set custom CSS.
     if (!empty($theme->settings->customcss)) {
@@ -39,12 +39,12 @@ function shoelace_process_css($css, $theme) {
     } else {
         $customcss = null;
     }
-    $css = shoelace_set_customcss($css, $customcss);
+    $css = theme_shoelace_set_customcss($css, $customcss);
 
     return $css;
 }
 
-function shoelace_set_logo($css, $logo) {
+function theme_shoelace_set_logo($css, $logo) {
     global $OUTPUT;
     $tag = '[[setting:logo]]';
     $replacement = $logo;
@@ -66,14 +66,14 @@ function theme_shoelace_pluginfile($course, $cm, $context, $filearea, $args, $fo
     }
 }
 
-function shoelace_set_fontwww($css) {
+function theme_shoelace_set_fontwww($css) {
     global $CFG;
     $tag = '[[setting:fontwww]]';
     $css = str_replace($tag, $CFG->wwwroot . '/theme/shoelace/style/font/', $css);
     return $css;
 }
 
-function shoelace_set_customcss($css, $customcss) {
+function theme_shoelace_set_customcss($css, $customcss) {
     $tag = '[[setting:customcss]]';
     $replacement = $customcss;
     if (is_null($replacement)) {
