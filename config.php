@@ -165,8 +165,3 @@ $THEME->layouts = array(
 );
 
 $THEME->csspostprocess = 'theme_shoelace_process_css';
-
-$THEME->blockrtlmanipulations = array(
-    'side-pre' => 'side-post',
-    'side-post' => 'side-pre'
-);

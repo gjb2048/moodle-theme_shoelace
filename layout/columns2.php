@@ -28,25 +28,10 @@
 // Get the HTML for the settings bits.
 $html = theme_shoelace_get_html_for_settings($OUTPUT, $PAGE);
 
-$ltr = (!right_to_left());  // Also used to know if to add 'pull-right' and 'desktop-first-column' classes in the layout for LTR.
-$pre = 'side-pre';
-$post = 'side-post';
-/*
- This copes with the value of 'regions' being 'side-pre' or 'side-post' in 'config.php'.
- If there is a 'side-pre' then use it, the RTL logic above means that 'side-post' will be in $useblock but then this
- will be converted back to 'side-pre' by the swapping code in the method 'block' as it uses the '$THEME->blockrtlmanipulations'
- array in 'config.php'.  If there is not a 'side-pre' and a 'side-post' has not been defined then this is a developers coding
- fault in 'config.php' and therefore would need to be reported.
-*/
-if (!$ltr) { // In RTL the sides are reversed, so swap the 'blocks' method parameter.
-    // Swap....
-    $temp = $pre;
-    $pre = $post;
-    $post = $temp;
-}
+$ltr = (!right_to_left());  // To know if to add 'pull-right' and 'desktop-first-column' classes in the layout for LTR.
 $hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT));
 if ($hassidepre) {
-    $useblock = $pre;
+    $useblock = 'side-pre';
     /*
      This deals with the side to show the blocks on.
      If we have a 'side-pre' then the blocks are on the left for LTR and right for RTL.
@@ -57,7 +42,7 @@ if ($hassidepre) {
         $left = false;
     }
 } else {
-    $useblock = $post;
+    $useblock = 'side-post';
     /*
      This deals with the side to show the blocks on.
      If we have a 'side-post' then the blocks are on the right for LTR and left for RTL.
@@ -106,7 +91,6 @@ echo $OUTPUT->doctype() ?>
 
     <header id="page-header" class="clearfix">
         <div id="page-navbar">
-            <nav class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></nav>
             <?php echo $OUTPUT->navbar(); ?>
         </div>
         <?php echo $html->heading; ?>
@@ -128,7 +112,7 @@ echo $OUTPUT->doctype() ?>
         if ($left) {
             $classextra = ' desktop-first-column';
         }
-        echo $OUTPUT->blocks($useblock, 'span3'.$classextra);
+        echo $OUTPUT->shoelaceblocks($useblock, 'span3'.$classextra);
         ?>
     </div>
 

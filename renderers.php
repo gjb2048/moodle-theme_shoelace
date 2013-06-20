@@ -25,13 +25,5 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
+require_once('renderers/core_renderer.php');
 
-$plugin->version   = 2013062000;
-$plugin->requires  = 2013051400.05; // 2.5+ (Build: 20130614).
-$plugin->component = 'theme_shoelace';
-$plugin->maturity = MATURITY_BETA;
-$plugin->release = '2.5.2';
-$plugin->dependencies = array(
-    'theme_bootstrapbase'  => 2013050100
-);

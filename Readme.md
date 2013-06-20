@@ -56,7 +56,7 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
-18th June 2013 Version 2.5.2.
+20th June 2013 Version 2.5.2.
   1.  Updated to changes implemented by MDL-39824 and proposed by MDL-40065 but in a way that they are local to Shoelace and
       therefore should not require an update to core M2.5.
   2.  Updated styles to current fixes.

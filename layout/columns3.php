@@ -23,10 +23,23 @@
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+
  */
 
 // Get the HTML for the settings bits.
 $html = theme_shoelace_get_html_for_settings($OUTPUT, $PAGE);
+
+$pre = 'side-pre';
+$post = 'side-post';
+if (right_to_left()) {
+    $regionbsid = 'region-bs-main-and-post';
+    // In RTL the sides are reversed, so swap the 'shoelaceblocks' method parameter....
+    $temp = $pre;
+    $pre = $post;
+    $post = $temp;
+} else {
+    $regionbsid = 'region-bs-main-and-pre';
+}
 
 $hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT));
 $hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT));
@@ -85,7 +98,7 @@ echo $OUTPUT->doctype() ?>
     </header>
 
     <div id="page-content" class="row-fluid">
-        <div id="region-bs-main-and-pre" class="span9">
+        <div id="<?php echo $regionbsid ?>" class="span9">
             <div class="row-fluid">
                 <div id="region-main-shoelace" class="<?php echo $contentclass; ?> pull-right">
                     <section id="region-main" class="row-fluid">
@@ -96,10 +109,10 @@ echo $OUTPUT->doctype() ?>
                         ?>
                     </section>
                 </div>
-                <?php echo $OUTPUT->blocks('side-pre', $blockclass.' desktop-first-column'); ?>
+                <?php echo $OUTPUT->shoelaceblocks($pre, $blockclass.' desktop-first-column'); ?>
             </div>
         </div>
-        <?php echo $OUTPUT->blocks('side-post', 'span3'); ?>
+        <?php echo $OUTPUT->shoelaceblocks($post, 'span3'); ?>
     </div>
 
     <footer id="page-footer">
