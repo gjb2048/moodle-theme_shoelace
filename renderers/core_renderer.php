@@ -46,6 +46,28 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
     }
 
     /**
+     * Returns HTML to display a "Turn editing on/off" button in a form.
+     *
+     * @param moodle_url $url The URL + params to send through when clicking the button
+     * @return string HTML the button
+     */
+    public function edit_button(moodle_url $url) {
+        $url->param('sesskey', sesskey());    
+        if ($this->page->user_is_editing()) {
+            $url->param('edit', 'off');
+            $btn = 'btn-danger';
+            $title = get_string('turneditingoff');
+            $icon = 'icon-off';
+        } else {
+            $url->param('edit', 'on');
+            $btn = 'btn-success';
+            $title = get_string('turneditingon');
+            $icon = 'icon-edit';
+        }
+        return html_writer::tag('a', html_writer::tag('i', '', array('class' => $icon.' icon-white')), array('href' => $url, 'class' => 'btn '.$btn, title => $title));
+    }
+
+    /**
      * Get the HTML for blocks in the given region.
      *
      * @since 2.5.1 2.6
