@@ -33,16 +33,17 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
      */
     public function navbar() {
         $items = $this->page->navbar->get_items();
+        $divider = html_writer::tag('span', '/' , array('class' => 'divider'));
         $breadcrumbs = array();
         foreach ($items as $item) {
             $item->hideicon = true;
             $breadcrumbs[] = $this->render($item);
         }
-        $divider = '<span class="divider">/</span>';
-        $list_items = '<li>'.join(" $divider</li><li>", $breadcrumbs).'</li>';
-        $title = '<span class="accesshide">'.get_string('pagepath').'</span>';
-        $breadcrumbbtn = '<li class="breadcrumb-button">'.$this->page_heading_button().'</li>';
-        return $title . "<ul class=\"breadcrumb\">$list_items$breadcrumbbtn</ul>";
+        $list_items = html_writer::start_tag('li').implode("$divider".html_writer::end_tag('li').
+                      html_writer::start_tag('li'), $breadcrumbs).html_writer::end_tag('li');
+        $title = html_writer::tag('span', get_string('pagepath'), array('class' => 'accesshide'));
+        $breadcrumbbtn = html_writer::tag('li', $this->page_heading_button(), array('class' => 'breadcrumb-button'));
+        return $title . html_writer::tag('ul', "$list_items$breadcrumbbtn", array('class' => 'breadcrumb'));
     }
 
     /**
@@ -64,7 +65,8 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
             $title = get_string('turneditingon');
             $icon = 'icon-edit';
         }
-        return html_writer::tag('a', html_writer::tag('i', '', array('class' => $icon.' icon-white')), array('href' => $url, 'class' => 'btn '.$btn, title => $title));
+        return html_writer::tag('a', html_writer::start_tag('i', array('class' => $icon.' icon-white')).
+               html_writer::end_tag('i'), array('href' => $url, 'class' => 'btn '.$btn, title => $title));
     }
 
     /**
@@ -75,14 +77,12 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
      * @return string HTML.
      */
     public function shoelaceblocks($region, $classes = array(), $tag = 'aside') {
-        //$displayregion = $this->page->apply_theme_region_manipulations($region);
-        $displayregion = $region;
         $classes = (array)$classes;
         $classes[] = 'block-region';
         $attributes = array(
-            'id' => 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $displayregion),
+            'id' => 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
             'class' => join(' ', $classes),
-            'data-blockregion' => $displayregion,
+            'data-blockregion' => $region,
             'data-droptarget' => '1'
         );
         return html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
