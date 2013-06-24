@@ -66,7 +66,7 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
             $icon = 'icon-edit';
         }
         return html_writer::tag('a', html_writer::start_tag('i', array('class' => $icon.' icon-white')).
-               html_writer::end_tag('i'), array('href' => $url, 'class' => 'btn '.$btn, title => $title));
+               html_writer::end_tag('i'), array('href' => $url, 'class' => 'btn '.$btn, 'title' => $title));
     }
 
     /**
