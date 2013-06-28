@@ -64,6 +64,8 @@ Version Information
   4.  Implemented MDL-40137 to fix method names in 'lib.php'.
   5.  Fixes for RTL.
   6.  Changes to course CSS using Mary Evan's Afterburner code as documented on: https://moodle.org/mod/forum/discuss.php?d=230919.
+  7.  Use chevron icons for the breadcrumb divider.  Correct direction used in both LTR and RTL.
+  8.  Use 'pills' instead of 'tabs' for 'tabtree's -> http://twitter.github.io/bootstrap/components.html#navs.
 
 6th June 2013 Version 2.5.1.2
   1.  Adjusted layout such that both pre and post blocks appear on the left for left to right languages and on the right
@@ -124,12 +126,8 @@ Bas Brands, David Scotson, Stuart Lamour, Mark Aberdour, Paul Hibbitts and Mary 
 
 And again to Mary Evans for the 'Clean' theme.
 
-Us
+Me
 ==
 G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
 Moodle profile: http://moodle.org/user/profile.php?id=442195.
 Web profile   : http://about.me/gjbarnard
-
-Mary Evans
-Moodle profile: http://moodle.org/user/profile.php?id=713800.
-Web profile   : http://visible-expression.co.uk

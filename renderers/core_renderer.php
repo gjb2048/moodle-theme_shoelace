@@ -33,7 +33,13 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
      */
     public function navbar() {
         $items = $this->page->navbar->get_items();
-        $divider = html_writer::tag('span', '/' , array('class' => 'divider'));
+        if (right_to_left()) {
+            $dividericon = 'icon-chevron-left';
+        } else {
+            $dividericon = 'icon-chevron-right';
+        }
+        $divider = html_writer::tag('span', html_writer::start_tag('i', array('class' => $dividericon.' icon-black')).
+               html_writer::end_tag('i') , array('class' => 'divider'));
         $breadcrumbs = array();
         foreach ($items as $item) {
             $item->hideicon = true;
@@ -67,6 +73,26 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
         }
         return html_writer::tag('a', html_writer::start_tag('i', array('class' => $icon.' icon-white')).
                html_writer::end_tag('i'), array('href' => $url, 'class' => 'btn '.$btn, 'title' => $title));
+    }
+
+    /**
+     * Renders tabtree
+     *
+     * @param tabtree $tabtree
+     * @return string
+     */
+    protected function render_tabtree(tabtree $tabtree) {
+        if (empty($tabtree->subtree)) {
+            return '';
+        }
+        $firstrow = $secondrow = '';
+        foreach ($tabtree->subtree as $tab) {
+            $firstrow .= $this->render($tab);
+            if (($tab->selected || $tab->activated) && !empty($tab->subtree) && $tab->subtree !== array()) {
+                $secondrow = $this->tabtree($tab->subtree);
+            }
+        }
+        return html_writer::tag('ul', $firstrow, array('class' => 'nav nav-pills')) . $secondrow;
     }
 
     /**
