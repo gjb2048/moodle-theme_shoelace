@@ -29,7 +29,7 @@ $string['choosereadme'] = '
 <div class="clearfix">
 <div class="well">
 <h2>Shoelace</h2>
-<p><img class=img-polaroid src="shoelace/pix/screenshot.jpg" /></p>
+<p><img class="img-polaroid" src="shoelace/pix/screenshot.png" /></p>
 </div>
 <div class="well">
 <h3>About</h3>
