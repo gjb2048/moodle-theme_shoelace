@@ -24,9 +24,10 @@ M.theme_shoelace = {
 M.theme_shoelace.init = function(Y) {
     "use strict";
     this.Y = Y;
-    M.theme_shoelace.blocks = Y.one('#shoelace-blocks');
+    //M.theme_shoelace.blocks = Y.one('#shoelace-blocks');
+    M.theme_shoelace.blocks = Y.one('#block-region-side-pre');
     if (M.theme_shoelace.blocks) {
-        M.theme_shoelace.content = Y.one('#region-main');
+        M.theme_shoelace.content = Y.one('#region-main-shoelace');
         M.theme_shoelace.compress_blocks();
         M.theme_shoelace.blocks.on('mouseenter', M.theme_shoelace.blocks_enter);
         M.theme_shoelace.blocks.on('mouseleave', M.theme_shoelace.blocks_leave);
@@ -37,7 +38,7 @@ M.theme_shoelace.compress_blocks = function() {
     M.theme_shoelace.blocks.replaceClass('span3', 'span1');
     M.theme_shoelace.blocks.addClass('shoelace-closed');
     if (M.theme_shoelace.content) {
-        M.theme_shoelace.content.replaceClass('span9', 'span11');
+        M.theme_shoelace.content.replaceClass('span8', 'span11');
     }
     var titles = M.theme_shoelace.blocks.all('.header h2');
     if (titles) {
@@ -53,7 +54,7 @@ M.theme_shoelace.blocks_enter = function(e) {
     M.theme_shoelace.blocks.replaceClass('span1', 'span3');
     M.theme_shoelace.blocks.removeClass('shoelace-closed');
     if (M.theme_shoelace.content) {
-        M.theme_shoelace.content.replaceClass('span11', 'span9');
+        M.theme_shoelace.content.replaceClass('span11', 'span8');
     }
 };
 

@@ -165,3 +165,6 @@ $THEME->layouts = array(
 );
 
 $THEME->csspostprocess = 'theme_shoelace_process_css';
+
+//$THEME->enable_dock = true;
+$THEME->javascripts_footer[] = 'shoelace';
