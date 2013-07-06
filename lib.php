@@ -25,13 +25,13 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-function shoelace_process_css($css, $theme) {
+function theme_shoelace_process_css($css, $theme) {
     // Set the background image for the logo.
     $logo = $theme->setting_file_url('logo', 'logo');
-    $css = shoelace_set_logo($css, $logo);
+    $css = theme_shoelace_set_logo($css, $logo);
 
     // Set the font path.
-    $css = shoelace_set_fontwww($css);
+    $css = theme_shoelace_set_fontwww($css);
 
     // Set custom CSS.
     if (!empty($theme->settings->customcss)) {
@@ -39,12 +39,12 @@ function shoelace_process_css($css, $theme) {
     } else {
         $customcss = null;
     }
-    $css = shoelace_set_customcss($css, $customcss);
+    $css = theme_shoelace_set_customcss($css, $customcss);
 
     return $css;
 }
 
-function shoelace_set_logo($css, $logo) {
+function theme_shoelace_set_logo($css, $logo) {
     global $OUTPUT;
     $tag = '[[setting:logo]]';
     $replacement = $logo;
@@ -66,14 +66,14 @@ function theme_shoelace_pluginfile($course, $cm, $context, $filearea, $args, $fo
     }
 }
 
-function shoelace_set_fontwww($css) {
+function theme_shoelace_set_fontwww($css) {
     global $CFG;
     $tag = '[[setting:fontwww]]';
     $css = str_replace($tag, $CFG->wwwroot . '/theme/shoelace/style/font/', $css);
     return $css;
 }
 
-function shoelace_set_customcss($css, $customcss) {
+function theme_shoelace_set_customcss($css, $customcss) {
     $tag = '[[setting:customcss]]';
     $replacement = $customcss;
     if (is_null($replacement)) {
@@ -83,4 +83,37 @@ function shoelace_set_customcss($css, $customcss) {
     $css = str_replace($tag, $replacement, $css);
 
     return $css;
+}
+
+/**
+ * Returns an object containing HTML for the areas affected by settings.
+ *
+ * @param renderer_base $output Pass in $OUTPUT.
+ * @param moodle_page $page Pass in $PAGE.
+ * @return stdClass An object with the following properties:
+ *      - navbarclass A CSS class to use on the navbar. By default ''.
+ *      - heading HTML to use for the heading. A logo if one is selected or the default heading.
+ *      - footnote HTML to use as a footnote. By default ''.
+ */
+function theme_shoelace_get_html_for_settings(renderer_base $output, moodle_page $page) {
+    global $CFG;
+    $return = new stdClass;
+
+    $return->navbarclass = '';
+    if (!empty($page->theme->settings->invert)) {
+        $return->navbarclass .= ' navbar-inverse';
+    }
+
+    if (!empty($page->theme->settings->logo)) {
+        $return->heading = html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
+    } else {
+        $return->heading = $output->page_heading();
+    }
+
+    $return->footnote = '';
+    if (!empty($page->theme->settings->footnote)) {
+        $return->footnote = '<div class="footnote text-center">'.$page->theme->settings->footnote.'</div>';
+    }
+
+    return $return;
 }

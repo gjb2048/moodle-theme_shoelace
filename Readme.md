@@ -4,7 +4,7 @@ Shoelace theme with a light feel through colour and font selection.
 
 Required version of Moodle
 ==========================
-This version works with Moodle version 2013051400.00 release 2.5 (Build: 20130514) and above until the next release.
+This version works with Moodle version 2013051400.05 release 2.5 (Build: 20130614) and above until the next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
 'docs.moodle.org/25/en/Installing_Moodle'.
@@ -56,9 +56,22 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
-2nd June 2013 Version 2.5.1.2
+29th June 2013 Version 2.5.2.
+  1.  Updated to changes implemented by MDL-39824 and proposed by MDL-40065 but in a way that they are local to Shoelace and
+      therefore should not require an update to core M2.5.
+  2.  Updated styles to current fixes.
+  3.  Added 'icon.png' to show when updating.
+  4.  Implemented MDL-40137 to fix method names in 'lib.php'.
+  5.  Fixes for RTL.
+  6.  Changes to course CSS using Mary Evan's Afterburner code as documented on: https://moodle.org/mod/forum/discuss.php?d=230919.
+  7.  Use chevron icons for the breadcrumb divider.  Correct direction used in both LTR and RTL.
+  8.  Use 'pills' instead of 'tabs' for 'tabtree's -> http://twitter.github.io/bootstrap/components.html#navs.
+
+6th June 2013 Version 2.5.1.2
   1.  Adjusted layout such that both pre and post blocks appear on the left for left to right languages and on the right
       for right to left languages.
+  2.  Added paper effect.
+  3.  Tidied up some small font / background issues.
 
 31st May 2013 Version 2.5.1.1
   1.  Tweaked css for course search box on the course category page.
@@ -113,12 +126,8 @@ Bas Brands, David Scotson, Stuart Lamour, Mark Aberdour, Paul Hibbitts and Mary 
 
 And again to Mary Evans for the 'Clean' theme.
 
-Us
+Me
 ==
 G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
 Moodle profile: http://moodle.org/user/profile.php?id=442195.
 Web profile   : http://about.me/gjbarnard
-
-Mary Evans
-Moodle profile: http://moodle.org/user/profile.php?id=713800.
-Web profile   : http://visible-expression.co.uk
