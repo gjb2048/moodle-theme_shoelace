@@ -18,6 +18,7 @@ M.theme_shoelace = M.theme_shoelace || {};
 M.theme_shoelace = {
     blocks: null,
     content: null,
+    titles_created: false,
     Y: null
 }
 
@@ -35,23 +36,29 @@ M.theme_shoelace.init = function(Y) {
 };
 
 M.theme_shoelace.compress_blocks = function() {
-    M.theme_shoelace.blocks.replaceClass('span3', 'span1');
+    M.theme_shoelace.blocks.replaceClass('span4', 'span1');
     M.theme_shoelace.blocks.addClass('shoelace-closed');
     if (M.theme_shoelace.content) {
         M.theme_shoelace.content.replaceClass('span8', 'span11');
     }
+    if (M.theme_shoelace.titles_created == false) {
     var titles = M.theme_shoelace.blocks.all('.header h2');
     if (titles) {
         titles.each(function(node) {
-            node.get('parentNode').replaceChild(M.theme_shoelace.fixTitleOrientation(node, node.get('text')), node);
+            //node.get('parentNode').replaceChild(M.theme_shoelace.fixTitleOrientation(node, node.get('text')), node);
+			console.log(M.theme_shoelace.fixTitleOrientation(node.cloneNode(true), node.get('text')));
+			//console.log(node.get('parentNode'));
+            node.get('parentNode').appendChild(M.theme_shoelace.fixTitleOrientation(node.cloneNode(true), node.get('text')));
         });
+    }
+    M.theme_shoelace.titles_created = true;
     }
 };
 
 M.theme_shoelace.blocks_enter = function(e) {
     "use strict";
     e.preventDefault();
-    M.theme_shoelace.blocks.replaceClass('span1', 'span3');
+    M.theme_shoelace.blocks.replaceClass('span1', 'span4');
     M.theme_shoelace.blocks.removeClass('shoelace-closed');
     if (M.theme_shoelace.content) {
         M.theme_shoelace.content.replaceClass('span11', 'span8');
@@ -142,7 +149,7 @@ M.theme_shoelace.fixTitleOrientation = function(title, text) {
 };
 
 YUI().use('node', 'event', function(Y) {
-    console.log(M);
+    //console.log(M);
     if (!M.cfg.isediting) {
         M.theme_shoelace.init(Y);
     }

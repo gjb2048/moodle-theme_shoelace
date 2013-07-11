@@ -35,6 +35,10 @@ body {
     padding: 10px;
 }
 
+.shoelace-closed .content , .shoelace-closed .header .h2{
+    display: none;
+}
+
 /* Custom CSS Settings
 -------------------------*/
 [[setting:customcss]]
