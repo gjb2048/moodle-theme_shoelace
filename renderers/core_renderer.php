@@ -48,8 +48,7 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
         $list_items = html_writer::start_tag('li').implode("$divider".html_writer::end_tag('li').
                       html_writer::start_tag('li'), $breadcrumbs).html_writer::end_tag('li');
         $title = html_writer::tag('span', get_string('pagepath'), array('class' => 'accesshide'));
-        $breadcrumbbtn = html_writer::tag('li', $this->page_heading_button(), array('class' => 'breadcrumb-button'));
-        return $title . html_writer::tag('ul', "$list_items$breadcrumbbtn", array('class' => 'breadcrumb'));
+        return $title . html_writer::tag('ul', "$list_items", array('class' => 'breadcrumb'));
     }
 
     /**

@@ -28,8 +28,15 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: 'MoodleTheme'; 
+    font-family: 'QuicksandBook'; 
     font-weight: normal;
     font-style: normal;
     src: url('[[setting:fontwww]]Quicksand_Book.otf');
+}
+
+@font-face {
+    font-family: 'Varela'; 
+    font-weight: normal;
+    font-style: normal;
+    src: url('[[setting:fontwww]]Varela.otf');
 }

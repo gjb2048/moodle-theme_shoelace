@@ -29,7 +29,7 @@
 function xmldb_theme_shoelace_upgrade($oldversion = 0) {
 
     // Automatic 'Purge all caches'....
-    if ($oldversion < 2013050800) {
+    if ($oldversion < 2013072700) {
         purge_all_caches();
     }
 
