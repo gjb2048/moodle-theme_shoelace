@@ -1,5 +1,5 @@
 Copyright (c) 2011, Joe Prince, Admix Designs (http://www.admixdesigns.com/),
-with Reserved Font Name "Varela".
+with Reserved Font Names &quot;Varela&quot; and &quot;Varela Round&quot;.
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at: http://scripts.sil.org/OFL

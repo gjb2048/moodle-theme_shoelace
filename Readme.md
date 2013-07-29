@@ -56,9 +56,12 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
-27th July 2013 Version 2.5.2.1
-  1.  Maintenance release, implemented MDL-39812, MDL-39299, MDL-39748, MDL-40082, MDL-40071, MDL-40189, MDL-40589 and MDL-40544.
-  2.  Added new font 'Varela' for headings.
+29th July 2013 Version 2.5.2.1 - Maintenance release.
+  1.  Implemented MDL-39812, MDL-39299, MDL-39748, MDL-40082, MDL-40071, MDL-40189, MDL-40589 and MDL-40544.
+  2.  Added new font 'Varela Round' for headings so that they are separated from the main text.
+  3.  Block headings are no longer all upper case as this looks silly.
+  4.  Blocks use the warning background and border scheme so that they do not dominate the page.
+  5.  Tidied up form buttons on screen sizes less than 480px.
 
 29th June 2013 Version 2.5.2.
   1.  Updated to changes implemented by MDL-39824 and proposed by MDL-40065 but in a way that they are local to Shoelace and
