@@ -57,20 +57,48 @@ function theme_shoelace_set_logo($css, $logo) {
     return $css;
 }
 
-function theme_shoelace_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
-    if ($context->contextlevel == CONTEXT_SYSTEM and $filearea === 'logo') {
-        $theme = theme_config::load('shoelace');
-        return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
-    } else {
-        send_file_not_found();
-    }
-}
-
 function theme_shoelace_set_fontwww($css) {
     global $CFG;
     $tag = '[[setting:fontwww]]';
-    $css = str_replace($tag, $CFG->wwwroot . '/theme/shoelace/style/font/', $css);
+    //$css = str_replace($tag, $CFG->wwwroot . '/theme/shoelace/style/font/', $css);
+
+    $syscontext = context_system::instance();
+    $itemid = theme_get_revision();
+    $url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_shoelace/font/$itemid/");
+    // Now this is tricky because the we can not hard code http or https here, lets use the relative link.
+    // Note: unfortunately moodle_url does not support //urls yet.
+    $url = preg_replace('|^https?://|i', '//', $url->out(false));
+
+    $css = str_replace($tag, $url, $css);
     return $css;
+}
+
+function theme_shoelace_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
+    if ($context->contextlevel == CONTEXT_SYSTEM) {
+        if ($filearea === 'logo') {
+           $theme = theme_config::load('shoelace');
+           return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
+        } else if ($filearea === 'font') {
+            global $CFG;
+            if (!empty($CFG->themedir)) {
+                $thefontpath = $CFG->themedir . '/shoelace/style/font/';
+            } else {
+                $thefontpath = $CFG->dirroot . '/theme/shoelace/style/font/';
+            }
+
+            // Use log as a way of seeing what is going on.
+            //add_to_log(24, 'theme_shoelace', '$thefontpath', $thefontpath);
+            //add_to_log(24, 'theme_shoelace', 'args[1]', $args[1]);
+
+            //send_file($thefontpath.$args[1], $args[1]);  // Mime type detection not working?
+            // Note: Third parameter is normally 'default' which is the 'lifetime' of the file.  Here set lower for development purposes.
+            send_file($thefontpath.$args[1], $args[1], 20 , 0, false, false, 'font/opentype');
+        } else {
+            send_file_not_found();
+        }
+    } else {
+        send_file_not_found();
+    }
 }
 
 function theme_shoelace_set_customcss($css, $customcss) {
