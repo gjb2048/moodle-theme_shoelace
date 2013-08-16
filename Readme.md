@@ -56,10 +56,11 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
-15th August 2013 Version 2.5.2.2.
+16th August 2013 Version 2.5.2.2.
   1.  Implemented MDL-36011.
   2.  Adjusted table cell widths - https://moodle.org/mod/forum/discuss.php?d=234329.
   3.  Implemented $CFG->themedir safe font serving.
+  4.  Improvements to grade book styling thanks to Julian Ridden.
 
 29th July 2013 Version 2.5.2.1 - Maintenance release.
   1.  Implemented MDL-39812, MDL-39299, MDL-39748, MDL-40082, MDL-40071, MDL-40189, MDL-40589 and MDL-40544.
