@@ -101,7 +101,7 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
      * @param string $region The region to get HTML for.
      * @return string HTML.
      */
-    public function shoelaceblocks($region, $classes = array(), $tag = 'aside') {
+    public function shoelaceblocks($region, $classes = array(), $tag = 'aside', $footer = false) {
         $classes = (array)$classes;
         $classes[] = 'block-region';
         $attributes = array(
@@ -110,6 +110,16 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
             'data-blockregion' => $region,
             'data-droptarget' => '1'
         );
-        return html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
+
+        $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
+
+        if ($footer == true) {
+            $blocks = $this->page->blocks->get_blocks_for_region($region);
+            $bc = count($blocks);
+            $span = 12 / $bc;
+            $output = str_replace(' block ',' block span'.$span.' ',$output);
+        }
+
+        return $output;
     }
 }

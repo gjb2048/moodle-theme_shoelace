@@ -66,8 +66,8 @@ $THEME->layouts = array(
     ),
     // Main course page.
     'course' => array(
-        'file' => 'columns3.php',
-        'regions' => array('side-pre', 'side-post'),
+        'file' => 'columns3footer.php',
+        'regions' => array('side-pre', 'side-post', 'footer'),
         'defaultregion' => 'side-pre',
         'options' => array('langmenu'=>true),
     ),
