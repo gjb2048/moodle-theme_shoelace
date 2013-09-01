@@ -116,8 +116,18 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
         if ($footer == true) {
             $blocks = $this->page->blocks->get_blocks_for_region($region);
             $bc = count($blocks);
-            $span = 12 / $bc;
-            $output = str_replace(' block ',' block span'.$span.' ',$output);
+            if ($bc > 1) {
+                /* Span using ' block ' as the unique string that exists in the 'class' attribute of the 'div' tag at
+                   the start of the block. */
+                $span = 12 / $bc;
+                if ($span < 1) {
+                    $span = 1;  // TODO: Cope properly with more than twelve blocks.
+                }
+                $output = str_replace(' block ', ' block span'.$span.' ', $output);
+                // Need to pull in the first block...
+                $firstblockname = 'block_'.$blocks[0]->name();
+                $output = str_replace($firstblockname, $firstblockname.' desktop-first-column', $output);
+            }
         }
 
         return $output;

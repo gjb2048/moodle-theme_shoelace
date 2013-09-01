@@ -68,4 +68,4 @@ $string['pluginname'] = 'Shoelace';
 
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
-
+$string['region-footer'] = 'Footer';

@@ -108,6 +108,7 @@ echo $OUTPUT->doctype() ?>
     </div>
 
     <footer id="page-footer">
+        <?php require_once(dirname(__FILE__).'/footerblocks.php'); ?>
         <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
         <?php
         echo $html->footnote;
