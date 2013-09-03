@@ -31,7 +31,8 @@ $html = theme_shoelace_get_html_for_settings($OUTPUT, $PAGE);
 
 $pre = 'side-pre';
 $post = 'side-post';
-if (right_to_left()) {
+$rtl = right_to_left();
+if ($rtl) {
     $regionbsid = 'region-bs-main-and-post';
     // In RTL the sides are reversed, so swap the 'shoelaceblocks' method parameter....
     $temp = $pre;
@@ -40,15 +41,32 @@ if (right_to_left()) {
 } else {
     $regionbsid = 'region-bs-main-and-pre';
 }
-
 $hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT));
 $hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT));
+$regionclass = 'span9';
 $contentclass = 'span8';
 $blockclass = 'span4';
+
 if (!($hassidepre AND $hassidepost)) {
     // Two columns.
     $contentclass = 'span9';
     $blockclass = 'span3';
+    if (!$PAGE->user_is_editing()) {
+        if (((!$hassidepre) && (!$rtl)) ||
+            ((!$hassidepost) && ($rtl))) {
+            // Fill complete area when editing off and LTR and no side-pre content or RTL and no side-post content.
+            $contentclass = 'span12';
+        } else if ((!$hassidepre) && ($rtl)) {
+            // Fill complete area when editing off, RTL and no side pre.
+            $regionclass = 'span12';
+        }
+    } else {
+        if ((!$hassidepre) && ($rtl)) {
+            // Fill complete area when editing on, RTL and no side pre.
+            $contentclass = 'span8';
+            $blockclass = 'span4';
+        }
+    }
 }
 
 echo $OUTPUT->doctype() ?>
@@ -88,8 +106,13 @@ echo $OUTPUT->doctype() ?>
 
     <header id="page-header" class="clearfix">
         <div id="page-navbar" class="clearfix">
-            <div class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></div>
+            <?php if ($rtl) { ?>
             <nav class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></nav>
+            <?php } ?>
+            <div class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></div>
+            <?php if (!$rtl) { ?>
+            <nav class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></nav>
+            <?php } ?>
         </div>
         <?php echo $html->heading; ?>
         <div id="course-header">
@@ -98,7 +121,7 @@ echo $OUTPUT->doctype() ?>
     </header>
 
     <div id="page-content" class="row-fluid">
-        <div id="<?php echo $regionbsid ?>" class="span9">
+        <div id="<?php echo $regionbsid ?>" class="<?php echo $regionclass; ?>">
             <div class="row-fluid">
                 <div id="region-main-shoelace" class="<?php echo $contentclass; ?> pull-right">
                     <section id="region-main" class="row-fluid">
