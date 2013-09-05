@@ -61,6 +61,7 @@ $THEME->layouts = array(
     'base' => array(
         'file' => 'columns1.php',
         'regions' => $col1regions,
+        'defaultregion' => 'footer',
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
