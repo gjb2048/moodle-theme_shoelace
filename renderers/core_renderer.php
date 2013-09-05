@@ -130,6 +130,10 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
                     }
                 }
             }
+            if ($this->page->user_is_editing()) {
+                $bc++; // Plus one for the 'Add block' block.
+                $visibleblocks[$bc] = 'block_adminblock';
+            }
             if ($bc > 1) {
                 $span = 12 / $bc;
                 if ($span < 1) {
