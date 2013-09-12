@@ -61,8 +61,9 @@ if (!($hassidepre AND $hassidepost)) {
             $regionclass = 'span12';
         }
     } else {
-        if ((!$hassidepre) && ($rtl)) {
+        if (((!$hassidepre) && ($rtl)) || (($hassidepre) && (!$rtl))) {
             // Fill complete area when editing on, RTL and no side pre.
+            // Fill complete area when editing on, LTR and no side post.
             $contentclass = 'span8';
             $blockclass = 'span4';
         }
@@ -123,8 +124,8 @@ echo $OUTPUT->doctype() ?>
     <div id="page-content" class="row-fluid">
         <div id="<?php echo $regionbsid ?>" class="<?php echo $regionclass; ?>">
             <div class="row-fluid">
-                <div id="region-main-shoelace" class="<?php echo $contentclass; ?> pull-right">
-                    <section id="region-main" class="row-fluid">
+                <div id="region-main" class="<?php echo $contentclass; ?> pull-right">
+                    <section id="region-main-shoelace" class="row-fluid">
                         <?php
                         echo $OUTPUT->course_content_header();
                         echo $OUTPUT->main_content();

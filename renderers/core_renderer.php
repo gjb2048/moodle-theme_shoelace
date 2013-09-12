@@ -104,6 +104,7 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
     public function shoelaceblocks($region, $classes = array(), $tag = 'aside', $footer = false) {
         $classes = (array)$classes;
         $classes[] = 'block-region';
+
         $attributes = array(
             'id' => 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
             'class' => join(' ', $classes),
@@ -130,8 +131,8 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
                     }
                 }
             }
-            if ($this->page->user_is_editing()) {
-                $bc++; // Plus one for the 'Add block' block.
+            if (($this->page->user_is_editing()) && (strpos($output, 'block_adminblock') !== FALSE)) {
+                $bc++; // Plus one for the 'Add block' block if it exists in the footer.
                 $visibleblocks[$bc] = 'block_adminblock';
             }
             if ($bc > 1) {

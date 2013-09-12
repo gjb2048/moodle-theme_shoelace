@@ -20,12 +20,12 @@ body {
     background-image: url([[pix:theme|background]]);
 }
 
-#region-main {
+#region-main-shoelace {
     background-color: #fff;
     box-shadow: 0 0 8px #bbb;
 }
 
-#region-main-shoelace {
+#region-main {
     background: url([[pix:theme|shadow]]) no-repeat scroll 50% 100% / 100% 24px transparent;
     padding: 0px 0px 24px;
     margin: 0 auto;

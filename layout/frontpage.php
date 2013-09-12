@@ -94,8 +94,8 @@ echo $OUTPUT->doctype() ?>
     <div id="page-content" class="row-fluid">
         <div id="<?php echo $regionbsid ?>" class="span9">
             <div class="row-fluid">
-                <div id="region-main-shoelace" class="<?php echo $contentclass; ?> pull-right">
-                    <section id="region-main" class="row-fluid">
+                <div id="region-main" class="<?php echo $contentclass; ?> pull-right">
+                    <section id="region-main-shoelace" class="row-fluid">
                         <?php
                         echo $OUTPUT->main_content();
                         ?>
