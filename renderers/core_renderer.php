@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -24,13 +25,12 @@
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
-
     /*
      * This renders the navbar.
      * Uses bootstrap compatible html.
      */
+
     public function navbar() {
         $items = $this->page->navbar->get_items();
         if (right_to_left()) {
@@ -38,15 +38,15 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
         } else {
             $dividericon = 'icon-chevron-right';
         }
-        $divider = html_writer::tag('span', html_writer::start_tag('i', array('class' => $dividericon.' icon-black')).
-               html_writer::end_tag('i') , array('class' => 'divider'));
+        $divider = html_writer::tag('span', html_writer::start_tag('i', array('class' => $dividericon . ' icon-black')) .
+                        html_writer::end_tag('i'), array('class' => 'divider'));
         $breadcrumbs = array();
         foreach ($items as $item) {
             $item->hideicon = true;
             $breadcrumbs[] = $this->render($item);
         }
-        $list_items = html_writer::start_tag('li').implode("$divider".html_writer::end_tag('li').
-                      html_writer::start_tag('li'), $breadcrumbs).html_writer::end_tag('li');
+        $list_items = html_writer::start_tag('li') . implode("$divider" . html_writer::end_tag('li') .
+                        html_writer::start_tag('li'), $breadcrumbs) . html_writer::end_tag('li');
         $title = html_writer::tag('span', get_string('pagepath'), array('class' => 'accesshide'));
         return $title . html_writer::tag('ul', "$list_items", array('class' => 'breadcrumb'));
     }
@@ -58,7 +58,7 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
      * @return string HTML the button
      */
     public function edit_button(moodle_url $url) {
-        $url->param('sesskey', sesskey());    
+        $url->param('sesskey', sesskey());
         if ($this->page->user_is_editing()) {
             $url->param('edit', 'off');
             $btn = 'btn-danger';
@@ -70,8 +70,8 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
             $title = get_string('turneditingon');
             $icon = 'icon-edit';
         }
-        return html_writer::tag('a', html_writer::start_tag('i', array('class' => $icon.' icon-white')).
-               html_writer::end_tag('i'), array('href' => $url, 'class' => 'btn '.$btn, 'title' => $title));
+        return html_writer::tag('a', html_writer::start_tag('i', array('class' => $icon . ' icon-white')) .
+                        html_writer::end_tag('i'), array('href' => $url, 'class' => 'btn ' . $btn, 'title' => $title));
     }
 
     /**
@@ -99,40 +99,110 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
      *
      * @since 2.5.1 2.6
      * @param string $region The region to get HTML for.
+     * @param array $classes array of classes for the tag.
+     * @param string $tag Tag to use.
+     * @param int $footer if > 0 then this is a footer block specifying the number of blocks per row, max of '4'.
      * @return string HTML.
      */
-    public function shoelaceblocks($region, $classes = array(), $tag = 'aside', $footer = false) {
-        $classes = (array)$classes;
+    public function shoelaceblocks($region, $classes = array(), $tag = 'aside', $footer = 0) {
+        $classes = (array) $classes;
         $classes[] = 'block-region';
 
         $attributes = array(
-            'id' => 'block-region-'.preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
+            'id' => 'block-region-' . preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
             'class' => join(' ', $classes),
             'data-blockregion' => $region,
             'data-droptarget' => '1'
         );
 
-        $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
-
-        if ($footer == true) {
-            $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
-            //print_object($blockcontents);
-        
-            $bc = count($blockcontents);
-
-            if ($bc > 1) {
-                $span = 12 / $bc;
-                if ($span < 1) {
-                    $span = 1;  // TODO: Cope properly with more than twelve blocks.
-                }
-                foreach($blockcontents as $blockcontent) {
-                    $output = str_replace($blockcontent->attributes['class'], $blockcontent->attributes['class'].' span'.$span, $output);
-                }
-                // Need to pull in the first block...
-                $output = str_replace($blockcontents[0]->attributes['class'], $blockcontents[0]->attributes['class'].' desktop-first-column', $output);
-            }
+        if ($footer > 0) {
+            $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($region, $footer), $attributes);
+        } else {
+            $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
         }
 
         return $output;
     }
+
+    /**
+     * Output all the blocks in a particular region.
+     *
+     * @param string $region the name of a region on this page.
+     * @param int $blocksperrow Number of blocks per row, if > 4 will be set at 4.
+     * @return string the HTML to be output.
+     */
+    protected function shoelace_blocks_for_region($region, $blocksperrow) {
+        $region = $this->page->apply_theme_region_manipulations($region);
+        $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
+        $output = '';
+
+        $blockcount = count($blockcontents);
+
+        if ($blockcount > 1) {
+            $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
+            $blocks = $this->page->blocks->get_blocks_for_region($region);
+            $lastblock = null;
+            $zones = array();
+            foreach ($blocks as $block) {
+                $zones[] = $block->title;
+            }
+
+            if ($blocksperrow > 4) {
+                $blocksperrow = 4;
+            }
+            $rows = $blockcount / $blocksperrow; // Max blocks per row.
+
+            $span = 12 / $blocksperrow;
+            if ($rows <= 1) {
+                $span = 12 / $blockcount;
+                if ($span < 1) {
+                    $span = 1;  // Should not happen but a fail safe.
+                }
+            }
+
+            $currentblockcount = 0;
+            $currentrow = 0;
+            $currentrequiredrow = 1;
+            foreach ($blockcontents as $bc) {
+
+                $currentblockcount++;
+                if ($currentblockcount > ($currentrequiredrow * $blocksperrow)) {
+                    // Tripping point.
+                    $currentrequiredrow++;
+                    // Break...
+                    $output .= html_writer::empty_tag('div');
+                    $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
+                    // Recalculate span if needed...
+                    $remainingblocks = $blockcount - ($currentblockcount - 1);
+                    if ($remainingblocks < $blocksperrow) {
+                        $span = 12 / $remainingblocks;
+                        if ($span < 1) {
+                            $span = 1;  // Should not happen but a fail safe.
+                        }
+                    }
+                }
+
+                if ($currentrow < $currentrequiredrow) {
+                    // Need to pull in the first block...
+                    $blockcontents[$currentblockcount - 1]->attributes['class'] .= ' desktop-first-column';
+                    $currentrow = $currentrequiredrow;
+                }
+
+                $bc->attributes['class'] .= ' span' . $span;
+
+                if ($bc instanceof block_contents) {
+                    $output .= $this->block($bc, $region);
+                    $lastblock = $bc->title;
+                } else if ($bc instanceof block_move_target) {
+                    $output .= $this->block_move_target($bc, $zones, $lastblock);
+                } else {
+                    throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
+                }
+            }
+            $output .= html_writer::empty_tag('div');
+        }
+
+        return $output;
+    }
+
 }

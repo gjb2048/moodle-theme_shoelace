@@ -1,3 +1,3 @@
 <?php
-echo $OUTPUT->shoelaceblocks('footer', 'row-fluid', 'aside', true);
+echo $OUTPUT->shoelaceblocks('footer', 'row-fluid', 'aside', 2);
 ?>
