@@ -115,36 +115,21 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
         $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
 
         if ($footer == true) {
-            $blocks = $this->page->blocks->get_blocks_for_region($region);
-            $bc = 0;
-            $visibleblocks = array();
-            foreach($blocks as $block) {
-                if ($this->page->user_is_editing()) {
-                    $blockname = 'block_'.$block->name();
-                    $visibleblocks[$bc] = $blockname;
-                    $bc++;
-                } else {
-                    if (!$block->is_empty()) {
-                        $blockname = 'block_'.$block->name();
-                        $visibleblocks[$bc] = $blockname;
-                        $bc++;
-                    }
-                }
-            }
-            if (($this->page->user_is_editing()) && (strpos($output, 'block_adminblock') !== FALSE)) {
-                $bc++; // Plus one for the 'Add block' block if it exists in the footer.
-                $visibleblocks[$bc] = 'block_adminblock';
-            }
+            $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
+            //print_object($blockcontents);
+        
+            $bc = count($blockcontents);
+
             if ($bc > 1) {
                 $span = 12 / $bc;
                 if ($span < 1) {
                     $span = 1;  // TODO: Cope properly with more than twelve blocks.
                 }
-                foreach($visibleblocks as $visibleblock) {
-                    $output = str_replace($visibleblock, $visibleblock.' span'.$span, $output);
+                foreach($blockcontents as $blockcontent) {
+                    $output = str_replace($blockcontent->attributes['class'], $blockcontent->attributes['class'].' span'.$span, $output);
                 }
                 // Need to pull in the first block...
-                $output = str_replace($visibleblocks[0], $visibleblocks[0].' desktop-first-column', $output);
+                $output = str_replace($blockcontents[0]->attributes['class'], $blockcontents[0]->attributes['class'].' desktop-first-column', $output);
             }
         }
 
