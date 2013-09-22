@@ -116,6 +116,12 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
         );
 
         if ($footer > 0) {
+            /*if ($this->page->user_is_editing()) {
+                $attributes['class'] .= $attributes['class'].' shoelace-footer-edit';
+                $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
+            } else {
+                $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($region, $footer), $attributes);
+            }*/
             $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($region, $footer), $attributes);
         } else {
             $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
@@ -147,17 +153,24 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
                 $zones[] = $block->title;
             }
 
-            if ($blocksperrow > 4) {
-                $blocksperrow = 4;
+            $editing = $this->page->user_is_editing();
+            if (($blocksperrow > 4) || ($editing)) { // When editing we want all the blocks to be the same as side-pre / side-post.
+                $blocksperrow = 4; // Will result in a 'span3' when more than one row.
             }
-            $rows = $blockcount / $blocksperrow; // Max blocks per row.
+            $rows = $blockcount / $blocksperrow; // Maximum blocks per row.
 
-            $span = 12 / $blocksperrow;
             if ($rows <= 1) {
-                $span = 12 / $blockcount;
-                if ($span < 1) {
-                    $span = 1;  // Should not happen but a fail safe.
+                if (!$editing) {
+                    $span = 12 / $blockcount;
+                } else {
+                    $span = 3; // When editing we want all the blocks to be the same as side-pre / side-post.
                 }
+                if ($span < 1) {
+                    // Should not happen but a fail safe - block will be small so good for screen shots when this happens.
+                    $span = 1;
+                }
+            } else {
+                $span = 12 / $blocksperrow;
             }
 
             $currentblockcount = 0;
@@ -170,14 +183,17 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
                     // Tripping point.
                     $currentrequiredrow++;
                     // Break...
-                    $output .= html_writer::empty_tag('div');
+                    $output .= html_writer::end_tag('div');
                     $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
-                    // Recalculate span if needed...
-                    $remainingblocks = $blockcount - ($currentblockcount - 1);
-                    if ($remainingblocks < $blocksperrow) {
-                        $span = 12 / $remainingblocks;
-                        if ($span < 1) {
-                            $span = 1;  // Should not happen but a fail safe.
+                    if (!$editing) {
+                        // Recalculate span if needed...
+                        $remainingblocks = $blockcount - ($currentblockcount - 1);
+                        if ($remainingblocks < $blocksperrow) {
+                            $span = 12 / $remainingblocks;
+                            if ($span < 1) {
+                                // Should not happen but a fail safe - block will be small so good for screen shots when this happens.
+                                $span = 1;
+                            }
                         }
                     }
                 }
