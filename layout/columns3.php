@@ -43,29 +43,34 @@ if ($rtl) {
 }
 $hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT));
 $hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT));
-$regionclass = 'span9';
-$contentclass = 'span8';
-$blockclass = 'span4';
+$regionclass = 'span14';
+$contentclass = 'span24';
+$blockclass = 'span5';
 
 if (!($hassidepre AND $hassidepost)) {
     // Two columns.
-    $contentclass = 'span9';
-    $blockclass = 'span3';
+    $regionclass = 'span19';
+    $contentclass = 'span24';
+    $blockclass = 'span5';
     if (!$PAGE->user_is_editing()) {
         if (((!$hassidepre) && (!$rtl)) ||
             ((!$hassidepost) && ($rtl))) {
             // Fill complete area when editing off and LTR and no side-pre content or RTL and no side-post content.
-            $contentclass = 'span12';
+            $contentclass = 'span24';
         } else if ((!$hassidepre) && ($rtl)) {
             // Fill complete area when editing off, RTL and no side pre.
-            $regionclass = 'span12';
+            $regionclass = 'span24';
         }
     } else {
+        if (($hassidepre) && ($rtl)) {
+            $regionclass = 'span19 desktop-first-column';
+        }
         if (((!$hassidepre) && ($rtl)) || (($hassidepre) && (!$rtl))) {
             // Fill complete area when editing on, RTL and no side pre.
             // Fill complete area when editing on, LTR and no side post.
-            $contentclass = 'span8';
-            $blockclass = 'span4';
+            $regionclass = 'span19';
+            $contentclass = 'span24';
+            $blockclass = 'span5';
         }
     }
 }
@@ -122,21 +127,21 @@ echo $OUTPUT->doctype() ?>
     </header>
 
     <div id="page-content" class="row-fluid">
+        <?php if ($rtl) { $blockclasses = $blockclass; } else { $blockclasses = $blockclass.' desktop-first-column';} ?>
+        <?php echo $OUTPUT->shoelaceblocks($pre, $blockclasses); ?>
         <div id="<?php echo $regionbsid ?>" class="<?php echo $regionclass; ?>">
-            <div class="row-fluid">
-                <div id="region-main" class="<?php echo $contentclass; ?> pull-right">
-                    <section id="region-main-shoelace" class="row-fluid">
-                        <?php
-                        echo $OUTPUT->course_content_header();
-                        echo $OUTPUT->main_content();
-                        echo $OUTPUT->course_content_footer();
-                        ?>
-                    </section>
-                </div>
-                <?php echo $OUTPUT->shoelaceblocks($pre, $blockclass.' desktop-first-column'); ?>
+            <div id="region-main" class="<?php echo $contentclass; ?>">
+                <section id="region-main-shoelace" class="row-fluid">
+                    <?php
+                    echo $OUTPUT->course_content_header();
+                    echo $OUTPUT->main_content();
+                    echo $OUTPUT->course_content_footer();
+                    ?>
+                </section>
             </div>
         </div>
-        <?php echo $OUTPUT->shoelaceblocks($post, 'span3'); ?>
+        <?php if ($rtl) { $blockclasses = $blockclass.' pull-right'; } else { $blockclasses = $blockclass;} ?>
+        <?php echo $OUTPUT->shoelaceblocks($post, $blockclass); ?>
     </div>
 
     <footer id="page-footer">
