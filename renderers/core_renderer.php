@@ -116,12 +116,6 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
         );
 
         if ($footer > 0) {
-            /*if ($this->page->user_is_editing()) {
-                $attributes['class'] .= $attributes['class'].' shoelace-footer-edit';
-                $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
-            } else {
-                $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($region, $footer), $attributes);
-            }*/
             $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($region, $footer), $attributes);
         } else {
             $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
