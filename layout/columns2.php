@@ -29,12 +29,12 @@
 $html = theme_shoelace_get_html_for_settings($OUTPUT, $PAGE);
 
 $ltr = (!right_to_left());  // To know if to add 'pull-right' and 'desktop-first-column' classes in the layout for LTR.
-$hassidepre = $PAGE->blocks->is_known_region('side-pre');
+$hassidepre = $PAGE->blocks->is_known_region('side-before');
 if ($hassidepre) {
-    $useblock = 'side-pre';
+    $useblock = 'side-before';
     /*
      This deals with the side to show the blocks on.
-     If we have a 'side-pre' then the blocks are on the left for LTR and right for RTL.
+     If we have a 'side-before' then the blocks are on the left for LTR and right for RTL.
     */
     if ($ltr) {
         $left = true;
@@ -42,10 +42,10 @@ if ($hassidepre) {
         $left = false;
     }
 } else {
-    $useblock = 'side-post';
+    $useblock = 'side-after';
     /*
      This deals with the side to show the blocks on.
-     If we have a 'side-post' then the blocks are on the right for LTR and left for RTL.
+     If we have a 'side-after' then the blocks are on the right for LTR and left for RTL.
     */
     if ($ltr) {
         $left = false;

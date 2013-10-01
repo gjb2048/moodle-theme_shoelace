@@ -29,8 +29,8 @@
 // Get the HTML for the settings bits.
 $html = theme_shoelace_get_html_for_settings($OUTPUT, $PAGE);
 
-$pre = 'side-pre';
-$post = 'side-post';
+$pre = 'side-before';
+$post = 'side-after';
 if (right_to_left()) {
     $regionbsid = 'region-bs-main-and-post';
     // In RTL the sides are reversed, so swap the 'shoelaceblocks' method parameter....
@@ -41,8 +41,8 @@ if (right_to_left()) {
     $regionbsid = 'region-bs-main-and-pre';
 }
 
-$hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT));
-$hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT));
+$hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-before', $OUTPUT));
+$hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-after', $OUTPUT));
 $contentclass = 'span8';
 $blockclass = 'span4';
 if (!($hassidepre AND $hassidepost)) {

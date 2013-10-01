@@ -68,10 +68,10 @@ echo $OUTPUT->doctype() ?>
                 <section id="region-main" class="span8 pull-right">
                     <?php echo $OUTPUT->main_content(); ?>
                 </section>
-                <?php echo $OUTPUT->blocks('side-pre', 'span4 desktop-first-column'); ?>
+                <?php echo $OUTPUT->blocks('side-before', 'span4 desktop-first-column'); ?>
             </div>
         </div>
-        <?php echo $OUTPUT->blocks('side-post', 'span3'); ?>
+        <?php echo $OUTPUT->blocks('side-after', 'span3'); ?>
     </div>
 
     <?php echo $OUTPUT->standard_end_of_body_html() ?>
