@@ -144,7 +144,9 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
         $blockcount = count($blockcontents);
 
         if ($blockcount >= 1) {
-            $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
+            if (!$editing) {
+                $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
+            }
             $blocks = $this->page->blocks->get_blocks_for_region($region);
             $lastblock = null;
             $zones = array();
@@ -181,14 +183,14 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
             $currentrequiredrow = 1;
             foreach ($blockcontents as $bc) {
 
-                $currentblockcount++;
-                if ($currentblockcount > ($currentrequiredrow * $blocksperrow)) {
-                    // Tripping point.
-                    $currentrequiredrow++;
-                    // Break...
-                    $output .= html_writer::end_tag('div');
-                    $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
-                    if (!$editing) {
+                if (!$editing) { // Using CSS and special 'span3' only when editing.
+                    $currentblockcount++;
+                    if ($currentblockcount > ($currentrequiredrow * $blocksperrow)) {
+                        // Tripping point.
+                        $currentrequiredrow++;
+                        // Break...
+                        $output .= html_writer::end_tag('div');
+                        $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
                         // Recalculate span if needed...
                         $remainingblocks = $blockcount - ($currentblockcount - 1);
                         if ($remainingblocks < $blocksperrow) {
@@ -199,13 +201,11 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
                             }
                         }
                     }
-                }
 
-                if ($currentrow < $currentrequiredrow) {
-                    $currentrow = $currentrequiredrow;
-                }
+                    if ($currentrow < $currentrequiredrow) {
+                        $currentrow = $currentrequiredrow;
+                    }
 
-                if (!$editing) {
                     // 'desktop-first-column' done in CSS with ':first-of-type' and ':nth-of-type'.
                     // 'spanX' done in CSS with calculated special width class as fixed at 'span3' for all.
                     $bc->attributes['class'] .= ' span' . $span;
@@ -220,10 +220,13 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
                     throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
                 }
             }
-            $output .= html_writer::end_tag('div');
+            if (!$editing) {
+                $output .= html_writer::end_tag('div');
+            }
         }
 
         return $output;
     }
 
 }
+
