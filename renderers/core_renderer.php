@@ -116,7 +116,11 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
         );
 
         if ($footer > 0) {
-            $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($region, $footer), $attributes);
+            $editing = $this->page->user_is_editing();
+            if ($editing) {
+                $attributes['class'] .= ' footer-edit';
+            }
+            $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($region, $footer, $editing), $attributes);
         } else {
             $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
         }
@@ -129,16 +133,17 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
      *
      * @param string $region the name of a region on this page.
      * @param int $blocksperrow Number of blocks per row, if > 4 will be set at 4.
+     * @param boolean $editing If we are editing.
      * @return string the HTML to be output.
      */
-    protected function shoelace_blocks_for_region($region, $blocksperrow) {
+    protected function shoelace_blocks_for_region($region, $blocksperrow, $editing) {
         $region = $this->page->apply_theme_region_manipulations($region);
         $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
         $output = '';
 
         $blockcount = count($blockcontents);
 
-        if ($blockcount > 1) {
+        if ($blockcount >= 1) {
             $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
             $blocks = $this->page->blocks->get_blocks_for_region($region);
             $lastblock = null;
@@ -147,24 +152,28 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
                 $zones[] = $block->title;
             }
 
-            $editing = $this->page->user_is_editing();
-            if (($blocksperrow > 4) || ($editing)) { // When editing we want all the blocks to be the same as side-pre / side-post.
+            /*
+             * When editing we want all the blocks to be the same as side-pre / side-post so set by CSS:
+             *
+             * aside.footer-edit .block {
+             *     .footer-fluid-span(3);
+             * }
+             */
+            if (($blocksperrow > 4) || ($editing)) {
                 $blocksperrow = 4; // Will result in a 'span3' when more than one row.
             }
             $rows = $blockcount / $blocksperrow; // Maximum blocks per row.
 
-            if ($rows <= 1) {
-                if (!$editing) {
+            if (!$editing) {
+                if ($rows <= 1) {
                     $span = 12 / $blockcount;
+                    if ($span < 1) {
+                        // Should not happen but a fail safe - block will be small so good for screen shots when this happens.
+                        $span = 1;
+                    }
                 } else {
-                    $span = 3; // When editing we want all the blocks to be the same as side-pre / side-post.
+                    $span = 12 / $blocksperrow;
                 }
-                if ($span < 1) {
-                    // Should not happen but a fail safe - block will be small so good for screen shots when this happens.
-                    $span = 1;
-                }
-            } else {
-                $span = 12 / $blocksperrow;
             }
 
             $currentblockcount = 0;
@@ -193,12 +202,14 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
                 }
 
                 if ($currentrow < $currentrequiredrow) {
-                    // Need to pull in the first block...
-                    $blockcontents[$currentblockcount - 1]->attributes['class'] .= ' desktop-first-column';
                     $currentrow = $currentrequiredrow;
                 }
 
-                $bc->attributes['class'] .= ' span' . $span;
+                if (!$editing) {
+                    // 'desktop-first-column' done in CSS with ':first-of-type' and ':nth-of-type'.
+                    // 'spanX' done in CSS with calculated special width class as fixed at 'span3' for all.
+                    $bc->attributes['class'] .= ' span' . $span;
+                }
 
                 if ($bc instanceof block_contents) {
                     $output .= $this->block($bc, $region);
@@ -209,7 +220,7 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
                     throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
                 }
             }
-            $output .= html_writer::empty_tag('div');
+            $output .= html_writer::end_tag('div');
         }
 
         return $output;
