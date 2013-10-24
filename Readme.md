@@ -56,6 +56,11 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+24th October 2013 Version 2.5.3 - BETA
+  1.  Added footer blocks with a setting to set the maximum number of blocks per 'row' between 1 and 4.
+  2.  Added the 'less' folder containing the files required to alter / recompile the css.  Instructions
+      in the 'less/Readme_less.md' file.
+
 16th August 2013 Version 2.5.2.2.
   1.  Implemented MDL-36011.
   2.  Adjusted table cell widths - https://moodle.org/mod/forum/discuss.php?d=234329.

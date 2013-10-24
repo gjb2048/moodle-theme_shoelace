@@ -45,6 +45,20 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
 
+    // Number of footer blocks.
+    $name = 'theme_shoelace/numfooterblocks';
+    $title = get_string('numfooterblocks','theme_shoelace');
+    $description = get_string('numfooterblocksdesc', 'theme_shoelace');
+    $choices = array(
+        1 => new lang_string('one', 'theme_shoelace'),
+        2 => new lang_string('two', 'theme_shoelace'),
+        3 => new lang_string('three', 'theme_shoelace'),
+        4 => new lang_string('four', 'theme_shoelace')
+    );
+    $default = 2;
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $settings->add($setting);
+
     // Custom CSS file.
     $name = 'theme_shoelace/customcss';
     $title = get_string('customcss', 'theme_shoelace');

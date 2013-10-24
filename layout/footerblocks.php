@@ -1,3 +1,3 @@
 <?php
-echo $OUTPUT->shoelaceblocks('footer', 'row-fluid', 'aside', 2);
+echo $OUTPUT->shoelaceblocks('footer', 'row-fluid', 'aside', $PAGE->theme->settings->numfooterblocks);
 ?>
