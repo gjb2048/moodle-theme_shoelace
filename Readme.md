@@ -4,10 +4,11 @@ Shoelace theme with a light feel through colour and font selection.
 
 Required version of Moodle
 ==========================
-This version works with Moodle version 2013051400.05 release 2.5 (Build: 20130614) and above until the next release.
+This version works with Moodle version 2013110600.00 release 2.6beta+ (Build: 20131106) and above within the 2.6 branch until the
+next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
-'docs.moodle.org/25/en/Installing_Moodle'.
+'docs.moodle.org/26/en/Installing_Moodle'.
 
 Installation
 ============
@@ -56,6 +57,9 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+6th November 2013 Version 2.6.0.1
+  1.  Initial BETA code for Moodle 2.6.
+
 24th October 2013 Version 2.5.3 - BETA
   1.  Added footer blocks with a setting to set the maximum number of blocks per 'row' between 1 and 4.
   2.  Added the 'less' folder containing the files required to alter / recompile the css.  Instructions
