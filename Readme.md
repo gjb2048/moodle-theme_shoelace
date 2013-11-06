@@ -60,6 +60,10 @@ Version Information
 6th November 2013 Version 2.6.0.1
   1.  Initial BETA code for Moodle 2.6.
 
+6th November 2013 Version 2.5.3 - Stable.
+  1.  Fixed footer blocks showing up where they should not on single column pages.
+  2.  Updated styles.
+
 24th October 2013 Version 2.5.3 - BETA
   1.  Added footer blocks with a setting to set the maximum number of blocks per 'row' between 1 and 4.
   2.  Added the 'less' folder containing the files required to alter / recompile the css.  Instructions
