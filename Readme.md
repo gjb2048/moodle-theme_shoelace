@@ -4,7 +4,7 @@ Shoelace theme with a light feel through colour and font selection.
 
 Required version of Moodle
 ==========================
-This version works with Moodle version 2013111500.01 release 2.6rc1 (Build: 20131115) and above within the 2.6 branch until the
+This version works with Moodle version 2013111800 release 2.6 (Build: 20131118) and above within the 2.6 branch until the
 next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
