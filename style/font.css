@@ -31,12 +31,12 @@
     font-family: 'QuicksandBook'; 
     font-weight: normal;
     font-style: normal;
-    src: url('[[setting:fontwww]]Quicksand_Book.otf');
+    src: url('[[font:theme|Quicksand_Book.otf]]');
 }
 
 @font-face {
     font-family: 'VarelaRound'; 
     font-weight: normal;
     font-style: normal;
-    src: url('[[setting:fontwww]]VarelaRound.otf');
+    src: url('[[font:theme|VarelaRound.otf]]');
 }

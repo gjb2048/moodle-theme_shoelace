@@ -44,10 +44,7 @@ $THEME->parents_exclude_sheets = array(
 $THEME->plugins_exclude_sheets = array(
     'block' => array(
         'html'
-    ),
-    'gradereport' => array(
-        'grader'
-    ),
+    )
 );
 
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
@@ -122,8 +119,8 @@ $THEME->layouts = array(
 
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
     'popup' => array(
-        'file' => 'columns1.php',
-        'regions' => $empty,
+        'file' => 'popup.php',
+        'regions' => array(),
         'options' => array('nofooter'=>true, 'nonavbar'=>true),
     ),
     // No blocks and minimal footer - used for legacy frame layouts only!

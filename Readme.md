@@ -57,6 +57,11 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+29th November 2013 Version 2.6.0.2
+  1.  Added popup layout from bootstrapbase.
+  2.  Removed excluded grade sheet.
+  3.  Updated to use M2.6 font serving mechanism.
+
 15th November 2013 Version 2.6.0.1
   1.  Initial BETA code for Moodle 2.6.
 
