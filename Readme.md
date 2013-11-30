@@ -57,6 +57,12 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+30th November 2013 Version 2.6.0.3
+  1.  Added ability to choose between local and CDN sources for fonts.  This means that I had to change Quicksand for Cabin
+      as quite frankly the former looked awful when coming from CDN.  This was because I had used it as a content font but
+      the variety available on CDN was limited and switching it around as the header with Varela Round did not look good
+      either.  Thanks to Julian Ridden for showing the way with this.
+
 29th November 2013 Version 2.6.0.2
   1.  Added popup layout from bootstrapbase.
   2.  Removed excluded grade sheet.

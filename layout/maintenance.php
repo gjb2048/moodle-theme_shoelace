@@ -15,14 +15,13 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Shoelace theme with the underlying Bootstrap theme.
+ * This layout file is designed maintenance related tasks such as upgrade and installation of plugins.
  *
- * @package    theme
- * @subpackage shoelace
- * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
- * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * It's ultra important that this layout file makes no use of API's unless it absolutely needs to.
+ * Under no circumstances should it use API calls that result in database or cache interaction.
+ *
+ * If you are modifying this file please be extremely careful, one wrong API call and you could end up
+ * breaking installation or upgrade unwittingly.
  */
 
 echo $OUTPUT->doctype() ?>
@@ -30,22 +29,34 @@ echo $OUTPUT->doctype() ?>
 <head>
     <title><?php echo $OUTPUT->page_title(); ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
-    <?php
-        echo $OUTPUT->standard_head_html();
-        if($PAGE->theme->settings->cdnfonts == 2) {
-            require_once(dirname(__FILE__).'/tiles/cdn_fonts.php');
-        }
-    ?>
+    <?php echo $OUTPUT->standard_head_html() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body <?php echo $OUTPUT->body_attributes(); ?>>
+
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
-<div id="page">
-    <div id="page-content" class="clearfix">
-        <?php echo $OUTPUT->main_content(); ?>
+
+<div id="page" class="container-fluid">
+
+    <header id="page-header" class="clearfix">
+        <?php echo $OUTPUT->page_heading(); ?>
+    </header>
+
+    <div id="page-content" class="row-fluid">
+        <section id="region-main" class="span12">
+            <?php echo $OUTPUT->main_content(); ?>
+        </section>
     </div>
+
+    <footer id="page-footer">
+        <?php
+        echo $OUTPUT->standard_footer_html();
+        ?>
+    </footer>
+
+    <?php echo $OUTPUT->standard_end_of_body_html() ?>
+
 </div>
-<?php echo $OUTPUT->standard_end_of_body_html() ?>
 </body>
 </html>

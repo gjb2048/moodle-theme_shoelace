@@ -59,7 +59,12 @@ echo $OUTPUT->doctype() ?>
 <head>
     <title><?php echo $OUTPUT->page_title(); ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
-    <?php echo $OUTPUT->standard_head_html() ?>
+    <?php
+        echo $OUTPUT->standard_head_html();
+        if($PAGE->theme->settings->cdnfonts == 2) {
+            require_once(dirname(__FILE__).'/tiles/cdn_fonts.php');
+        }
+    ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -122,7 +127,7 @@ echo $OUTPUT->doctype() ?>
     <footer id="page-footer">
         <?php
         if ($PAGE->blocks->is_known_region('footer')) {
-            require_once(dirname(__FILE__).'/footerblocks.php');
+            require_once(dirname(__FILE__).'/tiles/footer_blocks.php');
         }?>
         <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
         <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>

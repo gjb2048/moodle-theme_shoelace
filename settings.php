@@ -29,6 +29,17 @@ defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
 
+    /* CDN Fonts - 1 = no, 2 = yes. */
+    $name = 'theme_shoelace/cdnfonts';
+    $title = get_string('cdnfonts', 'theme_shoelace');
+    $description = get_string('cdnfonts_desc', 'theme_shoelace');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('no'),   // No.
+        2 => new lang_string('yes')   // Yes.
+    );
+    $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
     // Invert Navbar to dark background.
     $name = 'theme_shoelace/invert';
     $title = get_string('invert', 'theme_shoelace');

@@ -28,7 +28,10 @@
 $THEME->doctype = 'html5';
 $THEME->name = 'shoelace';
 $THEME->parents = array('bootstrapbase');
-$THEME->sheets = array('font', 'moodle', 'editor', 'custom');
+$THEME->sheets = array('moodle', 'editor', 'custom');
+if ($THEME->settings->cdnfonts == 1) {
+$THEME->sheets[] = 'font';
+}
 $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();
 
@@ -138,7 +141,7 @@ $THEME->layouts = array(
     // This must not have any blocks, and it is good idea if it does not have links to
     // other places - for example there should not be a home link in the footer...
     'maintenance' => array(
-        'file' => 'columns1.php',
+        'file' => 'maintenance.php',
         'regions' => $empty,
         'options' => array('nofooter'=>true, 'nonavbar'=>true, 'nocoursefooter'=>true, 'nocourseheader'=>true),
     ),

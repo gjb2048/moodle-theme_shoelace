@@ -77,3 +77,6 @@ $string['pluginname'] = 'Shoelace';
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
 $string['region-footer'] = 'Footer';
+
+$string['cdnfonts'] = 'Content delivery network fonts';
+$string['cdnfonts_desc'] = 'Use content delivery network fonts';
