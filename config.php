@@ -30,7 +30,7 @@ $THEME->name = 'shoelace';
 $THEME->parents = array('bootstrapbase');
 $THEME->sheets = array('moodle', 'editor', 'custom');
 if ($THEME->settings->cdnfonts == 1) {
-$THEME->sheets[] = 'font';
+    $THEME->sheets[] = 'font';
 }
 $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();
