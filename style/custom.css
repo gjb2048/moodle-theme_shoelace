@@ -44,6 +44,11 @@ body {
     float: right;
 }
 
+/* Course categories. */
+.coursebox > .info > .name a[course-category="1"] {
+    background-image: url([[pix:theme|icon]]);
+}
+
 /* Custom CSS Settings
 -------------------------*/
 [[setting:customcss]]
