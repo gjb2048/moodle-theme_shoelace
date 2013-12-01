@@ -28,9 +28,19 @@
 $THEME->doctype = 'html5';
 $THEME->name = 'shoelace';
 $THEME->parents = array('bootstrapbase');
-$THEME->sheets = array('moodle', 'editor', 'custom');
+$THEME->sheets = array();
 if ($THEME->settings->cdnfonts == 1) {
-    $THEME->sheets[] = 'font';
+    if (current_language() == 'en_ar') {
+        $THEME->sheets[] = 'font-en_ar';
+        $THEME->sheets[] = 'moodle-en_ar';
+        $THEME->sheets[] = 'editor-en_ar';
+        $THEME->sheets[] = 'custom-en_ar';
+    } else {
+        $THEME->sheets[] = 'font';
+        $THEME->sheets[] = 'moodle';
+        $THEME->sheets[] = 'editor';
+        $THEME->sheets[] = 'custom';
+    }
 }
 $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();

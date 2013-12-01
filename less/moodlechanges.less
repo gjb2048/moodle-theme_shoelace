@@ -335,6 +335,14 @@ table.generaltable {
     color: @navbarLinkColorHover;
 }
 
+.navbar-inverse .logininfo a {
+    color: @navbarInverseLinkColor;
+}
+.navbar-inverse .logininfo a:hover {
+    background-color: @navbarInverseLinkBackgroundHover; // "transparent" is default to differentiate :hover/:focus from .active
+    color: @navbarInverseLinkColorHover;
+}
+
 // responsive.less
 // --------------------------------------------------
 @media (max-width: 480px) {
