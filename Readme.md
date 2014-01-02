@@ -57,6 +57,11 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+2nd January 2014 - Version 2.6.1 - Stable.
+  1.  Implemented MDL-43348.
+  2.  Recompiled LESS as a result of MDL-41788 and MDL-43062.
+  3.  Updated screen shot to reflect updates.
+
 30th November 2013 Version 2.6.0.3
   1.  Added ability to choose between local and CDN sources for fonts.  This means that I had to change Quicksand for Cabin
       as quite frankly the former looked awful when coming from CDN.  This was because I had used it as a content font but
