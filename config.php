@@ -29,7 +29,7 @@ $THEME->doctype = 'html5';
 $THEME->name = 'shoelace';
 $THEME->parents = array('bootstrapbase');
 $THEME->sheets = array('moodle', 'editor', 'custom');
-if ($THEME->settings->cdnfonts == 1) {
+if (!empty($THEME->settings->cdnfonts) && ($THEME->settings->cdnfonts == 1)) {
     $THEME->sheets[] = 'font';
 }
 $THEME->supportscssoptimisation = false;
