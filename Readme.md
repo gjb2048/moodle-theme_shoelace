@@ -58,8 +58,8 @@ can be really useful in visualising the issue along with any files you consider 
 Version Information
 ===================
 24th January 2014 - Version 2.6.1.1.
-  1.  Added in FontAwesome used in the breadcrumb.
-
+  1.  Fix situation where the 'cdnfonts' setting has not been created.
+  2.  Added in FontAwesome used in the breadcrumb.
 2nd January 2014 - Version 2.6.1 - Stable.
   1.  Implemented MDL-43348.
   2.  Recompiled LESS as a result of MDL-41788 and MDL-43062.
