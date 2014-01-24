@@ -34,11 +34,11 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
     public function navbar() {
         $items = $this->page->navbar->get_items();
         if (right_to_left()) {
-            $dividericon = 'icon-chevron-left';
+            $dividericon = 'fa-angle-left';
         } else {
-            $dividericon = 'icon-chevron-right';
+            $dividericon = 'fa-angle-right';
         }
-        $divider = html_writer::tag('span', html_writer::start_tag('i', array('class' => $dividericon . ' icon-black')) .
+        $divider = html_writer::tag('span', html_writer::start_tag('i', array('class' => 'fa '. $dividericon .' fa-lg')) .
                         html_writer::end_tag('i'), array('class' => 'divider'));
         $breadcrumbs = array();
         foreach ($items as $item) {
