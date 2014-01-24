@@ -92,8 +92,10 @@ function theme_shoelace_get_html_for_settings(renderer_base $output, moodle_page
     }
 
     $return->footnote = '';
-    if (!empty($page->theme->settings->footnote)) {
-        $return->footnote = '<div class="footnote text-center">'.$page->theme->settings->footnote.'</div>';
+    $setting = 'footnote_'.current_language();
+    $footnote = get_config('theme_shoelace', $setting); 
+    if (!empty($footnote)) {
+        $return->footnote = '<div class="footnote text-center">'.$footnote.'</div>';
     }
 
     return $return;

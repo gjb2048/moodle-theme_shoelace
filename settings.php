@@ -80,7 +80,7 @@ if ($ADMIN->fulltree) {
     $settings->add($setting);
 
     // Footnote setting.
-    $name = 'theme_shoelace/footnote';
+    $name = 'theme_shoelace/footnote_'.current_language();
     $title = get_string('footnote', 'theme_shoelace');
     $description = get_string('footnotedesc', 'theme_shoelace');
     $default = '';
