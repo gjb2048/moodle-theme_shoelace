@@ -61,6 +61,7 @@ Version Information
   1.  Fix situation where the 'cdnfonts' setting has not been created.
   2.  Added in FontAwesome used in the breadcrumb.
   3.  Fix editor sheet in wrong place in the configuration.
+  4.  Implemented MDL-44074 for footer blocks.
 
 2nd January 2014 - Version 2.6.1 - Stable.
   1.  Implemented MDL-43348.

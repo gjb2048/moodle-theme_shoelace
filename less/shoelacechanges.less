@@ -1,18 +1,33 @@
 // My Shoelace changes to Moodle Bootstrap
 
 // Footer.
-.footer-fluid-span (@columns) {
+.footer-fluid-span (@columns, @fluidGridColumnWidth, @fluidGridGutterWidth) {
     width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
     *width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%);
 }
 
 aside.footer-edit .block {
-    .footer-fluid-span(3);
+    .footer-fluid-span(3, @fluidGridColumnWidth, @fluidGridGutterWidth);
     display: block;
     float: left;
     min-height: 30px;
     margin-left: @fluidGridGutterWidth;
     .box-sizing(border-box);
+}
+
+// MDL-44074.
+@media (min-width: 768px) and (max-width: 979px) {
+    aside.footer-edit .block {
+        .footer-fluid-span(3, @fluidGridColumnWidth768, @fluidGridGutterWidth768);
+        margin-left: @fluidGridGutterWidth768;
+    }
+}
+
+@media (min-width: 1200px) {
+    aside.footer-edit .block {
+        .footer-fluid-span(3, @fluidGridColumnWidth1200, @fluidGridGutterWidth1200);
+        margin-left: @fluidGridGutterWidth1200;
+    }
 }
 
 // Eliminates need for 'desktop-first-column' but does not work in IE8.
@@ -38,3 +53,8 @@ aside#block-region-footer div.row-fluid div.block:first-of-type {
 }
 
 .footer-nthX(37); // Ten rows.
+
+#region-main-shoelace {
+    padding-left: 8px;
+    padding-right: 8px;
+}

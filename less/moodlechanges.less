@@ -55,7 +55,7 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 // course.less
 // --------------------------------------------------
 .course-content .section-summary {
-    border: 1px solid @grayLighted;
+    border: 1px solid lighten(@grayLight, 20%);
 }
 
 .course-content ul li.section.main {
@@ -147,11 +147,11 @@ table {
 // My additions from https://moodle.org/mod/forum/discuss.php?d=234329:...
 .gradestable {
     table {
-        border: 1px solid @grayLighted;
+        border: 1px solid lighten(@grayLight, 20%);
     }
 
     tr.category th.cell.rowspan {
-        border-width:0; border-left:1px solid @grayLighted;
+        border-width:0; border-left:1px solid lighten(@grayLight, 20%);
     }
 
     tr.category th.cell.rowspan:hover {
@@ -163,10 +163,10 @@ table {
     }
 
     td.colspan {
-        border-left: 1px solid @grayLighted;
-        border-bottom: 1px solid @grayLighted;
+        border-left: 1px solid lighten(@grayLight, 20%);
+        border-bottom: 1px solid lighten(@grayLight, 20%);
         border-top: 0;
-        background-color: @grayLightish;
+        background-color: darken(@grayLighter, 20%);
     }
 }
 
@@ -176,7 +176,7 @@ table#user-grades {
     .catlevel3,
     .catlevel4 {
         padding: 10px;
-        border-right: 1px solid @grayLightish;
+        border-right: 1px solid darken(@grayLighter, 20%);
     }
 }
 
@@ -245,7 +245,7 @@ table#user-grades .catlevel8,
 }
 
 .user-grade {
-    border-color: @grayLightish;
+    border-color: darken(@grayLighter, 20%);
 
     thead,
     td.b1t,
@@ -258,7 +258,7 @@ table#user-grades .catlevel8,
     td.b3b,
     td.b4b,
     td.b5b {
-        border-color: @grayLightish;
+        border-color: darken(@grayLighter, 20%);
     }
 
     thead {
@@ -271,7 +271,7 @@ table#user-grades {
         border-radius: 20px;
         margin: 3px;
         margin-right: 10px;
-        border: 1px solid @grayLighted;
+        border: 1px solid lighten(@grayLight, 20%);
     }
 
     td.fixedcolumn.cell.topleft.cell.c0 {
@@ -285,7 +285,7 @@ table#user-grades {
     }
 
     th.userreport.c1 {
-        border: 1px solid @grayLightish;
+        border: 1px solid darken(@grayLighter, 20%);
         padding-left: 10px;
         padding-right: 10px;
     }
@@ -330,7 +330,7 @@ table.generaltable {
 .navbar .logininfo a {
     color: @navbarLinkColor;
 }
-.navbar .logininfo a:hover {
+.navbar .logininfo a:hover, .navbar .logininfo a:active {
     background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover/:focus from .active
     color: @navbarLinkColorHover;
 }

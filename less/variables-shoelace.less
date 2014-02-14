@@ -13,9 +13,7 @@
 @grayDarker:            #222;
 @grayDark:              #333;
 @gray:                  #555;
-@grayLight:             #999;
-@grayLighted:           #aaa;
-@grayLightish:          #ccc;
+@grayLight:             #08c; // #999;
 @grayLighter:           #eee;
 @white:                 #fff;
 
@@ -52,7 +50,7 @@
 @serifFontFamily:       Georgia, "Times New Roman", Times, serif;
 @monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
 
-@baseFontSize:          12px;
+@baseFontSize:          14px;
 @baseFontFamily:        @sansFontFamily;
 @baseLineHeight:        20px;
 @altFontFamily:         @serifFontFamily;
@@ -91,7 +89,7 @@
 // -------------------------
 @btnBackground:                     darken(@bodyBackgroundAlt, 5%);
 @btnBackgroundHighlight:            darken(@bodyBackgroundAlt, 10%);
-@btnBorder:                         @grayLightish;
+@btnBorder:                         darken(@grayLighter, 20%);
 
 @btnPrimaryBackground:              @linkColor;
 @btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
@@ -118,7 +116,7 @@
 // Forms
 // -------------------------
 @inputBackground:               lighten(@wellBackground, 5%);
-@inputBorder:                   @grayLightish;
+@inputBorder:                   darken(@grayLighter, 20%);
 @inputBorderRadius:             @baseBorderRadius;
 @inputDisabledBackground:       @grayLighter;
 @formActionsBackground:         @bodyBackground;
@@ -133,7 +131,7 @@
 @dropdownDividerBottom:         @white;
 
 @dropdownLinkColor:             @gray;
-@dropdownLinkColorHover:        @grayLightish;
+@dropdownLinkColorHover:        darken(@grayLighter, 20%);
 @dropdownLinkColorActive:       @grayDark;
 
 @dropdownLinkBackgroundActive:  @linkColor;
@@ -170,7 +168,7 @@
 
 // Hr border color
 // -------------------------
-@hrBorder:                @grayLighted;
+@hrBorder:                lighten(@grayLighter, 20%);
 
 
 // Horizontal forms & lists
@@ -187,10 +185,10 @@
 @navbarBackground:                darken(@navbarBackgroundHighlight, 5%);
 @navbarBorder:                    darken(@navbarBackground, 12%);
 
-@navbarText:                      @grayDark;
-@navbarLinkColor:                 @gray;
-@navbarLinkColorHover:            @grayDark;
-@navbarLinkColorActive:           @gray;
+@navbarText:                      @textColor;
+@navbarLinkColor:                 @linkColor;
+@navbarLinkColorHover:            darken(@linkColor, 5%);
+@navbarLinkColorActive:           @navbarLinkColorHover;
 @navbarLinkBackgroundHover:       transparent;
 @navbarLinkBackgroundActive:      darken(@navbarBackground, 5%);
 
@@ -211,7 +209,7 @@
 @navbarInverseSearchBackground:          lighten(@navbarInverseBackground, 25%);
 @navbarInverseSearchBackgroundFocus:     @white;
 @navbarInverseSearchBorder:              @navbarInverseBackground;
-@navbarInverseSearchPlaceholderColor:    @grayLightish;
+@navbarInverseSearchPlaceholderColor:    darken(@grayLighter, 20%);
 
 @navbarInverseBrandColor:                @navbarInverseLinkColor;
 
@@ -244,7 +242,7 @@
 @successBackground:       #dff0d8;
 @successBorder:           darken(spin(@successBackground, -10), 5%);
 
-@infoText:                @black;
+@infoText:                @textColor;
 @infoBackground:          lighten(@bodyBackgroundAlt, 10%);
 @infoBorder:              darken(spin(@infoBackground, -10), 7%);
 
