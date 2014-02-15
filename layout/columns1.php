@@ -44,40 +44,17 @@ echo $OUTPUT->doctype() ?>
 
 <body <?php echo $OUTPUT->body_attributes(); ?>>
 
-<?php echo $OUTPUT->standard_top_of_body_html() ?>
-
-<header role="banner" class="navbar navbar-fixed-top<?php echo $html->navbarclass ?>">
-    <nav role="navigation" class="navbar-inner">
-        <div class="container-fluid">
-            <a class="brand" href="<?php echo $CFG->wwwroot;?>"><?php echo $SITE->shortname; ?></a>
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <div class="nav-collapse collapse">
-                <?php echo $OUTPUT->custom_menu(); ?>
-                <ul class="nav pull-right">
-                    <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
-                    <li class="navbar-text"><?php echo $OUTPUT->login_info() ?></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+<?php
+echo $OUTPUT->standard_top_of_body_html();
+require_once(dirname(__FILE__).'/tiles/header.php');
+?>
 
 <div id="page" class="container-fluid">
 
-    <header id="page-header" class="clearfix">
-        <div id="page-navbar" class="clearfix">
-            <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
-            <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
-        </div>
-        <?php echo $html->heading; ?>
-        <div id="course-header">
-            <?php echo $OUTPUT->course_header(); ?>
-        </div>
-    </header>
+    <?php
+        $rtl = right_to_left();
+        require_once(dirname(__FILE__).'/tiles/page-header.php');
+    ?>
 
     <div id="page-content" class="row-fluid">
         <div id="region-main" class="span12">

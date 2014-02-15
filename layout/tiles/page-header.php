@@ -19,19 +19,23 @@
  *
  * @package    theme
  * @subpackage shoelace
- * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
+ * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Clean theme.
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
- * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die;
-
-$plugin->version   = 2014021500;
-$plugin->requires  = 2013111800; // 2.6 (Build: 20131118).
-$plugin->component = 'theme_shoelace';
-$plugin->maturity = MATURITY_STABLE;
-$plugin->release = '2.6.1.1';
-$plugin->dependencies = array(
-    'theme_bootstrapbase'  => 2013110500
-);
+?>
+<header id="page-header" class="clearfix">
+    <div id="page-navbar" class="clearfix">
+    <?php if ($rtl) { ?>
+        <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
+        <?php } ?>
+        <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
+        <?php if (!$rtl) { ?>
+        <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
+        <?php } ?>
+    </div>
+    <?php echo $html->heading; ?>
+    <div id="course-header">
+        <?php echo $OUTPUT->course_header(); ?>
+    </div>
+</header>

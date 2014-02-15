@@ -79,10 +79,35 @@ input[type="color"],
   color: @textColor;
 }
 
+textarea, .uneditable-input {
+    width: 96%;
+}
+
 // navs.less
 // --------------------------------------------------
 .nav-header {
   color: @textColor;
+}
+
+// navbar.less
+// --------------------------------------------------
+.navbar .btn-navbar .icon-bar {
+  background-color: @textColor;
+}
+
+.navbar-inverse .btn-navbar .icon-bar {
+  background-color: @navbarInverseText;
+}
+
+// responsive-navbar.less
+// --------------------------------------------------
+@media (max-width: @navbarCollapseWidth) {
+  .navbar-inverse .nav-collapse .nav > li > a:hover,
+  .navbar-inverse .nav-collapse .nav > li > a:focus,
+  .navbar-inverse .nav-collapse .dropdown-menu a:hover,
+  .navbar-inverse .nav-collapse .dropdown-menu a:focus {
+    color: @bodyBackgroundAlt;
+  }
 }
 
 // scaffolding.less

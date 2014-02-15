@@ -39,6 +39,11 @@ Uninstallation
  3. In '/theme/' remove the folder 'shoelace'.
  4. Put Moodle out of Maintenance Mode.
 
+Known Issues
+============
+ 1. When the navbar is inverted on a screen width < 768px and you hover on a drop down menu inside a drop down sub-menu the
+    background colour is the same as the text.
+
 Reporting Issues
 ================
 Before reporting an issue, please ensure that you are running the latest version for your release of Moodle.  It is essential
@@ -57,11 +62,12 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
-14th February 2014 - Version 2.6.1.1.
+15th February 2014 - Version 2.6.1.1.
   1.  Fix situation where the 'cdnfonts' setting has not been created.
   2.  Added in FontAwesome used in the breadcrumb.
   3.  Fix editor sheet in wrong place in the configuration.
   4.  Implemented MDL-44074 for footer blocks.
+  5.  Optimised header code by using tiles.
 
 2nd January 2014 - Version 2.6.1 - Stable.
   1.  Implemented MDL-43348.

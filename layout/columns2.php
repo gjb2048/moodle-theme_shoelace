@@ -28,7 +28,7 @@
 // Get the HTML for the settings bits.
 $html = theme_shoelace_get_html_for_settings($OUTPUT, $PAGE);
 
-$ltr = (!right_to_left());  // To know if to add 'pull-right' and 'desktop-first-column' classes in the layout for LTR.
+$rtl = right_to_left();  // To know if to add 'pull-right' and 'desktop-first-column' classes in the layout for LTR.
 $hassidepre = $PAGE->blocks->is_known_region('side-pre');
 if ($hassidepre) {
     $useblock = 'side-pre';
@@ -36,10 +36,10 @@ if ($hassidepre) {
      This deals with the side to show the blocks on.
      If we have a 'side-pre' then the blocks are on the left for LTR and right for RTL.
     */
-    if ($ltr) {
-        $left = true;
-    } else {
+    if ($rtl) {
         $left = false;
+    } else {
+        $left = true;
     }
 } else {
     $useblock = 'side-post';
@@ -47,10 +47,10 @@ if ($hassidepre) {
      This deals with the side to show the blocks on.
      If we have a 'side-post' then the blocks are on the right for LTR and left for RTL.
     */
-    if ($ltr) {
-        $left = false;
-    } else {
+    if ($rtl) {
         $left = true;
+    } else {
+        $left = false;
     }
 }
 
@@ -70,40 +70,14 @@ echo $OUTPUT->doctype() ?>
 
 <body <?php echo $OUTPUT->body_attributes('two-column'); ?>>
 
-<?php echo $OUTPUT->standard_top_of_body_html() ?>
-
-<header role="banner" class="navbar navbar-fixed-top<?php echo $html->navbarclass ?>">
-    <nav role="navigation" class="navbar-inner">
-        <div class="container-fluid">
-            <a class="brand" href="<?php echo $CFG->wwwroot;?>"><?php echo $SITE->shortname; ?></a>
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <div class="nav-collapse collapse">
-                <?php echo $OUTPUT->custom_menu(); ?>
-                <ul class="nav pull-right">
-                    <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
-                    <li class="navbar-text"><?php echo $OUTPUT->login_info() ?></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+<?php
+echo $OUTPUT->standard_top_of_body_html();
+require_once(dirname(__FILE__).'/tiles/header.php');
+?>
 
 <div id="page" class="container-fluid">
 
-    <header id="page-header" class="clearfix">
-        <div id="page-navbar" class="clearfix">
-            <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
-            <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
-        </div>
-        <?php echo $html->heading; ?>
-        <div id="course-header">
-            <?php echo $OUTPUT->course_header(); ?>
-        </div>
-    </header>
+    <?php require_once(dirname(__FILE__).'/tiles/page-header.php'); ?>
 
     <div id="page-content" class="row-fluid">
         <div id="region-main" class="span9<?php if ($left) { echo ' pull-right'; } ?>">

@@ -109,6 +109,10 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 
 // forms.less
 // --------------------------------------------------
+.form-defaultinfo, .form-label .form-shortname {
+    word-break: break-word;
+}
+
 .mform fieldset.collapsible legend a.fheader {
     //margin-left: -20px;
     margin-left: inherit;
@@ -325,14 +329,13 @@ table.generaltable {
     }
 }
 
-// modules.less
-// --------------------------------------------------
-.navbar .logininfo a {
-    color: @navbarLinkColor;
-}
-.navbar .logininfo a:hover, .navbar .logininfo a:active {
-    background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover/:focus from .active
-    color: @navbarLinkColorHover;
+// Grade report wrapping.
+// gradereport_grader.css.
+.path-grade-report-grader .gradestable th.user, .path-grade-report-grader .gradestable th.range,
+.path-grade-report-grader .flexible th, .path-grade-report-grader .flexible td,
+.path-grade-report-grader .flexible th a, .path-grade-report-grader .flexible td a,
+.path-grade-report-grader .gradestable th.range, .path-grade-report-grader td {
+    white-space: pre-line; // http://www.w3schools.com/cssref/pr_text_white-space.asp.
 }
 
 // responsive.less
@@ -342,5 +345,27 @@ table.generaltable {
     .path-admin .buttons,
     .form-buttons {
         padding-left: 0px;
+    }
+}
+
+// responsive.less
+@media (max-width: 979px) {
+    .nav-collapse {
+        .nav > li > a {
+            color: @textColor;
+        }
+        .nav > li > a:hover,
+        .nav > li > a:focus,
+        .dropdown-menu a:hover,
+        .dropdown-menu a:focus,
+        .dropdown-submenu a:focus,
+        .dropdown-submenu a:hover,
+        .dropdown-submenu a:active,
+        .dropdown-menu > li > a:hover,
+        .dropdown-menu > li > a:focus,
+        {
+            background-image: none;
+            color: @textColor;
+        }
     }
 }
