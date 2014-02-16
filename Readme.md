@@ -39,11 +39,6 @@ Uninstallation
  3. In '/theme/' remove the folder 'shoelace'.
  4. Put Moodle out of Maintenance Mode.
 
-Known Issues
-============
- 1. When the navbar is inverted on a screen width < 768px and you hover on a drop down menu inside a drop down sub-menu the
-    background colour is the same as the text.
-
 Reporting Issues
 ================
 Before reporting an issue, please ensure that you are running the latest version for your release of Moodle.  It is essential

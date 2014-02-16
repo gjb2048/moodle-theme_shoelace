@@ -125,17 +125,17 @@
 
 // Dropdowns
 // -------------------------
-@dropdownBackground:            @white;
+@dropdownBackground:            @bodyBackgroundAlt;
 @dropdownBorder:                rgba(0,0,0,.2);
 @dropdownDividerTop:            #e5e5e5;
 @dropdownDividerBottom:         @white;
 
-@dropdownLinkColor:             @gray;
-@dropdownLinkColorHover:        darken(@grayLighter, 20%);
-@dropdownLinkColorActive:       @grayDark;
+@dropdownLinkColor:             @textColor;
+@dropdownLinkColorHover:        darken(@dropdownLinkColor, 10%);
+@dropdownLinkColorActive:       darken(@dropdownLinkColorHover, 10%);
 
-@dropdownLinkBackgroundActive:  @linkColor;
-@dropdownLinkBackgroundHover:   lighten(@dropdownLinkBackgroundActive, 2%);
+@dropdownLinkBackgroundActive:  @bodyBackgroundAlt;
+@dropdownLinkBackgroundHover:   lighten(@dropdownLinkBackgroundActive, 8%);
 
 
 

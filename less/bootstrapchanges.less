@@ -52,6 +52,19 @@ code, pre {
   color: @textColor;
 }
 
+// dropdowns.less.
+
+// Hover/Focus state
+// -----------
+@media (max-width: @navbarCollapseWidth) {
+  .navbar-inverse .dropdown-menu > li > a:hover,
+  .navbar-inverse .dropdown-menu > li > a:focus,
+  .navbar-inverse .dropdown-submenu:hover > a,
+  .navbar-inverse .dropdown-submenu:focus > a {
+    #gradient > .vertical(@navbarInverseBackgroundHighlight, darken(@navbarInverseBackgroundHighlight, 5%));
+  }
+}
+
 // forms.less
 // --------------------------------------------------
 legend {
