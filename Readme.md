@@ -57,12 +57,14 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
-15th February 2014 - Version 2.6.1.1.
+24th February 2014 - Version 2.6.1.1.
   1.  Fix situation where the 'cdnfonts' setting has not been created.
   2.  Added in FontAwesome used in the breadcrumb.
   3.  Fix editor sheet in wrong place in the configuration.
   4.  Implemented MDL-44074 for footer blocks.
   5.  Optimised header code by using tiles.
+  6.  Applied a slightly better colour scheme using a purple colour for the text.
+  7.  Updated the paper shadow effect.
 
 2nd January 2014 - Version 2.6.1 - Stable.
   1.  Implemented MDL-43348.
