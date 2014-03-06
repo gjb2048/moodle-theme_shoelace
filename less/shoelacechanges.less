@@ -10,7 +10,9 @@ aside.footer-edit .block {
     .footer-fluid-span(3, @fluidGridColumnWidth, @fluidGridGutterWidth);
     display: block;
     float: left;
-    min-height: 30px;
+    min-height: 140px;
+    max-height: 140px;
+    overflow-y: overlay;
     margin-left: @fluidGridGutterWidth;
     .box-sizing(border-box);
 }

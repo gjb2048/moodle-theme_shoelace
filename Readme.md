@@ -57,6 +57,12 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+ 6th March 2014 - Version 2.6.1.2
+  1.  Fixed HTML blocks having centred content in the footer block.
+  2.  Made all footer blocks the same height when editing so that they are easier to move.  Also prevents blocks becoming orphaned
+      on a row when they should be on the next.
+  3.  Updated LESS build process to no longer overwrite bootstrap variables.less file.
+
 24th February 2014 - Version 2.6.1.1.
   1.  Fix situation where the 'cdnfonts' setting has not been created.
   2.  Added in FontAwesome used in the breadcrumb.
@@ -66,7 +72,7 @@ Version Information
   6.  Applied a slightly better colour scheme using a purple colour for the text.
   7.  Updated the paper shadow effect.
 
-2nd January 2014 - Version 2.6.1 - Stable.
+ 2nd January 2014 - Version 2.6.1 - Stable.
   1.  Implemented MDL-43348.
   2.  Recompiled LESS as a result of MDL-41788 and MDL-43062.
   3.  Updated screen shot to reflect updates.
@@ -85,7 +91,7 @@ Version Information
 15th November 2013 Version 2.6.0.1
   1.  Initial BETA code for Moodle 2.6.
 
-6th November 2013 Version 2.5.3 - Stable.
+ 6th November 2013 Version 2.5.3 - Stable.
   1.  Fixed footer blocks showing up where they should not on single column pages.
   2.  Updated styles.
 
@@ -118,7 +124,7 @@ Version Information
   7.  Use chevron icons for the breadcrumb divider.  Correct direction used in both LTR and RTL.
   8.  Use 'pills' instead of 'tabs' for 'tabtree's -> http://twitter.github.io/bootstrap/components.html#navs.
 
-6th June 2013 Version 2.5.1.2
+ 6th June 2013 Version 2.5.1.2
   1.  Adjusted layout such that both pre and post blocks appear on the left for left to right languages and on the right
       for right to left languages.
   2.  Added paper effect.
@@ -142,14 +148,14 @@ Version Information
   3.  Updated moodle.css in line with updates in Bootstrap Base.
   4.  Made font easier to change.
 
-8th May 2013 - Version 2.5.0.4 - Beta.
+ 8th May 2013 - Version 2.5.0.4 - Beta.
   1.  Added and adapted image from flexible sections course format.
   2.  Added and adapted missing move here image from core.
   3.  Added display of language menu when required.
   4.  Added automatic 'Purge all caches' when upgrading.  If this appears not to work by lack of display etc. then perform a
       manual 'Purge all caches' under 'Home -> Site administration -> Development -> Purge all caches'.
 
-4th May 2013 - Version 2.5.0.3 - Beta.
+ 4th May 2013 - Version 2.5.0.3 - Beta.
   1.  Added bootstrapbase dependency in 'config.php'.
   2.  Changed colour of form headings from black to blue.
   3.  Added 'Upgrading' instructions and made some improvements to this readme.
