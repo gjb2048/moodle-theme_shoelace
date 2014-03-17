@@ -57,6 +57,11 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+17th March 2014 - Version 2.6.1.3
+  1.  Put back logo serving code that was accidentally removed in version 2.6.0.2.
+  2.  Note: The moodle.css file has been compiled against Moodle 2.6.2+ (Build: 20140314), if you need a previous version or are
+            experiencing odd things, please recompile using the instructions in less/Readme_Less.md.
+
  6th March 2014 - Version 2.6.1.2
   1.  Fixed HTML blocks having centred content in the footer block.
   2.  Made all footer blocks the same height when editing so that they are easier to move.  Also prevents blocks becoming orphaned

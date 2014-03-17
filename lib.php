@@ -67,6 +67,31 @@ function theme_shoelace_set_customcss($css, $customcss) {
 }
 
 /**
+ * Serves any files associated with the theme settings.
+ *
+ * @param stdClass $course
+ * @param stdClass $cm
+ * @param context $context
+ * @param string $filearea
+ * @param array $args
+ * @param bool $forcedownload
+ * @param array $options
+ * @return bool
+ */
+function theme_shoelace_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
+    if ($context->contextlevel == CONTEXT_SYSTEM) {
+        if ($filearea === 'logo') {
+            $theme = theme_config::load('shoelace');
+            return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
+        } else {
+            send_file_not_found();
+        }
+    } else {
+        send_file_not_found();
+    }
+}
+
+/**
  * Returns an object containing HTML for the areas affected by settings.
  *
  * @param renderer_base $output Pass in $OUTPUT.
