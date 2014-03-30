@@ -2,6 +2,15 @@ Introduction
 ============
 Shoelace theme with a light feel through colour and font selection.
 
+![image1](pix/screenshot.png "Shoelace Screenshot")
+
+About
+=====
+ * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
+ * @author     G J Barnard - {@link http://about.me/gjbarnard} and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+
 Required version of Moodle
 ==========================
 This version works with Moodle version 2013111800 release 2.6 (Build: 20131118) and above within the 2.6 branch until the
@@ -57,6 +66,10 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+30th March 2014 - Version 2.6.1.4
+  1.  Fixed 'installable' issue with OTF version of FontAwesome locally in IE by removing the OTF file as a source, see:
+      https://github.com/FortAwesome/Font-Awesome/issues/2517
+
 17th March 2014 - Version 2.6.1.3
   1.  Put back logo serving code that was accidentally removed in version 2.6.0.2.
   2.  Note: The moodle.css file has been compiled against Moodle 2.6.2+ (Build: 20140314), if you need a previous version or are

@@ -6,7 +6,6 @@
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('[[font:theme|FontAwesome.otf]]');
   src: url('[[font:theme|fontawesome-webfont.eot]]') format('embedded-opentype'),
        url('[[font:theme|fontawesome-webfont.woff]]') format('woff'),
        url('[[font:theme|fontawesome-webfont.ttf]]') format('truetype'),
