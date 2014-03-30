@@ -6,10 +6,10 @@ Shoelace theme with a light feel through colour and font selection.
 
 About
 =====
- * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
- * @author     G J Barnard - {@link http://about.me/gjbarnard} and {@link http://moodle.org/user/profile.php?id=442195}
- * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
+ * author     G J Barnard - http://about.me/gjbarnard and http://moodle.org/user/profile.php?id=442195
+ * author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
+ * license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 
 Required version of Moodle
 ==========================
@@ -204,5 +204,5 @@ And again to Mary Evans for the 'Clean' theme.
 Me
 ==
 G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
-Moodle profile: http://moodle.org/user/profile.php?id=442195.
+Moodle profile: http://moodle.org/user/profile.php?id=442195
 Web profile   : http://about.me/gjbarnard
