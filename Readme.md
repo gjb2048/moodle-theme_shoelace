@@ -13,11 +13,11 @@ About
 
 Required version of Moodle
 ==========================
-This version works with Moodle version 2013111800 release 2.6 (Build: 20131118) and above within the 2.6 branch until the
+This version works with Moodle version 2014051200.00 release 2.7 (Build: 20140512) and above within the 2.7 branch until the
 next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
-'docs.moodle.org/26/en/Installing_Moodle'.
+'docs.moodle.org/27/en/Installing_Moodle'.
 
 Installation
 ============
@@ -66,6 +66,12 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+23rd May 2014 - Version 2.7.0.1 - Beta.
+  1.  Initial beta version for Moodle 2.7.
+  2.  Updated FontAwesome to 4.1.0.
+  3.  Changed user icons to svg.
+  4.  Added core 'e' pix folder that is new in M2.7.
+
 30th March 2014 - Version 2.6.1.4
   1.  Fixed 'installable' issue with OTF version of FontAwesome locally in IE by removing the OTF file as a source, see:
       https://github.com/FortAwesome/Font-Awesome/issues/2517

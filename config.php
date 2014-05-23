@@ -31,7 +31,7 @@ $THEME->parents = array('bootstrapbase');
 $THEME->sheets = array('moodle', 'custom');
 if (!empty($THEME->settings->cdnfonts) && ($THEME->settings->cdnfonts == 1)) {
     $THEME->sheets[] = 'font';
-    $THEME->sheets[] = 'font-awesome.min';
+    $THEME->sheets[] = 'font-awesome';
 }
 $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();
