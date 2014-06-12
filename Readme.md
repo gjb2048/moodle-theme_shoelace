@@ -66,6 +66,9 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+12th June 2014 - Version 2.7.0.2 - Beta.
+  1.  Added Grunt compile script for creating CSS and SVG icons.
+
 23rd May 2014 - Version 2.7.0.1 - Beta.
   1.  Initial beta version for Moodle 2.7.
   2.  Updated FontAwesome to 4.1.0.
