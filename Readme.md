@@ -66,6 +66,11 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+14th August 2014 - Version 2.7.1 - Stable.
+  1.  Update grunt task versions.
+  2.  Implement svgmin from Shoehorn and apply.
+  3.  Regenerate CSS against Moodle '2.7.1+ (Build: 20140807).
+
 12th June 2014 - Version 2.7.0.2 - Beta.
   1.  Added Grunt compile script for creating CSS and SVG icons.
 

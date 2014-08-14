@@ -495,20 +495,20 @@ a.skip:active {
 .loginbox .loginform .form-label {
   float: left;
   text-align: right;
-  width: 44%;
+  width: 49%;
   direction: rtl;
   white-space: nowrap;
 }
 .dir-rtl .loginbox .loginform .form-label {
   float: left;
   text-align: right;
-  width: 44%;
+  width: 49%;
   direction: ltr;
   white-space: nowrap;
 }
 .loginbox .loginform .form-input {
   float: right;
-  width: 55%;
+  width: 50%;
 }
 .loginbox .loginform .form-input input {
   width: 6em;
@@ -1191,6 +1191,7 @@ body.tag .managelink {
 }
 .dir-rtl .loginbox .loginform .form-input {
   text-align: right;
+  margin-right: 1%;
 }
 .dir-rtl .yui3-menu-hidden {
   left: 0;
@@ -1225,6 +1226,7 @@ body.tag .managelink {
   float: left;
   padding-top: 20px;
 }
+/* Creates a series of .mod-indent-# rule declarations based on indent size and number of indent levels. */
 .mod-indent-1 {
   width: 30px;
 }
@@ -1267,9 +1269,14 @@ body.tag .managelink {
 .mod-indent-14 {
   width: 420px;
 }
-.mod-indent-15,
+.mod-indent-15 {
+  width: 450px;
+}
+.mod-indent-16 {
+  width: 480px;
+}
 .mod-indent-huge {
-  width: 420px;
+  width: 480px;
 }
 /* Audio player size in 'block' mode (can only change width, height is hardcoded in JS) */
 .resourcecontent .mediaplugin_mp3 object {
@@ -6882,9 +6889,21 @@ body.path-question-type .fitem_fgroup .accesshide {
 }
 #page-mod-quiz-edit div.question div.content div.points {
   margin-top: -0.5em;
-  padding-bottom: 0.5em;
+  padding-bottom: 0em;
   border: none;
   background-color: #ffffff;
+  position: static;
+  width: 12.1em;
+  float: right;
+  margin-right: 60px;
+}
+#page-mod-quiz-edit.dir-rtl div.question div.content div.points {
+  float: left;
+  margin-left: 60px;
+  margin-right: 0px;
+}
+#page-mod-quiz-edit div.question div.content div.points br {
+  display: none;
 }
 #page-mod-quiz-edit div.question div.content div.points label {
   display: inline-block;
@@ -13650,7 +13669,7 @@ select {
 .path-mod-forum .forumheaderlist .discussion .lastpost {
   vertical-align: top;
 }
-.path-mod-feedback .generalbox div table tbody img {
+.path-mod-feedback .feedback_bar_image {
   height: 5px;
 }
 .forumpost {
@@ -13822,6 +13841,17 @@ div#dock {
 .path-mod-wiki .wiki_contentbox {
   width: 100%;
 }
+.dropdown-menu > li > a {
+  padding: 3px 20px 3px 8px;
+}
+.dir-rtl .dropdown-menu > li > a {
+  padding: 3px 8px 3px 20px;
+}
+.dir-rtl .dropdown-submenu > .dropdown-menu {
+  -webkit-border-radius: 6px 0px 6px 6px;
+  -moz-border-radius: 6px 0px 6px 6px;
+  border-radius: 6px 0px 6px 6px;
+}
 .path-mod-survey .surveytable > tbody > tr:nth-of-type(odd) {
   background-color: transparent;
 }
@@ -13843,6 +13873,12 @@ div#dock {
 }
 .dir-rtl.path-mod-forum .forumheaderlist .discussion .lastpost {
   text-align: left;
+}
+.nav .caret {
+  margin-left: 4px;
+}
+.dir-rtl .nav .caret {
+  margin-right: 4px;
 }
 .yui-skin-sam .yui-layout.path-mod-chat-gui_ajax {
   background-color: #ffffff;
@@ -16784,6 +16820,7 @@ body.has_dock div#dock {
 .dir-rtl .dropdown-menu {
   right: 0;
   left: auto;
+  margin-right: 0px;
 }
 .dir-rtl .navbar .nav > li > .dropdown-menu:before {
   right: 9px;
@@ -16794,8 +16831,9 @@ body.has_dock div#dock {
   left: auto;
 }
 .dir-rtl .dropdown-submenu > a:after {
-  margin-right: -10px;
-  margin-left: 0;
+  margin-right: 0;
+  margin-left: -10px;
+  float: left;
   border-right-color: #ccc;
   border-left-color: transparent;
   border-width: 5px 5px 5px 0px;
@@ -18129,4 +18167,4 @@ aside.footer-edit div.block:nth-of-type(1) {
   padding-left: 8px;
   padding-right: 8px;
 }
-/*# sourceMappingURL=/moodle27/theme/shoelace/sourcemap-moodle.json */
+/*# sourceMappingURL=/theme/shoelace/sourcemap-moodle.json */

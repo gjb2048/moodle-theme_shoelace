@@ -154,6 +154,19 @@ module.exports = function(grunt) {
                 dest: 'style/editor.css'
             }
         },
+        cssmin: {
+            options: {
+                compatibility: 'ie8',
+                keepSpecialComments: '*',
+                noAdvanced: true
+            }, 
+            core: {
+                files: {
+                    'style/moodle_min.css': 'style/moodle.css',
+                    'style/editor_min.css': 'style/editor.css'
+                }
+            }
+        },
         exec: {
             decache: {
                 cmd: 'php -r "' + decachephp + '"',
@@ -205,6 +218,34 @@ module.exports = function(grunt) {
                         to: svgcolor
                     }]
             }
+        },
+        svgmin: {                       // Task
+            options: {                  // Configuration that will be passed directly to SVGO
+                plugins: [{
+                    removeViewBox: false
+                }, {
+                    removeUselessStrokeAndFill: false
+                }, {
+                    convertPathData: { 
+                        straightCurves: false // advanced SVGO plugin option
+                   }
+                }]
+            },
+            dist: {                       // Target
+                files: [{                 // Dictionary of files
+                    expand: true,         // Enable dynamic expansion.
+                    cwd: 'pix_core',      // Source matches are relative to this path.
+                    src: ['**/*.svg'],    // Actual pattern(s) to match.
+                    dest: 'pix_core/',    // Destination path prefix.
+                    ext: '.svg'           // Destination file paths will have this extension.
+                }, {                      // Dictionary of files
+                    expand: true,         // Enable dynamic expansion.
+                    cwd: 'pix_plugins',   // Source matches are relative to this path.
+                    src: ['**/*.svg'],    // Actual pattern(s) to match.
+                    dest: 'pix_plugins/', // Destination path prefix.
+                    ext: '.svg'           // Destination file paths will have this extension.
+                }]
+            }
         }
     });
 
@@ -214,11 +255,15 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-exec");
     grunt.loadNpmTasks("grunt-text-replace");
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-svgmin');
 
     // Register tasks.
     grunt.registerTask("default", ["watch"]);
     grunt.registerTask("decache", ["exec:decache"]);
 
-    grunt.registerTask("compile", ["less", "decache"]);
-    grunt.registerTask("svg", ["copy:svg_core", "copy:svg_plugins", "replace:svg_colours_core", "replace:svg_colours_plugins"]);
+    grunt.registerTask("compile", ["less", "cssmin", "decache"]);
+    grunt.registerTask("copy:svg", ["copy:svg_core", "copy:svg_plugins"]);
+    grunt.registerTask("replace:svg_colours", ["replace:svg_colours_core", "replace:svg_colours_plugins"]);
+    grunt.registerTask("svg", ["copy:svg", "svgmin", "replace:svg_colours"]);
 };
