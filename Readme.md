@@ -66,6 +66,9 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+17th August 2014 - Version 2.7.1.1
+  1.  Implement suggested fix for MDL-42634.
+
 14th August 2014 - Version 2.7.1 - Stable.
   1.  Update grunt task versions.
   2.  Implement svgmin from Shoehorn and apply.
