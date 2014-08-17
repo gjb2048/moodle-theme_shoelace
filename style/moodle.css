@@ -18103,6 +18103,11 @@ table.generaltable th.level10 {
     color: #653cae;
   }
 }
+.editing .block.invisible {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  background: rgba(255, 255, 255, 0.4);
+}
 aside.footer-edit .block {
   width: 23.40425532%;
   *width: 23.35106383%;

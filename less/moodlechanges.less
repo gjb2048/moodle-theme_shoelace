@@ -378,3 +378,11 @@ table.generaltable {
         }
     }
 }
+
+// Fixes.
+
+// Fix opacity for hidden block menu - MDL-42634.
+.editing .block.invisible {
+    .opacity(100);
+    background: rgba(255, 255, 255, 0.4);
+}
