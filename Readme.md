@@ -11,13 +11,47 @@ About
  * author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 
+Free Software
+=============
+The Shoelace theme is 'free' software under the terms of the GNU GPLv3 License, please see 'COPYING.txt'.
+
+It can be obtained for free from:
+https://moodle.org/plugins/view.php?plugin=theme_shoelace
+and
+https://github.com/gjb2048/moodle-theme_shoelace/releases
+
+You have all the rights granted to you by the GPLv3 license.  If you are unsure about anything, then the
+FAQ - http://www.gnu.org/licenses/gpl-faq.html - is a good place to look.
+
+If you reuse any of the code then I kindly ask that you make reference to the theme.
+
+If you make improvements or bug fixes then I would appreciate if you would send them back to me by forking from
+https://github.com/gjb2048/moodle-theme_shoelace and doing a 'Pull Request' so that the rest of the
+Moodle community benefits.
+
+Donations
+=========
+This theme is provided to you for free, and if you want to express your gratitude for using this theme, please consider donating by:
+
+PayPal - Please contact me via my 'Moodle profile' (above) for details as I am an individual and therefore am unable to have 'donation' / 'buy me now' buttons under their terms.
+
+Flattr - https://flattr.com/profile/gjb2048
+
+Donations may allow me to provide you with more or better features in less time.
+
+Customisation
+=============
+If you like this theme and would like me to customise it, transpose functionality to another theme or build a new theme
+from scratch, then I offer competitive rates.  Please contact me via www.gjbarnard.co.uk/contact/ or gjbarnard at gmail dot com
+to discuss your requirements.
+
 Required version of Moodle
 ==========================
-This version works with Moodle version 2014051200.00 release 2.7 (Build: 20140512) and above within the 2.7 branch until the
+This version works with Moodle version 2014111000.00 release 2.8 (Build: 20141110) and above within the 2.8 branch until the
 next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
-'docs.moodle.org/27/en/Installing_Moodle'.
+'docs.moodle.org/28/en/Installing_Moodle'.
 
 Installation
 ============
@@ -66,6 +100,9 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+16th November 2014 - Version 2.8.0.1 - Release candidate.
+  1. Release candidate for Moodle 2.8.
+
 17th August 2014 - Version 2.7.1.1
   1.  Implement suggested fix for MDL-42634.
 
