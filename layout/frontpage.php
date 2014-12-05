@@ -88,6 +88,7 @@ require_once(dirname(__FILE__).'/tiles/header.php');
                         echo $OUTPUT->main_content();
                         ?>
                     </section>
+                    <div id="region-main-shoelace-shadow"></div>
                 </div>
                 <?php echo $OUTPUT->shoelaceblocks($pre, $blockclass.' desktop-first-column'); ?>
             </div>
@@ -95,21 +96,7 @@ require_once(dirname(__FILE__).'/tiles/header.php');
         <?php echo $OUTPUT->shoelaceblocks($post, 'span3'); ?>
     </div>
 
-    <footer id="page-footer">
-        <?php
-        if ($PAGE->blocks->is_known_region('footer')) {
-            require_once(dirname(__FILE__).'/tiles/footer_blocks.php');
-        }?>
-        <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
-        <?php
-        echo $html->footnote;
-        echo $OUTPUT->login_info();
-        echo $OUTPUT->home_link();
-        echo $OUTPUT->standard_footer_html();
-        ?>
-    </footer>
-
-    <?php echo $OUTPUT->standard_end_of_body_html() ?>
+    <?php require_once(dirname(__FILE__).'/tiles/footer.php'); ?>
 
 </div>
 </body>

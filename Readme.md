@@ -100,6 +100,12 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+ 5th December 2014 - Version 2.8.1 - First stable release.
+  1. Stable version for Moodle 2.8.
+  2. Update to FontAwesome 4.2.0.
+  3. Update Gruntfile.js.
+  4. Added jQuery for back to top functionality.
+
 16th November 2014 - Version 2.8.0.1 - Release candidate.
   1. Release candidate for Moodle 2.8.
 

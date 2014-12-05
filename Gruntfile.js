@@ -149,7 +149,7 @@ module.exports = function(grunt) {
                     report: 'min',
                     sourceMap: true,
                     sourceMapRootpath: MOODLEURLPREFIX + '/theme/' + THEMEDIR,
-                    sourceMapFilename: 'sourcemap-moodle.json'
+                    sourceMapFilename: 'style/moodle.treasure.map'
                 },
                 src: 'less/moodleallshoelace.less',
                 dest: 'style/moodle.css'
@@ -172,7 +172,7 @@ module.exports = function(grunt) {
                     report: 'min',
                     sourceMap: true,
                     sourceMapRootpath: MOODLEURLPREFIX + '/theme/' + THEMEDIR,
-                    sourceMapFilename: 'sourcemap-editor.json'
+                    sourceMapFilename: 'style/editor.treasure.map'
                 },
                 src: 'less/editorallshoelace.less',
                 dest: 'style/editor.css'

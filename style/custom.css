@@ -25,14 +25,12 @@ body {
     box-shadow: 0 0 8px #888;
 }
 
-#region-main {
-    background: url([[pix:theme|shadow]]) no-repeat scroll 50% 100% / 100% 12px transparent;
-    padding: 0px 0px 12px;
+#region-main-shoelace-shadow {
+    background: url([[pix:theme|shadow]]) no-repeat scroll 50% 100% / 96% 12px transparent;
+    padding-bottom: 12px;
     margin: 0 auto;
-}
-
-#region-main > div {
-    padding: 10px;
+    display: block;
+    clear: both; /* Clear floats that are sometimes used to make the #region-main-shoehorn fit the content, i.e Editing Quiz. */
 }
 
 /* Negate core style so that browser renders drop target correctly. */

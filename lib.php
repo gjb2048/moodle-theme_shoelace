@@ -123,3 +123,8 @@ function theme_shoelace_get_html_for_settings(renderer_base $output, moodle_page
 
     return $return;
 }
+
+function theme_shoelace_page_init(moodle_page $page) {
+    $page->requires->jquery();
+    $page->requires->jquery_plugin('antigravity', 'theme_shoelace');
+}
