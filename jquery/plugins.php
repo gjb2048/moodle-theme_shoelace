@@ -19,19 +19,11 @@
  *
  * @package    theme
  * @subpackage shoelace
- * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
+ * @copyright  &copy; 2014-onwards G J Barnard in respect to modifications of the Bootstrap theme.
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
- * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
+ * @author     Based on code originally written by Petr Skoda  {@link http://skodak.org}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die;
-
-$plugin->version   = 2014120600;
-$plugin->requires  = 2014111000.00; // 2.8 (Build: 20141110).
-$plugin->component = 'theme_shoelace';
-$plugin->maturity = MATURITY_STABLE;
-$plugin->release = '2.8.1';
-$plugin->dependencies = array(
-    'theme_bootstrapbase'  => 2014111000
+$plugins = array(
+    'antigravity' => array('files' => array('anti_gravity_1_0.js'))
 );
