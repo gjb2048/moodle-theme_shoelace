@@ -145,7 +145,7 @@ module.exports = function(grunt) {
             moodle_d: {
                 options: {
                     compress: false,
-                    paths: "../bootstrapbase/less",
+                    paths: "./less",
                     report: 'min',
                     sourceMap: true,
                     sourceMapRootpath: MOODLEURLPREFIX + '/theme/' + THEMEDIR,
@@ -157,7 +157,7 @@ module.exports = function(grunt) {
             moodle_p: {
                 options: {
                     compress: true,
-                    paths: "../bootstrapbase/less",
+                    paths: "./less",
                     report: 'min',
                     sourceMap: false
                 },
@@ -168,7 +168,7 @@ module.exports = function(grunt) {
             editor_d: {
                 options: {
                     compress: false,
-                    paths: "../bootstrapbase/less",
+                    paths: "./less",
                     report: 'min',
                     sourceMap: true,
                     sourceMapRootpath: MOODLEURLPREFIX + '/theme/' + THEMEDIR,
@@ -180,7 +180,7 @@ module.exports = function(grunt) {
             editor_p: {
                 options: {
                     compress: true,
-                    paths: "../bootstrapbase/less",
+                    paths: "./less",
                     report: 'min',
                     sourceMap: false
                 },
