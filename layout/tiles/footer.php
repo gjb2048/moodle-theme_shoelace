@@ -21,17 +21,22 @@
  * @subpackage shoelace
  * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
- * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die;
-
-$plugin->version   = 2014081701;
-$plugin->requires  = 2014051200.00; // 2.7 (Build: 20140512).
-$plugin->component = 'theme_shoelace';
-$plugin->maturity = MATURITY_STABLE;
-$plugin->release = '2.7.2';
-$plugin->dependencies = array(
-    'theme_bootstrapbase'  => 2014051200
-);
+?>
+<footer id="page-footer">
+    <?php
+    if ($PAGE->blocks->is_known_region('footer')) {
+        require_once(dirname(__FILE__).'/footer_blocks.php');
+    }?>
+    <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
+    <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
+    <?php
+    echo $html->footnote;
+    echo $OUTPUT->login_info();
+    echo $OUTPUT->home_link();
+    echo $OUTPUT->standard_footer_html();
+    ?>
+</footer>
+<?php echo $OUTPUT->anti_gravity(); ?>
+<?php echo $OUTPUT->standard_end_of_body_html() ?>

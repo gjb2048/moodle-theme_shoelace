@@ -227,4 +227,37 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
         return $output;
     }
 
+    public function user_menu() {
+        global $CFG;
+        $usermenu = new custom_menu('', current_language());
+        return $this->render_user_menu($usermenu);
+    }
+
+    protected function render_user_menu(custom_menu $menu) {
+        global $CFG, $USER;
+
+        $this->render_gotobottom_menu($menu);
+
+        $content = html_writer::start_tag('ul', array('class' => 'nav slusermenu'));
+        foreach ($menu->get_children() as $item) {
+            $content .= $this->render_custom_menu_item($item, 1);
+        }
+        $content .= html_writer::end_tag('ul');
+
+        return $content;
+    }
+
+    protected function render_gotobottom_menu(custom_menu $menu) {
+        if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') || ($this->page->pagelayout == 'admin')) { // Go to bottom.
+            $gotobottom = html_writer::tag('i', '', array('class' => 'fa fa-arrow-circle-o-down slgotobottom'));
+            $menu->add($gotobottom, new moodle_url('#region-main-shoelace-shadow'), get_string('gotobottom', 'theme_shoelace'), 10001);
+        }
+    }
+
+    public function anti_gravity() {
+        $icon = html_writer::start_tag('i', array('class' => 'fa fa-arrow-circle-o-up')) . html_writer::end_tag('i');
+        $anti_gravity = html_writer::tag('a', $icon, array('class' => 'antiGravity', 'title' => get_string('antigravity', 'theme_shoelace')));
+
+        return $anti_gravity;
+    }
 }

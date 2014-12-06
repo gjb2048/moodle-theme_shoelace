@@ -80,3 +80,9 @@ $string['region-footer'] = 'Footer';
 
 $string['cdnfonts'] = 'Content delivery network fonts';
 $string['cdnfonts_desc'] = 'Use content delivery network fonts';
+
+// Navbar.
+$string['gotobottom'] = 'Go to the bottom of the page';
+
+// Anti-gravity.
+$string['antigravity'] = 'Back to top';

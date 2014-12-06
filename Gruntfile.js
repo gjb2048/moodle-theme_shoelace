@@ -50,6 +50,11 @@
  *                                 when your theme is not in the
  *                                 standard location.
  *
+ *               --build=<type>    Optional. 'p'(default) or 'd'. If 'p'
+ *                                 then 'production' CSS files.  If 'd'
+ *                                 then 'development' CSS files unminified
+ *                                 and with source map to less files.
+ *
  *               --urlprefix=<path> Optional. Explicitly define
  *                                  the path between the domain
  *                                  and the installation in the
@@ -106,6 +111,15 @@ module.exports = function(grunt) {
         MOODLEURLPREFIX = grunt.option('urlprefix') || '',
         THEMEDIR        = path.basename(path.resolve('.'));
 
+    // Production / development.
+    var build = grunt.option('build') || 'd'; // Development for 'watch' task.
+
+    if ((build != 'p') && (build != 'd')) {
+        build = 'p';
+        console.log('-build switch only accepts \'p\' for production or \'d\' for development,');
+        console.log('e.g. -build=p or -build=d.  Defaulting to development.');
+    }
+
     // PHP strings for exec task.
     var moodleroot = path.dirname(path.dirname(__dirname)),
         configfile = '',
@@ -128,27 +142,47 @@ module.exports = function(grunt) {
     grunt.initConfig({
         less: {
             // Compile moodle styles.
-            moodle: {
+            moodle_d: {
                 options: {
                     compress: false,
-                    paths: "../bootstrapbase/less",
+                    paths: "./less",
                     report: 'min',
                     sourceMap: true,
                     sourceMapRootpath: MOODLEURLPREFIX + '/theme/' + THEMEDIR,
-                    sourceMapFilename: 'sourcemap-moodle.json'
+                    sourceMapFilename: 'style/moodle.treasure.map'
+                },
+                src: 'less/moodleallshoelace.less',
+                dest: 'style/moodle.css'
+            },
+            moodle_p: {
+                options: {
+                    compress: true,
+                    paths: "./less",
+                    report: 'min',
+                    sourceMap: false
                 },
                 src: 'less/moodleallshoelace.less',
                 dest: 'style/moodle.css'
             },
             // Compile editor styles.
-            editor: {
+            editor_d: {
                 options: {
                     compress: false,
-                    paths: "../bootstrapbase/less",
+                    paths: "./less",
                     report: 'min',
                     sourceMap: true,
                     sourceMapRootpath: MOODLEURLPREFIX + '/theme/' + THEMEDIR,
-                    sourceMapFilename: 'sourcemap-editor.json'
+                    sourceMapFilename: 'style/editor.treasure.map'
+                },
+                src: 'less/editorallshoelace.less',
+                dest: 'style/editor.css'
+            },
+            editor_p: {
+                options: {
+                    compress: true,
+                    paths: "./less",
+                    report: 'min',
+                    sourceMap: false
                 },
                 src: 'less/editorallshoelace.less',
                 dest: 'style/editor.css'
@@ -262,7 +296,7 @@ module.exports = function(grunt) {
     grunt.registerTask("default", ["watch"]);
     grunt.registerTask("decache", ["exec:decache"]);
 
-    grunt.registerTask("compile", ["less", "cssmin", "decache"]);
+    grunt.registerTask("compile", ["less:moodle_"+build, "less:editor_"+build, "cssmin", "decache"]);
     grunt.registerTask("copy:svg", ["copy:svg_core", "copy:svg_plugins"]);
     grunt.registerTask("replace:svg_colours", ["replace:svg_colours_core", "replace:svg_colours_plugins"]);
     grunt.registerTask("svg", ["copy:svg", "svgmin", "replace:svg_colours"]);

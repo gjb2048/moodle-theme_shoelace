@@ -66,6 +66,11 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+16th December 2014 - Version 2.7.2
+  1. Update to FontAwesome 4.2.0.
+  2. Update Gruntfile.js.
+  3. Added jQuery for back to top functionality.
+
 17th August 2014 - Version 2.7.1.1
   1.  Implement suggested fix for MDL-42634.
 

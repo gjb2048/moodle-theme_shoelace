@@ -88,6 +88,7 @@ require_once(dirname(__FILE__).'/tiles/header.php');
                 echo $OUTPUT->course_content_footer();
                 ?>
             </section>
+            <div id="region-main-shoelace-shadow"></div>
         </div>
         <?php
         $classextra = '';
@@ -98,22 +99,7 @@ require_once(dirname(__FILE__).'/tiles/header.php');
         ?>
     </div>
 
-    <footer id="page-footer">
-        <?php
-        if ($PAGE->blocks->is_known_region('footer')) {
-            require_once(dirname(__FILE__).'/tiles/footer_blocks.php');
-        }?>
-        <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
-        <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
-        <?php
-        echo $html->footnote;
-        echo $OUTPUT->login_info();
-        echo $OUTPUT->home_link();
-        echo $OUTPUT->standard_footer_html();
-        ?>
-    </footer>
-
-    <?php echo $OUTPUT->standard_end_of_body_html() ?>
+    <?php require_once(dirname(__FILE__).'/tiles/footer.php'); ?>
 
 </div>
 </body>
