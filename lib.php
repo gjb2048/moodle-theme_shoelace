@@ -82,6 +82,10 @@ function theme_shoelace_pluginfile($course, $cm, $context, $filearea, $args, $fo
     if ($context->contextlevel == CONTEXT_SYSTEM) {
         if ($filearea === 'logo') {
             $theme = theme_config::load('shoelace');
+            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
+            if (!array_key_exists('cacheability', $options)) {
+                $options['cacheability'] = 'public';
+            }
             return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
         } else {
             send_file_not_found();
