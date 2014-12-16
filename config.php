@@ -28,7 +28,9 @@
 $THEME->doctype = 'html5';
 $THEME->name = 'shoelace';
 $THEME->parents = array('bootstrapbase');
-$THEME->sheets = array('moodle', 'custom');
+$THEME->sheets = array('custom');
+$THEME->lessfile = 'moodleallshoelace';
+$THEME->lessvariablescallback = 'theme_shoelace_less_variables';
 if (!empty($THEME->settings->cdnfonts) && ($THEME->settings->cdnfonts == 1)) {
     $THEME->sheets[] = 'font';
     $THEME->sheets[] = 'font-awesome';

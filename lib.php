@@ -67,6 +67,34 @@ function theme_shoelace_set_customcss($css, $customcss) {
 }
 
 /**
+ * Returns variables for LESS.
+ *
+ * We will inject some LESS variables from the settings that the user has defined
+ * for the theme. No need to write some custom LESS for this.
+ *
+ * Ref: https://docs.moodle.org/dev/Themes_overview#Compiling_LESS_on_the_fly
+ *
+ * @param theme_config $theme The theme config object.
+ * @return array of LESS variables without the @.
+ */
+function theme_shoelace_less_variables($theme) {
+    $variables = array();
+    //if (!empty($theme->settings->bodybackground)) {
+        $variables['bodyBackgroundAlt'] = '#22d974'; //'#ffd974'; //$theme->settings->bodybackground;
+    //}
+    //if (!empty($theme->settings->textcolor)) {
+        $variables['textColor'] = '#3399ee'; //'#653cae'; //$theme->settings->textcolor;
+    //}
+    /*if (!empty($theme->settings->linkcolor)) {
+        $variables['linkColor'] = $theme->settings->linkcolor;
+    }
+    if (!empty($theme->settings->secondarybackground)) {
+        $variables['wellBackground'] = $theme->settings->secondarybackground;
+    }*/
+    return $variables;
+}
+
+/**
  * Serves any files associated with the theme settings.
  *
  * @param stdClass $course
@@ -82,6 +110,10 @@ function theme_shoelace_pluginfile($course, $cm, $context, $filearea, $args, $fo
     if ($context->contextlevel == CONTEXT_SYSTEM) {
         if ($filearea === 'logo') {
             $theme = theme_config::load('shoelace');
+            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
+            if (!array_key_exists('cacheability', $options)) {
+                $options['cacheability'] = 'public';
+            }
             return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
         } else {
             send_file_not_found();
