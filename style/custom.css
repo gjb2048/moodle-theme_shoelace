@@ -30,7 +30,7 @@ body {
     padding-bottom: 12px;
     margin: 0 auto;
     display: block;
-    clear: both; /* Clear floats that are sometimes used to make the #region-main-shoehorn fit the content, i.e Editing Quiz. */
+    clear: both; /* Clear floats that are sometimes used to make the #region-main-shoelace fit the content, i.e Editing Quiz. */
 }
 
 /* Negate core style so that browser renders drop target correctly. */
