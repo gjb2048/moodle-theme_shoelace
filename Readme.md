@@ -100,6 +100,9 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+20th December 2014 - Version 2.8.1.2.
+  1. Fix course name icon.
+
 20th December 2014 - Version 2.8.1.1.
   1. Cross fix from Essential of Grade Single View Report with Groups, issue: 409.
   2. CDN Font Awesome to 4.2.0.
