@@ -104,24 +104,29 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
      * @return string HTML.
      */
     public function shoelaceblocks($region, $classes = array(), $tag = 'aside', $footer = 0) {
+        $displayregion = $this->page->apply_theme_region_manipulations($region);
         $classes = (array) $classes;
         $classes[] = 'block-region';
 
         $attributes = array(
-            'id' => 'block-region-' . preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
+            'id' => 'block-region-' . preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $displayregion),
             'class' => join(' ', $classes),
-            'data-blockregion' => $region,
+            'data-blockregion' => $displayregion,
             'data-droptarget' => '1'
         );
 
-        if ($footer > 0) {
-            $editing = $this->page->user_is_editing();
-            if ($editing) {
-                $attributes['class'] .= ' footer-edit';
+        if ($this->page->blocks->region_has_content($displayregion, $this)) {
+            if ($footer > 0) {
+                $editing = $this->page->user_is_editing();
+                if ($editing) {
+                    $attributes['class'] .= ' footer-edit';
+                }
+                $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($displayregion, $footer, $editing), $attributes);
+            } else {
+                $output = html_writer::tag($tag, $this->blocks_for_region($displayregion), $attributes);
             }
-            $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($region, $footer, $editing), $attributes);
         } else {
-            $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
+            $output = '';
         }
 
         return $output;
@@ -136,7 +141,6 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
      * @return string the HTML to be output.
      */
     protected function shoelace_blocks_for_region($region, $blocksperrow, $editing) {
-        $region = $this->page->apply_theme_region_manipulations($region);
         $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
         $output = '';
 
