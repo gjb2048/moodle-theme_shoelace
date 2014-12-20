@@ -68,6 +68,7 @@ Version Information
 ===================
 20th December 2014 - Version 2.7.2.1
   1. Backport of columns2.php code from 2.8.1.1.
+  2. Fix course name icon.
 
 16th December 2014 - Version 2.7.2
   1. Update to FontAwesome 4.2.0.
