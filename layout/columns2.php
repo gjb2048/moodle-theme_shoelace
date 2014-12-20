@@ -30,6 +30,7 @@ $html = theme_shoelace_get_html_for_settings($OUTPUT, $PAGE);
 
 $rtl = right_to_left();  // To know if to add 'pull-right' and 'desktop-first-column' classes in the layout for LTR.
 $hassidepre = $PAGE->blocks->is_known_region('side-pre');
+$hassidepost = $PAGE->blocks->is_known_region('side-post');
 if ($hassidepre) {
     $useblock = 'side-pre';
     /*
@@ -41,7 +42,7 @@ if ($hassidepre) {
     } else {
         $left = true;
     }
-} else {
+} else if ($hassidepost) {
     $useblock = 'side-post';
     /*
      This deals with the side to show the blocks on.
@@ -52,6 +53,8 @@ if ($hassidepre) {
     } else {
         $left = false;
     }
+} else {
+    $useblock = false;
 }
 
 echo $OUTPUT->doctype() ?>
@@ -80,7 +83,11 @@ require_once(dirname(__FILE__).'/tiles/header.php');
     <?php require_once(dirname(__FILE__).'/tiles/page-header.php'); ?>
 
     <div id="page-content" class="row-fluid">
+        <?php if ($useblock) { ?>
         <div id="region-main" class="span9<?php if ($left) { echo ' pull-right'; } ?>">
+        <?php } else { ?>
+        <div id="region-main" class="span12">
+        <?php } ?>
                 <section id="region-main-shoelace" class="row-fluid">
                 <?php
                 echo $OUTPUT->course_content_header();
@@ -91,11 +98,13 @@ require_once(dirname(__FILE__).'/tiles/header.php');
             <div id="region-main-shoelace-shadow"></div>
         </div>
         <?php
-        $classextra = '';
-        if ($left) {
-            $classextra = ' desktop-first-column';
+        if ($useblock) {
+            $classextra = '';
+            if ($left) {
+                $classextra = ' desktop-first-column';
+            }
+            echo $OUTPUT->shoelaceblocks($useblock, 'span3'.$classextra);
         }
-        echo $OUTPUT->shoelaceblocks($useblock, 'span3'.$classextra);
         ?>
     </div>
 
