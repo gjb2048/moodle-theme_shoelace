@@ -66,6 +66,9 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+22nd December 2014 - Version 2.7.2.2
+  1. Fix svg files not having 'viewbox' property for IE.
+
 20th December 2014 - Version 2.7.2.1
   1. Backport of columns2.php code from 2.8.1.1.
   2. Fix course name icon.
