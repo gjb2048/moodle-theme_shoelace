@@ -100,6 +100,9 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+22nd December 2014 - Version 2.8.1.3
+  1. Fix svg files not having 'viewbox' property for IE.
+
 20th December 2014 - Version 2.8.1.2.
   1. Fix course name icon.
 
