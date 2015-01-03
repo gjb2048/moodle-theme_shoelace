@@ -79,6 +79,11 @@ require_once(dirname(__FILE__).'/tiles/header.php');
         <?php echo $html->heading; ?>
     </header>
 
+    <?php
+    if (!empty($PAGE->theme->settings->nummarketingblocks)) {
+        echo $OUTPUT->shoelaceblocks('marketing', 'row-fluid', 'aside', $PAGE->theme->settings->nummarketingblocks);
+    }
+    ?>
     <div id="page-content" class="row-fluid">
         <div id="<?php echo $regionbsid ?>" class="span9">
             <div class="row-fluid">
