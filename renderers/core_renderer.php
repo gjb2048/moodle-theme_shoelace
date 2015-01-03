@@ -100,11 +100,12 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
      * @param string $region The region to get HTML for.
      * @param array $classes array of classes for the tag.
      * @param string $tag Tag to use.
-     * @param int $footer if > 0 then this is a footer block specifying the number of blocks per row, max of '4'.
+     * @param int $blocksperrow if > 0 then this is a footer block specifying the number of blocks per row, max of '4'.
      * @return string HTML.
      */
-    public function shoelaceblocks($region, $classes = array(), $tag = 'aside', $footer = 0) {
+    public function shoelaceblocks($region, $classes = array(), $tag = 'aside', $blocksperrow = 0) {
         $displayregion = $this->page->apply_theme_region_manipulations($region);
+
         $classes = (array) $classes;
         $classes[] = 'block-region';
 
@@ -116,17 +117,17 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
         );
 
         if ($this->page->blocks->region_has_content($displayregion, $this)) {
-            if ($footer > 0) {
+            if ($blocksperrow > 0) {
                 $editing = $this->page->user_is_editing();
                 if ($editing) {
-                    $attributes['class'] .= ' footer-edit';
+                    $attributes['class'] .= ' '.$region.'-edit';
                 }
-                $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($displayregion, $footer, $editing), $attributes);
+                $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($displayregion, $blocksperrow, $editing), $attributes);
             } else {
                 $output = html_writer::tag($tag, $this->blocks_for_region($displayregion), $attributes);
             }
         } else {
-            $output = '';
+            $output = html_writer::tag($tag, '', $attributes);
         }
 
         return $output;

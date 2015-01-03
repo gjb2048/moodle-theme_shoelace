@@ -100,6 +100,10 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+ 3rd January 2014 - Version 2.8.2
+  1. Added dynamic marketing region to frontpage.
+  2. Fixed 'shoelaceblocks' to allow drag and drop of blocks when editing and there are no existing blocks in the region.
+
 22nd December 2014 - Version 2.8.1.3
   1. Fix svg files not having 'viewbox' property for IE.
 

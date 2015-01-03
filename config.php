@@ -63,6 +63,7 @@ $empty = array();
 $col1regions = array('footer');
 $col2regions = array('side-pre', 'footer');
 $col3regions = array('side-pre', 'side-post', 'footer');
+$fpregions = array('side-pre', 'side-post', 'marketing', 'footer');
 
 $THEME->layouts = array(
     // Most backwards compatible layout without the blocks - this is the layout used by default.
@@ -98,7 +99,7 @@ $THEME->layouts = array(
     // The site home page.
     'frontpage' => array(
         'file' => 'frontpage.php',
-        'regions' => $col3regions,
+        'regions' => $fpregions,
         'defaultregion' => 'side-pre',
         'options' => array('nonavbar'=>true),
     ),

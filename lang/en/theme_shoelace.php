@@ -64,8 +64,11 @@ $string['logodesc'] = 'Please upload your custom logo here if you want to add it
 If the height of your logo is more than 75px add the following CSS rule to the Custom CSS box below.<br>
 a.logo {height: 100px;} or whatever height in pixels the logo is.';
 
+$string['nummarketingblocks'] = 'Maximum number of blocks per row in the marketing area';
+$string['nummarketingblocksdesc'] = 'The maximum blocks per row in the marketing area.';
+
 $string['numfooterblocks'] = 'Maximum number of blocks per row in the footer';
-$string['numfooterblocksdesc'] = 'The maximum blocks per row in the footer';
+$string['numfooterblocksdesc'] = 'The maximum blocks per row in the footer.';
 
 $string['one'] = 'One';
 $string['two'] = 'Two';
@@ -77,6 +80,7 @@ $string['pluginname'] = 'Shoelace';
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
 $string['region-footer'] = 'Footer';
+$string['region-marketing'] = 'Marketing';
 
 $string['cdnfonts'] = 'Content delivery network fonts';
 $string['cdnfonts_desc'] = 'Use content delivery network fonts';
