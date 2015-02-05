@@ -232,31 +232,24 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
         return $output;
     }
 
-    public function user_menu($user = NULL, $withlinks = NULL) {
-        global $CFG;
-        $usermenu = new custom_menu('', current_language());
-        return $this->render_user_menu($usermenu);
+    public function gotobottom_menu() {
+        $gotobottommenu = new custom_menu('', current_language());
+        return $this->render_gotobottom_menu($gotobottommenu);
     }
 
-    protected function render_user_menu(custom_menu $menu) {
-        global $CFG, $USER;
+    protected function render_gotobottom_menu(custom_menu $menu) {
+        if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') || ($this->page->pagelayout == 'admin')) { // Go to bottom.
+            $gotobottom = html_writer::tag('i', '', array('class' => 'fa fa-arrow-circle-o-down slgotobottom'));
+            $menu->add($gotobottom, new moodle_url('#page-footer'), get_string('gotobottom', 'theme_shoelace'), 10001);
+        }
 
-        $this->render_gotobottom_menu($menu);
-
-        $content = html_writer::start_tag('ul', array('class' => 'nav slusermenu'));
+        $content = html_writer::start_tag('ul', array('class' => 'nav slgotobottommenu'));
         foreach ($menu->get_children() as $item) {
             $content .= $this->render_custom_menu_item($item, 1);
         }
         $content .= html_writer::end_tag('ul');
 
         return $content;
-    }
-
-    protected function render_gotobottom_menu(custom_menu $menu) {
-        if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') || ($this->page->pagelayout == 'admin')) { // Go to bottom.
-            $gotobottom = html_writer::tag('i', '', array('class' => 'fa fa-arrow-circle-o-down slgotobottom'));
-            $menu->add($gotobottom, new moodle_url('#region-main-shoelace-shadow'), get_string('gotobottom', 'theme_shoelace'), 10001);
-        }
     }
 
     public function anti_gravity() {

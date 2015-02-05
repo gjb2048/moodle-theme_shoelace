@@ -15,9 +15,9 @@ $(document).ready(function() {
     return false;
   });
 
-  $("a[href='#region-main-shoelace-shadow']").click(function(e) {
+  $("a[href='#page-footer']").click(function(e) {
     e.preventDefault();
-    var target = $('#region-main-shoelace-shadow');
+    var target = $('#page-footer');
     $('html, body').animate({scrollTop : target.offset().top}, animateduration);
     return false;
   });

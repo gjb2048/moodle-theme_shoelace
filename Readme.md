@@ -11,6 +11,12 @@ About
  * author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 
+Maintained by
+=============
+G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
+Moodle profile | http://moodle.org/user/profile.php?id=442195
+Web profile | http://about.me/gjbarnard
+
 Free Software
 =============
 The Shoelace theme is 'free' software under the terms of the GNU GPLv3 License, please see 'COPYING.txt'.
@@ -28,6 +34,12 @@ If you reuse any of the code then I kindly ask that you make reference to the th
 If you make improvements or bug fixes then I would appreciate if you would send them back to me by forking from
 https://github.com/gjb2048/moodle-theme_shoelace and doing a 'Pull Request' so that the rest of the
 Moodle community benefits.
+
+Support
+=======
+As Shoelace is licensed under the GNU GPLv3 License it comes with NO support.  If you would like support from
+me then I'm happy to provide it for a fee (please see my contact details above).  Otherwise, the 'Themes' forum:
+moodle.org/mod/forum/view.php?id=46 is an excellent place to ask questions.
 
 Donations
 =========
@@ -100,10 +112,12 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
-24th January 2015 - Version 2.8.2
+ 5th February 2015 - Version 2.8.2
   1. Added dynamic marketing region to frontpage.
   2. Fixed 'shoelaceblocks' to allow drag and drop of blocks when editing and there are no existing blocks in the region.
   3. Update to FontAwesome 4.3.0.
+  4. Update to core version of the user menu.
+  5. Slight cosmetic tweaks.
 
 22nd December 2014 - Version 2.8.1.3
   1. Fix svg files not having 'viewbox' property for IE.
