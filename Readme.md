@@ -114,6 +114,7 @@ Version Information
 ===================
  5th February 2015 - Version 2.8.2.1
   1. Slight tweak to coursename icon in front page combo list.
+  2. Style tweaks.
 
  5th February 2015 - Version 2.8.2
   1. Added dynamic marketing region to frontpage.
