@@ -112,6 +112,9 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+ 5th February 2015 - Version 2.8.2.1
+  1. Slight tweak to coursename icon in front page combo list.
+
  5th February 2015 - Version 2.8.2
   1. Added dynamic marketing region to frontpage.
   2. Fixed 'shoelaceblocks' to allow drag and drop of blocks when editing and there are no existing blocks in the region.
