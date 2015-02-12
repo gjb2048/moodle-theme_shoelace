@@ -116,6 +116,7 @@ Version Information
   1. Slight tweak to coursename icon in front page combo list.
   2. Style tweaks.
   3. Fixed drop down caret being white on white on front page section when editing on if navbar text is white.
+  4. Fixed overflowing tables issue - see: https://moodle.org/mod/forum/discuss.php?d=279883.
 
  5th February 2015 - Version 2.8.2
   1. Added dynamic marketing region to frontpage.
