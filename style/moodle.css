@@ -18836,15 +18836,18 @@ body.editing.jsenabled.docked-region-side-pre #region-bs-main-and-post.span9 {
   width: 74.46808511%;
   *width: 74.41489362%;
 }
-body.editing.empty-region-side-pre #region-bs-main-and-pre.span9 #region-main,
-body.editing.jsenabled.docked-region-side-pre #region-bs-main-and-pre.span9 #region-main {
-  width: 74.46808511%;
-  *width: 74.41489362%;
+body.editing.empty-region-side-pre #region-bs-main-and-pre.span9 #region-main.span8,
+body.editing.jsenabled.docked-region-side-pre #region-bs-main-and-pre.span9 #region-main.span8 {
+  width: 65.95744681%;
+  *width: 65.90425532%;
   float: left;
 }
-body.editing.empty-region-side-pre #region-bs-main-and-pre.span9 #region-main.pull-right,
-body.editing.jsenabled.docked-region-side-pre #region-bs-main-and-pre.span9 #region-main.pull-right {
+body.editing.empty-region-side-pre #region-bs-main-and-pre.span9 #region-main.span8.pull-right,
+body.editing.jsenabled.docked-region-side-pre #region-bs-main-and-pre.span9 #region-main.span8.pull-right {
   float: right;
+}
+.two-column:not(.editing).has-region-side-pre.empty-region-side-pre #region-main.span9 {
+  width: 100%;
 }
 /* Negate core style so that browser renders drop target correctly. */
 .editing.empty-region-side-pre #block-region-side-pre,
