@@ -112,7 +112,7 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
- 6th April 2015 - Version 2.8.2.1
+10th April 2015 - Version 2.8.2.1
   1. Slight tweak to coursename icon in front page combo list.
   2. Style tweaks.
   3. Fixed drop down caret being white on white on front page section when editing on if navbar text is white.
