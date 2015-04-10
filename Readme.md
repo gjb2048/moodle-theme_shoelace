@@ -59,11 +59,11 @@ to discuss your requirements.
 
 Required version of Moodle
 ==========================
-This version works with Moodle version 2014111000.00 release 2.8 (Build: 20141110) and above within the 2.8 branch until the
+This version works with Moodle version 2015040900.00 release 2.9dev (Build: 20150409) and above within the 2.9 branch until the
 next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
-'docs.moodle.org/28/en/Installing_Moodle'.
+'docs.moodle.org/29/en/Installing_Moodle'.
 
 Installation
 ============
@@ -112,6 +112,9 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+10th April 2015 - Version 2.9.0.1
+  1. Moodle 2.9 development version.
+
 10th April 2015 - Version 2.8.2.1
   1. Slight tweak to coursename icon in front page combo list.
   2. Style tweaks.

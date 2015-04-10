@@ -131,6 +131,8 @@ module.exports = function(grunt) {
         moodleroot = path.resolve(dirrootopt);
     }
 
+    //var PWD = moodleroot + '/theme/' + THEMEDIR;
+    var PWD = process.cwd();
     configfile = path.join(moodleroot, 'config.php');
 
     decachephp += 'define(\'CLI_SCRIPT\', true);';
@@ -240,7 +242,7 @@ module.exports = function(grunt) {
                 src: 'pix_core/**/*.svg',
                     overwrite: true,
                     replacements: [{
-                        from: '#7575E0',
+                        from: '#999999',
                         to: svgcolor
                     }]
             },
@@ -280,6 +282,27 @@ module.exports = function(grunt) {
                     ext: '.svg'           // Destination file paths will have this extension.
                 }]
             }
+        },
+        jshint: {
+            options: {jshintrc: moodleroot + '/.jshintrc'},
+            files: ['**/amd/src/*.js']
+        },
+        uglify: {
+            dynamic_mappings: {
+                files: grunt.file.expandMapping(
+                    ['**/src/*.js', '!**/node_modules/**'],
+                    '',
+                    {
+                        cwd: PWD,
+                        rename: function(destBase, destPath) {
+                            destPath = destPath.replace('src', 'build');
+                            destPath = destPath.replace('.js', '.min.js');
+                            destPath = path.resolve(PWD, destPath);
+                            return destPath;
+                        }
+                    }
+                )
+            }
         }
     });
 
@@ -292,6 +315,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-svgmin');
 
+    // Load core tasks.
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+
     // Register tasks.
     grunt.registerTask("default", ["watch"]);
     grunt.registerTask("decache", ["exec:decache"]);
@@ -299,5 +326,6 @@ module.exports = function(grunt) {
     grunt.registerTask("compile", ["less:moodle_"+build, "less:editor_"+build, "cssmin", "decache"]);
     grunt.registerTask("copy:svg", ["copy:svg_core", "copy:svg_plugins"]);
     grunt.registerTask("replace:svg_colours", ["replace:svg_colours_core", "replace:svg_colours_plugins"]);
-    grunt.registerTask("svg", ["copy:svg", "svgmin", "replace:svg_colours"]);
+    grunt.registerTask("svg", ["copy:svg", "replace:svg_colours", "svgmin"]);
+    grunt.registerTask("amd", ["jshint", "uglify"]);
 };

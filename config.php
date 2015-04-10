@@ -28,6 +28,7 @@
 $THEME->doctype = 'html5';
 $THEME->name = 'shoelace';
 $THEME->parents = array('bootstrapbase');
+$THEME->enable_dock = true;
 
 $tdm = '';
 if (!get_config('core', 'themedesignermode')) {
@@ -56,6 +57,12 @@ $THEME->plugins_exclude_sheets = array(
         'html'
     )
 );
+
+$THEME->parents_exclude_javascripts = array(
+    'bootstrapbase' => array(
+        'moodlebootstrap'
+    )
+); // Exclude the parent JS.
 
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
@@ -177,5 +184,13 @@ $THEME->layouts = array(
         'defaultregion' => 'side-pre'
     ),
 );
+
+$THEME->javascripts_footer = array(
+    'shoelacebootstrap', 'dock'
+);
+
+if (core_useragent::is_ie() && !core_useragent::check_ie_version('9.0')) {
+    $THEME->javascripts[] = 'html5shiv';
+}
 
 $THEME->csspostprocess = 'theme_shoelace_process_css';
