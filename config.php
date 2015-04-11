@@ -28,7 +28,7 @@
 $THEME->doctype = 'html5';
 $THEME->name = 'shoelace';
 $THEME->parents = array('bootstrapbase');
-$THEME->enable_dock = true;
+$THEME->enable_dock = false;
 
 $tdm = '';
 if (!get_config('core', 'themedesignermode')) {
@@ -186,7 +186,7 @@ $THEME->layouts = array(
 );
 
 $THEME->javascripts_footer = array(
-    'shoelacebootstrap', 'dock'
+    'shoelace', 'dock'
 );
 
 if (core_useragent::is_ie() && !core_useragent::check_ie_version('9.0')) {
