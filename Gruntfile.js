@@ -31,7 +31,7 @@
  *
  * grunt watch   Watch the less directory (and all subdirectories)
  *               for changes to *.less files then on detection
- *               run 'grunt compile'
+ *               run 'grunt compile'.
  *
  *               Options:
  *
@@ -58,8 +58,22 @@
  *               --urlprefix=<path> Optional. Explicitly define
  *                                  the path between the domain
  *                                  and the installation in the
- *                                  URL, i.e. /moodle27 being:
- *                                  --urlprefix=/moodle27
+ *                                  URL, i.e. /moodle29 being:
+ *                                  --urlprefix=/moodle29
+ *
+ * grunt amd     Create the Asynchronous Module Definition JavaScript files.  See: MDL-49046.
+ *               Done here as core Gruntfile.js currently *nix only.
+ *
+ * grunt svg                 Change the colour of the SVGs in pix_core by
+ *                           text replacing #999999 with a new hex color.
+ *                           Note this requires the SVGs to be #999999 to
+ *                           start with or the replace will do nothing
+ *                           so should usually be preceded by copying
+ *                           a fresh set of the original SVGs.
+ *
+ *                           Options:
+ *
+ *                           --svgcolor=<hexcolor> Hex color to use for SVGs
  *
  * Plumbing tasks & targets:
  * -------------------------
@@ -83,22 +97,13 @@
  *
  * grunt replace             Run all text replace tasks.
  *
- * grunt svg                 Change the colour of the SVGs in pix_core by
- *                           text replacing #1F4D87 with a new hex color.
- *                           Note this requires the SVGs to be #1F4D87 to
- *                           start with or the replace will do nothing
- *                           so should usually be preceded by copying
- *                           a fresh set of the original SVGs.
- *
- *                           Options:
- *
- *                           --svgcolor=<hexcolor> Hex color to use for SVGs
- *
+ * grunt cssmetrics   Report on the metrics of the CSS files.
  *
  * @package theme
  * @subpackage shoelace
  * @author G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
- * @author Based on code originally written by Joby Harding, Bas Brands, David Scotson and many other contributors. * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author Based on code originally written by Joby Harding, Bas Brands, David Scotson and many other contributors.
+ * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 module.exports = function(grunt) {
@@ -201,6 +206,13 @@ module.exports = function(grunt) {
                     'style/moodle_min.css': 'style/moodle.css',
                     'style/editor_min.css': 'style/editor.css'
                 }
+            }
+        },
+        cssmetrics: {
+            dist: {
+                src: [
+                    'style/*.css'
+                ]
             }
         },
         exec: {
@@ -313,6 +325,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-text-replace");
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks("grunt-css-metrics");
     grunt.loadNpmTasks('grunt-svgmin');
 
     // Load core tasks.
@@ -323,7 +336,7 @@ module.exports = function(grunt) {
     grunt.registerTask("default", ["watch"]);
     grunt.registerTask("decache", ["exec:decache"]);
 
-    grunt.registerTask("compile", ["less:moodle_"+build, "less:editor_"+build, "cssmin", "decache"]);
+    grunt.registerTask("compile", ["less:moodle_"+build, "less:editor_"+build, "cssmin", 'cssmetrics', "decache"]);
     grunt.registerTask("copy:svg", ["copy:svg_core", "copy:svg_plugins"]);
     grunt.registerTask("replace:svg_colours", ["replace:svg_colours_core", "replace:svg_colours_plugins"]);
     grunt.registerTask("svg", ["copy:svg", "replace:svg_colours", "svgmin"]);
