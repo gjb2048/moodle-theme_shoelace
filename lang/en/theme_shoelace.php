@@ -50,6 +50,15 @@ Website: <a href="http://about.me/gjbarnard">about.me/gjbarnard</a>
 
 $string['configtitle'] = 'Shoelace';
 
+$string['themecolour'] = 'Theme colour';
+$string['themecolourdesc'] = 'Set the colour for the theme.';
+
+$string['textcolour'] = 'Text colour';
+$string['textcolourdesc'] = 'Set the colour for the text.';
+
+$string['navbartextcolour'] = 'Navbar text colour';
+$string['navbartextcolourdesc'] = 'Set the colour for the navbar text.';
+
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
 

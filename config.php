@@ -30,20 +30,15 @@ $THEME->name = 'shoelace';
 $THEME->parents = array('bootstrapbase');
 $THEME->enable_dock = false;
 
-$tdm = '';
-if (!get_config('core', 'themedesignermode')) {
-    $tdm = '_min';
-}
+$THEME->lessfile = 'moodleallshoelace';
+$THEME->lessvariablescallback = 'theme_shoelace_less_variables';
 
-$THEME->sheets = array('moodle'.$tdm, 'custom');
 if (!empty($THEME->settings->cdnfonts) && ($THEME->settings->cdnfonts == 1)) {
     $THEME->sheets[] = 'font';
     $THEME->sheets[] = 'font-awesome';
 }
 $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();
-
-$THEME->editor_sheets = array('editor'.$tdm);
 
 $THEME->parents_exclude_sheets = array(
     'bootstrapbase' => array(

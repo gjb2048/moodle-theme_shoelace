@@ -13,7 +13,7 @@
 @grayDarker:            #222;
 @grayDark:              #333;
 @gray:                  #555;
-@grayLight:             #08c; // #999;
+@grayLight:             #999;
 @grayLighter:           #eee;
 @white:                 #fff;
 
@@ -22,6 +22,7 @@
 // -------------------------
 @blue:                  #049cdb;
 @blueDark:              #0064cd;
+@shoelaceBlue:          #0088cc;
 @green:                 #46a546;
 @red:                   #9d261d;
 @yellow:                #ffc40d;
@@ -34,7 +35,7 @@
 // -------------------------
 // http://colorschemedesigner.com/#1631Tndw0w0w0
 @bodyBackground:        @white;
-@bodyBackgroundAlt:     #ffd974;
+@bodyBackgroundAlt:     #ffd974;  // #AAD7FD is nice too!
 @textColor:             #653cae;
 @textShadow:            @grayLighter;
 @iconColor:             #7575E0;
@@ -158,7 +159,7 @@
 
 // Input placeholder text color
 // -------------------------
-@placeholderText:         @grayLight;
+@placeholderText:         @shoelaceBlue;
 
 
 // Hr border color
@@ -177,8 +178,8 @@
 @navbarBorder:                    darken(@navbarBackground, 12%);
 
 @navbarText:                      @textColor;
-@navbarLinkColor:                 @linkColor;
-@navbarLinkColorHover:            darken(@linkColor, 5%);
+@navbarLinkColor:                 @navbarText;
+@navbarLinkColorHover:            darken(@navbarText, 5%);
 @navbarLinkColorActive:           @navbarLinkColorHover;
 @navbarLinkBackgroundHover:       transparent;
 @navbarLinkBackgroundActive:      darken(@navbarBackground, 5%);

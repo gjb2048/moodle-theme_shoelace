@@ -29,38 +29,6 @@
  * The nice user interface intended for everyday use. Provide a
  * high level of automation and convenience for specific use-cases.
  *
- * grunt watch   Watch the less directory (and all subdirectories)
- *               for changes to *.less files then on detection
- *               run 'grunt compile'.
- *
- *               Options:
- *
- *               --dirroot=<path>  Optional. Explicitly define the
- *                                 path to your Moodle root directory
- *                                 when your theme is not in the
- *                                 standard location.
- * grunt compile Run the .less files through the compiler, create the
- *               RTL version of the output, then run decache so that
- *               the results can be seen on the next page load.
- *
- *               Options:
- *
- *               --dirroot=<path>  Optional. Explicitly define the
- *                                 path to your Moodle root directory
- *                                 when your theme is not in the
- *                                 standard location.
- *
- *               --build=<type>    Optional. 'p'(default) or 'd'. If 'p'
- *                                 then 'production' CSS files.  If 'd'
- *                                 then 'development' CSS files unminified
- *                                 and with source map to less files.
- *
- *               --urlprefix=<path> Optional. Explicitly define
- *                                  the path between the domain
- *                                  and the installation in the
- *                                  URL, i.e. /moodle29 being:
- *                                  --urlprefix=/moodle29
- *
  * grunt amd     Create the Asynchronous Module Definition JavaScript files.  See: MDL-49046.
  *               Done here as core Gruntfile.js currently *nix only.
  *
@@ -80,24 +48,7 @@
  * Lower level tasks encapsulating a specific piece of functionality
  * but usually only useful when called in combination with another.
  *
- * grunt less         Compile all less files.
- *
- * grunt less:moodle  Compile Moodle less files only.
- *
- * grunt less:editor  Compile editor less files only.
- *
- * grunt decache      Clears the Moodle theme cache.
- *
- *                    Options:
- *
- *                    --dirroot=<path>  Optional. Explicitly define
- *                                      the path to your Moodle root
- *                                      directory when your theme is
- *                                      not in the standard location.
- *
  * grunt replace             Run all text replace tasks.
- *
- * grunt cssmetrics   Report on the metrics of the CSS files.
  *
  * @package theme
  * @subpackage shoelace
@@ -147,94 +98,6 @@ module.exports = function(grunt) {
     var svgcolor = grunt.option('svgcolor') || '#7575E0';
 
     grunt.initConfig({
-        less: {
-            // Compile moodle styles.
-            moodle_d: {
-                options: {
-                    compress: false,
-                    paths: "./less",
-                    report: 'min',
-                    sourceMap: true,
-                    sourceMapRootpath: MOODLEURLPREFIX + '/theme/' + THEMEDIR,
-                    sourceMapFilename: 'style/moodle.treasure.map'
-                },
-                src: 'less/moodleallshoelace.less',
-                dest: 'style/moodle.css'
-            },
-            moodle_p: {
-                options: {
-                    compress: true,
-                    paths: "./less",
-                    report: 'min',
-                    sourceMap: false
-                },
-                src: 'less/moodleallshoelace.less',
-                dest: 'style/moodle.css'
-            },
-            // Compile editor styles.
-            editor_d: {
-                options: {
-                    compress: false,
-                    paths: "./less",
-                    report: 'min',
-                    sourceMap: true,
-                    sourceMapRootpath: MOODLEURLPREFIX + '/theme/' + THEMEDIR,
-                    sourceMapFilename: 'style/editor.treasure.map'
-                },
-                src: 'less/editorallshoelace.less',
-                dest: 'style/editor.css'
-            },
-            editor_p: {
-                options: {
-                    compress: true,
-                    paths: "./less",
-                    report: 'min',
-                    sourceMap: false
-                },
-                src: 'less/editorallshoelace.less',
-                dest: 'style/editor.css'
-            }
-        },
-        cssmin: {
-            options: {
-                compatibility: 'ie8',
-                keepSpecialComments: '*',
-                noAdvanced: true
-            }, 
-            core: {
-                files: {
-                    'style/moodle_min.css': 'style/moodle.css',
-                    'style/editor_min.css': 'style/editor.css'
-                }
-            }
-        },
-        cssmetrics: {
-            dist: {
-                src: [
-                    'style/*.css'
-                ]
-            }
-        },
-        exec: {
-            decache: {
-                cmd: 'php -r "' + decachephp + '"',
-                callback: function(error, stdout, stderror) {
-                    // exec will output error messages
-                    // just add one to confirm success.
-                    if (!error) {
-                        grunt.log.writeln("Moodle theme cache reset.");
-                    }
-                }
-            }
-        },
-        watch: {
-            // Watch for any changes to less files and compile.
-            files: ["less/**/*.less", "../bootstrapbase/less/**/*.less"],
-            tasks: ["compile"],
-            options: {
-                spawn: false
-            }
-        },
         copy: {
             svg_core: {
                  expand: true,
@@ -319,13 +182,8 @@ module.exports = function(grunt) {
     });
 
     // Load contrib tasks.
-    grunt.loadNpmTasks("grunt-contrib-less");
-    grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.loadNpmTasks("grunt-exec");
     grunt.loadNpmTasks("grunt-text-replace");
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks("grunt-css-metrics");
     grunt.loadNpmTasks('grunt-svgmin');
 
     // Load core tasks.
@@ -336,7 +194,6 @@ module.exports = function(grunt) {
     grunt.registerTask("default", ["watch"]);
     grunt.registerTask("decache", ["exec:decache"]);
 
-    grunt.registerTask("compile", ["less:moodle_"+build, "less:editor_"+build, "cssmin", 'cssmetrics', "decache"]);
     grunt.registerTask("copy:svg", ["copy:svg_core", "copy:svg_plugins"]);
     grunt.registerTask("replace:svg_colours", ["replace:svg_colours_core", "replace:svg_colours_plugins"]);
     grunt.registerTask("svg", ["copy:svg", "replace:svg_colours", "svgmin"]);

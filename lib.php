@@ -67,6 +67,33 @@ function theme_shoelace_set_customcss($css, $customcss) {
 }
 
 /**
+ * Returns variables for LESS.
+ *
+ * We will inject some LESS variables from the settings that the user has defined
+ * for the theme. No need to write some custom LESS for this.
+ *
+ * Ref: https://docs.moodle.org/dev/Themes_overview#Compiling_LESS_on_the_fly
+ *
+ * @param theme_config $theme The theme config object.
+ * @return array of LESS variables without the @.
+ */
+function theme_shoelace_less_variables($theme) {
+    $variables = array();
+
+    if (!empty($theme->settings->themecolour)) {
+        $variables['bodyBackgroundAlt'] = $theme->settings->themecolour;
+    }
+    if (!empty($theme->settings->textcolour)) {
+        $variables['textColor'] = $theme->settings->textcolour;
+    }
+    if (!empty($theme->settings->navbartextcolour)) {
+        $variables['navbarText'] = $theme->settings->navbartextcolour;
+    }
+
+    return $variables;
+}
+
+/**
  * Serves any files associated with the theme settings.
  *
  * @param stdClass $course

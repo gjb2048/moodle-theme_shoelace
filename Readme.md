@@ -112,8 +112,11 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
-10th April 2015 - Version 2.9.0.1
+23rd April 2015 - Version 2.9.0.1
   1. Moodle 2.9 development version.
+  2. Converted to using the PHP LESS compiler instead of Grunt manually.
+  3. Improved, cleaner look.
+  4. Added setting to change the colour for the theme.
 
 10th April 2015 - Version 2.8.2.1
   1. Slight tweak to coursename icon in front page combo list.

@@ -29,6 +29,36 @@ defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
 
+    // Theme colour setting.
+    $name = 'theme_shoelace/themecolour';
+    $title = get_string('themecolour', 'theme_campus');
+    $description = get_string('themecolourdesc', 'theme_shoelace');
+    $default = '#ffd974';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
+
+    // Text colour setting.
+    $name = 'theme_shoelace/textcolour';
+    $title = get_string('textcolour', 'theme_campus');
+    $description = get_string('textcolourdesc', 'theme_shoelace');
+    $default = '#653cae';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
+
+    // Navbar text colour setting.
+    $name = 'theme_shoelace/navbartextcolour';
+    $title = get_string('navbartextcolour', 'theme_campus');
+    $description = get_string('navbartextcolourdesc', 'theme_shoelace');
+    $default = '#ffffff';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
+
     /* CDN Fonts - 1 = no, 2 = yes. */
     $name = 'theme_shoelace/cdnfonts';
     $title = get_string('cdnfonts', 'theme_shoelace');
