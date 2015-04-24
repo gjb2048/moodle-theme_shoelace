@@ -31,7 +31,7 @@ if ($ADMIN->fulltree) {
 
     // Theme colour setting.
     $name = 'theme_shoelace/themecolour';
-    $title = get_string('themecolour', 'theme_campus');
+    $title = get_string('themecolour', 'theme_shoelace');
     $description = get_string('themecolourdesc', 'theme_shoelace');
     $default = '#ffd974';
     $previewconfig = null;
@@ -41,7 +41,7 @@ if ($ADMIN->fulltree) {
 
     // Text colour setting.
     $name = 'theme_shoelace/textcolour';
-    $title = get_string('textcolour', 'theme_campus');
+    $title = get_string('textcolour', 'theme_shoelace');
     $description = get_string('textcolourdesc', 'theme_shoelace');
     $default = '#653cae';
     $previewconfig = null;
@@ -51,7 +51,7 @@ if ($ADMIN->fulltree) {
 
     // Navbar text colour setting.
     $name = 'theme_shoelace/navbartextcolour';
-    $title = get_string('navbartextcolour', 'theme_campus');
+    $title = get_string('navbartextcolour', 'theme_shoelace');
     $description = get_string('navbartextcolourdesc', 'theme_shoelace');
     $default = '#ffffff';
     $previewconfig = null;
