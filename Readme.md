@@ -114,6 +114,10 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+Version 2.9.0.2
+  1. Tidy up dropdowns.
+  2. NOTE: Need to fix some core icons like f/logout.
+
 23rd April 2015 - Version 2.9.0.1
   1. Moodle 2.9 development version.
   2. Converted to using the PHP LESS compiler instead of Grunt manually.
