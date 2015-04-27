@@ -43,9 +43,11 @@ moodle.org/mod/forum/view.php?id=46 is an excellent place to ask questions.
 
 Donations
 =========
-This theme is provided to you for free, and if you want to express your gratitude for using this theme, please consider donating by:
+This theme is provided to you for free, and if you want to express your gratitude for using this theme, please consider donating
+by:
 
-PayPal - Please contact me via my 'Moodle profile' (above) for details as I am an individual and therefore am unable to have 'donation' / 'buy me now' buttons under their terms.
+PayPal - Please contact me via my 'Moodle profile' (above) for details as I am an individual and therefore am unable to have
+'donation' / 'buy me now' buttons under their terms.
 
 Flattr - https://flattr.com/profile/gjb2048
 
@@ -59,7 +61,7 @@ to discuss your requirements.
 
 Required version of Moodle
 ==========================
-This version works with Moodle version 2015040900.00 release 2.9dev (Build: 20150409) and above within the 2.9 branch until the
+This version works with Moodle version 2015042400.00 release 2.9beta+ (Build: 20150424) and above within the 2.9 branch until the
 next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
