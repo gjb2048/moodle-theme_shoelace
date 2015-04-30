@@ -158,6 +158,18 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        exec: {
+            decache: {
+                cmd: 'php -r "' + decachephp + '"',
+                callback: function(error, stdout, stderror) {
+                    // exec will output error messages
+                    // just add one to confirm success.
+                    if (!error) {
+                        grunt.log.writeln("Moodle theme cache reset.");
+                    }
+                }
+            }
+        },
         jshint: {
             options: {jshintrc: moodleroot + '/.jshintrc'},
             files: ['**/amd/src/*.js']
@@ -182,6 +194,7 @@ module.exports = function(grunt) {
     });
 
     // Load contrib tasks.
+    grunt.loadNpmTasks("grunt-exec");
     grunt.loadNpmTasks("grunt-text-replace");
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-svgmin');
@@ -197,5 +210,5 @@ module.exports = function(grunt) {
     grunt.registerTask("copy:svg", ["copy:svg_core", "copy:svg_plugins"]);
     grunt.registerTask("replace:svg_colours", ["replace:svg_colours_core", "replace:svg_colours_plugins"]);
     grunt.registerTask("svg", ["copy:svg", "replace:svg_colours", "svgmin"]);
-    grunt.registerTask("amd", ["jshint", "uglify"]);
+    grunt.registerTask("amd", ["jshint", "uglify", "decache"]);
 };

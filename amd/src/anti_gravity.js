@@ -1,9 +1,9 @@
 /* jshint ignore:start */
-define(['jquery'], function($) {
+define(['jquery', 'core/log'], function($, log) {
 
   "use strict"; // jshint ;_;
 
-  console.log('Shoelace anti gravity AMD initialised');
+  log.debug('Shoelace anti gravity AMD initialised');
 
   $(document).ready(function() {
     var showposition = 480;
