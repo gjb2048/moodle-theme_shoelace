@@ -37,6 +37,8 @@ if (!empty($THEME->settings->cdnfonts) && ($THEME->settings->cdnfonts == 1)) {
     $THEME->sheets[] = 'font';
     $THEME->sheets[] = 'font-awesome';
 }
+$THEME->sheets[] = 'custom';
+
 $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();
 

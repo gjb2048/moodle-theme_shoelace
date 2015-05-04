@@ -117,6 +117,9 @@ Version Information
 Version 2.9.0.2
   1. Tidy up dropdowns.
   2. Fix some svg core icons.
+  3. Fixed course category icons.
+  4. Fixed missing inclusion of 'custom.css'.
+  5. Fixed grader report page.
 
 23rd April 2015 - Version 2.9.0.1
   1. Moodle 2.9 development version.
