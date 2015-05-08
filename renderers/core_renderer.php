@@ -24,6 +24,9 @@
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+require_once($CFG->dirroot . '/theme/bootstrapbase/renderers.php');
+
 class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
     /*
      * This renders the navbar.
@@ -257,5 +260,25 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
         $anti_gravity = html_writer::tag('a', $icon, array('class' => 'antiGravity', 'title' => get_string('antigravity', 'theme_shoelace')));
 
         return $anti_gravity;
+    }
+
+    /**
+     * Either returns the parent version of the header bar, or a version with the logo replacing the header.
+     *
+     * @since Moodle 2.9
+     * @param array $headerinfo An array of header information, dependant on what type of header is being displayed. The following
+     *                          array example is user specific.
+     *                          heading => Override the page heading.
+     *                          user => User object.
+     *                          usercontext => user context.
+     * @param int $headinglevel What level the 'h' tag will be.
+     * @return string HTML for the header bar.
+     */
+    public function context_header($headerinfo = null, $headinglevel = 1) {
+        if ($headinglevel == 1 && !empty($this->page->theme->settings->logo)) {
+            global $CFG;
+            return html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
+        }
+        return parent::context_header($headerinfo, $headinglevel);
     }
 }

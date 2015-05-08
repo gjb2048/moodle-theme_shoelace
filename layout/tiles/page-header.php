@@ -34,7 +34,7 @@
         <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
         <?php } ?>
     </div>
-    <?php echo $html->heading; ?>
+    <?php echo $OUTPUT->context_header(); ?>
     <div id="course-header">
         <?php echo $OUTPUT->course_header(); ?>
     </div>
