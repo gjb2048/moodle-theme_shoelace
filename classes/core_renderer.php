@@ -25,7 +25,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-require_once($CFG->dirroot . '/theme/bootstrapbase/renderers.php');
+require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php');
 
 class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
     /*

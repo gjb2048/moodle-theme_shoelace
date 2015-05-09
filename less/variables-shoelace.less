@@ -128,12 +128,12 @@
 
 // Dropdowns
 // -------------------------
-@dropdownBackground:            @wholeBackground;
+@dropdownBackground:            @bodyBackground;
 @dropdownBorder:                rgba(0,0,0,.2);
 @dropdownDividerTop:            #e5e5e5;
 @dropdownDividerBottom:         @white;
 
-@dropdownLinkColor:             @navbarText;
+@dropdownLinkColor:             @textColor;
 @dropdownLinkColorHover:        darken(@dropdownLinkColor, 10%);
 @dropdownLinkColorActive:       darken(@dropdownLinkColorHover, 10%);
 
@@ -187,8 +187,8 @@
 @navbarBrandColor:                @navbarLinkColor;
 
 // Inverted navbar
-@navbarInverseBackground:                @grayDark;
-@navbarInverseBackgroundHighlight:       @gray;
+@navbarInverseBackground:                @navbarText;
+@navbarInverseBackgroundHighlight:       darken(@navbarText, 5%);
 @navbarInverseBorder:                    lighten(@navbarBackground, 12%);
 
 @navbarInverseText:                      darken(@bodyBackgroundAlt, 5%);

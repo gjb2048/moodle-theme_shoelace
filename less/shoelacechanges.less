@@ -1,80 +1,98 @@
-// My Shoelace changes to Moodle Bootstrap
+// Shoelace changes.
+
+// buttons.less.
+button, input.form-submit, input[type="button"], input[type="submit"], input[type="reset"] {
+  text-shadow: none;
+}
 
 // course.less.
 #page-course-index .coursebox > .info > .coursename a {
-    background-position: left 0.2em;
+  background-position: left 0.2em;
+}
+
+// navbar.less.
+.navbar-inverse {
+  .btn-navbar .icon-bar {
+    background-color: @navbarInverseText;
+  }
+  &.navbar {
+    .brand, .menubar > li > a {
+      text-shadow: 1px 1px 1px @black;
+      font-weight: bolder;
+    }
+  }
 }
 
 // Footer and Marketing.
 .rowblocks-fluid-span (@columns, @fluidGridColumnWidth, @fluidGridGutterWidth) {
-    width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
-    *width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%);
+  width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
+  *width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%);
 }
 
 aside.footer-edit, aside.marketing-edit {
-    .block {
-        .rowblocks-fluid-span(3, @fluidGridColumnWidth, @fluidGridGutterWidth);
-        display: block;
-        float: left;
-        min-height: 140px;
-        max-height: 140px;
-        overflow-y: auto;
-        margin-left: @fluidGridGutterWidth;
-        .box-sizing(border-box);
-    }
+  .block {
+    .rowblocks-fluid-span(3, @fluidGridColumnWidth, @fluidGridGutterWidth);
+    display: block;
+    float: left;
+    min-height: 140px;
+    max-height: 140px;
+    overflow-y: auto;
+    margin-left: @fluidGridGutterWidth;
+    .box-sizing(border-box);
+  }
 }
 
 // MDL-44074.
 @media (min-width: 768px) and (max-width: 979px) {
-    aside.footer-edit, aside.marketing-edit {
-        .block {
-            .rowblocks-fluid-span(3, @fluidGridColumnWidth768, @fluidGridGutterWidth768);
-            margin-left: @fluidGridGutterWidth768;
-        }
+  aside.footer-edit, aside.marketing-edit {
+    .block {
+      .rowblocks-fluid-span(3, @fluidGridColumnWidth768, @fluidGridGutterWidth768);
+      margin-left: @fluidGridGutterWidth768;
     }
+  }
 }
 
 @media (min-width: 1200px) {
-    aside.footer-edit, aside.marketing-edit {
-        .block {
-            .rowblocks-fluid-span(3, @fluidGridColumnWidth1200, @fluidGridGutterWidth1200);
-            margin-left: @fluidGridGutterWidth1200;
-        }
-    }
+  aside.footer-edit, aside.marketing-edit {
+    .block {
+      .rowblocks-fluid-span(3, @fluidGridColumnWidth1200, @fluidGridGutterWidth1200);
+      margin-left: @fluidGridGutterWidth1200;
+   }
+  }
 }
 
 // Eliminates need for 'desktop-first-column' but does not work in IE8.
 // Info on: http://www.w3schools.com/cssref/sel_first-of-type.asp
 aside#block-region-footer, aside#block-region-marketing {
-     div.row-fluid div.block:first-of-type {
-        margin-left: 0px;
-    }
+  div.row-fluid div.block:first-of-type {
+    margin-left: 0px;
+  }
 }
 
 // Support multiple rows when editing otherwise above works, see: http://www.w3schools.com/cssref/sel_nth-of-type.asp
 .rowblocks-nth(@index) {
-    aside.footer-edit, aside.marketing-edit {
-        div.block:nth-of-type(@{index}) {
-            margin-left: 0px;
-        }
+  aside.footer-edit, aside.marketing-edit {
+    div.block:nth-of-type(@{index}) {
+      margin-left: 0px;
     }
+  }
 }
 
 .rowblocks-nthX (@index) when (@index > 0) {
-    .rowblocks-nth(@index);
-    .rowblocks-nthX(@index - 4);
+  .rowblocks-nth(@index);
+  .rowblocks-nthX(@index - 4);
 }
 
 .rowblocks-nthX(37); // Ten rows.
 
 #region-main-shoelace div[role="main"] {
-    padding-top: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
+  padding-top: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 @media (max-width: @navbarCollapseWidth) {
-    #region-main-shoelace {
-        margin-bottom: 12px;
-    }
+  #region-main-shoelace {
+     margin-bottom: 12px;
+  }
 }

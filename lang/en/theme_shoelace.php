@@ -66,7 +66,7 @@ $string['footnote'] = 'Footnote';
 $string['footnotedesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.';
 
 $string['invert'] = 'Invert navbar';
-$string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
+$string['invertdesc'] = 'Inverts text and theme colour for the navbar at the top of the page.';
 
 $string['logo'] = 'Logo';
 $string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>

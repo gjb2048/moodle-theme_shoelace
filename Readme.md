@@ -121,6 +121,11 @@ Version 2.9.0.2
   4. Fixed missing inclusion of 'custom.css'.
   5. Fixed grader report page.
   6. Migrated to new context_header().
+  7. Migrated core renderer to use class autoloading.
+  8. Updated required 'bootstrapbase' version to that in M2.9.
+  9. Tidied up inverse navbar.
+ 10. Removed theme colour from background on drop-down menus for a cleaner look.
+ 11. Removed the text shadow on the button text.
 
 23rd April 2015 - Version 2.9.0.1
   1. Moodle 2.9 development version.

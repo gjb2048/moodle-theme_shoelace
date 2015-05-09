@@ -33,5 +33,5 @@ $plugin->component = 'theme_shoelace';
 $plugin->maturity = MATURITY_ALPHA;
 $plugin->release = '2.9.0.2';
 $plugin->dependencies = array(
-    'theme_bootstrapbase'  => 2014111000
+    'theme_bootstrapbase'  => 2015050500
 );
