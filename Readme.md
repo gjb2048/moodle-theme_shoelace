@@ -114,6 +114,9 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+Version 2.9.1
+  1. Tidy up course summary box.
+
 Version 2.9.0.2 - Release candidate.
   1. Tidy up dropdowns.
   2. Fix some svg core icons.
