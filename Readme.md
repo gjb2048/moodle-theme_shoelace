@@ -41,17 +41,17 @@ As Shoelace is licensed under the GNU GPLv3 License it comes with NO support.  I
 me then I'm happy to provide it for a fee (please see my contact details above).  Otherwise, the 'Themes' forum:
 moodle.org/mod/forum/view.php?id=46 is an excellent place to ask questions.
 
-Donations
-=========
-This theme is provided to you for free, and if you want to express your gratitude for using this theme, please consider donating
+Sponsorships
+============
+This theme is provided to you for free, and if you want to express your gratitude for using this theme, please consider sponsoring
 by:
 
 PayPal - Please contact me via my 'Moodle profile' (above) for details as I am an individual and therefore am unable to have
-'donation' / 'buy me now' buttons under their terms.
+'buy me now' buttons under their terms.
 
 Flattr - https://flattr.com/profile/gjb2048
 
-Donations may allow me to provide you with more or better features in less time.
+Sponsorships may allow me to provide you with more or better features in less time.
 
 Customisation
 =============
@@ -114,6 +114,9 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+Version 2.9.1.1
+  1. html5shiv for IE8 or less.
+
 Version 2.9.1
   1. Tidy up course summary box.
 

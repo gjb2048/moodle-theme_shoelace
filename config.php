@@ -186,7 +186,8 @@ $THEME->javascripts_footer = array(
     'shoelace', 'dock'
 );
 
-if (core_useragent::is_ie() && !core_useragent::check_ie_version('9.0')) {
+$properties = core_useragent::check_ie_properties(); // In /lib/classes/useragent.php.
+if ((is_array($properties)) && ($properties['version'] <= 8.0)) {
     $THEME->javascripts[] = 'html5shiv';
 }
 
