@@ -116,6 +116,7 @@ Version Information
 ===================
 Version 2.9.1.1
   1. html5shiv for IE8 or less.
+  2. Implement MDL-50869.
 
 Version 2.9.1
   1. Tidy up course summary box.
