@@ -32,6 +32,7 @@ $THEME->enable_dock = false;
 
 $THEME->lessfile = 'moodleallshoelace';
 $THEME->lessvariablescallback = 'theme_shoelace_less_variables';
+$THEME->extralesscallback = 'theme_shoelace_extra_less';
 
 if (!empty($THEME->settings->cdnfonts) && ($THEME->settings->cdnfonts == 1)) {
     $THEME->sheets[] = 'font';

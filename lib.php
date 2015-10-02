@@ -92,6 +92,37 @@ function theme_shoelace_less_variables($theme) {
 
     return $variables;
 }
+/**
+ * Extra LESS code to inject.
+ *
+ * This will generate some LESS code from the settings used by the user. We cannot use
+ * the {@link theme_more_less_variables()} here because we need to create selectors or
+ * alter existing ones.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string Raw LESS code.
+ */
+function theme_shoelace_extra_less($theme) {
+    global $CFG, $OUTPUT;
+
+    $content = '@import "'.$CFG->dirroot.'/theme/bootstrapbase/less/bootstrap/mixins";';
+    $content = '@import "'.$CFG->dirroot.'/theme/bootstrapbase/less/moodle";';
+    /*
+    $content .= '@import "variables-shoelace";';
+    $content .= '@import "bootstrapchanges";';
+    $content .= '@import "moodlechanges";';
+    $content .= '@import "shoelacechanges";';
+    $content .= '@import "shoelacecustom";';
+    */
+
+    $content .= '@import "'.\theme_shoelace\toolbox::get_less_file('variables-shoelace').'";';
+    $content .= '@import "'.\theme_shoelace\toolbox::get_less_file('bootstrapchanges').'";';
+    $content .= '@import "'.\theme_shoelace\toolbox::get_less_file('moodlechanges').'";';
+    $content .= '@import "'.\theme_shoelace\toolbox::get_less_file('shoelacechanges').'";';
+    $content .= '@import "'.\theme_shoelace\toolbox::get_less_file('shoelacecustom').'";';
+
+    return $content;
+}
 
 /**
  * Serves any files associated with the theme settings.

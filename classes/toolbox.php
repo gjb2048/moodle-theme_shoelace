@@ -63,6 +63,38 @@ class toolbox {
         }
     }
 
+    /**
+     * Finds the given less file in the theme.  If it does not exist for the Shoelace child theme then the parent is checked.
+     * @param string $filename Filename without extension to get.
+     * @return string Complete path of the file.
+     */
+    static public function get_less_file($filename) {
+        global $CFG, $PAGE;
+        $themedir = $PAGE->theme->dir;
+        $filename .= '.less';
+
+        /* Check only if a child of 'Shoelace' to prevent conflicts with other themes using the 'tiles' folder.
+           The test is to change theme from Shoelace to Eyelet with the theme selector and not get an error. */
+        if (in_array('shoelace', $PAGE->theme->parents)) {
+            $themename = $PAGE->theme->name;
+            if (file_exists("$themedir/less/$filename")) {
+                return "$themedir/less/$filename";
+            } else if (file_exists("$CFG->dirroot/theme/$themename/less/$filename")) {
+                return "$CFG->dirroot/theme/$themename/layout/tiles/$filename";
+            } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/$themename/less/$filename")) {
+                return "$CFG->themedir/$themename/less/$filename";
+            }
+        }
+        // Check Shoelace.
+        if (file_exists("$CFG->dirroot/theme/shoelace/less/$filename")) {
+            return "$CFG->dirroot/theme/shoelace/less/$filename";
+        } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/shoelace/less/$filename")) {
+            return "$CFG->themedir/shoelace/less/$filename";
+        } else {
+            return dirname(__FILE__)."/$filename";
+        }
+    }
+
     static public function get_setting($setting, $format = false, $theme = null) {
 
         if (empty($theme)) {

@@ -32,6 +32,7 @@ $THEME->parents = array('shoelace');
 
 $THEME->lessfile = 'moodlealleyelet';
 $THEME->lessvariablescallback = 'theme_shoelace_less_variables';
+$THEME->extralesscallback = 'theme_shoelace_extra_less';
 
 $THEME->sheets[] = 'eyelet';
 
