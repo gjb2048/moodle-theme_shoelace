@@ -33,7 +33,7 @@ echo $OUTPUT->doctype() ?>
     <?php
         echo $OUTPUT->standard_head_html();
         if (!empty($PAGE->theme->settings->cdnfonts) && ($PAGE->theme->settings->cdnfonts == 2)) {
-            require_once(dirname(__FILE__).'/tiles/cdn_fonts.php');
+            require_once(\theme_shoelace\toolbox::get_tile_file('cdn_fonts'));
         }
     ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,7 +79,7 @@ echo $OUTPUT->doctype() ?>
         <?php echo $OUTPUT->blocks('side-post', 'span3'); ?>
     </div>
 
-    <?php require_once(dirname(__FILE__).'/tiles/footer.php'); ?>
+    <?php require_once(\theme_shoelace\toolbox::get_tile_file('footer')); ?>
 
 </div>
 </body>

@@ -15,14 +15,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Shoelace theme with the underlying Bootstrap theme.
+ * Eyelet theme.
  *
  * @package    theme
- * @subpackage shoelace
- * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
+ * @subpackage eyelet
+ * @copyright  &copy; 2015-onwards G J Barnard in respect to modifications of the Bootstrap theme.
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
- * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
+ * @author     Based on code originally written by Bas Brands, David Scotson and many other contributors.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+
  */
 
 // Get the HTML for the settings bits.
@@ -30,8 +31,7 @@ $settingshtml = \theme_shoelace\toolbox::get_html_for_settings();
 
 $pre = 'side-pre';
 $post = 'side-post';
-$rtl = right_to_left();
-if ($rtl) {
+if (right_to_left()) {
     $regionbsid = 'region-bs-main-and-post';
     // In RTL the sides are reversed, so swap the 'shoelaceblocks' method parameter....
     $temp = $pre;
@@ -40,33 +40,15 @@ if ($rtl) {
 } else {
     $regionbsid = 'region-bs-main-and-pre';
 }
+
 $hassidepre = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-pre', $OUTPUT));
 $hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->region_has_content('side-post', $OUTPUT));
-$regionclass = 'span9';
 $contentclass = 'span8';
 $blockclass = 'span4';
-
 if (!($hassidepre AND $hassidepost)) {
     // Two columns.
     $contentclass = 'span9';
     $blockclass = 'span3';
-    if (!$PAGE->user_is_editing()) {
-        if (((!$hassidepre) && (!$rtl)) ||
-            ((!$hassidepost) && ($rtl))) {
-            // Fill complete area when editing off and LTR and no side-pre content or RTL and no side-post content.
-            $contentclass = 'span12';
-        } else if ((!$hassidepre) && ($rtl)) {
-            // Fill complete area when editing off, RTL and no side pre.
-            $regionclass = 'span12';
-        }
-    } else {
-        if (((!$hassidepre) && ($rtl)) || (($hassidepre) && (!$rtl))) {
-            // Fill complete area when editing on, RTL and no side pre.
-            // Fill complete area when editing on, LTR and no side post.
-            $contentclass = 'span8';
-            $blockclass = 'span4';
-        }
-    }
 }
 
 echo $OUTPUT->doctype() ?>
@@ -74,6 +56,7 @@ echo $OUTPUT->doctype() ?>
 <head>
     <title><?php echo $OUTPUT->page_title(); ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
+    <meta name="description" content="<?php p(strip_tags(format_text($SITE->summary, FORMAT_HTML))) ?>" />
     <?php
         echo $OUTPUT->standard_head_html();
         if (!empty($PAGE->theme->settings->cdnfonts) && ($PAGE->theme->settings->cdnfonts == 2)) {
@@ -92,17 +75,24 @@ require_once(\theme_shoelace\toolbox::get_tile_file('header'));
 
 <div id="page" class="container-fluid">
 
-    <?php require_once(\theme_shoelace\toolbox::get_tile_file('page-header')); ?>
+    <header id="page-header" class="clearfix">
+        <?php echo $settingshtml->heading; ?>
+    </header>
 
+    <?php
+    if (!empty($PAGE->theme->settings->nummarketingblocks)) {
+        echo $OUTPUT->shoelaceblocks('marketing', 'row-fluid', 'aside', $PAGE->theme->settings->nummarketingblocks);
+    }
+    ?>
     <div id="page-content" class="row-fluid">
-        <div id="<?php echo $regionbsid ?>" class="<?php echo $regionclass; ?>">
+        <div id="<?php echo $regionbsid ?>" class="span9">
             <div class="row-fluid">
                 <div id="region-main" class="<?php echo $contentclass; ?> pull-right">
                     <section id="region-main-shoelace" class="row-fluid">
                         <?php
-                        echo $OUTPUT->course_content_header();
+                        echo '<h1 class="frontpagetitle">'.get_string('frontpagetitle', 'theme_shoebrush').'</h1>';
+                        echo '<p class="frontpagedetails">'.get_string('frontpagedetails', 'theme_shoebrush').'</p>';
                         echo $OUTPUT->main_content();
-                        echo $OUTPUT->course_content_footer();
                         ?>
                     </section>
                     <div id="region-main-shoelace-shadow"></div>

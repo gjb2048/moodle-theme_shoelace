@@ -23,5 +23,21 @@
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-echo $OUTPUT->shoelaceblocks('footer', 'row-fluid', 'aside', \theme_shoelace\toolbox::get_setting('numfooterblocks'));
 ?>
+<!-- Eyelet footer -->
+<footer id="page-footer">
+    <?php
+    if ($PAGE->blocks->is_known_region('footer')) {
+        require_once(\theme_shoelace\toolbox::get_tile_file('footer_blocks'));
+    }?>
+    <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
+    <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
+    <?php
+    echo $settingshtml->footnote;
+    echo $OUTPUT->login_info();
+    echo $OUTPUT->home_link();
+    echo $OUTPUT->standard_footer_html();
+    ?>
+</footer>
+<?php echo $OUTPUT->anti_gravity(); ?>
+<?php echo $OUTPUT->standard_end_of_body_html() ?>

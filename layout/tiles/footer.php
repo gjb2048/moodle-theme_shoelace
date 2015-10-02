@@ -27,12 +27,12 @@
 <footer id="page-footer">
     <?php
     if ($PAGE->blocks->is_known_region('footer')) {
-        require_once(dirname(__FILE__).'/footer_blocks.php');
+        require_once(\theme_shoelace\toolbox::get_tile_file('footer_blocks'));
     }?>
     <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
     <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
     <?php
-    echo $html->footnote;
+    echo $settingshtml->footnote;
     echo $OUTPUT->login_info();
     echo $OUTPUT->home_link();
     echo $OUTPUT->standard_footer_html();

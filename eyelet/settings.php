@@ -15,13 +15,26 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Shoelace theme with the underlying Bootstrap theme.
+ * Eyelet theme.
  *
  * @package    theme
- * @subpackage shoelace
- * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
+ * @subpackage eyelet
+ * @copyright  &copy; 2015-onwards G J Barnard in respect to modifications of the Bootstrap theme.
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     Based on code originally written by Bas Brands, David Scotson and many other contributors.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-echo $OUTPUT->shoelaceblocks('footer', 'row-fluid', 'aside', \theme_shoelace\toolbox::get_setting('numfooterblocks'));
-?>
+
+defined('MOODLE_INTERNAL') || die;
+
+// Settings.
+    $settings = null;
+
+    $readme = new moodle_url('/theme/eyelet/Readme.md');
+    $readme = html_writer::link($readme, 'Readme.md', array('target' => '_blank'));
+
+    $ADMIN->add('themes', new admin_category('theme_eyelet', 'Eyelet'));
+
+    $generalsettings = new admin_settingpage('theme_eyelet_general', get_string('generalsettings', 'theme_eyelet'));
+
+    $ADMIN->add('theme_eyelet', $generalsettings);

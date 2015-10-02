@@ -27,7 +27,7 @@
  */
 
 // Get the HTML for the settings bits.
-$html = theme_shoelace_get_html_for_settings($OUTPUT, $PAGE);
+$settingshtml = \theme_shoelace\toolbox::get_html_for_settings();
 
 $pre = 'side-pre';
 $post = 'side-post';
@@ -60,7 +60,7 @@ echo $OUTPUT->doctype() ?>
     <?php
         echo $OUTPUT->standard_head_html();
         if (!empty($PAGE->theme->settings->cdnfonts) && ($PAGE->theme->settings->cdnfonts == 2)) {
-            require_once(dirname(__FILE__).'/tiles/cdn_fonts.php');
+            require_once(\theme_shoelace\toolbox::get_tile_file('cdn_fonts'));
         }
     ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,13 +70,13 @@ echo $OUTPUT->doctype() ?>
 
 <?php
 echo $OUTPUT->standard_top_of_body_html();
-require_once(dirname(__FILE__).'/tiles/header.php');
+require_once(\theme_shoelace\toolbox::get_tile_file('header'));
 ?>
 
 <div id="page" class="container-fluid">
 
     <header id="page-header" class="clearfix">
-        <?php echo $html->heading; ?>
+        <?php echo $settingshtml->heading; ?>
     </header>
 
     <?php
@@ -101,7 +101,7 @@ require_once(dirname(__FILE__).'/tiles/header.php');
         <?php echo $OUTPUT->shoelaceblocks($post, 'span3'); ?>
     </div>
 
-    <?php require_once(dirname(__FILE__).'/tiles/footer.php'); ?>
+    <?php require_once(\theme_shoelace\toolbox::get_tile_file('footer')); ?>
 
 </div>
 </body>

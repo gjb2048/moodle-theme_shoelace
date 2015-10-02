@@ -24,6 +24,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 ?>
+<!-- Eyelet header -->
 <header role="banner" class="navbar navbar-fixed-top<?php echo $settingshtml->navbarclass ?>">
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
