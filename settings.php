@@ -114,21 +114,21 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $settings->add($setting);
 
-    // Custom CSS file.
-    $name = 'theme_shoelace/customcss';
-    $title = get_string('customcss', 'theme_shoelace');
-    $description = get_string('customcssdesc', 'theme_shoelace');
-    $default = '';
-    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
-
     // Footnote setting.
     $name = 'theme_shoelace/footnote';
     $title = get_string('footnote', 'theme_shoelace');
     $description = get_string('footnotedesc', 'theme_shoelace');
     $default = '';
     $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
+
+    // Custom CSS file.
+    $name = 'theme_shoelace/customcss';
+    $title = get_string('customcss', 'theme_shoelace');
+    $description = get_string('customcssdesc', 'theme_shoelace');
+    $default = '';
+    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
 }

@@ -44,8 +44,7 @@ $THEME->yuicssmodules = array();
 
 $THEME->parents_exclude_sheets = array(
     'bootstrapbase' => array(
-        'moodle',
-        'editor'
+        'moodle'
     )
 );
 
