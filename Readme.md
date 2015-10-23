@@ -118,7 +118,9 @@ Version 2.9.1.1
   1. html5shiv for IE8 or less.
   2. Implement MDL-50869.
   3. Add full version of bootstrap.js for markup that utilises it.
-  4. Fix editor css.  5. Child theme support.
+  4. Fix editor css.
+  5. Child theme support.
+
 Version 2.9.1
   1. Tidy up course summary box.
 
