@@ -114,7 +114,7 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
-Version 2.9.1.1
+Version 2.9.2
   1. html5shiv for IE8 or less.
   2. Implement MDL-50869.
   3. Add full version of bootstrap.js for markup that utilises it.

@@ -31,7 +31,7 @@ $plugin->version   = 2015052201;
 $plugin->requires  = 2015051100.00; // 2.9 (Build: 20150511).
 $plugin->component = 'theme_shoelace';
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = '2.9.1.1';
+$plugin->release = '2.9.2';
 $plugin->dependencies = array(
     'theme_bootstrapbase'  => 2015051100
 );
