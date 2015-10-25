@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Moodle-theme shoelace by gjb2048</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Moodle-theme shoelace</h1>
+        <h2>Based upon the Bootstrap theme.</h2>
+        <a href="https://github.com/gjb2048/moodle-theme_shoelace" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h1>
+
+<p>Shoelace theme with a light feel through colour and font selection.</p>
+
+<p><img src="pix/screenshot.png" alt="image1" title="Shoelace Screenshot"></p>
+
+<h1>
+<a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h1>
+
+<ul>
+<li>copyright  © 2013-onwards G J Barnard in respect to modifications of the Clean theme.</li>
+<li>author     G J Barnard - <a href="http://about.me/gjbarnard">http://about.me/gjbarnard</a> and <a href="http://moodle.org/user/profile.php?id=442195">http://moodle.org/user/profile.php?id=442195</a>
+</li>
+<li>author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.</li>
+<li>license    <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a> GNU GPL v3 or later</li>
+</ul>
+
+<h1>
+<a id="maintained-by" class="anchor" href="#maintained-by" aria-hidden="true"><span class="octicon octicon-link"></span></a>Maintained by</h1>
+
+<p>G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
+Moodle profile | <a href="http://moodle.org/user/profile.php?id=442195">http://moodle.org/user/profile.php?id=442195</a>
+Web profile | <a href="http://about.me/gjbarnard">http://about.me/gjbarnard</a></p>
+
+<h1>
+<a id="free-software" class="anchor" href="#free-software" aria-hidden="true"><span class="octicon octicon-link"></span></a>Free Software</h1>
+
+<p>The Shoelace theme is 'free' software under the terms of the GNU GPLv3 License, please see 'COPYING.txt'.</p>
+
+<p>It can be obtained for free from:
+<a href="https://moodle.org/plugins/view.php?plugin=theme_shoelace">https://moodle.org/plugins/view.php?plugin=theme_shoelace</a>
+and
+<a href="https://github.com/gjb2048/moodle-theme_shoelace/releases">https://github.com/gjb2048/moodle-theme_shoelace/releases</a></p>
+
+<p>You have all the rights granted to you by the GPLv3 license.  If you are unsure about anything, then the
+FAQ - <a href="http://www.gnu.org/licenses/gpl-faq.html">http://www.gnu.org/licenses/gpl-faq.html</a> - is a good place to look.</p>
+
+<p>If you reuse any of the code then I kindly ask that you make reference to the theme.</p>
+
+<p>If you make improvements or bug fixes then I would appreciate if you would send them back to me by forking from
+<a href="https://github.com/gjb2048/moodle-theme_shoelace">https://github.com/gjb2048/moodle-theme_shoelace</a> and doing a 'Pull Request' so that the rest of the
+Moodle community benefits.</p>
+
+<h1>
+<a id="support" class="anchor" href="#support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support</h1>
+
+<p>As Shoelace is licensed under the GNU GPLv3 License it comes with NO support.  If you would like support from
+me then I'm happy to provide it for a fee (please see my contact details above).  Otherwise, the 'Themes' forum:
+moodle.org/mod/forum/view.php?id=46 is an excellent place to ask questions.</p>
+
+<h1>
+<a id="sponsorships" class="anchor" href="#sponsorships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sponsorships</h1>
+
+<p>This theme is provided to you for free, and if you want to express your gratitude for using this theme, please consider sponsoring
+by:</p>
+
+<p>PayPal - Please contact me via my 'Moodle profile' (above) for details as I am an individual and therefore am unable to have
+'buy me now' buttons under their terms.</p>
+
+<p>Flattr - <a href="https://flattr.com/profile/gjb2048">https://flattr.com/profile/gjb2048</a></p>
+
+<p>Sponsorships may allow me to provide you with more or better features in less time.</p>
+
+<h1>
+<a id="customisation" class="anchor" href="#customisation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customisation</h1>
+
+<p>If you like this theme and would like me to customise it, transpose functionality to another theme or build a new theme
+from scratch, then I offer competitive rates.  Please contact me via <a href="http://www.gjbarnard.co.uk/contact/">www.gjbarnard.co.uk/contact/</a> or gjbarnard at gmail dot com
+to discuss your requirements.</p>
+
+<h1>
+<a id="required-version-of-moodle" class="anchor" href="#required-version-of-moodle" aria-hidden="true"><span class="octicon octicon-link"></span></a>Required version of Moodle</h1>
+
+<p>This version works with Moodle version 2015051100.00 release 2.9 (Build: 20150511) and above within the 2.9 branch until the
+next release.</p>
+
+<p>Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
+'docs.moodle.org/29/en/Installing_Moodle'.</p>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<ol>
+<li>Ensure you have the version of Moodle as stated above in 'Required version of Moodle'.  This is essential as the
+theme relies on underlying core code that is out of my control.</li>
+<li>Login as an administrator and put Moodle in 'Maintenance Mode' so that there are no users using it bar you as the administrator.</li>
+<li>Copy the extracted 'shoelace' folder to the '/theme/' folder.</li>
+<li>Go to 'Site administration' -&gt; 'Notifications' and follow standard the 'plugin' update notification.</li>
+<li>Select as the theme for the site.</li>
+<li>Put Moodle out of Maintenance Mode.</li>
+</ol>
+
+<h1>
+<a id="upgrading" class="anchor" href="#upgrading" aria-hidden="true"><span class="octicon octicon-link"></span></a>Upgrading</h1>
+
+<ol>
+<li>Ensure you have the version of Moodle as stated above in 'Required version of Moodle'.  This is essential as the
+theme relies on underlying core code that is out of my control.</li>
+<li>Login as an administrator and put Moodle in 'Maintenance Mode' so that there are no users using it bar you as the administrator.</li>
+<li>Make a backup of your old 'shoelace' folder in '/theme/' and then delete the folder.</li>
+<li>Copy the replacement extracted 'shoelace' folder to the '/theme/' folder.</li>
+<li>Go to 'Site administration' -&gt; 'Notifications' and follow standard the 'plugin' update notification.</li>
+<li>If automatic 'Purge all caches' appears not to work by lack of display etc. then perform a manual 'Purge all caches'
+under 'Home -&gt; Site administration -&gt; Development -&gt; Purge all caches'.</li>
+<li>Put Moodle out of Maintenance Mode.</li>
+</ol>
+
+<h1>
+<a id="uninstallation" class="anchor" href="#uninstallation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uninstallation</h1>
+
+<ol>
+<li>Put Moodle in 'Maintenance Mode' so that there are no users using it bar you as the administrator.</li>
+<li>Change the theme to another theme of your choice.</li>
+<li>In '/theme/' remove the folder 'shoelace'.</li>
+<li>Put Moodle out of Maintenance Mode.</li>
+</ol>
+
+<h1>
+<a id="reporting-issues" class="anchor" href="#reporting-issues" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reporting Issues</h1>
+
+<p>Before reporting an issue, please ensure that you are running the latest version for your release of Moodle.  It is essential
+that you are operating the required version of Moodle as stated at the top - this is because the theme relies on core
+functionality that is out of its control.</p>
+
+<p>I operate a policy that I will fix all genuine issues for free.  Improvements are at my discretion.  I am happy to make bespoke
+customisations / improvements for a negotiated fee. </p>
+
+<p>When reporting an issue you can post in the theme's forum on Moodle.org (currently 'moodle.org/mod/forum/view.php?id=46')
+or contact me direct (details at the bottom).</p>
+
+<p>It is essential that you provide as much information as possible, the critical information being the contents of the format's 
+version.php file.  Other version information such as specific Moodle version, theme name and version also helps.  A screen shot
+can be really useful in visualising the issue along with any files you consider to be relevant.</p>
+
+<h1>
+<a id="version-information" class="anchor" href="#version-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>Version Information</h1>
+
+<p>Version 2.9.2</p>
+
+<ol>
+<li>html5shiv for IE8 or less.</li>
+<li>Implement MDL-50869.</li>
+<li>Add full version of bootstrap.js for markup that utilises it.</li>
+<li>Fix editor css.</li>
+<li>Child theme support.</li>
+</ol>
+
+<p>Version 2.9.1</p>
+
+<ol>
+<li>Tidy up course summary box.</li>
+</ol>
+
+<p>Version 2.9.0.2 - Release candidate.</p>
+
+<ol>
+<li>Tidy up dropdowns.</li>
+<li>Fix some svg core icons.</li>
+<li>Fixed course category icons.</li>
+<li>Fixed missing inclusion of 'custom.css'.</li>
+<li>Fixed grader report page.</li>
+<li>Migrated to new context_header().</li>
+<li>Migrated core renderer to use class autoloading.</li>
+<li>Updated required 'bootstrapbase' version to that in M2.9.</li>
+<li>Tidied up inverse navbar.
+
+<ol>
+<li>Removed theme colour from background on drop-down menus for a cleaner look.</li>
+<li>Removed the text shadow on the button text.</li>
+</ol>
+</li>
+</ol>
+
+<p>23rd April 2015 - Version 2.9.0.1</p>
+
+<ol>
+<li>Moodle 2.9 development version.</li>
+<li>Converted to using the PHP LESS compiler instead of Grunt manually.</li>
+<li>Improved, cleaner look.</li>
+<li>Added setting to change the colour for the theme.</li>
+</ol>
+
+<p>10th April 2015 - Version 2.8.2.1</p>
+
+<ol>
+<li>Slight tweak to coursename icon in front page combo list.</li>
+<li>Style tweaks.</li>
+<li>Fixed drop down caret being white on white on front page section when editing on if navbar text is white.</li>
+<li>Fixed overflowing tables issue - see: <a href="https://moodle.org/mod/forum/discuss.php?d=279883">https://moodle.org/mod/forum/discuss.php?d=279883</a>.</li>
+<li>Tidy up when have no blocks showing on a two column page and not editing.</li>
+<li>
+<p>Fix new messages popup so no conflict with 'go to top' icon.</p>
+
+<p>5th February 2015 - Version 2.8.2</p>
+</li>
+<li>Added dynamic marketing region to frontpage.</li>
+<li>Fixed 'shoelaceblocks' to allow drag and drop of blocks when editing and there are no existing blocks in the region.</li>
+<li>Update to FontAwesome 4.3.0.</li>
+<li>Update to core version of the user menu.</li>
+<li>Slight cosmetic tweaks.</li>
+</ol>
+
+<p>22nd December 2014 - Version 2.8.1.3</p>
+
+<ol>
+<li>Fix svg files not having 'viewbox' property for IE.</li>
+</ol>
+
+<p>20th December 2014 - Version 2.8.1.2.</p>
+
+<ol>
+<li>Fix course name icon.</li>
+</ol>
+
+<p>20th December 2014 - Version 2.8.1.1.</p>
+
+<ol>
+<li>Cross fix from Essential of Grade Single View Report with Groups, issue: 409.</li>
+<li>
+<p>CDN Font Awesome to 4.2.0.</p>
+
+<p>5th December 2014 - Version 2.8.1 - First stable release.</p>
+</li>
+<li>Stable version for Moodle 2.8.</li>
+<li>Update to FontAwesome 4.2.0.</li>
+<li>Update Gruntfile.js.</li>
+<li>Added jQuery for back to top functionality.</li>
+</ol>
+
+<p>16th November 2014 - Version 2.8.0.1 - Release candidate.</p>
+
+<ol>
+<li>Release candidate for Moodle 2.8.</li>
+</ol>
+
+<p>17th August 2014 - Version 2.7.1.1</p>
+
+<ol>
+<li> Implement suggested fix for MDL-42634.</li>
+</ol>
+
+<p>14th August 2014 - Version 2.7.1 - Stable.</p>
+
+<ol>
+<li> Update grunt task versions.</li>
+<li> Implement svgmin from Shoehorn and apply.</li>
+<li> Regenerate CSS against Moodle '2.7.1+ (Build: 20140807).</li>
+</ol>
+
+<p>12th June 2014 - Version 2.7.0.2 - Beta.</p>
+
+<ol>
+<li> Added Grunt compile script for creating CSS and SVG icons.</li>
+</ol>
+
+<p>23rd May 2014 - Version 2.7.0.1 - Beta.</p>
+
+<ol>
+<li> Initial beta version for Moodle 2.7.</li>
+<li> Updated FontAwesome to 4.1.0.</li>
+<li> Changed user icons to svg.</li>
+<li> Added core 'e' pix folder that is new in M2.7.</li>
+</ol>
+
+<p>30th March 2014 - Version 2.6.1.4</p>
+
+<ol>
+<li> Fixed 'installable' issue with OTF version of FontAwesome locally in IE by removing the OTF file as a source, see:
+  <a href="https://github.com/FortAwesome/Font-Awesome/issues/2517">https://github.com/FortAwesome/Font-Awesome/issues/2517</a>
+</li>
+</ol>
+
+<p>17th March 2014 - Version 2.6.1.3</p>
+
+<ol>
+<li> Put back logo serving code that was accidentally removed in version 2.6.0.2.</li>
+<li>
+<p>Note: The moodle.css file has been compiled against Moodle 2.6.2+ (Build: 20140314), if you need a previous version or are
+        experiencing odd things, please recompile using the instructions in less/Readme_Less.md.</p>
+
+<p>6th March 2014 - Version 2.6.1.2</p>
+</li>
+<li> Fixed HTML blocks having centred content in the footer block.</li>
+<li> Made all footer blocks the same height when editing so that they are easier to move.  Also prevents blocks becoming orphaned
+  on a row when they should be on the next.</li>
+<li> Updated LESS build process to no longer overwrite bootstrap variables.less file.</li>
+</ol>
+
+<p>24th February 2014 - Version 2.6.1.1.</p>
+
+<ol>
+<li> Fix situation where the 'cdnfonts' setting has not been created.</li>
+<li> Added in FontAwesome used in the breadcrumb.</li>
+<li> Fix editor sheet in wrong place in the configuration.</li>
+<li> Implemented MDL-44074 for footer blocks.</li>
+<li> Optimised header code by using tiles.</li>
+<li> Applied a slightly better colour scheme using a purple colour for the text.</li>
+<li>
+<p>Updated the paper shadow effect.</p>
+
+<p>2nd January 2014 - Version 2.6.1 - Stable.</p>
+</li>
+<li> Implemented MDL-43348.</li>
+<li> Recompiled LESS as a result of MDL-41788 and MDL-43062.</li>
+<li> Updated screen shot to reflect updates.</li>
+</ol>
+
+<p>30th November 2013 Version 2.6.0.3</p>
+
+<ol>
+<li> Added ability to choose between local and CDN sources for fonts.  This means that I had to change Quicksand for Cabin
+  as quite frankly the former looked awful when coming from CDN.  This was because I had used it as a content font but
+  the variety available on CDN was limited and switching it around as the header with Varela Round did not look good
+  either.  Thanks to Julian Ridden for showing the way with this.</li>
+</ol>
+
+<p>29th November 2013 Version 2.6.0.2</p>
+
+<ol>
+<li> Added popup layout from bootstrapbase.</li>
+<li> Removed excluded grade sheet.</li>
+<li> Updated to use M2.6 font serving mechanism.</li>
+</ol>
+
+<p>15th November 2013 Version 2.6.0.1</p>
+
+<ol>
+<li>
+<p>Initial BETA code for Moodle 2.6.</p>
+
+<p>6th November 2013 Version 2.5.3 - Stable.</p>
+</li>
+<li> Fixed footer blocks showing up where they should not on single column pages.</li>
+<li> Updated styles.</li>
+</ol>
+
+<p>24th October 2013 Version 2.5.3 - BETA</p>
+
+<ol>
+<li> Added footer blocks with a setting to set the maximum number of blocks per 'row' between 1 and 4.</li>
+<li> Added the 'less' folder containing the files required to alter / recompile the css.  Instructions
+  in the 'less/Readme_less.md' file.</li>
+</ol>
+
+<p>16th August 2013 Version 2.5.2.2.</p>
+
+<ol>
+<li> Implemented MDL-36011.</li>
+<li> Adjusted table cell widths - <a href="https://moodle.org/mod/forum/discuss.php?d=234329">https://moodle.org/mod/forum/discuss.php?d=234329</a>.</li>
+<li> Implemented $CFG-&gt;themedir safe font serving.</li>
+<li> Improvements to grade book styling thanks to Julian Ridden.</li>
+</ol>
+
+<p>29th July 2013 Version 2.5.2.1 - Maintenance release.</p>
+
+<ol>
+<li> Implemented MDL-39812, MDL-39299, MDL-39748, MDL-40082, MDL-40071, MDL-40189, MDL-40589 and MDL-40544.</li>
+<li> Added new font 'Varela Round' for headings so that they are separated from the main text.</li>
+<li> Block headings are no longer all upper case as this looks silly.</li>
+<li> Blocks use the warning background and border scheme so that they do not dominate the page.</li>
+<li> Tidied up form buttons on screen sizes less than 480px.</li>
+</ol>
+
+<p>29th June 2013 Version 2.5.2.</p>
+
+<ol>
+<li> Updated to changes implemented by MDL-39824 and proposed by MDL-40065 but in a way that they are local to Shoelace and
+  therefore should not require an update to core M2.5.</li>
+<li> Updated styles to current fixes.</li>
+<li> Added 'icon.png' to show when updating.</li>
+<li> Implemented MDL-40137 to fix method names in 'lib.php'.</li>
+<li> Fixes for RTL.</li>
+<li> Changes to course CSS using Mary Evan's Afterburner code as documented on: <a href="https://moodle.org/mod/forum/discuss.php?d=230919">https://moodle.org/mod/forum/discuss.php?d=230919</a>.</li>
+<li> Use chevron icons for the breadcrumb divider.  Correct direction used in both LTR and RTL.</li>
+<li>
+<p>Use 'pills' instead of 'tabs' for 'tabtree's -&gt; <a href="http://twitter.github.io/bootstrap/components.html#navs">http://twitter.github.io/bootstrap/components.html#navs</a>.</p>
+
+<p>6th June 2013 Version 2.5.1.2</p>
+</li>
+<li> Adjusted layout such that both pre and post blocks appear on the left for left to right languages and on the right
+  for right to left languages.</li>
+<li> Added paper effect.</li>
+<li> Tidied up some small font / background issues.</li>
+</ol>
+
+<p>31st May 2013 Version 2.5.1.1</p>
+
+<ol>
+<li> Tweaked css for course search box on the course category page.</li>
+<li> Updated layouts from core.</li>
+<li> Adjusted custom css setting so that when it changes its effects are applied immediately.</li>
+<li> Fixed inverse setting.</li>
+<li> Fixed no purge when setting footnote.</li>
+<li> Reversed this version information list to make the latest updates easier to find.</li>
+</ol>
+
+<p>15th May 2013 Version 2.5.1 - Stable</p>
+
+<ol>
+<li> First stable version for Moodle 2.5 stable.</li>
+<li> Updated 'general.php' file from 'bootstrapbase'.</li>
+</ol>
+
+<p>13th May 2013 - Version 2.5.0.5 - Beta.</p>
+
+<ol>
+<li> Removed language menu as appears to now rendering from Bootstrap Base.</li>
+<li> Made configuration of maintenance template like other standard themes.</li>
+<li> Updated moodle.css in line with updates in Bootstrap Base.</li>
+<li>
+<p>Made font easier to change.</p>
+
+<p>8th May 2013 - Version 2.5.0.4 - Beta.</p>
+</li>
+<li> Added and adapted image from flexible sections course format.</li>
+<li> Added and adapted missing move here image from core.</li>
+<li> Added display of language menu when required.</li>
+<li>
+<p>Added automatic 'Purge all caches' when upgrading.  If this appears not to work by lack of display etc. then perform a
+  manual 'Purge all caches' under 'Home -&gt; Site administration -&gt; Development -&gt; Purge all caches'.</p>
+
+<p>4th May 2013 - Version 2.5.0.3 - Beta.</p>
+</li>
+<li> Added bootstrapbase dependency in 'config.php'.</li>
+<li> Changed colour of form headings from black to blue.</li>
+<li> Added 'Upgrading' instructions and made some improvements to this readme.</li>
+<li> Changed as many core images to blue as possible.</li>
+<li> Fixed font path issue when Moodle is in a sub-folder.</li>
+<li> Please perform a 'Purge all caches' under 'Home -&gt; Site administration -&gt; Development -&gt; Purge all caches' when upgrading.</li>
+</ol>
+
+<p>29th April 2013 - Version 2.5.0.2 - Beta</p>
+
+<ol>
+<li> Updated to using 'Bootstrapbase' as a parent theme, thus requiring Moodle version 2013042600.00 release 2.5beta+ (Build: 20130426).</li>
+<li> Updated 'general.php' layout file from new 'Clean' theme that was renamed from 'Simple'.  Appears to have fixed logo not showing issue</li>
+<li> Changed 'config.php' to no longer exclude settings and navigation sheets.  Excluding them means that the naviagation block does not
+  render correctly.</li>
+<li> Adapted the css such that there is now a clean white background whilst retaining the sandy colour for the header and other elements such
+  as tables.</li>
+<li> Mary Evans now on board as a maintainer and co-developer :).</li>
+<li> Please perform a 'Purge all caches' under 'Home -&gt; Site administration -&gt; Development -&gt; Purge all caches' when upgrading.</li>
+</ol>
+
+<p>24th April 2013 - Version 2.5.0.1 - Beta</p>
+
+<ol>
+<li> Initial version for Moodle 2.5beta.</li>
+</ol>
+
+<h1>
+<a id="thanks" class="anchor" href="#thanks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Thanks</h1>
+
+<p>My thanks go to all the creators and participants of the Bootstrap theme:
+Bas Brands, David Scotson, Stuart Lamour, Mark Aberdour, Paul Hibbitts and Mary Evans.</p>
+
+<p>And again to Mary Evans for the 'Clean' theme.</p>
+
+<h1>
+<a id="me" class="anchor" href="#me" aria-hidden="true"><span class="octicon octicon-link"></span></a>Me</h1>
+
+<p>G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
+Moodle profile: <a href="http://moodle.org/user/profile.php?id=442195">http://moodle.org/user/profile.php?id=442195</a>
+Web profile   : <a href="http://about.me/gjbarnard">http://about.me/gjbarnard</a></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/gjb2048/moodle-theme_shoelace/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/gjb2048/moodle-theme_shoelace/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/gjb2048/moodle-theme_shoelace"></a> is maintained by <a href="https://github.com/gjb2048">gjb2048</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
