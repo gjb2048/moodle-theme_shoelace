@@ -116,6 +116,7 @@ Version Information
 ===================
 Version 2.9.2.1
   1. Improvements to child theme support for generated less variables and extra.
+  2. Fix bug when using a logo.
 
 Version 2.9.2
   1. html5shiv for IE8 or less.

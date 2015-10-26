@@ -160,7 +160,7 @@ class toolbox {
         }
 
         if (!empty($theme->settings->logo)) {
-            $return->heading = html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
+            $return->heading = \html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
         } else {
             $return->heading = $OUTPUT->page_heading();
         }
