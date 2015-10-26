@@ -68,7 +68,7 @@ class toolbox {
      * @param string $filename Filename without extension to get.
      * @return string Complete path of the file.
      */
-    static public function get_less_file($filename) {
+    static private function get_less_file($filename) {
         global $CFG, $PAGE;
         $themedir = $PAGE->theme->dir;
         $filename .= '.less';
@@ -91,8 +91,22 @@ class toolbox {
         } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/shoelace/less/$filename")) {
             return "$CFG->themedir/shoelace/less/$filename";
         } else {
-            return dirname(__FILE__)."/$filename";
+            return null;
         }
+    }
+
+    /**
+     * Finds the given less file in the theme.  If it does not exist for the Shoelace child theme then the parent is checked.
+     * @param string $filename Filename without extension to get.
+     * @return string LESS import statement for the file if it exists otherwise an empty string.
+     */
+    static public function get_extra_less($filename) {
+        $content = '';
+        $thefile = self::get_less_file($filename);
+        if (!empty($thefile)) {
+            $content .= '@import "'.$thefile.'";';
+        }
+        return $content;
     }
 
     static public function get_setting($setting, $format = false, $theme = null) {

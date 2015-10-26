@@ -90,8 +90,8 @@ require_once(\theme_shoelace\toolbox::get_tile_file('header'));
                 <div id="region-main" class="<?php echo $contentclass; ?> pull-right">
                     <section id="region-main-shoelace" class="row-fluid">
                         <?php
-                        echo '<h1 class="frontpagetitle">'.get_string('frontpagetitle', 'theme_shoebrush').'</h1>';
-                        echo '<p class="frontpagedetails">'.get_string('frontpagedetails', 'theme_shoebrush').'</p>';
+                        echo '<h1 class="frontpagetitle">'.get_string('frontpagetitle', 'theme_eyelet').'</h1>';
+                        echo '<p class="frontpagedetails">'.get_string('frontpagedetails', 'theme_eyelet').'</p>';
                         echo $OUTPUT->main_content();
                         ?>
                     </section>

@@ -78,6 +78,9 @@ function theme_shoelace_set_customcss($css, $customcss) {
  * @return array of LESS variables without the @.
  */
 function theme_shoelace_less_variables($theme) {
+    if (empty($theme)) {  // Child theme needs to supply 'null' so that we use our 'theme_config' object instead.
+        $theme = \theme_config::load('shoelace');
+    }
     $variables = array();
 
     if (!empty($theme->settings->themecolour)) {
@@ -96,30 +99,23 @@ function theme_shoelace_less_variables($theme) {
  * Extra LESS code to inject.
  *
  * This will generate some LESS code from the settings used by the user. We cannot use
- * the {@link theme_more_less_variables()} here because we need to create selectors or
+ * the {@link theme_shoelace_less_variables()} here because we need to create selectors or
  * alter existing ones.
  *
  * @param theme_config $theme The theme config object.
  * @return string Raw LESS code.
  */
 function theme_shoelace_extra_less($theme) {
-    global $CFG, $OUTPUT;
+    global $CFG;
 
     $content = '@import "'.$CFG->dirroot.'/theme/bootstrapbase/less/bootstrap/mixins";';
     $content = '@import "'.$CFG->dirroot.'/theme/bootstrapbase/less/moodle";';
-    /*
-    $content .= '@import "variables-shoelace";';
-    $content .= '@import "bootstrapchanges";';
-    $content .= '@import "moodlechanges";';
-    $content .= '@import "shoelacechanges";';
-    $content .= '@import "shoelacecustom";';
-    */
 
-    $content .= '@import "'.\theme_shoelace\toolbox::get_less_file('variables-shoelace').'";';
-    $content .= '@import "'.\theme_shoelace\toolbox::get_less_file('bootstrapchanges').'";';
-    $content .= '@import "'.\theme_shoelace\toolbox::get_less_file('moodlechanges').'";';
-    $content .= '@import "'.\theme_shoelace\toolbox::get_less_file('shoelacechanges').'";';
-    $content .= '@import "'.\theme_shoelace\toolbox::get_less_file('shoelacecustom').'";';
+    $content .= \theme_shoelace\toolbox::get_extra_less('variables-shoelace');
+    $content .= \theme_shoelace\toolbox::get_extra_less('bootstrapchanges');
+    $content .= \theme_shoelace\toolbox::get_extra_less('moodlechanges');
+    $content .= \theme_shoelace\toolbox::get_extra_less('shoelacechanges');
+    $content .= \theme_shoelace\toolbox::get_extra_less('shoelacecustom');
 
     return $content;
 }

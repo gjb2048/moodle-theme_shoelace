@@ -27,11 +27,11 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version = 2015110200; // YYYYMMDDVV.
+$plugin->version = 2015110201; // YYYYMMDDVV.
 $plugin->maturity = MATURITY_BETA; // this version's maturity level.
-$plugin->release = '2.9.0.1';
+$plugin->release = '2.9.0.2';
 $plugin->requires  = 2015051100.00; // 2.9 (Build: 20150511).
 $plugin->component = 'theme_eyelet';
 $plugin->dependencies = array(
-    'theme_shoelace'  => 2015052201
+    'theme_shoelace'  => 2015052202
 );

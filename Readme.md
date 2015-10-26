@@ -114,6 +114,9 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+Version 2.9.2.1
+  1. Improvements to child theme support for generated less variables and extra.
+
 Version 2.9.2
   1. html5shiv for IE8 or less.
   2. Implement MDL-50869.

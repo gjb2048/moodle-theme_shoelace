@@ -31,8 +31,8 @@ $THEME->yuicssmodules = array();
 $THEME->parents = array('shoelace');
 
 $THEME->lessfile = 'moodlealleyelet';
-$THEME->lessvariablescallback = 'theme_shoelace_less_variables';
-$THEME->extralesscallback = 'theme_shoelace_extra_less';
+$THEME->lessvariablescallback = 'theme_eyelet_less_variables';
+$THEME->extralesscallback = 'theme_eyelet_extra_less';
 
 $THEME->sheets[] = 'eyelet';
 

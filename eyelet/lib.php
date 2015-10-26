@@ -43,3 +43,36 @@ function theme_eyelet_process_css($css, $theme) {
     // Finally return processed CSS
     return $css;
 }
+
+/**
+ * Returns variables for LESS.
+ *
+ * We will inject some LESS variables from the settings that the user has defined
+ * for the theme. No need to write some custom LESS for this.
+ *
+ * Ref: https://docs.moodle.org/dev/Themes_overview#Compiling_LESS_on_the_fly
+ *
+ * @param theme_config $theme The theme config object.
+ * @return array of LESS variables without the @.
+ */
+function theme_eyelet_less_variables($theme) {
+    $variables = theme_shoelace_less_variables(null);
+
+    return $variables;
+}
+/**
+ * Extra LESS code to inject.
+ *
+ * This will generate some LESS code from the settings used by the user. We cannot use
+ * the {@link theme_eyelet_less_variables()} here because we need to create selectors or
+ * alter existing ones.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string Raw LESS code.
+ */
+function theme_eyelet_extra_less($theme) {
+
+    $content = theme_shoelace_extra_less($theme);
+
+    return $content;
+}
