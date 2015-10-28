@@ -109,6 +109,13 @@ class toolbox {
         return $content;
     }
 
+    /**
+     * Finds the given setting in the theme from the themes' configuration object.
+     * @param string $setting Setting name.
+     * @param string $format false|'format_text'|'format_html'.
+     * @param theme_config $theme null|theme_config object.
+     * @return any false|value of setting.
+     */
     static public function get_setting($setting, $format = false, $theme = null) {
 
         if (empty($theme)) {
@@ -131,6 +138,20 @@ class toolbox {
         } else {
             return format_string($theme->settings->$setting);
         }
+    }
+
+
+    /**
+     * Finds the given setting in the theme using the get_config core function for when the theme_config object has not been created.
+     * @param string $setting Setting name.
+     * @param themename $themename null(default of 'shoelace' used)|theme name.
+     * @return any false|value of setting.
+     */
+    static public function get_config_setting($setting, $themename = null) {
+        if (empty($themename)) {
+            $themename = 'shoelace';
+        }
+        return \get_config('theme_'.$themename, $setting);
     }
 
     /**

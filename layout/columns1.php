@@ -35,8 +35,9 @@ echo $OUTPUT->doctype() ?>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
     <?php
         echo $OUTPUT->standard_head_html();
-        if (!empty($PAGE->theme->settings->cdnfonts) && ($PAGE->theme->settings->cdnfonts == 2)) {
-            require_once(\theme_shoelace\toolbox::get_tile_file('cdn_fonts'));
+        $cdnfonts = \theme_shoelace\toolbox::get_setting('cdnfonts');
+        if (!empty($cdnfonts) && ($cdnfonts == 2)) {
+            require_once(\theme_shoelace\toolbox::get_tile_file('cdnfonts'));
         }
     ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

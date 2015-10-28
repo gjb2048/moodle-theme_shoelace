@@ -114,6 +114,10 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+Version 2.9.2.2
+  1. Improvements to child theme support.
+  2. Update to FontAwesome 4.4.0.
+
 Version 2.9.2.1
   1. Improvements to child theme support for generated less variables and extra.
   2. Fix bug when using a logo.

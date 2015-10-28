@@ -34,10 +34,12 @@ $THEME->lessfile = 'moodleallshoelace';
 $THEME->lessvariablescallback = 'theme_shoelace_less_variables';
 $THEME->extralesscallback = 'theme_shoelace_extra_less';
 
-if (!empty($THEME->settings->cdnfonts) && ($THEME->settings->cdnfonts == 1)) {
+$cdnfonts = \theme_shoelace\toolbox::get_config_setting('cdnfonts');
+if (!empty($cdnfonts) && ($cdnfonts == 1)) {
     $THEME->sheets[] = 'font';
     $THEME->sheets[] = 'font-awesome';
 }
+
 $THEME->sheets[] = 'custom';
 
 $THEME->supportscssoptimisation = false;
