@@ -49,12 +49,6 @@ $THEME->layouts = array(
         'file' => 'frontpage.php',
         'regions' => array('side-pre'),
         'defaultregion' => 'side-pre'
-    ),
-    // The shoehorn custom page layout.  Not listed on: http://docs.moodle.org/dev/Themes_overview.
-    'page' => array(
-        'file' => 'page.php',
-        'regions' => $sidepreregions,
-        'defaultregion' => 'side-pre'
     )
 );
 
