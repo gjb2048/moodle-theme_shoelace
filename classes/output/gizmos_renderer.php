@@ -25,11 +25,13 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace theme_shoelace\output;
+
 defined('MOODLE_INTERNAL') || die();
 
-class theme_shoelace_gizmos_renderer extends plugin_renderer_base {
+class gizmos_renderer extends \plugin_renderer_base {
 
-    public function __construct(moodle_page $page, $target) {
+    public function __construct(\moodle_page $page, $target) {
         parent::__construct($page, $target);
     }
 

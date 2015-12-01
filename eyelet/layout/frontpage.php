@@ -25,7 +25,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 
  */
-$us = $PAGE->get_renderer('theme_shoelace', 'gizmos');
+$us = $PAGE->get_renderer('theme_eyelet', 'gizmos');
 echo $us->testme();
 
 // Get the HTML for the settings bits.

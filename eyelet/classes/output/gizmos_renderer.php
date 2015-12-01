@@ -25,11 +25,13 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace theme_eyelet\output;
+
 defined('MOODLE_INTERNAL') || die();
 
-class theme_eyelet_theme_shoelace_gizmos_renderer extends theme_shoelace_gizmos_renderer {
+class gizmos_renderer extends \theme_shoelace\output\gizmos_renderer {
 
-    public function __construct(moodle_page $page, $target) {
+    public function __construct(\moodle_page $page, $target) {
         parent::__construct($page, $target);
     }
 
