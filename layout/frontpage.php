@@ -26,6 +26,9 @@
 
  */
 
+$us = $PAGE->get_renderer('theme_shoelace', 'gizmos');
+echo $us->testme();
+
 // Get the HTML for the settings bits.
 $settingshtml = \theme_shoelace\toolbox::get_html_for_settings();
 

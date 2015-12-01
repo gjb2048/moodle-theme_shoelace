@@ -55,9 +55,9 @@ Sponsorships may allow me to provide you with more or better features in less ti
 
 Customisation
 =============
-If you like this theme and would like me to customise it, transpose functionality to another theme or build a new theme
-from scratch, then I offer competitive rates.  Please contact me via www.gjbarnard.co.uk/contact/ or gjbarnard at gmail dot com
-to discuss your requirements.
+If you like this theme and would like me to customise it, transpose functionality to another theme or
+build a new theme from scratch, then I offer competitive rates.  Please contact me via 'www.gjbarnard.co.uk/contact/'
+or 'gjbarnard at gmail dot com' or 'about.me/gjbarnard' to discuss your requirements.
 
 Required version of Moodle
 ==========================
@@ -106,10 +106,11 @@ I operate a policy that I will fix all genuine issues for free.  Improvements ar
 customisations / improvements for a negotiated fee. 
 
 When reporting an issue you can post in the theme's forum on Moodle.org (currently 'moodle.org/mod/forum/view.php?id=46')
-or contact me direct (details at the bottom).
+or check the issue list https://github.com/gjb2048/moodle-theme_shoelace/issues and if the problem does not exist, create an
+issue.
 
-It is essential that you provide as much information as possible, the critical information being the contents of the format's 
-version.php file.  Other version information such as specific Moodle version, theme name and version also helps.  A screen shot
+It is essential that you provide as much information as possible, the critical information being the contents of the theme's 
+'version.php' file.  Other version information such as specific Moodle version, theme name and version also helps.  A screen shot
 can be really useful in visualising the issue along with any files you consider to be relevant.
 
 Version Information
