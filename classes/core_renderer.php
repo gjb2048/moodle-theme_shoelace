@@ -28,6 +28,11 @@
 require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php');
 
 class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
+
+    public function testme() {
+        return 'theme_shoelace_core_renderer';
+    }
+
     /*
      * This renders the navbar.
      * Uses bootstrap compatible html.
