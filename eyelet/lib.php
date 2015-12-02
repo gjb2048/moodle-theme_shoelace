@@ -40,6 +40,14 @@ function theme_eyelet_process_css($css, $theme) {
 
     // If you have your own settings, then add them here.
 
+    //global $OUTPUT;
+    //$css .= '.testme {display: '.$OUTPUT->testme().' }';
+    global $PAGE, $OUTPUT;
+    $output = $PAGE->get_renderer('theme_eyelet', 'core');
+    $css .= '.testme {display: '.$output->testme().' }';
+    $css .= '.testtc {display: '.$output->testtc().' }';
+    $css .= '.get_class {display: '.get_class($OUTPUT).' }';
+
     // Finally return processed CSS
     return $css;
 }

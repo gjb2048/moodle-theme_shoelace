@@ -25,12 +25,49 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php');
+namespace theme_shoelace\output;
 
-class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
+/*
+use theme_bootstrapbase_core_renderer;
+*/
+use custom_menu;
+use html_writer;
+use coding_exception;
+use block_contents;
+
+require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php');  // Urrgh, but it works for child themes.
+
+class core_renderer extends \theme_bootstrapbase_core_renderer {
+
+    protected $themeconfig;
+
+    /**
+     * Constructor
+     *
+     * @param moodle_page $page the page we are doing output for.
+     * @param string $target one of rendering target constants
+     */
+    public function __construct(\moodle_page $page, $target) {
+        parent::__construct($page, $target);
+        $this->themeconfig = array('theme_shoelace' => \theme_config::load('shoelace'));
+    }
 
     public function testme() {
-        return 'theme_shoelace_core_renderer';
+        return 'theme_shoelace_output_core_renderer';
+    }
+
+    public function testtc() {
+        $output = 'testtc -> ';
+        foreach ($this->themeconfig as $key => $config) {
+            $output .= $key.' - ';
+            $output .= $config->name.' - ';
+            $output .= print_r($config->settings, true);
+        }
+        return $output;
+    }
+
+    public function me() {
+        return 'me - shoelace';
     }
 
     /*

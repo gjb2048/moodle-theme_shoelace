@@ -31,11 +31,21 @@ defined('MOODLE_INTERNAL') || die();
 
 class gizmos_renderer extends \plugin_renderer_base {
 
+    protected $themeconfig;
+
     public function __construct(\moodle_page $page, $target) {
         parent::__construct($page, $target);
+        $this->themeconfig = array('theme_shoelace' => \theme_config::load('shoelace'));
     }
 
     public function testme() {
         return 'theme_shoelace_gizmos_renderer';
+    }
+    public function testtc() {
+        $output = 'testtc-gizmos -> ';
+        foreach ($this->themeconfig as $key => $config) {
+            $output .= $config->name.' - ';
+        }
+        return $output;
     }
 }

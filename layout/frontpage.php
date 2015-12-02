@@ -28,6 +28,18 @@
 
 $us = $PAGE->get_renderer('theme_shoelace', 'gizmos');
 echo $us->testme();
+echo '<br />';
+echo $us->testtc();
+echo '<br />';
+$uscore = $PAGE->get_renderer('theme_shoelace', 'core');
+echo $uscore->testme();
+echo '<br />';
+echo $uscore->testtc();
+echo '<br />';
+echo $OUTPUT->me();
+echo '<br />';
+echo get_class($OUTPUT);
+echo '<br />';
 
 // Get the HTML for the settings bits.
 $settingshtml = \theme_shoelace\toolbox::get_html_for_settings();

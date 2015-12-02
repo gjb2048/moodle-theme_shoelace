@@ -31,8 +31,15 @@ defined('MOODLE_INTERNAL') || die();
 
 class gizmos_renderer extends \theme_shoelace\output\gizmos_renderer {
 
+    /**
+     * Constructor
+     *
+     * @param moodle_page $page the page we are doing output for.
+     * @param string $target one of rendering target constants
+     */
     public function __construct(\moodle_page $page, $target) {
         parent::__construct($page, $target);
+        $this->themeconfig['theme_eyelet'] = \theme_config::load('eyelet');
     }
 
     public function testme() {
