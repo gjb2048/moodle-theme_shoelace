@@ -29,7 +29,14 @@ namespace theme_shoelace;
 
 class toolbox {
 
-    static protected $theme;
+    static protected $corerenderer = null;
+
+    static public function set_core_renderer($core) {
+        // Set only once from the initial calling lib.php process_css function.  Must happen before parents.
+        if (null === self::$corerenderer) {
+            self::$corerenderer = $core;
+        }
+    }
 
     /**
      * Finds the given tile file in the theme.  If it does not exist for the Shoelace child theme then the parent is checked.
@@ -116,28 +123,40 @@ class toolbox {
      * @param theme_config $theme null|theme_config object.
      * @return any false|value of setting.
      */
-    static public function get_setting($setting, $format = false, $theme = null) {
+    static public function get_setting($setting, $format = false) {
 
-        if (empty($theme)) {
-            if (empty(self::$theme)) {
-                self::$theme = \theme_config::load('shoelace');
-            }
-            $theme = self::$theme;
+        if (empty(self::$corerenderer)) {
+            // Use $OUTPUT.
+            global $OUTPUT;
+            self::$corerenderer = $OUTPUT;
         }
+        error_log('get_setting toolbox: '.get_class(self::$corerenderer));
+        $settingvalue = self::$corerenderer->get_setting($setting);
 
         global $CFG;
         require_once($CFG->dirroot . '/lib/weblib.php');
-        if (empty($theme->settings->$setting)) {
+        if (empty($settingvalue)) {
             return false;
         } else if (!$format) {
-            return $theme->settings->$setting;
+            return $settingvalue;
         } else if ($format === 'format_text') {
-            return format_text($theme->settings->$setting, FORMAT_PLAIN);
+            return format_text($settingvalue, FORMAT_PLAIN);
         } else if ($format === 'format_html') {
-            return format_text($theme->settings->$setting, FORMAT_HTML, array('trusted' => true, 'noclean' => true));
+            return format_text($settingvalue, FORMAT_HTML, array('trusted' => true, 'noclean' => true));
         } else {
-            return format_string($theme->settings->$setting);
+            return format_string($settingvalue);
         }
+    }
+
+    static public function setting_file_url($setting, $filearea, $theme = null) {
+        if (empty(self::$corerenderer)) {
+            // Use $OUTPUT.
+            global $OUTPUT;
+            self::$corerenderer = $OUTPUT;
+        }
+        error_log('get_setting toolbox: '.get_class(self::$corerenderer));
+
+        return self::$corerenderer->setting_file_url($setting, $filearea);
     }
 
 
@@ -165,30 +184,23 @@ class toolbox {
      */
     static function get_html_for_settings($theme = null) {
 
-        if (empty($theme)) {
-            if (empty(self::$theme)) {
-                self::$theme = \theme_config::load('shoelace');
-            }
-            $theme = self::$theme;
-        }
-
-        global $CFG, $OUTPUT;
+        global $CFG;
         $return = new \stdClass;
 
         $return->navbarclass = '';
-        if (!empty($theme->settings->invert)) {
+        if (!empty(self::get_setting('invert'))) {
             $return->navbarclass .= ' navbar-inverse';
         }
 
-        if (!empty($theme->settings->logo)) {
+        if (!empty(self::get_setting('logo'))) {
             $return->heading = \html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
         } else {
-            $return->heading = $OUTPUT->page_heading();
+            $return->heading = self::$corerenderer->page_heading();
         }
 
         $return->footnote = '';
-        if (!empty($theme->settings->footnote)) {
-            $return->footnote = '<div class="footnote text-center">'.$theme->settings->footnote.'</div>';
+        if (!empty(self::get_setting('footnote'))) {
+            $return->footnote = '<div class="footnote text-center">'.self::get_setting('footnote').'</div>';
         }
 
         return $return;

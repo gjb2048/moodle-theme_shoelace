@@ -26,6 +26,10 @@
  */
 
 function theme_eyelet_process_css($css, $theme) {
+    global $PAGE, $OUTPUT;
+    $outputus = $PAGE->get_renderer('theme_eyelet', 'core');
+    \theme_shoelace\toolbox::set_core_renderer($outputus);
+
     global $CFG;
     if (file_exists("$CFG->dirroot/theme/shoelace/lib.php")) {
         require_once("$CFG->dirroot/theme/shoelace/lib.php");
@@ -42,11 +46,15 @@ function theme_eyelet_process_css($css, $theme) {
 
     //global $OUTPUT;
     //$css .= '.testme {display: '.$OUTPUT->testme().' }';
-    global $PAGE, $OUTPUT;
-    $output = $PAGE->get_renderer('theme_eyelet', 'core');
-    $css .= '.testme {display: '.$output->testme().' }';
-    $css .= '.testtc {display: '.$output->testtc().' }';
-    $css .= '.get_class {display: '.get_class($OUTPUT).' }';
+    //global $PAGE, $OUTPUT;
+    //$outputus = $PAGE->get_renderer('theme_eyelet', 'core');
+    $css .= '.testmeeye {display: '.$outputus->testme().' }';
+    $css .= '.testtceye {display: '.$outputus->testtc().' }';
+    $css .= '.get_classeye {display: '.get_class($OUTPUT).' }';
+
+    $css .= '.eyeversion {display: '.\theme_shoelace\toolbox::get_setting('version').'}';  // Should be Eyelet version no not Shoelace.
+    $css .= '.eyetextcolour {display: '.\theme_shoelace\toolbox::get_setting('textcolour').'}';  // Should be from Shoelace and not empty.
+    $css .= '.eyelogourl {display: '.\theme_shoelace\toolbox::setting_file_url('logo', 'logo').'}';  // Should be from Shoelace and not empty.
 
     // Finally return processed CSS
     return $css;

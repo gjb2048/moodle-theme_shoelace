@@ -36,7 +36,8 @@ class core_renderer extends \theme_shoelace\output\core_renderer {
      */
     public function __construct(\moodle_page $page, $target) {
         parent::__construct($page, $target);
-        $this->themeconfig['theme_eyelet'] = \theme_config::load('eyelet');
+        //$this->themeconfig['theme_eyelet'] = \theme_config::load('eyelet');
+        $this->themeconfig[] = \theme_config::load('eyelet');
     }
 
     public function testme() {

@@ -26,17 +26,30 @@
  */
 
 function theme_shoelace_process_css($css, $theme) {
+    global $PAGE, $OUTPUT;
+    $outputus = $PAGE->get_renderer('theme_shoelace', 'core');
+    \theme_shoelace\toolbox::set_core_renderer($outputus);
+
     // Set the background image for the logo.
-    $logo = $theme->setting_file_url('logo', 'logo');
+    $logo = \theme_shoelace\toolbox::setting_file_url('logo', 'logo');
     $css = theme_shoelace_set_logo($css, $logo);
 
     // Set custom CSS.
-    if (!empty($theme->settings->customcss)) {
-        $customcss = $theme->settings->customcss;
+    $ccss = \theme_shoelace\toolbox::get_setting('customcss');
+    if (!empty($ccss)) {
+        $customcss = $ccss;
     } else {
         $customcss = null;
     }
     $css = theme_shoelace_set_customcss($css, $customcss);
+
+    $css .= '.testmeshoe {display: '.$outputus->testme().' }';
+    $css .= '.testtcshoe {display: '.$outputus->testtc().' }';
+    $css .= '.get_classshoe {display: '.get_class($OUTPUT).' }';
+
+    $css .= '.shoeversion {display: '.\theme_shoelace\toolbox::get_setting('version').'}';  // Should be Eyelet version no not Shoelace.
+    $css .= '.shoetextcolour {display: '.\theme_shoelace\toolbox::get_setting('textcolour').'}';  // Should be from Shoelace and not empty.
+    $css .= '.shoelogourl {display: '.\theme_shoelace\toolbox::setting_file_url('logo', 'logo').'}';  // Should be from Shoelace and not empty.
 
     return $css;
 }

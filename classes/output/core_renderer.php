@@ -34,6 +34,8 @@ use custom_menu;
 use html_writer;
 use coding_exception;
 use block_contents;
+use block_move_target;
+use moodle_url;
 
 require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php');  // Urrgh, but it works for child themes.
 
@@ -49,7 +51,8 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      */
     public function __construct(\moodle_page $page, $target) {
         parent::__construct($page, $target);
-        $this->themeconfig = array('theme_shoelace' => \theme_config::load('shoelace'));
+        //$this->themeconfig = array('theme_shoelace' => \theme_config::load('shoelace'));
+        $this->themeconfig = array(\theme_config::load('shoelace'));
     }
 
     public function testme() {
@@ -68,6 +71,38 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     public function me() {
         return 'me - shoelace';
+    }
+
+    public function get_setting($setting) {
+        //error_log('cr gs 1: '. print_r($this->themeconfig, true));
+        $tcr = array_reverse($this->themeconfig, true);
+        //error_log('cr gs 2: '. print_r($tcr, true));
+        //error_log('cr gs 3: '. print_r($this->themeconfig, true));
+
+        $settingvalue = false;
+        foreach($tcr as $tkey => $tconfig) {
+            if (property_exists($tconfig->settings, $setting)) {
+                $settingvalue = $tconfig->settings->$setting;
+                break;
+            }
+        }
+        return $settingvalue;
+    }
+
+    public function setting_file_url($setting, $filearea) {
+        $tcr = array_reverse($this->themeconfig, true);
+        $settingconfig = null;
+        foreach($tcr as $tkey => $tconfig) {
+            if (property_exists($tconfig->settings, $setting)) {
+                $settingconfig = $tconfig;
+                break;
+            }
+        }
+
+        if ($settingconfig) {
+            return $settingconfig->setting_file_url($setting, $filearea);
+        }
+        return null;
     }
 
     /*
