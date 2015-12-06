@@ -105,6 +105,10 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         return null;
     }
 
+    public function pix_url($imagename, $component = 'moodle') {
+        return end($this->themeconfig)->pix_url($imagename, $component);
+    }
+
     /*
      * This renders the navbar.
      * Uses bootstrap compatible html.

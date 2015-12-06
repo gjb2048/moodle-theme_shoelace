@@ -148,7 +148,7 @@ class toolbox {
         }
     }
 
-    static public function setting_file_url($setting, $filearea, $theme = null) {
+    static public function setting_file_url($setting, $filearea) {
         if (empty(self::$corerenderer)) {
             // Use $OUTPUT.
             global $OUTPUT;
