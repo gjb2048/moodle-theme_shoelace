@@ -26,13 +26,17 @@
  */
 
 function theme_shoelace_process_css($css, $theme) {
+    global $PAGE;
+    $outputus = $PAGE->get_renderer('theme_shoelace', 'core');
+    \theme_shoelace\toolbox::set_core_renderer($outputus);
+
     // Set the background image for the logo.
-    $logo = $theme->setting_file_url('logo', 'logo');
+    $logo = \theme_shoelace\toolbox::setting_file_url('logo', 'logo');
     $css = theme_shoelace_set_logo($css, $logo);
 
     // Set custom CSS.
-    if (!empty($theme->settings->customcss)) {
-        $customcss = $theme->settings->customcss;
+    if (!empty(\theme_shoelace\toolbox::get_setting('customcss'))) {
+        $customcss = \theme_shoelace\toolbox::get_setting('customcss');
     } else {
         $customcss = null;
     }

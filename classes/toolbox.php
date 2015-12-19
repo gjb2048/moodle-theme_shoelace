@@ -29,37 +29,68 @@ namespace theme_shoelace;
 
 class toolbox {
 
-    static protected $theme;
+    static protected $corerenderer = null;
+
+    static public function set_core_renderer($core) {
+        // Set only once from the initial calling lib.php process_css function.  Must happen before parents.
+        if (null === self::$corerenderer) {
+            self::$corerenderer = $core;
+        }
+    }
 
     /**
-     * Finds the given tile file in the theme.  If it does not exist for the Shoelace child theme then the parent is checked.
+     * Finds the given tile file in the theme.  If it does not exist for the Shoehorn child theme then the parent is checked.
      * @param string $filename Filename without extension to get.
      * @return string Complete path of the file.
      */
     static public function get_tile_file($filename) {
-        global $CFG, $PAGE;
-        $themedir = $PAGE->theme->dir;
-        $filename .= '.php';
+        self::check_corerenderer();
+        return self::$corerenderer->get_tile_file($filename);
+    }
 
-        /* Check only if a child of 'Shoelace' to prevent conflicts with other themes using the 'tiles' folder.
-           The test is to change theme from Shoelace to Eyelet with the theme selector and not get an error. */
-        if (in_array('shoelace', $PAGE->theme->parents)) {
-            $themename = $PAGE->theme->name;
-            if (file_exists("$themedir/layout/tiles/$filename")) {
-                return "$themedir/layout/tiles/$filename";
-            } else if (file_exists("$CFG->dirroot/theme/$themename/layout/tiles/$filename")) {
-                return "$CFG->dirroot/theme/$themename/layout/tiles/$filename";
-            } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/$themename/layout/tiles/$filename")) {
-                return "$CFG->themedir/$themename/layout/tiles/$filename";
-            }
-        }
-        // Check Shoelace.
-        if (file_exists("$CFG->dirroot/theme/shoelace/layout/tiles/$filename")) {
-            return "$CFG->dirroot/theme/shoelace/layout/tiles/$filename";
-        } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/shoelace/layout/tiles/$filename")) {
-            return "$CFG->themedir/shoelace/layout/tiles/$filename";
+    /**
+     * Finds the given setting in the theme from the themes' configuration object.
+     * @param string $setting Setting name.
+     * @param string $format false|'format_text'|'format_html'.
+     * @param theme_config $theme null|theme_config object.
+     * @return any false|value of setting.
+     */
+    static public function get_setting($setting, $format = false, $default = false) {
+        self::check_corerenderer();
+
+        $settingvalue = self::$corerenderer->get_setting($setting, $default);
+
+        global $CFG;
+        require_once($CFG->dirroot . '/lib/weblib.php');
+        if (empty($settingvalue)) {
+            return $default;
+        } else if (!$format) {
+            return $settingvalue;
+        } else if ($format === 'format_text') {
+            return format_text($settingvalue, FORMAT_PLAIN);
+        } else if ($format === 'format_html') {
+            return format_text($settingvalue, FORMAT_HTML, array('trusted' => true, 'noclean' => true));
         } else {
-            return dirname(__FILE__)."/$filename";
+            return format_string($settingvalue);
+        }
+    }
+
+    static public function setting_file_url($setting, $filearea) {
+        self::check_corerenderer();
+
+        return self::$corerenderer->setting_file_url($setting, $filearea);
+    }
+
+    static public function pix_url($imagename, $component) {
+        self::check_corerenderer();
+        return self::$corerenderer->pix_url($imagename, $component);
+    }
+
+    static private function check_corerenderer() {
+        if (empty(self::$corerenderer)) {
+            // Use $OUTPUT.
+            global $OUTPUT;
+            self::$corerenderer = $OUTPUT;
         }
     }
 
@@ -69,30 +100,8 @@ class toolbox {
      * @return string Complete path of the file.
      */
     static private function get_less_file($filename) {
-        global $CFG, $PAGE;
-        $themedir = $PAGE->theme->dir;
-        $filename .= '.less';
-
-        /* Check only if a child of 'Shoelace' to prevent conflicts with other themes using the 'tiles' folder.
-           The test is to change theme from Shoelace to Eyelet with the theme selector and not get an error. */
-        if (in_array('shoelace', $PAGE->theme->parents)) {
-            $themename = $PAGE->theme->name;
-            if (file_exists("$themedir/less/$filename")) {
-                return "$themedir/less/$filename";
-            } else if (file_exists("$CFG->dirroot/theme/$themename/less/$filename")) {
-                return "$CFG->dirroot/theme/$themename/layout/tiles/$filename";
-            } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/$themename/less/$filename")) {
-                return "$CFG->themedir/$themename/less/$filename";
-            }
-        }
-        // Check Shoelace.
-        if (file_exists("$CFG->dirroot/theme/shoelace/less/$filename")) {
-            return "$CFG->dirroot/theme/shoelace/less/$filename";
-        } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/shoelace/less/$filename")) {
-            return "$CFG->themedir/shoelace/less/$filename";
-        } else {
-            return null;
-        }
+        self::check_corerenderer();
+        return self::$corerenderer->get_less_file($filename);
     }
 
     /**
@@ -108,38 +117,6 @@ class toolbox {
         }
         return $content;
     }
-
-    /**
-     * Finds the given setting in the theme from the themes' configuration object.
-     * @param string $setting Setting name.
-     * @param string $format false|'format_text'|'format_html'.
-     * @param theme_config $theme null|theme_config object.
-     * @return any false|value of setting.
-     */
-    static public function get_setting($setting, $format = false, $theme = null) {
-
-        if (empty($theme)) {
-            if (empty(self::$theme)) {
-                self::$theme = \theme_config::load('shoelace');
-            }
-            $theme = self::$theme;
-        }
-
-        global $CFG;
-        require_once($CFG->dirroot . '/lib/weblib.php');
-        if (empty($theme->settings->$setting)) {
-            return false;
-        } else if (!$format) {
-            return $theme->settings->$setting;
-        } else if ($format === 'format_text') {
-            return format_text($theme->settings->$setting, FORMAT_PLAIN);
-        } else if ($format === 'format_html') {
-            return format_text($theme->settings->$setting, FORMAT_HTML, array('trusted' => true, 'noclean' => true));
-        } else {
-            return format_string($theme->settings->$setting);
-        }
-    }
-
 
     /**
      * Finds the given setting in the theme using the get_config core function for when the theme_config object has not been created.
@@ -164,31 +141,25 @@ class toolbox {
      *      - footnote HTML to use as a footnote. By default ''.
      */
     static function get_html_for_settings($theme = null) {
-
-        if (empty($theme)) {
-            if (empty(self::$theme)) {
-                self::$theme = \theme_config::load('shoelace');
-            }
-            $theme = self::$theme;
-        }
-
-        global $CFG, $OUTPUT;
         $return = new \stdClass;
 
         $return->navbarclass = '';
-        if (!empty($theme->settings->invert)) {
+        if (!empty(self::get_setting('inversenavbar'))) {
             $return->navbarclass .= ' navbar-inverse';
         }
 
-        if (!empty($theme->settings->logo)) {
+        if (!empty(self::get_setting('logo'))) {
+            global $CFG;
             $return->heading = \html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
         } else {
+            global $OUTPUT;
             $return->heading = $OUTPUT->page_heading();
         }
 
         $return->footnote = '';
-        if (!empty($theme->settings->footnote)) {
-            $return->footnote = '<div class="footnote text-center">'.$theme->settings->footnote.'</div>';
+        $footnote = self::get_setting('footnote');
+        if (!empty($footnote)) {
+            $return->footnote = '<div class="footnote text-center">'.$footnote.'</div>';
         }
 
         return $return;

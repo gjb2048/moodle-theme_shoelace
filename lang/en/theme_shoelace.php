@@ -59,6 +59,8 @@ clicking here to sponsor.
 
 $string['configtitle'] = 'Shoelace';
 
+$string['credit'] = 'The Shoelace theme for Moodle is developed and maintained by ';
+
 $string['themecolour'] = 'Theme colour';
 $string['themecolourdesc'] = 'Set the colour for the theme.';
 

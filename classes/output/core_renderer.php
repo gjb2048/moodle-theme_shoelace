@@ -25,14 +25,91 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php');
+namespace theme_shoelace\output;
 
-class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
+use custom_menu;
+use html_writer;
+use coding_exception;
+use block_contents;
+use block_move_target;
+use moodle_url;
+
+require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php');  // Urrgh, but it works for child themes.
+
+class core_renderer extends \theme_bootstrapbase_core_renderer {
+    protected $themeconfig = null;
+
+    public function __construct(\moodle_page $page, $target) {
+        parent::__construct($page, $target);
+        $this->themeconfig = array(\theme_config::load('shoelace'));
+    }
+
+    public function get_setting($setting, $default = false) {
+        $tcr = array_reverse($this->themeconfig, true);
+
+        $settingvalue = $default;
+        foreach($tcr as $tkey => $tconfig) {
+            if (property_exists($tconfig->settings, $setting)) {
+                $settingvalue = $tconfig->settings->$setting;
+                break;
+            }
+        }
+        return $settingvalue;
+    }
+
+    public function setting_file_url($setting, $filearea) {
+        $tcr = array_reverse($this->themeconfig, true);
+        $settingconfig = null;
+        foreach($tcr as $tkey => $tconfig) {
+            if (property_exists($tconfig->settings, $setting)) {
+                $settingconfig = $tconfig;
+                break;
+            }
+        }
+
+        if ($settingconfig) {
+            return $settingconfig->setting_file_url($setting, $filearea);
+        }
+        return null;
+    }
+
+    public function pix_url($imagename, $component = 'moodle') {
+        return end($this->themeconfig)->pix_url($imagename, $component);
+    }
+
+
+    public function get_tile_file($filename) {
+        global $CFG;
+        $themedir = $this->page->theme->dir;
+        $filename .= '.php';
+
+        if (file_exists("$CFG->dirroot/theme/shoelace/layout/tiles/$filename")) {
+            return "$CFG->dirroot/theme/shoelace/layout/tiles/$filename";
+        } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/shoelace/layout/tiles/$filename")) {
+            return "$CFG->themedir/shoelace/layout/tiles/$filename";
+        } else {
+            return dirname(__FILE__) . "/$filename";
+        }
+    }
+
+    public function get_less_file($filename) {
+        global $CFG;
+        $themedir = $this->page->theme->dir;
+        $filename .= '.less';
+
+        if (file_exists("$CFG->dirroot/theme/shoelace/less/$filename")) {
+            return "$CFG->dirroot/theme/shoelace/less/$filename";
+        } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/shoelace/less/$filename")) {
+            return "$CFG->themedir/shoelace/less/$filename";
+        } else {
+            return dirname(__FILE__) . "/$filename";
+        }
+    }
+
     /*
      * This renders the navbar.
      * Uses bootstrap compatible html.
      */
-
     public function navbar() {
         $items = $this->page->navbar->get_items();
         if (right_to_left()) {
@@ -94,6 +171,16 @@ class theme_shoelace_core_renderer extends theme_bootstrapbase_core_renderer {
             }
         }
         return html_writer::tag('ul', $firstrow, array('class' => 'nav nav-pills')) . $secondrow;
+    }
+
+    public function standard_footer_html() {
+        $output = parent::standard_footer_html();
+        $output .= html_writer::start_tag('div', array ('class' => 'themecredit')).
+                   get_string('credit', 'theme_shoelace').
+                   html_writer::link('//about.me/gjbarnard', 'Gareth J Barnard', array('target' => '_blank')).
+                   html_writer::end_tag('div');
+
+        return $output;
     }
 
     /**
