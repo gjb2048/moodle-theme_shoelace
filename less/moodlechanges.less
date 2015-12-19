@@ -85,6 +85,15 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
     border-bottom: 2px solid @inputBorder;
 }
 
+.course-content ul li.section.hidden {
+    .sectionname > span,
+    .content > div,  /* All the divs but the activities which are in a UL. */
+    .activity .activityinstance {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
 /* Mary Evans changes - see https://moodle.org/mod/forum/discuss.php?d=230919#p1004239. */
 .coursebox > .info > .name {
     width: auto;
