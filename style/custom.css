@@ -1,7 +1,9 @@
 /* Shoelace Custom CSS
 -------------------------*/
 a.logo {
-    background: url([[setting:logo]]) no-repeat 0 0;
+    background-image: url('[[setting:logo]]');
+    background-repeat: no-repeat;
+    background-position: 0 0;
     display: block;
     float: left;
     height: 75px;
@@ -11,7 +13,7 @@ a.logo {
 }
 
 .dir-rtl a.logo {
-    background: url([[setting:logo]]) no-repeat 100% 0;
+    background-position: 100% 0;
     display: block;
     float: right;
 }

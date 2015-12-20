@@ -159,7 +159,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      * @param tabtree $tabtree
      * @return string
      */
-    protected function render_tabtree(tabtree $tabtree) {
+    protected function render_tabtree(\tabtree $tabtree) {
         if (empty($tabtree->subtree)) {
             return '';
         }
