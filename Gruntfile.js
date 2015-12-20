@@ -57,15 +57,10 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-module.exports = function(grunt) {
+module.exports = function(grunt) { // jshint ignore:line
 
     // Import modules.
     var path = require('path');
-
-    // Theme Bootstrap constants.
-    var LESSDIR         = 'less',
-        MOODLEURLPREFIX = grunt.option('urlprefix') || '',
-        THEMEDIR        = path.basename(path.resolve('.'));
 
     // Production / development.
     var build = grunt.option('build') || 'd'; // Development for 'watch' task.
@@ -77,18 +72,17 @@ module.exports = function(grunt) {
     }
 
     // PHP strings for exec task.
-    var moodleroot = path.dirname(path.dirname(__dirname)),
+    var moodleroot = path.dirname(path.dirname(__dirname)), // jshint ignore:line
         configfile = '',
         decachephp = '',
-        dirrootopt = grunt.option('dirroot') || process.env.MOODLE_DIR || '';
+        dirrootopt = grunt.option('dirroot') || process.env.MOODLE_DIR || ''; // jshint ignore:line
 
     // Allow user to explicitly define Moodle root dir.
     if ('' !== dirrootopt) {
         moodleroot = path.resolve(dirrootopt);
     }
 
-    //var PWD = moodleroot + '/theme/' + THEMEDIR;
-    var PWD = process.cwd();
+    var PWD = process.cwd(); // jshint ignore:line
     configfile = path.join(moodleroot, 'config.php');
 
     decachephp += 'define(\'CLI_SCRIPT\', true);';
@@ -161,7 +155,7 @@ module.exports = function(grunt) {
         exec: {
             decache: {
                 cmd: 'php -r "' + decachephp + '"',
-                callback: function(error, stdout, stderror) {
+                callback: function(error) {
                     // exec will output error messages
                     // just add one to confirm success.
                     if (!error) {

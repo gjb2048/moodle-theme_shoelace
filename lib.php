@@ -35,9 +35,8 @@ function theme_shoelace_process_css($css, $theme) {
     $css = theme_shoelace_set_logo($css, $logo);
 
     // Set custom CSS.
-    if (!empty(\theme_shoelace\toolbox::get_setting('customcss'))) {
-        $customcss = \theme_shoelace\toolbox::get_setting('customcss');
-    } else {
+    $customcss = \theme_shoelace\toolbox::get_setting('customcss');
+    if (empty($customcss)) {
         $customcss = null;
     }
     $css = theme_shoelace_set_customcss($css, $customcss);
@@ -46,7 +45,6 @@ function theme_shoelace_process_css($css, $theme) {
 }
 
 function theme_shoelace_set_logo($css, $logo) {
-    global $OUTPUT;
     $tag = '[[setting:logo]]';
     $replacement = $logo;
     if (is_null($replacement)) {

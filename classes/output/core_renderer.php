@@ -48,7 +48,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         $tcr = array_reverse($this->themeconfig, true);
 
         $settingvalue = $default;
-        foreach ($tcr as $tkey => $tconfig) {
+        foreach ($tcr as $tconfig) {
             if (property_exists($tconfig->settings, $setting)) {
                 $settingvalue = $tconfig->settings->$setting;
                 break;
@@ -60,7 +60,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
     public function setting_file_url($setting, $filearea) {
         $tcr = array_reverse($this->themeconfig, true);
         $settingconfig = null;
-        foreach ($tcr as $tkey => $tconfig) {
+        foreach ($tcr as $tconfig) {
             if (property_exists($tconfig->settings, $setting)) {
                 $settingconfig = $tconfig;
                 break;
@@ -80,7 +80,6 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     public function get_tile_file($filename) {
         global $CFG;
-        $themedir = $this->page->theme->dir;
         $filename .= '.php';
 
         if (file_exists("$CFG->dirroot/theme/shoelace/layout/tiles/$filename")) {
@@ -94,7 +93,6 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     public function get_less_file($filename) {
         global $CFG;
-        $themedir = $this->page->theme->dir;
         $filename .= '.less';
 
         if (file_exists("$CFG->dirroot/theme/shoelace/less/$filename")) {

@@ -135,21 +135,22 @@ class toolbox {
     /**
      * Returns an object containing HTML for the areas affected by settings.
      *
-     * @param $theme Theme to use if not parent.
      * @return stdClass An object with the following properties:
      *      - navbarclass A CSS class to use on the navbar. By default ''.
      *      - heading HTML to use for the heading. A logo if one is selected or the default heading.
      *      - footnote HTML to use as a footnote. By default ''.
      */
-    static public function get_html_for_settings($theme = null) {
+    static public function get_html_for_settings() {
         $return = new \stdClass;
 
         $return->navbarclass = '';
-        if (!empty(self::get_setting('inversenavbar'))) {
+        $inversenavbar = self::get_setting('inversenavbar');
+        if (!empty($inversenavbar)) {
             $return->navbarclass .= ' navbar-inverse';
         }
 
-        if (!empty(self::get_setting('logo'))) {
+        $logo = self::get_setting('logo');
+        if (!empty($logo)) {
             global $CFG;
             $return->heading = \html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
         } else {
