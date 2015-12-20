@@ -80,7 +80,7 @@ if ($ADMIN->fulltree) {
 
     // Logo file setting.
     $name = 'theme_shoelace/logo';
-    $title = get_string('logo','theme_shoelace');
+    $title = get_string('logo', 'theme_shoelace');
     $description = get_string('logodesc', 'theme_shoelace');
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -88,7 +88,7 @@ if ($ADMIN->fulltree) {
 
     // Number of marketing blocks.
     $name = 'theme_shoelace/nummarketingblocks';
-    $title = get_string('nummarketingblocks','theme_shoelace');
+    $title = get_string('nummarketingblocks', 'theme_shoelace');
     $description = get_string('nummarketingblocksdesc', 'theme_shoelace');
     $choices = array(
         1 => new lang_string('one', 'theme_shoelace'),
@@ -102,7 +102,7 @@ if ($ADMIN->fulltree) {
 
     // Number of footer blocks.
     $name = 'theme_shoelace/numfooterblocks';
-    $title = get_string('numfooterblocks','theme_shoelace');
+    $title = get_string('numfooterblocks', 'theme_shoelace');
     $description = get_string('numfooterblocksdesc', 'theme_shoelace');
     $choices = array(
         1 => new lang_string('one', 'theme_shoelace'),

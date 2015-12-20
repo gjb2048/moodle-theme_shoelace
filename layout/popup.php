@@ -20,12 +20,12 @@ echo $OUTPUT->doctype() ?>
     <title><?php echo $OUTPUT->page_title(); ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
     <?php
-        echo $OUTPUT->standard_head_html();
-        $cdnfonts = \theme_shoelace\toolbox::get_setting('cdnfonts');
-        if (!empty($cdnfonts) && ($cdnfonts == 2)) {
-            require_once(\theme_shoelace\toolbox::get_tile_file('cdnfonts'));
-        }
-    ?>
+echo $OUTPUT->standard_head_html();
+$cdnfonts = \theme_shoelace\toolbox::get_setting('cdnfonts');
+if (!empty($cdnfonts) && ($cdnfonts == 2)) {
+    require_once(\theme_shoelace\toolbox::get_tile_file('cdnfonts'));
+}
+?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -34,13 +34,13 @@ echo $OUTPUT->doctype() ?>
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
 <?php
-    // If on desktop, then hide the header/footer.
-    $hideclass = '';
-    $devicetype = core_useragent::get_device_type();
-    if($devicetype !== 'mobile' and $devicetype !== 'tablet') {
-        // We can not use the Bootstrap responsive css classes because popups are phone sized on desktop.
-        $hideclass = 'hide';
-    }
+// If on desktop, then hide the header/footer.
+$hideclass = '';
+$devicetype = core_useragent::get_device_type();
+if ($devicetype !== 'mobile' and $devicetype !== 'tablet') {
+    // We can not use the Bootstrap responsive css classes because popups are phone sized on desktop.
+    $hideclass = 'hide';
+}
 ?>
 
 <header role="banner" class="navbar navbar-fixed-top moodle-has-zindex <?php echo $hideclass; ?>">

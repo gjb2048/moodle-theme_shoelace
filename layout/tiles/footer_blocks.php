@@ -24,4 +24,3 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 echo $OUTPUT->shoelaceblocks('footer', 'row-fluid', 'aside', \theme_shoelace\toolbox::get_setting('numfooterblocks'));
-?>

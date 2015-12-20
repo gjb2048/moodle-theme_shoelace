@@ -25,18 +25,18 @@
  */
 ?>
 <footer id="page-footer">
-    <?php
-    if ($PAGE->blocks->is_known_region('footer')) {
-        require_once(\theme_shoelace\toolbox::get_tile_file('footer_blocks'));
-    }?>
+<?php
+if ($PAGE->blocks->is_known_region('footer')) {
+    require_once(\theme_shoelace\toolbox::get_tile_file('footer_blocks'));
+}?>
     <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
     <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
-    <?php
+<?php
     echo $settingshtml->footnote;
     echo $OUTPUT->login_info();
     echo $OUTPUT->home_link();
     echo $OUTPUT->standard_footer_html();
-    ?>
+?>
 </footer>
 <?php echo $OUTPUT->anti_gravity(); ?>
-<?php echo $OUTPUT->standard_end_of_body_html() ?>
+<?php echo $OUTPUT->standard_end_of_body_html();

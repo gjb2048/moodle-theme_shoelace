@@ -28,11 +28,15 @@
     <div id="page-navbar" class="clearfix">
     <?php if ($rtl) { ?>
         <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
-        <?php } ?>
+<?php
+}
+?>
         <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
-        <?php if (!$rtl) { ?>
+    <?php if (!$rtl) { ?>
         <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
-        <?php } ?>
+<?php
+}
+?>
     </div>
     <?php echo $OUTPUT->context_header(); ?>
     <div id="course-header">

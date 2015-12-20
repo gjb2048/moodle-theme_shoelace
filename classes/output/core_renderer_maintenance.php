@@ -41,7 +41,7 @@ class core_renderer_maintenance extends \core_renderer_maintenance {
         $tcr = array_reverse($this->themeconfig, true);
 
         $settingvalue = false;
-        foreach($tcr as $tkey => $tconfig) {
+        foreach ($tcr as $tkey => $tconfig) {
             if (property_exists($tconfig->settings, $setting)) {
                 $settingvalue = $tconfig->settings->$setting;
                 break;
@@ -53,7 +53,7 @@ class core_renderer_maintenance extends \core_renderer_maintenance {
     public function setting_file_url($setting, $filearea) {
         $tcr = array_reverse($this->themeconfig, true);
         $settingconfig = null;
-        foreach($tcr as $tkey => $tconfig) {
+        foreach ($tcr as $tkey => $tconfig) {
             if (property_exists($tconfig->settings, $setting)) {
                 $settingconfig = $tconfig;
                 break;

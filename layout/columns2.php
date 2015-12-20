@@ -63,12 +63,12 @@ echo $OUTPUT->doctype() ?>
     <title><?php echo $OUTPUT->page_title(); ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
     <?php
-        echo $OUTPUT->standard_head_html();
-        $cdnfonts = \theme_shoelace\toolbox::get_setting('cdnfonts');
-        if (!empty($cdnfonts) && ($cdnfonts == 2)) {
-            require_once(\theme_shoelace\toolbox::get_tile_file('cdnfonts'));
-        }
-    ?>
+echo $OUTPUT->standard_head_html();
+$cdnfonts = \theme_shoelace\toolbox::get_setting('cdnfonts');
+if (!empty($cdnfonts) && ($cdnfonts == 2)) {
+    require_once(\theme_shoelace\toolbox::get_tile_file('cdnfonts'));
+}
+?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -84,11 +84,14 @@ require_once(\theme_shoelace\toolbox::get_tile_file('header'));
     <?php require_once(\theme_shoelace\toolbox::get_tile_file('page-header')); ?>
 
     <div id="page-content" class="row-fluid">
-        <?php if ($useblock) { ?>
-        <div id="region-main" class="span9<?php if ($left) { echo ' pull-right'; } ?>">
-        <?php } else { ?>
-        <div id="region-main" class="span12">
-        <?php } ?>
+<?php
+if ($useblock) {
+    echo '<div id="region-main" class="span9';
+    echo ($left) ? ' pull-right' : '';
+    echo '">';
+} else {
+    echo '<div id="region-main" class="span12">';
+} ?>
                 <section id="region-main-shoelace" class="row-fluid">
                 <?php
                 echo $OUTPUT->course_content_header();
@@ -99,14 +102,14 @@ require_once(\theme_shoelace\toolbox::get_tile_file('header'));
             <div id="region-main-shoelace-shadow"></div>
         </div>
         <?php
-        if ($useblock) {
-            $classextra = '';
-            if ($left) {
-                $classextra = ' desktop-first-column';
-            }
-            echo $OUTPUT->shoelaceblocks($useblock, 'span3'.$classextra);
-        }
-        ?>
+if ($useblock) {
+    $classextra = '';
+    if ($left) {
+        $classextra = ' desktop-first-column';
+    }
+    echo $OUTPUT->shoelaceblocks($useblock, 'span3'.$classextra);
+}
+?>
     </div>
 
     <?php require_once(\theme_shoelace\toolbox::get_tile_file('footer')); ?>

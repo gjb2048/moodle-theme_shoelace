@@ -119,7 +119,8 @@ class toolbox {
     }
 
     /**
-     * Finds the given setting in the theme using the get_config core function for when the theme_config object has not been created.
+     * Finds the given setting in the theme using the get_config core function for when the
+     * theme_config object has not been created.
      * @param string $setting Setting name.
      * @param themename $themename null(default of 'shoelace' used)|theme name.
      * @return any false|value of setting.
@@ -140,7 +141,7 @@ class toolbox {
      *      - heading HTML to use for the heading. A logo if one is selected or the default heading.
      *      - footnote HTML to use as a footnote. By default ''.
      */
-    static function get_html_for_settings($theme = null) {
+    static public function get_html_for_settings($theme = null) {
         $return = new \stdClass;
 
         $return->navbarclass = '';

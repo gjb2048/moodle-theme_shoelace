@@ -48,7 +48,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         $tcr = array_reverse($this->themeconfig, true);
 
         $settingvalue = $default;
-        foreach($tcr as $tkey => $tconfig) {
+        foreach ($tcr as $tkey => $tconfig) {
             if (property_exists($tconfig->settings, $setting)) {
                 $settingvalue = $tconfig->settings->$setting;
                 break;
@@ -60,7 +60,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
     public function setting_file_url($setting, $filearea) {
         $tcr = array_reverse($this->themeconfig, true);
         $settingconfig = null;
-        foreach($tcr as $tkey => $tconfig) {
+        foreach ($tcr as $tkey => $tconfig) {
             if (property_exists($tconfig->settings, $setting)) {
                 $settingconfig = $tconfig;
                 break;
@@ -88,7 +88,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/shoelace/layout/tiles/$filename")) {
             return "$CFG->themedir/shoelace/layout/tiles/$filename";
         } else {
-            return dirname(__FILE__) . "/$filename";
+            return dirname(__FILE__)."/$filename";
         }
     }
 
@@ -117,17 +117,17 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         } else {
             $dividericon = 'fa-angle-right';
         }
-        $divider = html_writer::tag('span', html_writer::start_tag('i', array('class' => 'fa '. $dividericon .' fa-lg')) .
-                        html_writer::end_tag('i'), array('class' => 'divider'));
+        $divider = html_writer::tag('span', html_writer::start_tag('i', array('class' => 'fa '.$dividericon.' fa-lg')).
+            html_writer::end_tag('i'), array('class' => 'divider'));
         $breadcrumbs = array();
         foreach ($items as $item) {
             $item->hideicon = true;
             $breadcrumbs[] = $this->render($item);
         }
-        $list_items = html_writer::start_tag('li') . implode("$divider" . html_writer::end_tag('li') .
-                        html_writer::start_tag('li'), $breadcrumbs) . html_writer::end_tag('li');
+        $listitems = html_writer::start_tag('li').implode("$divider".html_writer::end_tag('li').
+            html_writer::start_tag('li'), $breadcrumbs) . html_writer::end_tag('li');
         $title = html_writer::tag('span', get_string('pagepath'), array('class' => 'accesshide'));
-        return $title . html_writer::tag('ul', "$list_items", array('class' => 'breadcrumb'));
+        return $title.html_writer::tag('ul', "$listitems", array('class' => 'breadcrumb'));
     }
 
     /**
@@ -212,7 +212,8 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
                 if ($editing) {
                     $attributes['class'] .= ' '.$region.'-edit';
                 }
-                $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($displayregion, $blocksperrow, $editing), $attributes);
+                $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($displayregion,
+                    $blocksperrow, $editing), $attributes);
             } else {
                 $output = html_writer::tag($tag, $this->blocks_for_region($displayregion), $attributes);
             }
@@ -290,7 +291,8 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
                         if ($remainingblocks < $blocksperrow) {
                             $span = 12 / $remainingblocks;
                             if ($span < 1) {
-                                // Should not happen but a fail safe - block will be small so good for screen shots when this happens.
+                                // Should not happen but a fail safe.
+                                // Block will be small so good for screen shots when this happens.
                                 $span = 1;
                             }
                         }
@@ -300,8 +302,8 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
                         $currentrow = $currentrequiredrow;
                     }
 
-                    // 'desktop-first-column' done in CSS with ':first-of-type' and ':nth-of-type'.
-                    // 'spanX' done in CSS with calculated special width class as fixed at 'span3' for all.
+                    // The 'desktop-first-column' done in CSS with ':first-of-type' and ':nth-of-type'.
+                    // The 'spanX' done in CSS with calculated special width class as fixed at 'span3' for all.
                     $bc->attributes['class'] .= ' span' . $span;
                 }
 
@@ -311,7 +313,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
                 } else if ($bc instanceof block_move_target) {
                     $output .= $this->block_move_target($bc, $zones, $lastblock);
                 } else {
-                    throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
+                    throw new coding_exception('Unexpected type of thing ('.get_class($bc).') found in list of block contents.');
                 }
             }
             if (!$editing) {
@@ -328,7 +330,9 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
     }
 
     protected function render_gotobottom_menu(custom_menu $menu) {
-        if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') || ($this->page->pagelayout == 'admin')) { // Go to bottom.
+        if (($this->page->pagelayout == 'course') ||
+            ($this->page->pagelayout == 'incourse') ||
+            ($this->page->pagelayout == 'admin')) { // Go to bottom.
             $gotobottom = html_writer::tag('i', '', array('class' => 'fa fa-arrow-circle-o-down slgotobottom'));
             $menu->add($gotobottom, new moodle_url('#page-footer'), get_string('gotobottom', 'theme_shoelace'), 10001);
         }
@@ -344,9 +348,10 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     public function anti_gravity() {
         $icon = html_writer::start_tag('i', array('class' => 'fa fa-arrow-circle-o-up')) . html_writer::end_tag('i');
-        $anti_gravity = html_writer::tag('a', $icon, array('class' => 'antiGravity', 'title' => get_string('antigravity', 'theme_shoelace')));
+        $antigravity = html_writer::tag('a', $icon, array('class' => 'antiGravity', 'title' => get_string('antigravity',
+            'theme_shoelace')));
 
-        return $anti_gravity;
+        return $antigravity;
     }
 
     /**

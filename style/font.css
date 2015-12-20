@@ -24,7 +24,7 @@
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
- 
+
 @charset "UTF-8";
 
 @font-face {
@@ -77,7 +77,7 @@
 }
 
 @font-face {
-    font-family: 'Varela Round'; 
+    font-family: 'Varela Round';
     font-weight: 400;
     font-style: normal;
     src: url('[[font:theme|VarelaRound.otf]]');

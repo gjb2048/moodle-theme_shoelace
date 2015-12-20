@@ -23,7 +23,6 @@
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-
  */
 
 // Get the HTML for the settings bits.
@@ -58,12 +57,12 @@ echo $OUTPUT->doctype() ?>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
     <meta name="description" content="<?php p(strip_tags(format_text($SITE->summary, FORMAT_HTML))) ?>" />
     <?php
-        echo $OUTPUT->standard_head_html();
-        $cdnfonts = \theme_shoelace\toolbox::get_setting('cdnfonts');
-        if (!empty($cdnfonts) && ($cdnfonts == 2)) {
-            require_once(\theme_shoelace\toolbox::get_tile_file('cdnfonts'));
-        }
-    ?>
+echo $OUTPUT->standard_head_html();
+$cdnfonts = \theme_shoelace\toolbox::get_setting('cdnfonts');
+if (!empty($cdnfonts) && ($cdnfonts == 2)) {
+    require_once(\theme_shoelace\toolbox::get_tile_file('cdnfonts'));
+}
+?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -80,11 +79,11 @@ require_once(\theme_shoelace\toolbox::get_tile_file('header'));
         <?php echo $settingshtml->heading; ?>
     </header>
 
-    <?php
-    if (!empty($PAGE->theme->settings->nummarketingblocks)) {
-        echo $OUTPUT->shoelaceblocks('marketing', 'row-fluid', 'aside', $PAGE->theme->settings->nummarketingblocks);
-    }
-    ?>
+<?php
+if (!empty($PAGE->theme->settings->nummarketingblocks)) {
+    echo $OUTPUT->shoelaceblocks('marketing', 'row-fluid', 'aside', $PAGE->theme->settings->nummarketingblocks);
+}
+?>
     <div id="page-content" class="row-fluid">
         <div id="<?php echo $regionbsid ?>" class="span9">
             <div class="row-fluid">
