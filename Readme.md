@@ -4,6 +4,8 @@ Shoelace theme with a light feel through colour and font selection.
 
 ![image1](pix/screenshot.png "Shoelace Screenshot")
 
+[![Build Status](https://travis-ci.org/gjb2048/moodle-theme_shoelace.svg?branch=master)](https://travis-ci.org/gjb2048/moodle-theme_shoelace)
+
 About
 =====
  * copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
