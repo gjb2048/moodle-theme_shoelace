@@ -37,46 +37,14 @@ use moodle_url;
 require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php');  // Urrgh, but it works for child themes.
 
 class core_renderer extends \theme_bootstrapbase_core_renderer {
+    use core_renderer_toolbox;
+
     protected $themeconfig = null;
 
     public function __construct(\moodle_page $page, $target) {
         parent::__construct($page, $target);
         $this->themeconfig = array(\theme_config::load('shoelace'));
     }
-
-    public function get_setting($setting, $default = false) {
-        $tcr = array_reverse($this->themeconfig, true);
-
-        $settingvalue = $default;
-        foreach ($tcr as $tconfig) {
-            if (property_exists($tconfig->settings, $setting)) {
-                $settingvalue = $tconfig->settings->$setting;
-                break;
-            }
-        }
-        return $settingvalue;
-    }
-
-    public function setting_file_url($setting, $filearea) {
-        $tcr = array_reverse($this->themeconfig, true);
-        $settingconfig = null;
-        foreach ($tcr as $tconfig) {
-            if (property_exists($tconfig->settings, $setting)) {
-                $settingconfig = $tconfig;
-                break;
-            }
-        }
-
-        if ($settingconfig) {
-            return $settingconfig->setting_file_url($setting, $filearea);
-        }
-        return null;
-    }
-
-    public function pix_url($imagename, $component = 'moodle') {
-        return end($this->themeconfig)->pix_url($imagename, $component);
-    }
-
 
     public function get_tile_file($filename) {
         global $CFG;
@@ -169,16 +137,6 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             }
         }
         return html_writer::tag('ul', $firstrow, array('class' => 'nav nav-pills')) . $secondrow;
-    }
-
-    public function standard_footer_html() {
-        $output = parent::standard_footer_html();
-        $output .= html_writer::start_tag('div', array ('class' => 'themecredit')).
-                   get_string('credit', 'theme_shoelace').
-                   html_writer::link('//about.me/gjbarnard', 'Gareth J Barnard', array('target' => '_blank')).
-                   html_writer::end_tag('div');
-
-        return $output;
     }
 
     /**

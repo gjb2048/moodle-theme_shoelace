@@ -31,53 +31,12 @@ use html_writer;
 defined('MOODLE_INTERNAL') || die();
 
 class core_renderer_maintenance extends \core_renderer_maintenance {
+    use core_renderer_toolbox;
+
     protected $themeconfig = null;
 
     public function __construct(\moodle_page $page, $target) {
         parent::__construct($page, $target);
         $this->themeconfig = array(\theme_config::load('shoelace'));
-    }
-
-    public function get_setting($setting) {
-        $tcr = array_reverse($this->themeconfig, true);
-
-        $settingvalue = false;
-        foreach ($tcr as $tconfig) {
-            if (property_exists($tconfig->settings, $setting)) {
-                $settingvalue = $tconfig->settings->$setting;
-                break;
-            }
-        }
-        return $settingvalue;
-    }
-
-    public function setting_file_url($setting, $filearea) {
-        $tcr = array_reverse($this->themeconfig, true);
-        $settingconfig = null;
-        foreach ($tcr as $tconfig) {
-            if (property_exists($tconfig->settings, $setting)) {
-                $settingconfig = $tconfig;
-                break;
-            }
-        }
-
-        if ($settingconfig) {
-            return $settingconfig->setting_file_url($setting, $filearea);
-        }
-        return null;
-    }
-
-    public function pix_url($imagename, $component = 'moodle') {
-        return end($this->themeconfig)->pix_url($imagename, $component);
-    }
-
-    public function standard_footer_html() {
-        $output = parent::standard_footer_html();
-        $output .= html_writer::start_tag('div', array ('class' => 'themecredit')).
-                   get_string('credit', 'theme_shoelace').
-                   html_writer::link('//about.me/gjbarnard', 'Gareth J Barnard', array('target' => '_blank')).
-                   html_writer::end_tag('div');
-
-        return $output;
     }
 }
