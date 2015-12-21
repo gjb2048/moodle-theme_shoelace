@@ -3,6 +3,8 @@ Version Information
 Version 3.0.0.1
   1. Beta for Moodle 3.0.
   2. Code checker tidy up.
+  3. Added Travis CI support: https://travis-ci.org/gjb2048/moodle-theme_shoelace.
+  4. Changes to child theme mechanism.  For a child theme template, please contact me via https://about.me/gjbarnard.
 
 Version 2.9.2.2
   1. Improvements to child theme support.
