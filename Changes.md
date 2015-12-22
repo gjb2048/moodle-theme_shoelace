@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.0.0.2
+  1. Improvements to Toolbox.
+
 Version 3.0.0.1
   1. Beta for Moodle 3.0.
   2. Code checker tidy up.
