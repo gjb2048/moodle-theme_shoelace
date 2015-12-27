@@ -44,8 +44,11 @@ class toolbox {
 
     static public function set_core_renderer($core) {
         $us = self::get_instance();
-        // Set from the initial calling lib.php process_css function.  Must happen before parents.
-        $us->corerenderer = $core;
+        // Set only once from the initial calling lib.php process_css function so that subsequent parent calls do not override it.
+        // Must happen before parents.
+        if (null === $us->corerenderer) {
+            $us->corerenderer = $core;
+        }
     }
 
     /**
@@ -97,9 +100,31 @@ class toolbox {
     static private function check_corerenderer() {
         $us = self::get_instance();
         if (empty($us->corerenderer)) {
-            // Use $OUTPUT.
+            // Use $OUTPUT unless is not a Shoelace or child core_renderer which can happen on theme switch.
             global $OUTPUT;
-            $us->corerenderer = $OUTPUT;
+            if (property_exists($OUTPUT, 'shoelace')) {
+                $us->corerenderer = $OUTPUT;
+            } else {
+                // Use $PAGE->theme->name as will be accurate than $CFG->theme when using URL theme changes.
+                // Core 'allowthemechangeonurl' setting.
+                global $PAGE;
+                $corerenderer = $PAGE->get_renderer('theme_'.$PAGE->theme->name, 'core');
+                // Fallback check.
+                if (property_exists($corerenderer, 'shoelace')) {
+                    $us->corerenderer = $corerenderer;
+                } else {
+                    // Probably during theme switch, '$CFG->theme' will be accurrate.
+                    global $CFG;
+                    $corerenderer = $PAGE->get_renderer('theme_'.$CFG->theme, 'core');
+                    if (property_exists($corerenderer, 'shoelace')) {
+                        $us->corerenderer = $corerenderer;
+                    } else {
+                        // Last resort.  Hopefully will be fine on next page load for Child themes.
+                        // However '***_process_css' in lib.php will be fine as it sets the correct renderer.
+                        $us->corerenderer = $PAGE->get_renderer('theme_shoelace', 'core');
+                    }
+                }
+            }
         }
         return $us->corerenderer;
     }

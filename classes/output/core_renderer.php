@@ -39,6 +39,8 @@ require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php')
 class core_renderer extends \theme_bootstrapbase_core_renderer {
     use core_renderer_toolbox;
 
+    protected $shoelace = null; // Used for determining if this is a Shoelace or child of renderer.
+
     protected $themeconfig = null;
 
     public function __construct(\moodle_page $page, $target) {
