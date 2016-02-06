@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.0.0.3
+  1. Update .gitattributes file.
+
 Version 3.0.0.2
   1. Improvements to Toolbox.
 
