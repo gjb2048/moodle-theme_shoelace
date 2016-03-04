@@ -5,6 +5,7 @@ Version 3.0.1
   2. Accessibility improvement to anti-gravity and go to bottom buttons.
   3. Implement MDL-51819.
   4. Use 'span' tags for icons instead of 'i' tags.
+  5. TravisCI fixes.
 
 Version 3.0.0.2
   1. Improvements to Toolbox.

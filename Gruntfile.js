@@ -94,38 +94,38 @@ module.exports = function(grunt) { // jshint ignore:line
     grunt.initConfig({
         copy: {
             svg_core: {
-                 expand: true,
-                 cwd:  'pix_core_originals/',
-                 src:  '**',
-                 dest: 'pix_core/',
+                expand: true,
+                cwd:  'pix_core_originals/',
+                src:  '**',
+                dest: 'pix_core/',
             },
             svg_plugins: {
-                 expand: true,
-                 cwd:  'pix_plugins_originals/',
-                 src:  '**',
-                 dest: 'pix_plugins/',
+                expand: true,
+                cwd:  'pix_plugins_originals/',
+                src:  '**',
+                dest: 'pix_plugins/',
             }
         },
         replace: {
             svg_colours_core: {
                 src: 'pix_core/**/*.svg',
-                    overwrite: true,
-                    replacements: [{
-                        from: '#999999',
-                        to: svgcolor
-                    }]
+                overwrite: true,
+                replacements: [{
+                    from: '#999999',
+                    to: svgcolor
+                }]
             },
             svg_colours_plugins: {
                 src: 'pix_plugins/**/*.svg',
-                    overwrite: true,
-                    replacements: [{
-                        from: '#999999',
-                        to: svgcolor
-                    }]
+                overwrite: true,
+                replacements: [{
+                    from: '#999999',
+                    to: svgcolor
+                }]
             }
         },
-        svgmin: {                       // Task
-            options: {                  // Configuration that will be passed directly to SVGO
+        svgmin: {                       // Task.
+            options: {                  // Configuration that will be passed directly to SVGO.
                 plugins: [{
                     removeViewBox: false
                 }, {
@@ -133,17 +133,17 @@ module.exports = function(grunt) { // jshint ignore:line
                 }, {
                     convertPathData: {
                         straightCurves: false // advanced SVGO plugin option
-                   }
+                    }
                 }]
             },
-            dist: {                       // Target
-                files: [{                 // Dictionary of files
+            dist: {                       // Target.
+                files: [{                 // Dictionary of files.
                     expand: true,         // Enable dynamic expansion.
                     cwd: 'pix_core',      // Source matches are relative to this path.
                     src: ['**/*.svg'],    // Actual pattern(s) to match.
                     dest: 'pix_core/',    // Destination path prefix.
                     ext: '.svg'           // Destination file paths will have this extension.
-                }, {                      // Dictionary of files
+                }, {                      // Dictionary of files.
                     expand: true,         // Enable dynamic expansion.
                     cwd: 'pix_plugins',   // Source matches are relative to this path.
                     src: ['**/*.svg'],    // Actual pattern(s) to match.
