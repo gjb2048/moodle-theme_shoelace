@@ -1,7 +1,10 @@
 Version Information
 ===================
-Version 3.0.0.3
+Version 3.0.1
   1. Update .gitattributes file.
+  2. Accessibility improvement to anti-gravity and go to bottom buttons.
+  3. Implement MDL-51819.
+  4. Use 'span' tags for icons instead of 'i' tags.
 
 Version 3.0.0.2
   1. Improvements to Toolbox.

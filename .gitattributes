@@ -15,9 +15,9 @@
 
 # Denote all files that are truly binary and should not be modified.
 *.gif binary
+*.png binary
 *.jpg binary
 *.eot binary 
-*.png binary
 *.otf binary 
 *.ttf binary 
 *.woff binary

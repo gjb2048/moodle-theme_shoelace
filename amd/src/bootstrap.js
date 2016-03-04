@@ -1,6 +1,6 @@
 /* jshint ignore:start */
-define(['jquery', 'core/log'], function($, log) {
-    $('.h1').hide();
+define(['jquery', 'core/log'], function(jQuery, log) {
+    jQuery('.h1').hide();
 
   "use strict"; // jshint ;_;
 
@@ -28,7 +28,8 @@ define(['jquery', 'core/log'], function($, log) {
   /* CSS TRANSITION SUPPORT (http://www.modernizr.com/)
    * ======================================================= */
 
-  $(function () {
+!function($) {
+    $(function () {
 
     $.support.transition = (function () {
 
@@ -58,6 +59,7 @@ define(['jquery', 'core/log'], function($, log) {
     })()
 
   })
+}(jQuery);
 
 /* ==========================================================
  * bootstrap-alert.js v2.3.2
@@ -79,7 +81,7 @@ define(['jquery', 'core/log'], function($, log) {
  * ========================================================== */
 
 
-
+!function($) {
   "use strict"; // jshint ;_;
 
 
@@ -155,6 +157,7 @@ define(['jquery', 'core/log'], function($, log) {
   * ============== */
 
   $(document).on('click.alert.data-api', dismiss, Alert.prototype.close)
+}(jQuery);
 
 /* ============================================================
  * bootstrap-button.js v2.3.2
@@ -176,7 +179,7 @@ define(['jquery', 'core/log'], function($, log) {
  * ============================================================ */
 
 
-
+!function($) {
   "use strict"; // jshint ;_;
 
 
@@ -258,6 +261,7 @@ define(['jquery', 'core/log'], function($, log) {
     if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
     $btn.button('toggle')
   })
+}(jQuery);
 
 /* ==========================================================
  * bootstrap-carousel.js v2.3.2
@@ -279,7 +283,7 @@ define(['jquery', 'core/log'], function($, log) {
  * ========================================================== */
 
 
-
+!function($) {
   "use strict"; // jshint ;_;
 
 
@@ -463,6 +467,7 @@ define(['jquery', 'core/log'], function($, log) {
 
     e.preventDefault()
   })
+}(jQuery);
 
 /* =============================================================
  * bootstrap-collapse.js v2.3.2
@@ -484,7 +489,7 @@ define(['jquery', 'core/log'], function($, log) {
  * ============================================================ */
 
 
-
+!function($) {
   "use strict"; // jshint ;_;
 
 
@@ -628,6 +633,7 @@ define(['jquery', 'core/log'], function($, log) {
     $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
     $(target).collapse(option)
   })
+}(jQuery);
 
 /* ============================================================
  * bootstrap-dropdown.js v2.3.2
@@ -648,7 +654,8 @@ define(['jquery', 'core/log'], function($, log) {
  * limitations under the License.
  * ============================================================ */
 
-  "use strict"; // jshint ;_;
+!function($) {
+    "use strict"; // jshint ;_;
 
 
  /* DROPDOWN CLASS DEFINITION
@@ -677,15 +684,15 @@ define(['jquery', 'core/log'], function($, log) {
 
       isActive = $parent.hasClass('open')
 
-      clearMenus()
+      clearMenus(this)
 
       if (!isActive) {
         if ('ontouchstart' in document.documentElement) {
           // if mobile we we use a backdrop because click events don't delegate
           $('<div class="dropdown-backdrop"/>').insertBefore($(this)).on('click', clearMenus)
         }
-        $parent.toggleClass('open')
       }
+      $parent.toggleClass('open')
 
       $this.focus()
 
@@ -735,10 +742,13 @@ define(['jquery', 'core/log'], function($, log) {
 
   }
 
-  function clearMenus() {
+  function clearMenus($e) {
     $('.dropdown-backdrop').remove()
     $(toggle).each(function () {
-      getParent($(this)).removeClass('open')
+      var $parent = getParent($(this))
+      if ($e == undefined || $parent.find($e).length == 0) {
+          $parent.removeClass('open')
+      }
     })
   }
 
@@ -793,7 +803,7 @@ define(['jquery', 'core/log'], function($, log) {
     .on('click.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('click.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
     .on('keydown.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
-
+}(jQuery);
 
 /* =========================================================
  * bootstrap-modal.js v2.3.2
@@ -815,7 +825,7 @@ define(['jquery', 'core/log'], function($, log) {
  * ========================================================= */
 
 
-
+!function($) {
   "use strict"; // jshint ;_;
 
 
@@ -1039,7 +1049,7 @@ define(['jquery', 'core/log'], function($, log) {
         $this.focus()
       })
   })
-
+}(jQuery);
 
 /* ===========================================================
  * bootstrap-tooltip.js v2.3.2
@@ -1062,9 +1072,8 @@ define(['jquery', 'core/log'], function($, log) {
  * ========================================================== */
 
 
-
+!function($) {
   "use strict"; // jshint ;_;
-
 
  /* TOOLTIP PUBLIC CLASS DEFINITION
   * =============================== */
@@ -1399,7 +1408,7 @@ define(['jquery', 'core/log'], function($, log) {
     $.fn.tooltip = old
     return this
   }
-
+}(jQuery);
 
 /* ===========================================================
  * bootstrap-popover.js v2.3.2
@@ -1421,7 +1430,7 @@ define(['jquery', 'core/log'], function($, log) {
  * =========================================================== */
 
 
-
+!function($) {
   "use strict"; // jshint ;_;
 
 
@@ -1512,7 +1521,7 @@ define(['jquery', 'core/log'], function($, log) {
     $.fn.popover = old
     return this
   }
-
+}(jQuery);
 
 /* =============================================================
  * bootstrap-scrollspy.js v2.3.2
@@ -1534,7 +1543,7 @@ define(['jquery', 'core/log'], function($, log) {
  * ============================================================== */
 
 
-
+!function($) {
   "use strict"; // jshint ;_;
 
 
@@ -1673,6 +1682,7 @@ define(['jquery', 'core/log'], function($, log) {
       $spy.scrollspy($spy.data())
     })
   })
+}(jQuery);
 
 /* ========================================================
  * bootstrap-tab.js v2.3.2
@@ -1694,7 +1704,7 @@ define(['jquery', 'core/log'], function($, log) {
  * ======================================================== */
 
 
-
+!function($) {
   "use strict"; // jshint ;_;
 
 
@@ -1815,6 +1825,7 @@ define(['jquery', 'core/log'], function($, log) {
     e.preventDefault()
     $(this).tab('show')
   })
+}(jQuery);
 
 /* =============================================================
  * bootstrap-typeahead.js v2.3.2
@@ -1836,7 +1847,7 @@ define(['jquery', 'core/log'], function($, log) {
  * ============================================================ */
 
 
-
+!function($) {
   "use strict"; // jshint ;_;
 
 
@@ -2148,7 +2159,7 @@ define(['jquery', 'core/log'], function($, log) {
     if ($this.data('typeahead')) return
     $this.typeahead($this.data())
   })
-
+}(jQuery);
 
 /* ==========================================================
  * bootstrap-affix.js v2.3.2
@@ -2169,7 +2180,8 @@ define(['jquery', 'core/log'], function($, log) {
  * limitations under the License.
  * ========================================================== */
 
-  "use strict"; // jshint ;_;
+!function($) {
+    "use strict"; // jshint ;_;
 
 
  /* AFFIX CLASS DEFINITION
@@ -2261,7 +2273,7 @@ define(['jquery', 'core/log'], function($, log) {
       $spy.affix(data)
     })
   })
-
+}(jQuery);
 
 
 });
