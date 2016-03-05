@@ -6,6 +6,10 @@ Version 3.0.1
   3. Implement MDL-51819.
   4. Use 'span' tags for icons instead of 'i' tags.
   5. TravisCI fixes.
+  6. Add the 'Style guide' from Essential.
+  7. Fix '#adminsettings h3' colour.
+  8. Fix 'h1 h2 h3 h4 h5 h6' -> 'small' colour.
+  9. Fix '.thumbnail .caption' colour.
 
 Version 3.0.0.2
   1. Improvements to Toolbox.

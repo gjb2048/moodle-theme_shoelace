@@ -61,6 +61,10 @@ $string['configtitle'] = 'Shoelace';
 
 $string['credit'] = 'The Shoelace theme for Moodle is developed and maintained by ';
 
+$string['generalsettings'] = 'General';
+$string['generalheadingsub'] = 'General settings';
+$string['generalheadingdesc'] = 'Configure the general settings for Shoelace here.';
+
 $string['themecolour'] = 'Theme colour';
 $string['themecolourdesc'] = 'Set the colour for the theme.';
 
@@ -69,6 +73,9 @@ $string['textcolourdesc'] = 'Set the colour for the text.';
 
 $string['navbartextcolour'] = 'Navbar text colour';
 $string['navbartextcolourdesc'] = 'Set the colour for the navbar text.';
+
+$string['cdnfonts'] = 'Content delivery network fonts';
+$string['cdnfonts_desc'] = 'Use content delivery network fonts';
 
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
@@ -95,15 +102,18 @@ $string['two'] = 'Two';
 $string['three'] = 'Three';
 $string['four'] = 'Four';
 
+// Style guide.
+$string['styleguide'] = 'Style guide';
+$string['styleguidesub'] = 'Bootstrap V2.3.2 Sytle guide';
+$string['styleguidedesc'] = 'Original documentation code \'{$a->origcodelicenseurl}\' licensed.  Additional code \'{$a->thiscodelicenseurl}\' licensed, which is a \'{$a->compatible}\' license.  Content \'{$a->contentlicenseurl}\' licensed.  The documentation has been formatted for Moodle output with addition of FontAwesome icons where appropriate.  Additional CSS can be found in the file \'essential_admin_setting_styleguide.php\' under the comment \'// Beyond docs.css.\'.  The \'{$a->globalsettings}\' section has been removed.';
+
+// Other strings.
 $string['pluginname'] = 'Shoelace';
 
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
 $string['region-footer'] = 'Footer';
 $string['region-marketing'] = 'Marketing';
-
-$string['cdnfonts'] = 'Content delivery network fonts';
-$string['cdnfonts_desc'] = 'Use content delivery network fonts';
 
 // Navbar.
 $string['gotobottom'] = 'Go to the bottom of the page';
