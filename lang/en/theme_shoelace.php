@@ -104,7 +104,7 @@ $string['four'] = 'Four';
 
 // Style guide.
 $string['styleguide'] = 'Style guide';
-$string['styleguidesub'] = 'Bootstrap V2.3.2 Sytle guide';
+$string['styleguidesub'] = 'Bootstrap V2.3.2 Style guide';
 $string['styleguidedesc'] = 'Original documentation code \'{$a->origcodelicenseurl}\' licensed.  Additional code \'{$a->thiscodelicenseurl}\' licensed, which is a \'{$a->compatible}\' license.  Content \'{$a->contentlicenseurl}\' licensed.  The documentation has been formatted for Moodle output with addition of FontAwesome icons where appropriate.  Additional CSS can be found in the file \'essential_admin_setting_styleguide.php\' under the comment \'// Beyond docs.css.\'.  The \'{$a->globalsettings}\' section has been removed.';
 
 // Other strings.

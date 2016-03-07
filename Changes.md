@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.0.1.1
+  1. Style guide typo.
+
 Version 3.0.1
   1. Update .gitattributes file.
   2. Accessibility improvement to anti-gravity and go to bottom buttons.
