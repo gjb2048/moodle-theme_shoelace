@@ -19,12 +19,14 @@
  *
  * @package    theme
  * @subpackage shoelace
- * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
+ * @copyright  &copy; 2016-onwards G J Barnard in respect to modifications of the Clean theme.
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-?>
-<link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic'
-rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet">
+
+// Get the renderer for this plugin.
+$output = $PAGE->get_renderer('theme_shoelace', 'core');
+
+echo $OUTPUT->doctype();
+echo $output->render_wrapper_template();

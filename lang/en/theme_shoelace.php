@@ -120,3 +120,6 @@ $string['gotobottom'] = 'Go to the bottom of the page';
 
 // Anti-gravity.
 $string['antigravity'] = 'Back to top';
+
+// Mustache.
+$string['norendertemplatemethod'] = 'Cannot render template, renderer method (\'{$a->callablemethod}\') not found.';

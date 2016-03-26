@@ -172,7 +172,9 @@ $THEME->layouts = array(
     ),
     // The pagelayout used for reports.
     'report' => array(
-        'file' => 'columns2.php',
+        //'file' => 'columns2.php',
+        'file' => 'layout.php',
+        'mustache' => 'columns2',
         'regions' => $col2regions,
         'defaultregion' => 'side-pre',
     ),
