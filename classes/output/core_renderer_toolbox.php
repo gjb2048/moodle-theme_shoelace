@@ -133,8 +133,6 @@ trait core_renderer_toolbox {
         */
 
         // Add the other common page data.
-        $data->navbar = $this->navbar();
-        $data->page_heading_button = $this->page_heading_button();
         $data->course_content_header = $this->course_content_header();
         $data->main_content = $this->main_content();
         $data->course_content_footer = $this->course_content_footer();
@@ -215,6 +213,9 @@ Logo only on frontpage.
         } else {
             $data->ltr = true;
         }
+
+        $data->navbar = $this->navbar();
+        $data->page_heading_button = $this->page_heading_button();
 
         $data->context_header = $this->context_header();
         $data->course_header = $this->course_header();
