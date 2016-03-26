@@ -42,22 +42,6 @@ class theme_shoelace_toolbox_testcase extends advanced_testcase {
         \theme_shoelace\toolbox::set_core_renderer($this->outputus);
     }
 
-    public function test_get_tilefile_header() {
-        $thefile = \theme_shoelace\toolbox::get_tile_file('header');
-        global $CFG;
-        $withoutdirroot = str_replace($CFG->dirroot, '', $thefile);
-
-        $this->assertEquals('/theme/shoelace/layout/tiles/header.php', $withoutdirroot);
-    }
-
-    public function test_get_tilefile_pageheader() {
-        $thefile = \theme_shoelace\toolbox::get_tile_file('page-header');
-        global $CFG;
-        $withoutdirroot = str_replace($CFG->dirroot, '', $thefile);
-
-        $this->assertEquals('/theme/shoelace/layout/tiles/page-header.php', $withoutdirroot);
-    }
-
     public function test_themeinfo() {
         global $PAGE, $CFG;
         $themedir = str_replace($CFG->dirroot, '', $PAGE->theme->dir);

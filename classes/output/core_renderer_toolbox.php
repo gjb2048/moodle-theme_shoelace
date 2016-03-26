@@ -33,10 +33,8 @@ defined('MOODLE_INTERNAL') || die();
 trait core_renderer_toolbox {
 
     public function get_setting($setting) {
-        $tcr = array_reverse($this->themeconfig, true);
-
         $settingvalue = false;
-        foreach ($tcr as $tconfig) {
+        foreach ($this->themeconfig as $tconfig) {
             if (property_exists($tconfig->settings, $setting)) {
                 $settingvalue = $tconfig->settings->$setting;
                 break;
@@ -46,9 +44,8 @@ trait core_renderer_toolbox {
     }
 
     public function setting_file_url($setting, $filearea) {
-        $tcr = array_reverse($this->themeconfig, true);
         $settingconfig = null;
-        foreach ($tcr as $tconfig) {
+        foreach ($this->themeconfig as $tconfig) {
             if (property_exists($tconfig->settings, $setting)) {
                 $settingconfig = $tconfig;
                 break;
@@ -73,5 +70,315 @@ trait core_renderer_toolbox {
                    html_writer::end_tag('div');
 
         return $output;
+    }
+
+    // Mustache.
+    public function render_wrapper_template() {
+        $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
+
+        $data = new \stdClass();
+        $data->htmlattributes = $this->htmlattributes();
+        $data->page_title = $this->page_title();
+        $data->favicon = $this->favicon();
+        $data->standard_head_html = $this->standard_head_html();
+
+        if ($mustache != 'maintenance') {
+            $cdnfonts = \theme_shoelace\toolbox::get_setting('cdnfonts');
+            if (!empty($cdnfonts) && ($cdnfonts == 2)) {
+                $data->cdn_fonts = $this->render_template('cdnfonts_tile');
+            }
+        }
+
+        $data->body_attributes = $this->body_attributes();
+        $data->standard_top_of_body_html = $this->standard_top_of_body_html();
+        $data->pagelayout = $this->render_template($mustache);
+        $data->standard_end_of_body_html = $this->standard_end_of_body_html();
+
+        return $this->render_from_template('theme_shoelace/wrapper_layout', $data);
+    }
+
+    protected function render_template($mustache) {
+        $callablemethod = 'render_'.$mustache.'_template';
+
+        if (method_exists($this, $callablemethod)) {
+            return $this->$callablemethod();
+        }
+        throw new coding_exception(get_string('norendertemplatemethod', 'theme_shoelace',
+            array('callablemethod' => $callablemethod)));
+    }
+
+    protected function get_base_data() {
+        global $CFG, $SITE;
+
+        if (!$this->page->has_set_url()) {
+            $thispageurl = new \moodle_url(\qualified_me());
+            $this->page->set_url($thispageurl, $thispageurl->params());
+        }
+
+        $data = new \stdClass();
+
+        // Add the other common page data.
+        if (empty($this->page->layout_options['nocourseheader'])) {
+            $data->course_content_header = $this->course_content_header();
+        } else {
+            $data->course_content_header = '';
+        }
+        $data->main_content = $this->main_content();
+        if (empty($this->page->layout_options['nocoursefooter'])) {
+            $data->course_content_footer = $this->course_content_footer();
+        } else {
+            $data->course_content_footer = '';
+        }
+
+        return $data;
+    }
+
+    protected function render_columns1_template() {
+        $data = $this->get_base_data();
+
+        $data->header_tile = $this->render_template('header_tile');
+        $data->page_header_tile = $this->render_template('page_header_tile');
+        $data->footer_tile = $this->render_template('footer_tile');
+
+        return $this->render_from_template('theme_shoelace/columns1', $data);
+    }
+
+    protected function render_columns2_template() {
+        if ($this->page->user_is_editing()) {
+            $hassidepre = true;
+        } else {
+            $hassidepre = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('side-pre', $this));
+        }
+
+        $regionmain = 'span9';
+        if ($hassidepre) {
+            $sidepre = 'span3';
+        } else {
+            $regionmain = 'span12';
+        }
+        if (!right_to_left()) {
+            // Layout mark-up for LTR languages.
+            if ($hassidepre) {
+                $regionmain .= ' pull-right';
+                $sidepre .= ' desktop-first-column';
+            }
+        }
+
+        $data = $this->get_base_data();
+
+        $data->regionmain = $regionmain;
+        if ($hassidepre) {
+            $data->blocks_side_pre = $this->shoelaceblocks('side-pre', $sidepre);
+        }
+        $data->header_tile = $this->render_template('header_tile');
+        $data->page_header_tile = $this->render_template('page_header_tile');
+        $data->footer_tile = $this->render_template('footer_tile');
+
+        return $this->render_from_template('theme_shoelace/columns2', $data);
+    }
+
+    protected function get_threecolumns_common_data() {
+        if ($this->page->user_is_editing()) {
+            $hassidepre = $hassidepost = true;
+        } else {
+            $hassidepre = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('side-pre', $this));
+            $hassidepost = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('side-post', $this));
+        }
+
+        if ($hassidepre) {
+            $regionmain = 'span8';
+            $sidepre = 'span4';
+        } else {
+            $regionmain = 'span12';
+        }
+
+        if ($hassidepost) {
+            $regionmainbox = 'span9';
+            $sidepost = 'span3';
+        } else {
+            $regionmainbox = 'span12';
+        }
+
+        if (right_to_left()) {
+            // Layout mark-up for RTL languages.
+            if ($hassidepost) {
+                $regionmainbox .= ' pull-right';
+                $sidepost .= ' desktop-first-column';
+            }
+        } else {
+            // Layout mark-up for LTR languages.
+            if ($hassidepre) {
+                $regionmain .= ' pull-right';
+                $sidepre .= ' desktop-first-column';
+            }
+        }
+
+        $data = $this->get_base_data();
+
+        $data->regionmainbox = $regionmainbox;
+        $data->regionmain = $regionmain;
+        if ($hassidepre) {
+            $data->blocks_side_pre = $this->shoelaceblocks('side-pre', $sidepre);
+        }
+        if ($hassidepost) {
+            $data->blocks_side_post = $this->shoelaceblocks('side-post', $sidepost);
+        }
+        $data->header_tile = $this->render_template('header_tile');
+        $data->footer_tile = $this->render_template('footer_tile');
+
+        return $data;
+    }
+
+    protected function render_columns3_template() {
+        $data = $this->get_threecolumns_common_data();
+        $data->page_header_tile = $this->render_template('page_header_tile');
+        return $this->render_from_template('theme_shoelace/columns3', $data);
+    }
+
+    protected function render_secure_template() {
+        // Template does not have course content header and footer, so even though in data will not be rendered.
+        $data = $this->get_threecolumns_common_data();
+        $data->page_header_tile = $this->render_template('page_header_tile');
+        return $this->render_from_template('theme_shoelace/secure', $data);
+    }
+
+    protected function render_frontpage_template() {
+        $data = $this->get_threecolumns_common_data();
+
+        // Logo only on frontpage.
+        $logo = \theme_shoelace\toolbox::get_setting('logo');
+        if (!empty($logo)) {
+            global $CFG;
+            $heading = \html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
+        } else {
+            global $OUTPUT;
+            $heading = $this->page_heading();
+        }
+
+        $data->page_header_tile = '<header id="page-header" class="clearfix">'.$heading.'</header>';
+
+        // Marketing blocks.
+        $nummarketingblocks = \theme_shoelace\toolbox::get_setting('nummarketingblocks');
+        if ($nummarketingblocks) {
+            $data->marketing_blocks = $this->shoelaceblocks('marketing', 'row-fluid', 'aside', $nummarketingblocks);
+        }
+
+        return $this->render_from_template('theme_shoelace/frontpage', $data);
+    }
+
+    protected function render_popup_template() {
+        $data = $this->get_base_data();
+
+        return $this->render_from_template('theme_shoelace/popup', $data);
+    }
+
+    protected function render_embedded_template() {
+        $data = new \stdClass();
+
+        $data->main_content = $this->main_content();
+
+        return $this->render_from_template('theme_shoelace/embedded', $data);
+    }
+
+    protected function render_maintenance_template() {
+        $data = new \stdClass();
+
+        $data->heading = $this->page_heading();
+        $data->main_content = $this->main_content();
+        $data->footer = $this->standard_footer_html();
+
+        return $this->render_from_template('theme_shoelace/maintenance', $data);
+    }
+
+    protected function render_cdnfonts_tile_template() {
+        $data = new \stdClass();
+
+        return $this->render_from_template('theme_shoelace/#cdfonts', $data);
+    }
+
+    protected function render_header_tile_template() {
+        if (empty($this->page->layout_options['nonavbar'])) {
+            global $CFG, $SITE;
+            $data = new \stdClass();
+
+            // Add the page data from the theme settings.
+            $data->html_navbarclass = '';
+            $inversenavbar = \theme_shoelace\toolbox::get_setting('inversenavbar');  // Refactor.
+            if (!empty($this->page->theme->settings->invert)) {
+                $data->html_navbarclass = ' navbar-inverse';
+            }
+
+            $data->wwwroot = $CFG->wwwroot;
+            $data->shortname = \format_string($SITE->shortname, true,
+                array('context' => \context_course::instance(\SITEID)));
+
+            $data->gotobottom_menu = $this->gotobottom_menu();
+            $data->user_menu = $this->user_menu();
+            $data->custom_menu = $this->custom_menu();
+            $data->page_heading_menu = $this->page_heading_menu();
+
+            return $this->render_from_template('theme_shoelace/#header', $data);
+        } else {
+            return '';
+        }
+    }
+
+    protected function render_page_header_tile_template() {
+        $data = new \stdClass();
+
+        if (right_to_left()) {
+            $data->rtl = true;
+        } else {
+            $data->ltr = true;
+        }
+
+        $data->breadcrumb = $this->navbar();
+        $data->page_heading_button = $this->page_heading_button();
+
+        $data->context_header = $this->context_header();
+        $data->course_header = $this->course_header();
+
+        return $this->render_from_template('theme_shoelace/#page_header', $data);
+    }
+
+    protected function render_footer_tile_template() {
+        if (empty($this->page->layout_options['nofooter'])) {
+            $data = new \stdClass();
+
+            if ($this->page->blocks->is_known_region('footer')) {
+                $data->footer_blocks = $this->render_template('footer_blocks_tile');
+            }
+
+            $data->course_footer = $this->course_footer();
+            $data->page_doc_link = $this->page_doc_link();
+
+            $data->footnote = '';
+            $footnote = \theme_shoelace\toolbox::get_setting('footnote');
+            if (!empty($footnote)) {
+                $data->footnote = '<div class="footnote text-center">'.$footnote.'</div>';
+            }
+
+            $data->login_info = $this->login_info();
+            $data->home_link = $this->home_link();
+            $data->standard_footer_html = $this->standard_footer_html();
+
+            $data->anti_gravity = $this->anti_gravity();
+
+            return $this->render_from_template('theme_shoelace/#footer', $data);
+        } else {
+            return '';
+        }
+    }
+
+    protected function render_footer_blocks_tile_template() {
+        $data = new \stdClass();
+
+        $data->footer_blocks = $this->shoelaceblocks('footer', 'row-fluid', 'aside',
+            \theme_shoelace\toolbox::get_setting('numfooterblocks'));
+
+        return $this->render_from_template('theme_shoelace/#footer_blocks', $data);
     }
 }

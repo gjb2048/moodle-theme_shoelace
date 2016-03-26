@@ -52,16 +52,6 @@ class toolbox {
     }
 
     /**
-     * Finds the given tile file in the theme.  If it does not exist for the Shoehorn child theme then the parent is checked.
-     * @param string $filename Filename without extension to get.
-     * @return string Complete path of the file.
-     */
-    static public function get_tile_file($filename) {
-        $us = self::check_corerenderer();
-        return $us->get_tile_file($filename);
-    }
-
-    /**
      * Finds the given setting in the theme from the themes' configuration object.
      * @param string $setting Setting name.
      * @param string $format false|'format_text'|'format_html'.

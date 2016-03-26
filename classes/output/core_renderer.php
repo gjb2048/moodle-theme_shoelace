@@ -41,11 +41,11 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     protected $shoelace = null; // Used for determining if this is a Shoelace or child of renderer.
 
-    protected $themeconfig = null;
+    protected $themeconfig = array();
 
     public function __construct(\moodle_page $page, $target) {
+        $this->themeconfig[] = \theme_config::load('shoelace');
         parent::__construct($page, $target);
-        $this->themeconfig = array(\theme_config::load('shoelace'));
     }
 
     public function get_tile_file($filename) {
@@ -142,6 +142,21 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
     }
 
     /**
+     * Returns lang menu or '', this method also checks forcing of languages in courses.
+     *
+     * This function calls {@link core_renderer::render_single_select()} to actually display the language menu.
+     *
+     * @return string The lang menu HTML or empty string
+     */
+    public function lang_menu() {
+        if (!empty($this->page->layout_options['langmenu'])) {
+            return parent::lang_menu();
+        } else {
+            return '';
+        }
+    }
+
+    /**
      * Get the HTML for blocks in the given region.
      *
      * @since 2.5.1 2.6
@@ -152,28 +167,26 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      * @return string HTML.
      */
     public function shoelaceblocks($region, $classes = array(), $tag = 'aside', $blocksperrow = 0) {
-        $displayregion = $this->page->apply_theme_region_manipulations($region);
-
         $classes = (array) $classes;
         $classes[] = 'block-region';
 
         $attributes = array(
-            'id' => 'block-region-' . preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $displayregion),
+            'id' => 'block-region-' . preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
             'class' => join(' ', $classes),
-            'data-blockregion' => $displayregion,
+            'data-blockregion' => $region,
             'data-droptarget' => '1'
         );
 
-        if ($this->page->blocks->region_has_content($displayregion, $this)) {
+        if ($this->page->blocks->region_has_content($region, $this)) {
             if ($blocksperrow > 0) {
                 $editing = $this->page->user_is_editing();
                 if ($editing) {
                     $attributes['class'] .= ' '.$region.'-edit';
                 }
-                $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($displayregion,
+                $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($region,
                     $blocksperrow, $editing), $attributes);
             } else {
-                $output = html_writer::tag($tag, $this->blocks_for_region($displayregion), $attributes);
+                $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
             }
         } else {
             $output = html_writer::tag($tag, '', $attributes);
