@@ -24,24 +24,14 @@
   @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 }}
 {{!
-  @template theme_shoelace/#page_header
+  @template theme_shoelace/embedded
 
-  Moodle page header tile template.
+  Moodle embedded template.
 
-  The purpose of this template is to render the page header.
+  The purpose of this template is to render the embedded layout.
 }}
-<header id="page-header" class="clearfix">
-    {{{context_header}}}
-    <div id="page-navbar" class="clearfix">
-        {{#rtl}}
-        <div class="breadcrumb-button">{{{page_heading_button}}}</div>
-        {{/rtl}}
-        <nav class="breadcrumb-nav">{{{breadcrumb}}}</nav>
-        {{#ltr}}
-        <div class="breadcrumb-button">{{{page_heading_button}}}</div>
-        {{/ltr}}
+<div id="page">
+    <div id="page-content" class="row-fluid">
+        {{{main_content}}}
     </div>
-    <div id="course-header">
-        {{{course_header}}}
-    </div>
-</header>
+</div>

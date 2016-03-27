@@ -142,6 +142,21 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
     }
 
     /**
+     * Returns lang menu or '', this method also checks forcing of languages in courses.
+     *
+     * This function calls {@link core_renderer::render_single_select()} to actually display the language menu.
+     *
+     * @return string The lang menu HTML or empty string
+     */
+    public function lang_menu() {
+        if (!empty($this->page->layout_options['langmenu'])) {
+            return parent::lang_menu();
+        } else {
+            return '';
+        }
+    }
+
+    /**
      * Get the HTML for blocks in the given region.
      *
      * @since 2.5.1 2.6

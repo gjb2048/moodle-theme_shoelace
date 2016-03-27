@@ -24,24 +24,36 @@
   @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 }}
 {{!
-  @template theme_shoelace/#page_header
+  @template theme_shoelace/secure
 
-  Moodle page header tile template.
+  Moodle secure template.
 
-  The purpose of this template is to render the page header.
+  The purpose of this template is to render a secure layout.
 }}
-<header id="page-header" class="clearfix">
-    {{{context_header}}}
-    <div id="page-navbar" class="clearfix">
-        {{#rtl}}
-        <div class="breadcrumb-button">{{{page_heading_button}}}</div>
-        {{/rtl}}
-        <nav class="breadcrumb-nav">{{{breadcrumb}}}</nav>
-        {{#ltr}}
-        <div class="breadcrumb-button">{{{page_heading_button}}}</div>
-        {{/ltr}}
+{{{header_tile}}}
+
+<div id="page" class="container-fluid">
+    {{{page_header_tile}}}
+
+    <div id="page-content" class="row-fluid">
+        <div id="region-main-box" class="{{{regionmainbox}}}">
+            <div class="row-fluid">
+                <div id="region-main" class="{{{regionmain}}}">
+                    <section id="region-main-shoelace">
+                        <span>Mustache template</span>
+                        {{{main_content}}}
+                    </section>
+                    <div id="region-main-shoelace-shadow"></div>
+                </div>
+                {{#blocks_side_pre}}
+                    {{{blocks_side_pre}}}
+                {{/blocks_side_pre}}
+            </div>
+        </div>
+        {{#blocks_side_post}}
+            {{{blocks_side_post}}}
+        {{/blocks_side_post}}
     </div>
-    <div id="course-header">
-        {{{course_header}}}
-    </div>
-</header>
+
+    {{{footer_tile}}}
+</div>
