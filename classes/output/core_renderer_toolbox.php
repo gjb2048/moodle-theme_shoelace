@@ -33,10 +33,10 @@ defined('MOODLE_INTERNAL') || die();
 trait core_renderer_toolbox {
 
     public function get_setting($setting) {
-        $tcr = array_reverse($this->themeconfig, true);
+        //$tcr = array_reverse($this->themeconfig, true);
 
         $settingvalue = false;
-        foreach ($tcr as $tconfig) {
+        foreach ($this->themeconfig as $tconfig) {
             if (property_exists($tconfig->settings, $setting)) {
                 $settingvalue = $tconfig->settings->$setting;
                 break;
@@ -46,9 +46,9 @@ trait core_renderer_toolbox {
     }
 
     public function setting_file_url($setting, $filearea) {
-        $tcr = array_reverse($this->themeconfig, true);
+        //$tcr = array_reverse($this->themeconfig, true);
         $settingconfig = null;
-        foreach ($tcr as $tconfig) {
+        foreach ($this->themeconfig as $tconfig) {
             if (property_exists($tconfig->settings, $setting)) {
                 $settingconfig = $tconfig;
                 break;
@@ -92,12 +92,7 @@ trait core_renderer_toolbox {
             }
         }
 
-        if ($mustache == 'columns2') {
-            $data->body_attributes = $this->body_attributes('two-column');
-        } else {
-            $data->body_attributes = $this->body_attributes();
-        }
-
+        $data->body_attributes = $this->body_attributes();
         $data->standard_top_of_body_html = $this->standard_top_of_body_html();
         $data->pagelayout = $this->render_template($mustache);
         $data->standard_end_of_body_html = $this->standard_end_of_body_html();
@@ -154,26 +149,90 @@ Logo only on frontpage.
     }
 
     protected function render_columns2_template() {
-        // Set default (LTR) layout mark-up for a two column page (side-pre-only).
-        $regionmain = 'span9';
-        $sidepre = 'span3';
-        // Reset layout mark-up for RTL languages.
-        if (right_to_left()) {
-            $sidepre .= ' pull-right';
+        if ($this->page->user_is_editing()) {
+            $hassidepre = true;
         } else {
-            $regionmain .= ' pull-right';
-            $sidepre .= ' desktop-first-column';
+            $hassidepre = (empty($this->page->layout_options['noblocks']) && $this->page->blocks->region_has_content('side-pre', $this));
+        }
+
+        $regionmain = 'span9';
+        if ($hassidepre) {
+            $sidepre = 'span3';
+        } else {
+            $regionmain = 'span12';
+        }
+        if (!right_to_left()) {
+            // Layout mark-up for LTR languages.
+            if ($hassidepre) {
+                $regionmain .= ' pull-right';
+                $sidepre .= ' desktop-first-column';
+            }
         }
 
         $data = $this->get_base_data();
 
         $data->regionmain = $regionmain;
-        $data->blocks_side_pre = $this->blocks('side-pre', $sidepre);
+        if ($hassidepre) {
+            $data->blocks_side_pre = $this->shoelaceblocks('side-pre', $sidepre);
+        }
         $data->header_tile = $this->render_template('header_tile');
         $data->page_header_tile = $this->render_template('page_header_tile');
         $data->footer_tile = $this->render_template('footer_tile');
 
         return $this->render_from_template('theme_shoelace/columns2', $data);
+    }
+
+    protected function render_columns3_template() {
+        if ($this->page->user_is_editing()) {
+            $hassidepre = $hassidepost = true;
+        } else {
+            $hassidepre = (empty($this->page->layout_options['noblocks']) && $this->page->blocks->region_has_content('side-pre', $this));
+            $hassidepost = (empty($this->page->layout_options['noblocks']) && $this->page->blocks->region_has_content('side-post', $this));
+        }
+
+        if ($hassidepre) {
+            $regionmain = 'span8';
+            $sidepre = 'span4';
+        } else {
+            $regionmain = 'span12';
+        }
+
+        if ($hassidepost) {
+            $regionmainbox = 'span9';
+            $sidepost = 'span3';
+        } else {
+            $regionmainbox = 'span12';
+        }
+
+        if (right_to_left()) {
+            // Layout mark-up for RTL languages.
+            if ($hassidepost) {
+                $regionmainbox .= ' pull-right';
+                $sidepost .= ' desktop-first-column';
+            }
+        } else {
+            // Layout mark-up for LTR languages.
+            if ($hassidepre) {
+                $regionmain .= ' pull-right';
+                $sidepre .= ' desktop-first-column';
+            }
+        }
+
+        $data = $this->get_base_data();
+
+        $data->regionmainbox = $regionmainbox;
+        $data->regionmain = $regionmain;
+        if ($hassidepre) {
+            $data->blocks_side_pre = $this->shoelaceblocks('side-pre', $sidepre);
+        }
+        if ($hassidepost) {
+            $data->blocks_side_post = $this->shoelaceblocks('side-post', $sidepost);
+        }
+        $data->header_tile = $this->render_template('header_tile');
+        $data->page_header_tile = $this->render_template('page_header_tile');
+        $data->footer_tile = $this->render_template('footer_tile');
+
+        return $this->render_from_template('theme_shoelace/columns3', $data);
     }
 
     protected function render_cdnfonts_tile_template() {

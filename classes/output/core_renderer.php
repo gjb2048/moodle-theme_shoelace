@@ -41,11 +41,11 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     protected $shoelace = null; // Used for determining if this is a Shoelace or child of renderer.
 
-    protected $themeconfig = null;
+    protected $themeconfig = array();
 
     public function __construct(\moodle_page $page, $target) {
+        $this->themeconfig[] = \theme_config::load('shoelace');
         parent::__construct($page, $target);
-        $this->themeconfig = array(\theme_config::load('shoelace'));
     }
 
     public function get_tile_file($filename) {
@@ -152,7 +152,8 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      * @return string HTML.
      */
     public function shoelaceblocks($region, $classes = array(), $tag = 'aside', $blocksperrow = 0) {
-        $displayregion = $this->page->apply_theme_region_manipulations($region);
+        //$displayregion = $this->page->apply_theme_region_manipulations($region);
+        $displayregion = $region;
 
         $classes = (array) $classes;
         $classes[] = 'block-region';

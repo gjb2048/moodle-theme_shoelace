@@ -28,7 +28,7 @@
 $THEME->doctype = 'html5';
 $THEME->name = 'shoelace';
 $THEME->parents = array('bootstrapbase');
-$THEME->enable_dock = false;
+$THEME->enable_dock = true;
 
 $THEME->lessfile = 'moodleallshoelace';
 $THEME->lessvariablescallback = 'theme_shoelace_less_variables';
@@ -61,7 +61,7 @@ $THEME->parents_exclude_javascripts = array(
     'bootstrapbase' => array(
         'moodlebootstrap'
     )
-); // Exclude the parent JS.
+); // Exclude the parent JS for Bootstrap.
 
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
@@ -80,25 +80,33 @@ $THEME->layouts = array(
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
-        'file' => 'columns3.php',
+        //'file' => 'columns3.php',
+        'file' => 'layout.php',
+        'mustache' => 'columns3',
         'regions' => $col3regions,
         'defaultregion' => 'side-pre',
     ),
     // Main course page.
     'course' => array(
-        'file' => 'columns3.php',
+        //'file' => 'columns3.php',
+        'file' => 'layout.php',
+        'mustache' => 'columns3',
         'regions' => $col3regions,
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true),
     ),
     'coursecategory' => array(
-        'file' => 'columns3.php',
+        //'file' => 'columns3.php',
+        'file' => 'layout.php',
+        'mustache' => 'columns3',
         'regions' => $col3regions,
         'defaultregion' => 'side-pre',
     ),
     // Part of course, typical for modules - default page layout if $cm specified in require_login().
     'incourse' => array(
-        'file' => 'columns3.php',
+        //'file' => 'columns3.php',
+        'file' => 'layout.php',
+        'mustache' => 'columns3',
         'regions' => $col3regions,
         'defaultregion' => 'side-pre',
     ),
@@ -117,14 +125,18 @@ $THEME->layouts = array(
     ),
     // My dashboard page.
     'mydashboard' => array(
-        'file' => 'columns3.php',
+        //'file' => 'columns3.php',
+        'file' => 'layout.php',
+        'mustache' => 'columns3',
         'regions' => $col3regions,
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true),
     ),
     // My public page.
     'mypublic' => array(
-        'file' => 'columns3.php',
+        //'file' => 'columns3.php',
+        'file' => 'layout.php',
+        'mustache' => 'columns3',
         'regions' => $col3regions,
         'defaultregion' => 'side-pre',
     ),
@@ -187,7 +199,7 @@ $THEME->layouts = array(
 );
 
 $THEME->javascripts_footer = array(
-    'shoelace', 'dock'
+    'shoelace'
 );
 
 $properties = core_useragent::check_ie_properties(); // In /lib/classes/useragent.php.

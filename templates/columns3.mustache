@@ -24,11 +24,11 @@
   @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 }}
 {{!
-  @template theme_shoelace/columns2
+  @template theme_shoelace/columns3
 
-  Moodle two columns template.
+  Moodle three columns template.
 
-  The purpose of this template is to render a two column layout.
+  The purpose of this template is to render a three column layout.
 }}
 {{{header_tile}}}
 
@@ -36,18 +36,25 @@
     {{{page_header_tile}}}
 
     <div id="page-content" class="row-fluid">
-        <div id="region-main" class="{{{regionmain}}}">
-            <section id="region-main-shoelace">
-                {{{course_content_header}}}
-                <span>Mustache template</span>
-                {{{main_content}}}
-                {{{course_content_footer}}}
-            </section>
-            <div id="region-main-shoelace-shadow"></div>
+        <div id="region-main-box" class="{{{regionmainbox}}}">
+            <div class="row-fluid">
+                <div id="region-main" class="{{{regionmain}}}">
+                    <section id="region-main-shoelace">
+                        {{{course_content_header}}}
+                        <span>Mustache template</span>
+                        {{{main_content}}}
+                        {{{course_content_footer}}}
+                    </section>
+                    <div id="region-main-shoelace-shadow"></div>
+                </div>
+                {{#blocks_side_pre}}
+                    {{{blocks_side_pre}}}
+                {{/blocks_side_pre}}
+            </div>
         </div>
-        {{#blocks_side_pre}}
-            {{{blocks_side_pre}}}
-        {{/blocks_side_pre}}
+        {{#blocks_side_post}}
+            {{{blocks_side_post}}}
+        {{/blocks_side_post}}
     </div>
 
     {{{footer_tile}}}
