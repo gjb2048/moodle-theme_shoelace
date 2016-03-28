@@ -167,29 +167,26 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      * @return string HTML.
      */
     public function shoelaceblocks($region, $classes = array(), $tag = 'aside', $blocksperrow = 0) {
-        //$displayregion = $this->page->apply_theme_region_manipulations($region);
-        $displayregion = $region;
-
         $classes = (array) $classes;
         $classes[] = 'block-region';
 
         $attributes = array(
-            'id' => 'block-region-' . preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $displayregion),
+            'id' => 'block-region-' . preg_replace('#[^a-zA-Z0-9_\-]+#', '-', $region),
             'class' => join(' ', $classes),
-            'data-blockregion' => $displayregion,
+            'data-blockregion' => $region,
             'data-droptarget' => '1'
         );
 
-        if ($this->page->blocks->region_has_content($displayregion, $this)) {
+        if ($this->page->blocks->region_has_content($region, $this)) {
             if ($blocksperrow > 0) {
                 $editing = $this->page->user_is_editing();
                 if ($editing) {
                     $attributes['class'] .= ' '.$region.'-edit';
                 }
-                $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($displayregion,
+                $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($region,
                     $blocksperrow, $editing), $attributes);
             } else {
-                $output = html_writer::tag($tag, $this->blocks_for_region($displayregion), $attributes);
+                $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
             }
         } else {
             $output = html_writer::tag($tag, '', $attributes);

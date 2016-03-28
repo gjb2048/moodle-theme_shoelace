@@ -132,7 +132,7 @@ module.exports = function(grunt) { // jshint ignore:line
                     removeUselessStrokeAndFill: false
                 }, {
                     convertPathData: {
-                        straightCurves: false // advanced SVGO plugin option
+                        straightCurves: false // Advanced SVGO plugin option.
                     }
                 }]
             },
@@ -156,8 +156,7 @@ module.exports = function(grunt) { // jshint ignore:line
             decache: {
                 cmd: 'php -r "' + decachephp + '"',
                 callback: function(error) {
-                    // exec will output error messages
-                    // just add one to confirm success.
+                    // The 'exec' process will output error messages, just add one to confirm success.
                     if (!error) {
                         grunt.log.writeln("Moodle theme cache reset.");
                     }

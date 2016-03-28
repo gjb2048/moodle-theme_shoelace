@@ -44,7 +44,6 @@ trait core_renderer_toolbox {
     }
 
     public function setting_file_url($setting, $filearea) {
-        //$tcr = array_reverse($this->themeconfig, true);
         $settingconfig = null;
         foreach ($this->themeconfig as $tconfig) {
             if (property_exists($tconfig->settings, $setting)) {
@@ -104,7 +103,8 @@ trait core_renderer_toolbox {
         if (method_exists($this, $callablemethod)) {
             return $this->$callablemethod();
         }
-        throw new coding_exception(get_string('norendertemplatemethod', 'theme_shoelace', array('callablemethod' => $callablemethod)));
+        throw new coding_exception(get_string('norendertemplatemethod', 'theme_shoelace',
+            array('callablemethod' => $callablemethod)));
     }
 
     protected function get_base_data() {
@@ -147,7 +147,8 @@ trait core_renderer_toolbox {
         if ($this->page->user_is_editing()) {
             $hassidepre = true;
         } else {
-            $hassidepre = (empty($this->page->layout_options['noblocks']) && $this->page->blocks->region_has_content('side-pre', $this));
+            $hassidepre = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('side-pre', $this));
         }
 
         $regionmain = 'span9';
@@ -181,8 +182,10 @@ trait core_renderer_toolbox {
         if ($this->page->user_is_editing()) {
             $hassidepre = $hassidepost = true;
         } else {
-            $hassidepre = (empty($this->page->layout_options['noblocks']) && $this->page->blocks->region_has_content('side-pre', $this));
-            $hassidepost = (empty($this->page->layout_options['noblocks']) && $this->page->blocks->region_has_content('side-post', $this));
+            $hassidepre = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('side-pre', $this));
+            $hassidepost = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('side-post', $this));
         }
 
         if ($hassidepre) {
@@ -246,7 +249,7 @@ trait core_renderer_toolbox {
         $data = $this->get_threecolumns_common_data();
 
         // Logo only on frontpage.
-        $logo =\theme_shoelace\toolbox::get_setting('logo');
+        $logo = \theme_shoelace\toolbox::get_setting('logo');
         if (!empty($logo)) {
             global $CFG;
             $heading = \html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
@@ -258,7 +261,7 @@ trait core_renderer_toolbox {
         $data->page_header_tile = '<header id="page-header" class="clearfix">'.$heading.'</header>';
 
         // Marketing blocks.
-        $nummarketingblocks =\theme_shoelace\toolbox::get_setting('nummarketingblocks');
+        $nummarketingblocks = \theme_shoelace\toolbox::get_setting('nummarketingblocks');
         if ($nummarketingblocks) {
             $data->marketing_blocks = $this->shoelaceblocks('marketing', 'row-fluid', 'aside', $nummarketingblocks);
         }
@@ -338,7 +341,7 @@ trait core_renderer_toolbox {
         $data->context_header = $this->context_header();
         $data->course_header = $this->course_header();
 
-        return $this->render_from_template('theme_shoelace/#page_header', $data);        
+        return $this->render_from_template('theme_shoelace/#page_header', $data);
     }
 
     protected function render_footer_tile_template() {
@@ -364,7 +367,7 @@ trait core_renderer_toolbox {
 
             $data->anti_gravity = $this->anti_gravity();
 
-            return $this->render_from_template('theme_shoelace/#footer', $data);        
+            return $this->render_from_template('theme_shoelace/#footer', $data);
         } else {
             return '';
         }
@@ -373,8 +376,9 @@ trait core_renderer_toolbox {
     protected function render_footer_blocks_tile_template() {
         $data = new \stdClass();
 
-        $data->footer_blocks = $this->shoelaceblocks('footer', 'row-fluid', 'aside', \theme_shoelace\toolbox::get_setting('numfooterblocks'));;
+        $data->footer_blocks = $this->shoelaceblocks('footer', 'row-fluid', 'aside',
+            \theme_shoelace\toolbox::get_setting('numfooterblocks'));
 
-        return $this->render_from_template('theme_shoelace/#footer_blocks', $data);        
+        return $this->render_from_template('theme_shoelace/#footer_blocks', $data);
     }
 }
