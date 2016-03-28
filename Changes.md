@@ -8,6 +8,7 @@ Version 3.0.2
   5. Add 'aria-hidden=true' to 'Font Awesome' icons where possible.
   6. Update Style Guide improvements from Essential.
   7. Add external access to the Style Guide via moodlesite/theme/shoelace/pages/styleguide.php.
+  8. Fix padding top for navbar.
 
 Version 3.0.1
   1. Update .gitattributes file.
