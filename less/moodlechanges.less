@@ -1,8 +1,10 @@
 // My changes to Moodle Bootstrap.
 
 // Extra padding for fixed nav.
-body {
-    padding-top: 45px;
+@media (min-width: @navbarCollapseDesktopWidth) {
+    body {
+        padding-top: 45px;
+    }
 }
 
 // backup-restore.less
