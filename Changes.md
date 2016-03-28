@@ -4,6 +4,7 @@ Version 3.0.2
   1. Style guide typo.
   2. Convert to Mustache templates.
   3. Fix: Course table of contents block navigation for fixed navbar.
+  4. Use #595959 for dimmed text.
 
 Version 3.0.1
   1. Update .gitattributes file.

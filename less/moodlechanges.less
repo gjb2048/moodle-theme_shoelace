@@ -52,9 +52,13 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 
 // core.less
 // --------------------------------------------------
-.empty-region-side-post #region-bs-main-and-post.span9 .span9, .empty-region-side-post #region-bs-main-and-post.span9 .span8 {
-    /** RTL with no post area. **/
-    width:100%;
+.dimmed_category a:visited {
+    .muted;
+}
+.activity.label .dimmed_text {
+    .opacity(100);
+    color: @grayLight;
+    font-style: italic;
 }
 
 // core.less and modules.less
@@ -91,8 +95,13 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
     .sectionname > span,
     .content > div,  /* All the divs but the activities which are in a UL. */
     .activity .activityinstance {
-        margin-left: 0;
-        margin-right: 0;
+        opacity: 1;
+        color: @grayLight;
+        font-style: italic;
+    }
+    .sectionname > span a {
+        color: inherit;
+        font-style: inherit;
     }
 }
 
