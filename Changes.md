@@ -5,6 +5,9 @@ Version 3.0.2
   2. Convert to Mustache templates.
   3. Fix: Course table of contents block navigation for fixed navbar.
   4. Use #595959 for dimmed text.
+  5. Add 'aria-hidden=true' to 'Font Awesome' icons where possible.
+  6. Update Style Guide improvements from Essential.
+  7. Add external access to the Style Guide via moodlesite/theme/shoelace/pages/styleguide.php.
 
 Version 3.0.1
   1. Update .gitattributes file.

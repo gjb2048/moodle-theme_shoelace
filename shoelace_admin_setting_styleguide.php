@@ -56,49 +56,89 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $this->nosave = true;
 
         global $PAGE;
-        if ($PAGE->bodyid == 'page-admin-setting-' . $name) {
+        if (($PAGE->bodyid == 'page-admin-setting-' . $name) ||
+            ($PAGE->bodyid == 'page-theme-'.$PAGE->theme->name.'-pages-styleguide')) {
             $bc = new block_contents();
             $bc->title = get_string('styleguide', 'theme_shoelace');
             $bc->attributes['class'] = 'block block_style_guide';
+            $bc->attributes['data-block'] = 'style_guide';
             $bc->content = '<ul class="nav nav-list">';
-            $bc->content .= '<li><a href="#gridSystem"><i class="fa fa-hand-o-right"></i> Grid system</a></li>';
-            $bc->content .= '<li><a href="#fluidGridSystem"><i class="fa fa-hand-o-right"></i> Fluid grid system</a></li>';
-            $bc->content .= '<li><a href="#layouts"><i class="fa fa-hand-o-right"></i> Layouts</a></li>';
-            $bc->content .= '<li><a href="#responsive"><i class="fa fa-hand-o-right"></i> Responsive design</a></li>';
-            $bc->content .= '<li><a href="#typography"><i class="fa fa-hand-o-right"></i> Typography</a></li>';
-            $bc->content .= '<li><a href="#code"><i class="fa fa-hand-o-right"></i> Code</a></li>';
-            $bc->content .= '<li><a href="#tables"><i class="fa fa-hand-o-right"></i> Tables</a></li>';
-            $bc->content .= '<li><a href="#forms"><i class="fa fa-hand-o-right"></i> Forms</a></li>';
-            $bc->content .= '<li><a href="#buttons"><i class="fa fa-hand-o-right"></i> Buttons</a></li>';
-            $bc->content .= '<li><a href="#images"><i class="fa fa-hand-o-right"></i> Images</a></li>';
-            $bc->content .= '<li><a href="#dropdowns"><i class="fa fa-hand-o-right"></i> Dropdowns</a></li>';
-            $bc->content .= '<li><a href="#buttonGroups"><i class="fa fa-hand-o-right"></i> Button groups</a></li>';
-            $bc->content .= '<li><a href="#buttonDropdowns"><i class="fa fa-hand-o-right"></i> Button dropdowns</a></li>';
-            $bc->content .= '<li><a href="#navs"><i class="fa fa-hand-o-right"></i> Navs</a></li>';
-            $bc->content .= '<li><a href="#navbar"><i class="fa fa-hand-o-right"></i> Navbar</a></li>';
-            $bc->content .= '<li><a href="#breadcrumbs"><i class="fa fa-hand-o-right"></i> Breadcrumbs</a></li>';
-            $bc->content .= '<li><a href="#pagination"><i class="fa fa-hand-o-right"></i> Pagination</a></li>';
-            $bc->content .= '<li><a href="#labels-badges"><i class="fa fa-hand-o-right"></i> Labels and badges</a></li>';
-            $bc->content .= '<li><a href="#typography"><i class="fa fa-hand-o-right"></i> Typography</a></li>';
-            $bc->content .= '<li><a href="#thumbnails"><i class="fa fa-hand-o-right"></i> Thumbnails</a></li>';
-            $bc->content .= '<li><a href="#alerts"><i class="fa fa-hand-o-right"></i> Alerts</a></li>';
-            $bc->content .= '<li><a href="#progress"><i class="fa fa-hand-o-right"></i> Progress bars</a></li>';
-            $bc->content .= '<li><a href="#media"><i class="fa fa-hand-o-right"></i> Media object</a></li>';
-            $bc->content .= '<li><a href="#misc"><i class="fa fa-hand-o-right"></i> Misc</a></li>';
-            $bc->content .= '<li><a href="#overview"><i class="fa fa-hand-o-right"></i> JavaScript overview</a></li>';
-            $bc->content .= '<li><a href="#transitions"><i class="fa fa-hand-o-right"></i> Transitions</a></li>';
-            $bc->content .= '<li><a href="#modals"><i class="fa fa-hand-o-right"></i> Modal</a></li>';
-            $bc->content .= '<li><a href="#dropdowns"><i class="fa fa-hand-o-right"></i> Dropdown</a></li>';
-            $bc->content .= '<li><a href="#scrollspy"><i class="fa fa-hand-o-right"></i> Scrollspy</a></li>';
-            $bc->content .= '<li><a href="#tabs"><i class="fa fa-hand-o-right"></i> Tab</a></li>';
-            $bc->content .= '<li><a href="#tooltips"><i class="fa fa-hand-o-right"></i> Tooltip</a></li>';
-            $bc->content .= '<li><a href="#popovers"><i class="fa fa-hand-o-right"></i> Popover</a></li>';
-            $bc->content .= '<li><a href="#alerts"><i class="fa fa-hand-o-right"></i> Alert</a></li>';
-            $bc->content .= '<li><a href="#buttons"><i class="fa fa-hand-o-right"></i> Button</a></li>';
-            $bc->content .= '<li><a href="#collapse"><i class="fa fa-hand-o-right"></i> Collapse</a></li>';
-            $bc->content .= '<li><a href="#carousel"><i class="fa fa-hand-o-right"></i> Carousel</a></li>';
-            $bc->content .= '<li><a href="#typeahead"><i class="fa fa-hand-o-right"></i> Typeahead</a></li>';
-            $bc->content .= '<li><a href="#affix"><i class="fa fa-hand-o-right"></i> Affix</a></li>';
+            $bc->content .= '<li><a href="#gridSystem"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Grid system</a></li>';
+            $bc->content .= '<li><a href="#fluidGridSystem"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Fluid grid system</a></li>';
+            $bc->content .= '<li><a href="#layouts"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Layouts</a></li>';
+            $bc->content .= '<li><a href="#responsive"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Responsive design</a></li>';
+            $bc->content .= '<li><a href="#typography"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Typography</a></li>';
+            $bc->content .= '<li><a href="#code"><span aria-hidden="true" class="fa fa-hand-o-right">'.'
+                </span> Code</a></li>';
+            $bc->content .= '<li><a href="#tables"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Tables</a></li>';
+            $bc->content .= '<li><a href="#forms"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Forms</a></li>';
+            $bc->content .= '<li><a href="#buttons"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Buttons</a></li>';
+            $bc->content .= '<li><a href="#images"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Images</a></li>';
+            $bc->content .= '<li><a href="#dropdowns"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Dropdowns</a></li>';
+            $bc->content .= '<li><a href="#buttonGroups"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Button groups</a></li>';
+            $bc->content .= '<li><a href="#buttonDropdowns"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Button dropdowns</a></li>';
+            $bc->content .= '<li><a href="#navs"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Navs</a></li>';
+            $bc->content .= '<li><a href="#navbar"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Navbar</a></li>';
+            $bc->content .= '<li><a href="#breadcrumbs"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Breadcrumbs</a></li>';
+            $bc->content .= '<li><a href="#pagination"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Pagination</a></li>';
+            $bc->content .= '<li><a href="#labels-badges"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Labels and badges</a></li>';
+            $bc->content .= '<li><a href="#typography"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Typography</a></li>';
+            $bc->content .= '<li><a href="#thumbnails"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Thumbnails</a></li>';
+            $bc->content .= '<li><a href="#alerts"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Alerts</a></li>';
+            $bc->content .= '<li><a href="#progress"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Progress bars</a></li>';
+            $bc->content .= '<li><a href="#media"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Media object</a></li>';
+            $bc->content .= '<li><a href="#misc"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Misc</a></li>';
+            $bc->content .= '<li><a href="#overview"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> JavaScript overview</a></li>';
+            $bc->content .= '<li><a href="#transitions"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Transitions</a></li>';
+            $bc->content .= '<li><a href="#modals"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Modal</a></li>';
+            $bc->content .= '<li><a href="#dropdowns"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Dropdown</a></li>';
+            $bc->content .= '<li><a href="#scrollspy"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Scrollspy</a></li>';
+            $bc->content .= '<li><a href="#tabs"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Tab</a></li>';
+            $bc->content .= '<li><a href="#tooltips"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Tooltip</a></li>';
+            $bc->content .= '<li><a href="#popovers"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Popover</a></li>';
+            $bc->content .= '<li><a href="#alerts"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Alert</a></li>';
+            $bc->content .= '<li><a href="#buttons"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Button</a></li>';
+            $bc->content .= '<li><a href="#collapse"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Collapse</a></li>';
+            $bc->content .= '<li><a href="#carousel"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Carousel</a></li>';
+            $bc->content .= '<li><a href="#typeahead"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Typeahead</a></li>';
+            $bc->content .= '<li><a href="#affix"><span aria-hidden="true" class="fa fa-hand-o-right">'.
+                '</span> Affix</a></li>';
             $bc->content .= '</ul>';
             $defaultregion = $PAGE->blocks->get_default_region();
             $PAGE->blocks->add_fake_block($bc, $defaultregion);
@@ -1101,7 +1141,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= "position: static;";
         $return .= "}";
         $return .= ".bs-docs-example .carousel-indicators {";
-        $return .= "background-color: #ffd66a;";
+        $return .= "background-color: #30add1;";
         $return .= "border-radius: 4px;";
         $return .= "padding: 2px;";
         $return .= "}";
@@ -1111,10 +1151,6 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= "}";
         $return .= ".bs-docs-example .carousel-inner img {";
         $return .= "margin: 0 auto;";
-        $return .= "}";
-        $return .= ".bs-docs-example .carousel-control {";
-        $return .= "width: 60px;";
-        $return .= "height: 60px;";
         $return .= "}";
         $return .= "#forms .checkbox input[type=checkbox] {";
         $return .= "margin-left: 0;";
@@ -5111,35 +5147,35 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '<li class="span5">';
         $return .= '<a href="#" class="thumbnail">';
         $return .= '<div class="thumbnail-container">';
-        $return .= $this->threesixtytwoseventy();
+        $return .= $this->holder('360x270');
         $return .= '</div>';
         $return .= '</a>';
         $return .= '</li>';
         $return .= '<li class="span4">';
         $return .= '<a href="#" class="thumbnail">';
         $return .= '<div class="thumbnail-container">';
-        $return .= $this->twosixtyonetwenty();
+        $return .= $this->holder('260x120');
         $return .= '</div>';
         $return .= '</a>';
         $return .= '</li>';
         $return .= '<li class="span3">';
         $return .= '<a href="#" class="thumbnail">';
         $return .= '<div class="thumbnail-container">';
-        $return .= $this->onesixtyonetwenty();
+        $return .= $this->holder('160x120');
         $return .= '</div>';
         $return .= '</a>';
         $return .= '</li>';
         $return .= '<li class="span4">';
         $return .= '<a href="#" class="thumbnail">';
         $return .= '<div class="thumbnail-container">';
-        $return .= $this->twosixtyonetwenty();
+        $return .= $this->holder('260x120');
         $return .= '</div>';
         $return .= '</a>';
         $return .= '</li>';
         $return .= '<li class="span3">';
         $return .= '<a href="#" class="thumbnail">';
         $return .= '<div class="thumbnail-container">';
-        $return .= $this->onesixtyonetwenty();
+        $return .= $this->holder('160x120');
         $return .= '</div>';
         $return .= '</a>';
         $return .= '</li>';
@@ -5407,7 +5443,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '<div class="bs-docs-example">';
         $return .= '<div class="media">';
         $return .= '<a class="pull-left" href="#">';
-        $return .= $this->sixtyfoursixtyfour();
+        $return .= $this->holder('64x64');
         $return .= '</a>';
         $return .= '<div class="media-body">';
         $return .= '<h4 class="media-heading">Media heading</h4>';
@@ -5418,7 +5454,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '</div>';
         $return .= '<div class="media">';
         $return .= '<a class="pull-left" href="#">';
-        $return .= $this->sixtyfoursixtyfour();
+        $return .= $this->holder('64x64');
         $return .= '</a>';
         $return .= '<div class="media-body">';
         $return .= '<h4 class="media-heading">Media heading</h4>';
@@ -5427,7 +5463,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= 'fringilla. Donec lacinia congue felis in faucibus.';
         $return .= '<div class="media">';
         $return .= '<a class="pull-left" href="#">';
-        $return .= $this->sixtyfoursixtyfour();
+        $return .= $this->holder('64x64');
         $return .= '</a>';
         $return .= '<div class="media-body">';
         $return .= '<h4 class="media-heading">Media heading</h4>';
@@ -5465,7 +5501,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '<ul class="media-list">';
         $return .= '<li class="media">';
         $return .= '<a class="pull-left" href="#">';
-        $return .= $this->sixtyfoursixtyfour();
+        $return .= $this->holder('64x64');
         $return .= '</a>';
         $return .= '<div class="media-body">';
         $return .= '<h4 class="media-heading">Media heading</h4>';
@@ -5474,7 +5510,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '<!-- Nested media object -->';
         $return .= '<div class="media">';
         $return .= '<a class="pull-left" href="#">';
-        $return .= $this->sixtyfoursixtyfour();
+        $return .= $this->holder('64x64');
         $return .= '</a>';
         $return .= '<div class="media-body">';
         $return .= '<h4 class="media-heading">Nested media heading</h4>';
@@ -5483,7 +5519,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '<!-- Nested media object -->';
         $return .= '<div class="media">';
         $return .= '<a class="pull-left" href="#">';
-        $return .= $this->sixtyfoursixtyfour();
+        $return .= $this->holder('64x64');
         $return .= '</a>';
         $return .= '<div class="media-body">';
         $return .= '<h4 class="media-heading">Nested media heading</h4>';
@@ -5496,7 +5532,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '<!-- Nested media object -->';
         $return .= '<div class="media">';
         $return .= '<a class="pull-left" href="#">';
-        $return .= $this->sixtyfoursixtyfour();
+        $return .= $this->holder('64x64');
         $return .= '</a>';
         $return .= '<div class="media-body">';
         $return .= '<h4 class="media-heading">Nested media heading</h4>';
@@ -5508,7 +5544,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '</li>';
         $return .= '<li class="media">';
         $return .= '<a class="pull-right" href="#">';
-        $return .= $this->sixtyfoursixtyfour();
+        $return .= $this->holder('64x64');
         $return .= '</a>';
         $return .= '<div class="media-body">';
         $return .= '<h4 class="media-heading">Media heading</h4>';
@@ -7110,9 +7146,9 @@ class shoelace_admin_setting_styleguide extends admin_setting {
             $faright = $temp;
         }
         $return .= '<a class="left carousel-control" href="#myCarousel" data-slide="prev">';
-        $return .= '<i class="fa fa-chevron-circle-'.$faleft.'"></i></a>';
+        $return .= '<span aria-hidden="true" class="fa fa-chevron-circle-'.$faleft.'"></span></a>';
         $return .= '<a class="right carousel-control" href="#myCarousel" data-slide="next">';
-        $return .= '<i class="fa fa-chevron-circle-'.$faright.'"></i></a>';
+        $return .= '<span aria-hidden="true" class="fa fa-chevron-circle-'.$faright.'"></span></a>';
         $return .= '</div>';
         $return .= '</div>';
         $return .= '<pre class="prettyprint linenums">';
@@ -7539,76 +7575,8 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         return $return;
     }
 
-    private function sixtyfoursixtyfour() {
-        $return = '<img class="media-object" alt="64x64" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height';
-        $return .= '%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserve';
-        $return .= 'AspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15319846969%20text%20%7B%';
-        $return .= '20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif';
-        $return .= '%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15319846969%22%3E';
-        $return .= '%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%';
-        $return .= '2214.5%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" ';
-        $return .= 'style="width: 64px; height: 64px;">';
-        return $return;
-    }
-
-    private function onesixtyonetwenty() {
-        $return = '<img alt="160x120" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22160%22%20height%3D%22120%22%20xml';
-        $return .= 'ns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20160%20120%22%20preserveAspectRatio%3D%';
-        $return .= '22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1531984695a%20text%20%7B%20fill%3A%23AAA';
-        $return .= 'AAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace';
-        $return .= '%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1531984695a%22%3E%3Crect%20width';
-        $return .= '%3D%22160%22%20height%3D%22120%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2255.5%22%20y';
-        $return .= '%3D%2264.5%22%3E160x120%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" ';
-        $return .= 'style="width: 160px; height: 120px;">';
-        return $return;
-    }
-
-    private function twosixtyonetwenty() {
-        $return = '<img alt="260x120" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22260%22%20height%3D%22120%22%20xml';
-        $return .= 'ns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20260%20120%22%20preserveAspectRatio%3D%';
-        $return .= '22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15319846957%20text%20%7B%20fill%3A%23AAA';
-        $return .= 'AAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace';
-        $return .= '%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15319846957%22%3E%3Crect%20width';
-        $return .= '%3D%22260%22%20height%3D%22120%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.2734375%';
-        $return .= '22%20y%3D%2266%22%3E260x120%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" ';
-        $return .= 'style="width: 260px; height: 120px;">';
-        return $return;
-    }
-
-    private function twosixtyoneeighty() {
-        $return = '<img alt="260x180" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22260%22%20height%3D%22180%22%20xml';
-        $return .= 'ns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20260%20180%22%20preserveAspectRatio%3D%';
-        $return .= '22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15319846937%20text%20%7B%20fill%3A%23AAA';
-        $return .= 'AAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace';
-        $return .= '%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15319846937%22%3E%3Crect%20width';
-        $return .= '%3D%22260%22%20height%3D%22180%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.2734375%';
-        $return .= '22%20y%3D%2296%22%3E260x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" ';
-        $return .= 'style="width: 260px; height: 180px;">';
-        return $return;
-    }
-
-    private function threehundredtwohundred() {
-        $return = '<img alt="300x200" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22300%22%20height%3D%22200%22%20xml';
-        $return .= 'ns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20300%20200%22%20preserveAspectRatio%3D%';
-        $return .= '22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1531984694b%20text%20%7B%20fill%3A%23AAA';
-        $return .= 'AAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace';
-        $return .= '%3Bfont-size%3A15pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1531984694b%22%3E%3Crect%20width';
-        $return .= '%3D%22300%22%20height%3D%22200%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22111.0703125';
-        $return .= '%22%20y%3D%22106.6%22%3E300x200%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" ';
-        $return .= 'style="width: 300px; height: 200px;">';
-        return $return;
-    }
-
-    private function threesixtytwoseventy() {
-        $return = '<img alt="360x270" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22360%22%20height%3D%22270%22%20xml';
-        $return .= 'ns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20360%20270%22%20preserveAspectRatio%3D%';
-        $return .= '22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15319846955%20text%20%7B%20fill%3A%23AAA';
-        $return .= 'AAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace';
-        $return .= '%3Bfont-size%3A18pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15319846955%22%3E%3Crect%20width';
-        $return .= '%3D%22360%22%20height%3D%22270%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22133.2890625';
-        $return .= '%22%20y%3D%22143.1%22%3E360x270%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" ';
-        $return .= 'style="width: 360px; height: 270px;">';
-        return $return;
+    private function holder($resolution) {
+        return '<img data-src="holder.js/'.$resolution.'">';
     }
 
     private function threethumbnails() {
@@ -7617,7 +7585,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
             $return .= '<li class="span4">';
             $return .= '<div class="thumbnail">';
             $return .= '<div class="thumbnail-container">';
-            $return .= $this->threehundredtwohundred();
+            $return .= $this->holder('300x200');
             $return .= '</div>';
             $return .= '<div class="caption">';
             $return .= '<h3>Thumbnail label</h3>';
@@ -7637,7 +7605,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
             $return .= '<li class="span3">';
             $return .= '<a href="#" class="thumbnail">';
             $return .= '<div class="thumbnail-container">';
-            $return .= $this->twosixtyoneeighty();
+            $return .= $this->holder('260x180');
             $return .= '</div>';
             $return .= '</a>';
             $return .= '</li>';
