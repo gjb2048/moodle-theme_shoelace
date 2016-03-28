@@ -33,8 +33,6 @@ defined('MOODLE_INTERNAL') || die();
 trait core_renderer_toolbox {
 
     public function get_setting($setting) {
-        //$tcr = array_reverse($this->themeconfig, true);
-
         $settingvalue = false;
         foreach ($this->themeconfig as $tconfig) {
             if (property_exists($tconfig->settings, $setting)) {

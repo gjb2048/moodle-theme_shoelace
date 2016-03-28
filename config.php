@@ -74,7 +74,6 @@ $fpregions = array('side-pre', 'side-post', 'marketing', 'footer');
 $THEME->layouts = array(
     // Most backwards compatible layout without the blocks - this is the layout used by default.
     'base' => array(
-        //'file' => 'columns1.php',
         'file' => 'layout.php',
         'mustache' => 'columns1',
         'regions' => $empty,
@@ -82,7 +81,6 @@ $THEME->layouts = array(
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
-        //'file' => 'columns3.php',
         'file' => 'layout.php',
         'mustache' => 'columns3',
         'regions' => $col3regions,
@@ -90,7 +88,6 @@ $THEME->layouts = array(
     ),
     // Main course page.
     'course' => array(
-        //'file' => 'columns3.php',
         'file' => 'layout.php',
         'mustache' => 'columns3',
         'regions' => $col3regions,
@@ -98,7 +95,6 @@ $THEME->layouts = array(
         'options' => array('langmenu' => true)
     ),
     'coursecategory' => array(
-        //'file' => 'columns3.php',
         'file' => 'layout.php',
         'mustache' => 'columns3',
         'regions' => $col3regions,
@@ -106,7 +102,6 @@ $THEME->layouts = array(
     ),
     // Part of course, typical for modules - default page layout if $cm specified in require_login().
     'incourse' => array(
-        //'file' => 'columns3.php',
         'file' => 'layout.php',
         'mustache' => 'columns3',
         'regions' => $col3regions,
@@ -114,7 +109,6 @@ $THEME->layouts = array(
     ),
     // The site home page.
     'frontpage' => array(
-        //'file' => 'frontpage.php',
         'file' => 'layout.php',
         'mustache' => 'frontpage',
         'regions' => $fpregions,
@@ -123,7 +117,6 @@ $THEME->layouts = array(
     ),
     // Server administration scripts.
     'admin' => array(
-        //'file' => 'columns2.php',
         'file' => 'layout.php',
         'mustache' => 'columns2',
         'regions' => $col2regions,
@@ -131,7 +124,6 @@ $THEME->layouts = array(
     ),
     // My dashboard page.
     'mydashboard' => array(
-        //'file' => 'columns3.php',
         'file' => 'layout.php',
         'mustache' => 'columns3',
         'regions' => $col3regions,
@@ -140,14 +132,12 @@ $THEME->layouts = array(
     ),
     // My public page.
     'mypublic' => array(
-        //'file' => 'columns3.php',
         'file' => 'layout.php',
         'mustache' => 'columns3',
         'regions' => $col3regions,
         'defaultregion' => 'side-pre'
     ),
     'login' => array(
-        //'file' => 'columns1.php',
         'file' => 'layout.php',
         'mustache' => 'columns1',
         'regions' => $empty,
@@ -155,7 +145,6 @@ $THEME->layouts = array(
     ),
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
     'popup' => array(
-        //'file' => 'popup.php',
         'file' => 'layout.php',
         'mustache' => 'popup',
         'regions' => $empty,
@@ -163,7 +152,6 @@ $THEME->layouts = array(
     ),
     // No blocks and minimal footer - used for legacy frame layouts only!
     'frametop' => array(
-        //'file' => 'columns1.php',
         'file' => 'layout.php',
         'mustache' => 'columns1',
         'regions' => $empty,
@@ -178,14 +166,12 @@ $THEME->layouts = array(
     // This must not have any blocks, and it is good idea if it does not have links to
     // other places - for example there should not be a home link in the footer...
     'maintenance' => array(
-        //'file' => 'maintenance.php',
         'file' => 'layout.php',
         'mustache' => 'maintenance',
         'regions' => $empty
     ),
     // Should display the content and basic headers only.
     'print' => array(
-        //'file' => 'columns1.php',
         'file' => 'layout.php',
         'mustache' => 'columns1',
         'regions' => $empty,
@@ -198,7 +184,6 @@ $THEME->layouts = array(
     ),
     // The pagelayout used for reports.
     'report' => array(
-        //'file' => 'columns2.php',
         'file' => 'layout.php',
         'mustache' => 'columns2',
         'regions' => $col2regions,
@@ -206,7 +191,6 @@ $THEME->layouts = array(
     ),
     // The pagelayout used for safebrowser and securewindow.
     'secure' => array(
-        //'file' => 'secure.php',
         'file' => 'layout.php',
         'mustache' => 'secure',
         'regions' => $col3regions,
