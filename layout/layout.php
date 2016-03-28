@@ -29,4 +29,4 @@
 $output = $PAGE->get_renderer('theme_shoelace', 'core');
 
 echo $OUTPUT->doctype();
-echo $output->render_wrapper_template();
+echo $output->render_page();

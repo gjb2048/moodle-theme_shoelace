@@ -72,8 +72,18 @@ trait core_renderer_toolbox {
         return $output;
     }
 
+    // The page.
+    public function render_page() {
+        // Setup other elements for the page.
+        if ($this->page->pagelayout == 'course') {
+            $this->page->requires->js_call_amd('theme_shoelace/course_navigation', 'init');
+        }
+
+        return $this->render_wrapper_template();
+    }
+
     // Mustache.
-    public function render_wrapper_template() {
+    protected function render_wrapper_template() {
         $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
 
         $data = new \stdClass();
