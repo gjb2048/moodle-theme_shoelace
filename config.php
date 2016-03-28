@@ -78,7 +78,7 @@ $THEME->layouts = array(
         'file' => 'layout.php',
         'mustache' => 'columns1',
         'regions' => $empty,
-        'defaultregion' => 'footer',
+        'defaultregion' => 'footer'
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
@@ -86,7 +86,7 @@ $THEME->layouts = array(
         'file' => 'layout.php',
         'mustache' => 'columns3',
         'regions' => $col3regions,
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-pre'
     ),
     // Main course page.
     'course' => array(
@@ -95,14 +95,14 @@ $THEME->layouts = array(
         'mustache' => 'columns3',
         'regions' => $col3regions,
         'defaultregion' => 'side-pre',
-        'options' => array('langmenu' => true),
+        'options' => array('langmenu' => true)
     ),
     'coursecategory' => array(
         //'file' => 'columns3.php',
         'file' => 'layout.php',
         'mustache' => 'columns3',
         'regions' => $col3regions,
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-pre'
     ),
     // Part of course, typical for modules - default page layout if $cm specified in require_login().
     'incourse' => array(
@@ -110,7 +110,7 @@ $THEME->layouts = array(
         'file' => 'layout.php',
         'mustache' => 'columns3',
         'regions' => $col3regions,
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-pre'
     ),
     // The site home page.
     'frontpage' => array(
@@ -119,7 +119,7 @@ $THEME->layouts = array(
         'mustache' => 'frontpage',
         'regions' => $fpregions,
         'defaultregion' => 'side-pre',
-        'options' => array('nonavbar' => true),
+        'options' => array('nonavbar' => true)
     ),
     // Server administration scripts.
     'admin' => array(
@@ -127,7 +127,7 @@ $THEME->layouts = array(
         'file' => 'layout.php',
         'mustache' => 'columns2',
         'regions' => $col2regions,
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-pre'
     ),
     // My dashboard page.
     'mydashboard' => array(
@@ -136,7 +136,7 @@ $THEME->layouts = array(
         'mustache' => 'columns3',
         'regions' => $col3regions,
         'defaultregion' => 'side-pre',
-        'options' => array('langmenu' => true),
+        'options' => array('langmenu' => true)
     ),
     // My public page.
     'mypublic' => array(
@@ -144,23 +144,22 @@ $THEME->layouts = array(
         'file' => 'layout.php',
         'mustache' => 'columns3',
         'regions' => $col3regions,
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-pre'
     ),
     'login' => array(
         //'file' => 'columns1.php',
         'file' => 'layout.php',
         'mustache' => 'columns1',
         'regions' => $empty,
-        'options' => array('langmenu' => true),
+        'options' => array('langmenu' => true)
     ),
-
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
     'popup' => array(
         //'file' => 'popup.php',
         'file' => 'layout.php',
         'mustache' => 'popup',
         'regions' => $empty,
-        'options' => array('nofooter' => true, 'nonavbar' => true),
+        'options' => array('nofooter' => true, 'nonavbar' => true)
     ),
     // No blocks and minimal footer - used for legacy frame layouts only!
     'frametop' => array(
@@ -168,7 +167,7 @@ $THEME->layouts = array(
         'file' => 'layout.php',
         'mustache' => 'columns1',
         'regions' => $empty,
-        'options' => array('nofooter' => true, 'nocoursefooter' => true),
+        'options' => array('nofooter' => true, 'nocoursefooter' => true)
     ),
     // Embeded pages, like iframe/object embeded in moodleform - it needs as much space as possible.
     'embedded' => array(
@@ -190,7 +189,7 @@ $THEME->layouts = array(
         'file' => 'layout.php',
         'mustache' => 'columns1',
         'regions' => $empty,
-        'options' => array('nofooter' => true, 'nonavbar' => false),
+        'options' => array('nofooter' => true, 'nonavbar' => false)
     ),
     // The pagelayout used when a redirection is occuring.
     'redirect' => array(
@@ -203,7 +202,7 @@ $THEME->layouts = array(
         'file' => 'layout.php',
         'mustache' => 'columns2',
         'regions' => $col2regions,
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'side-pre'
     ),
     // The pagelayout used for safebrowser and securewindow.
     'secure' => array(
