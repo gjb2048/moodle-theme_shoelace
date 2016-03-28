@@ -1,7 +1,8 @@
 Version Information
 ===================
-Version 3.0.1.1
+Version 3.0.2
   1. Style guide typo.
+  2. Convert to Mustache templates.
 
 Version 3.0.1
   1. Update .gitattributes file.
