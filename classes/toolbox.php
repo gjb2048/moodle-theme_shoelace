@@ -191,4 +191,53 @@ class toolbox {
 
         return $return;
     }
+
+    static public function set_colour($css, $themecolour, $tag, $defaultcolour, $alpha = null) {
+        if (!($themecolour)) {
+            $replacement = $defaultcolour;
+        } else {
+            $replacement = $themecolour;
+        }
+        if (!is_null($alpha)) {
+            $replacement = self::hex2rgba($replacement, $alpha);
+        }
+        $css = str_replace($tag, $replacement, $css);
+        return $css;
+    }
+
+    /**
+     * Returns the RGB for the given hex.
+     *
+     * @param string $hex
+     * @return array
+     */
+    static private function hex2rgb($hex) {
+        // From: http://bavotasan.com/2011/convert-hex-color-to-rgb-using-php/.
+        $hex = str_replace("#", "", $hex);
+
+        if (strlen($hex) == 3) {
+            $r = hexdec(substr($hex, 0, 1).substr($hex, 0, 1));
+            $g = hexdec(substr($hex, 1, 1).substr($hex, 1, 1));
+            $b = hexdec(substr($hex, 2, 1).substr($hex, 2, 1));
+        } else {
+            $r = hexdec(substr($hex, 0, 2));
+            $g = hexdec(substr($hex, 2, 2));
+            $b = hexdec(substr($hex, 4, 2));
+        }
+        $rgb = array('r' => $r, 'g' => $g, 'b' => $b);
+        return $rgb; // Returns the rgb as an array.
+    }
+
+    /**
+     * Returns the RGBA for the given hex and alpha.
+     *
+     * @param string $hex
+     * @param string $alpha
+     * @return string
+     */
+    static private function hex2rgba($hex, $alpha) {
+        $rgba = self::hex2rgb($hex);
+        $rgba[] = $alpha;
+        return 'rgba('.implode(", ", $rgba).')'; // Returns the rgba values separated by commas.
+    }
 }

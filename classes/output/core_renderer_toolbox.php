@@ -113,7 +113,7 @@ trait core_renderer_toolbox {
         if (method_exists($this, $callablemethod)) {
             return $this->$callablemethod();
         }
-        throw new coding_exception(get_string('norendertemplatemethod', 'theme_shoelace',
+        throw new \coding_exception(get_string('norendertemplatemethod', 'theme_shoelace',
             array('callablemethod' => $callablemethod)));
     }
 
@@ -276,6 +276,9 @@ trait core_renderer_toolbox {
             $data->marketing_blocks = $this->shoelaceblocks('marketing', 'row-fluid', 'aside', $nummarketingblocks);
         }
 
+        // Slideshow.
+        $data->slideshow = $this->render_template('carousel_tile');
+
         return $this->render_from_template('theme_shoelace/frontpage', $data);
     }
 
@@ -352,6 +355,131 @@ trait core_renderer_toolbox {
         $data->course_header = $this->course_header();
 
         return $this->render_from_template('theme_shoelace/#page_header', $data);
+    }
+
+    protected function showslider() {
+        $noslides = \theme_shoelace\toolbox::get_setting('numberofslides');
+        if ($noslides) {
+            $devicetype = \core_useragent::get_device_type(); // In useragent.php.
+            if (($devicetype == "mobile") && \theme_shoelace\toolbox::get_setting('hideonphone')) {
+                $noslides = false;
+            } else if (($devicetype == "tablet") && \theme_shoelace\toolbox::get_setting('hideontablet')) {
+                $noslides = false;
+            }
+        }
+        return $noslides;
+    }
+
+    protected function render_carousel_tile_template() {
+        $numberofslides = $this->showslider();
+        if (!empty($numberofslides)) {
+
+            $data = new \stdClass();
+
+            $data->my_carousel = 'shoelacecarousel';
+            $data->slideinterval = 5000;
+            $data->centered = (\theme_shoelace\toolbox::get_setting('slidecaptioncentred')) ? ' centred' : '';
+
+            $captionoptions = \theme_shoelace\toolbox::get_setting('slidecaptionoptions');
+
+            switch($captionoptions) {
+                case 1:
+                    $data->below = ' ontop';
+                break;
+                case 2:
+                    $data->below = ' below';
+                break;
+                default:
+                    $data->below = '';
+            }
+            if ($captionoptions == 0) {
+                $slideextraclass = ' side-caption';
+            } else {
+                $slideextraclass = '';
+            }
+
+            for ($slideindex = 1; $slideindex <= $numberofslides; $slideindex++) {
+                $slideurl = \theme_shoelace\toolbox::get_setting('slide'.$slideindex.'url');
+                $slideurltarget = \theme_shoelace\toolbox::get_setting('slide'.$slideindex.'target');
+                $slidetitle = \theme_shoelace\toolbox::get_setting('slide'.$slideindex);
+                $slidecaption = \theme_shoelace\toolbox::get_setting('slide'.$slideindex.'caption', 'format_html');
+                if ($slideurl) {
+                    // Strip links from the caption to prevent link in a link.
+                    $slidecaption = preg_replace('/<a href=\"(.*?)\">(.*?)<\/a>/', "\\2", $slidecaption);
+                }
+                $slideimagealt = strip_tags($slidetitle);
+
+                $indicator = '<li data-target="#'.$data->my_carousel.'" data-slide-to="'.($slideindex - 1).'"';
+                if ($slideindex == 1) {
+                    $indicator .= ' class="active"';
+                }
+                $indicator .= '></li>';
+                $data->indicators[] = $indicator;
+
+                // Get slide image or fallback to default.
+                $slideimage = self::get_setting('slide'.$slideindex.'image');
+                if ($slideimage) {
+                    $slideimage = self::setting_file_url('slide'.$slideindex.'image', 'slide'.$slideindex.'image');
+                } else {
+                    $slideimage = self::pix_url('default_slide', 'theme');
+                }
+
+                if ($slideurl) {
+                    $slide = '<a href="'.$slideurl.'" target="'.$slideurltarget.'" class="item'.$slideextraclass;
+                } else {
+                    $slide = '<div class="item'.$slideextraclass;
+                }
+                if ($slideindex == 1) {
+                    $slide .= ' active';
+                }
+                $slide .= '">';
+
+                if ($captionoptions == 0) {
+                    $slide .= '<div class="container-fluid">';
+                    $slide .= '<div class="row-fluid">';
+
+                    if ($slidetitle || $slidecaption) {
+                        $slide .= '<div class="span5 the-side-caption">';
+                        $slide .= '<div class="the-side-caption-content">';
+                        $slide .= '<h4>'.$slidetitle.'</h4>';
+                        $slide .= '<div>'.$slidecaption.'</div>';
+                        $slide .= '</div>';
+                        $slide .= '</div>';
+                        $slide .= '<div class="span7">';
+                    } else {
+                        $slide .= '<div class="span10 offset1 nocaption">';
+                    }
+                    $slide .= '<div class="carousel-image-container">';
+                    $slide .= '<img src="'.$slideimage.'" alt="'.$slideimagealt.'" class="carousel-image">';
+                    $slide .= '</div>';
+                    $slide .= '</div>';
+
+                    $slide .= '</div>';
+                    $slide .= '</div>';
+                } else {
+                    $nocaption = (!($slidetitle || $slidecaption)) ? ' nocaption' : '';
+                    $slide .= '<div class="carousel-image-container'.$nocaption.'">';
+                    $slide .= '<img src="'.$slideimage.'" alt="'.$slideimagealt.'" class="carousel-image">';
+                    $slide .= '</div>';
+
+                    // Output title and caption if either is present.
+                    if ($slidetitle || $slidecaption) {
+                        $slide .= '<div class="carousel-caption">';
+                        $slide .= '<div class="carousel-caption-inner">';
+                        $slide .= '<h4>'.$slidetitle.'</h4>';
+                        $slide .= '<div>'.$slidecaption.'</div>';
+                        $slide .= '</div>';
+                        $slide .= '</div>';
+                    }
+                }
+
+                $slide .= ($slideurl) ? '</a>' : '</div>';
+                $data->slides[] = $slide;
+            }
+            return $this->render_from_template('theme_shoelace/#carousel', $data);
+        } else {
+            return '';
+        }
     }
 
     protected function render_footer_tile_template() {

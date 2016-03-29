@@ -1,0 +1,46 @@
+{{!
+  This file is part of Moodle - http://moodle.org/
+
+  Moodle is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Moodle is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+  Shoelace theme.
+
+  @package    theme
+  @subpackage shoelace
+  @copyright  &copy; 2016-onwards G J Barnard.
+  @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+  @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+}}
+{{!
+  @template theme_shoelace/#carousel
+
+  Moodle carousel tile template.
+
+  The purpose of this template is to render the carousel.
+}}
+<div id="{{my_carousel}}" class="carousel slide" data-interval="{{slideinterval}}">
+    <ol class="carousel-indicators">
+    {{#indicators}}
+        {{{.}}}
+    {{/indicators}}
+    </ol>
+    <div class="carousel-inner{{centered}}{{below}}">
+    {{#slides}}
+        {{{.}}}
+    {{/slides}}
+    </div>
+    <a class="left carousel-control" href="#{{my_carousel}}" data-slide="prev"><span aria-hidden="true" class="fa fa-chevron-circle-left"></span></a>
+    <a class="right carousel-control" href="#{{my_carousel}}" data-slide="next"><span aria-hidden="true" class="fa fa-chevron-circle-right"></span></a>
+</div>

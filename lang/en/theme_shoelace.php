@@ -102,6 +102,68 @@ $string['two'] = 'Two';
 $string['three'] = 'Three';
 $string['four'] = 'Four';
 
+$string['alwaysdisplay'] = 'Always show';
+$string['displaybeforelogin'] = 'Show before login only';
+$string['displayafterlogin'] = 'Show after login only';
+$string['dontdisplay'] = 'Never show';
+
+// Slideshow.
+$string['slideshowheading'] = 'Slide show';
+$string['slideshowheadingsub'] = 'Dynamic slide show for the front page';
+$string['slideshowdesc'] = 'This creates a dynamic slide show of up to sixteen slides for you to promote important elements of your site.  The show is responsive where image height is set according to screen size.  The recommended height is 300px.  The width is set at 100% and therefore the actual height will be smaller if the width is greater than the screen size.  At smaller screen sizes the height is reduced dynamically without the need to provide separate images.  For reference screen width < 767px = height 165px, width between 768px and 979px = height 225px and width > 980px = height 300px.  If no image is selected for a slide, then the default_slide image in the pix folder is used.';
+
+$string['toggleslideshow'] = 'Toggle slide show display';
+$string['toggleslideshowdesc'] = 'Choose if you wish to hide or show the slide show.';
+
+$string['numberofslides'] = 'Number of slides';
+$string['numberofslides_desc'] = 'Number of slides on the slider.';
+
+$string['hideonphone'] = 'Hide slide show on mobiles';
+$string['hideonphonedesc'] = 'Choose if you wish to disable slide show on mobiles.';
+
+$string['hideontablet'] = 'Hide slide show on tablets';
+$string['hideontabletdesc'] = 'Choose if you wish to disable the slide show on tablets.';
+
+$string['readmore'] = 'Read more';
+
+$string['slideinterval'] = 'Slide interval';
+$string['slideintervaldesc'] = 'Slide transition interval in milliseconds.';
+
+$string['slidecaptiontextcolor'] = 'Slide caption text colour';
+$string['slidecaptiontextcolordesc'] = 'What colour the slide caption text should be.';
+$string['slidecaptionbackgroundcolor'] = 'Slide caption background colour';
+$string['slidecaptionbackgroundcolordesc'] = 'What colour the slide caption background should be.';
+
+$string['slidecaptioncentred'] = 'Slide caption centred';
+$string['slidecaptioncentreddesc'] = 'If the slide caption should be centred.';
+
+$string['slidecaptionoptions'] = 'Slide caption options';
+$string['slidecaptionoptionsdesc'] = 'Where the captions should appear in relation to the image.';
+$string['slidecaptionbeside'] = 'Beside';
+$string['slidecaptionontop'] = 'On top';
+$string['slidecaptionunderneath'] = 'Underneath';
+
+$string['slidebuttoncolor'] = 'Slide button colour';
+$string['slidebuttoncolordesc'] = 'What colour the slide navigation button should be.';
+$string['slidebuttonhovercolor'] = 'Slide button hover colour';
+$string['slidebuttonhovercolordesc'] = 'What colour the slide navigation button hover should be.';
+
+$string['slideno'] = 'Slide {$a->slide}';
+$string['slidenodesc'] = 'Enter the settings for slide {$a->slide}.';
+$string['slidetitle'] = 'Slide title';
+$string['slidetitledesc'] = 'Enter a descriptive title for your slide';
+$string['slideimage'] = 'Slide image';
+$string['slideimagedesc'] = 'Image works best if it is transparent.';
+$string['slidecaption'] = 'Slide caption';
+$string['slidecaptiondesc'] = 'Enter the caption text to use for the slide';
+$string['slideurl'] = 'Slide link';
+$string['slideurldesc'] = 'Enter the target destination of the slide\'s image link';
+$string['slideurltarget'] = 'Link target';
+$string['slideurltargetdesc'] = 'Choose how the link should be opened';
+$string['slideurltargetself'] = 'Current page';
+$string['slideurltargetnew'] = 'New page';
+$string['slideurltargetparent'] = 'Parent frame';
+
 // Style guide.
 $string['styleguide'] = 'Style guide';
 $string['styleguidesub'] = 'Bootstrap V2.3.2 Style guide';

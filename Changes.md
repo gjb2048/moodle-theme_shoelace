@@ -9,6 +9,8 @@ Version 3.0.2
   6. Update Style Guide improvements from Essential.
   7. Add external access to the Style Guide via moodlesite/theme/shoelace/pages/styleguide.php.
   8. Fix padding top for navbar.
+  9. Add frontpage carousel.
+ 10. Update to FontAwesome 4.5.0.
 
 Version 3.0.1
   1. Update .gitattributes file.

@@ -34,6 +34,33 @@ function theme_shoelace_process_css($css, $theme) {
     $logo = \theme_shoelace\toolbox::setting_file_url('logo', 'logo');
     $css = theme_shoelace_set_logo($css, $logo);
 
+
+    // Set the slide header colour.
+    $slideshowcolor = \theme_shoelace\toolbox::get_setting('slideshowcolor');
+    $css = \theme_shoelace\toolbox::set_colour($css, $slideshowcolor, '[[setting:slideshowcolor]]', '#30add1');
+
+    // Set the slide header colour.
+    $slideheadercolor = \theme_shoelace\toolbox::get_setting('slideheadercolor');
+    $css = \theme_shoelace\toolbox::set_colour($css, $slideheadercolor, '[[setting:slideheadercolor]]', '#30add1');
+
+    // Set the slide caption text colour.
+    $slidecaptiontextcolor = \theme_shoelace\toolbox::get_setting('slidecaptiontextcolor');
+    $css = \theme_shoelace\toolbox::set_colour($css, $slidecaptiontextcolor, '[[setting:slidecaptiontextcolor]]',
+        '#ffffff');
+
+    // Set the slide caption background colour.
+    $slidecaptionbackgroundcolor = \theme_shoelace\toolbox::get_setting('slidecaptionbackgroundcolor');
+    $css = \theme_shoelace\toolbox::set_colour($css, $slidecaptionbackgroundcolor,
+        '[[setting:slidecaptionbackgroundcolor]]', '#30add1');
+
+    // Set the slide button colour.
+    $slidebuttoncolor = \theme_shoelace\toolbox::get_setting('slidebuttoncolor');
+    $css = \theme_shoelace\toolbox::set_colour($css, $slidebuttoncolor, '[[setting:slidebuttoncolor]]', '#30add1');
+
+    // Set the slide button hover colour.
+    $slidebuttonhcolor = \theme_shoelace\toolbox::get_setting('slidebuttonhovercolor');
+    $css = \theme_shoelace\toolbox::set_colour($css, $slidebuttonhcolor, '[[setting:slidebuttonhovercolor]]', '#217a94');
+
     // Set custom CSS.
     $customcss = \theme_shoelace\toolbox::get_setting('customcss');
     if (empty($customcss)) {
@@ -117,6 +144,7 @@ function theme_shoelace_extra_less($theme) {
     $content .= \theme_shoelace\toolbox::get_extra_less('bootstrapchanges');
     $content .= \theme_shoelace\toolbox::get_extra_less('moodlechanges');
     $content .= \theme_shoelace\toolbox::get_extra_less('shoelacechanges');
+    $content .= \theme_shoelace\toolbox::get_extra_less('variables-fontawesome');
     $content .= \theme_shoelace\toolbox::get_extra_less('shoelacecustom');
 
     return $content;
