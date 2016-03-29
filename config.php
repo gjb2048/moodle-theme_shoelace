@@ -112,8 +112,7 @@ $THEME->layouts = array(
         'file' => 'layout.php',
         'mustache' => 'frontpage',
         'regions' => $fpregions,
-        'defaultregion' => 'side-pre',
-        'options' => array('nonavbar' => true)
+        'defaultregion' => 'side-pre'
     ),
     // Server administration scripts.
     'admin' => array(

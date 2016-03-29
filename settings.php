@@ -227,7 +227,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_shoelace/slidecaptionbackgroundcolor';
     $title = get_string('slidecaptionbackgroundcolor', 'theme_shoelace');
     $description = get_string('slidecaptionbackgroundcolordesc', 'theme_shoelace');
-    $default = '#30add1';
+    $default = '#ffd974';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -260,7 +260,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_shoelace/slidebuttoncolor';
     $title = get_string('slidebuttoncolor', 'theme_shoelace');
     $description = get_string('slidebuttoncolordesc', 'theme_shoelace');
-    $default = '#30add1';
+    $default = '#ffd974';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -270,7 +270,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_shoelace/slidebuttonhovercolor';
     $title = get_string('slidebuttonhovercolor', 'theme_shoelace');
     $description = get_string('slidebuttonhovercolordesc', 'theme_shoelace');
-    $default = '#217a94';
+    $default = '#653cae';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');

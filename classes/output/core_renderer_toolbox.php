@@ -377,7 +377,11 @@ trait core_renderer_toolbox {
             $data = new \stdClass();
 
             $data->my_carousel = 'shoelacecarousel';
-            $data->slideinterval = 5000;
+
+            $jsdata = array('data' => array('slideinterval' => \theme_shoelace\toolbox::get_setting('slideinterval'),
+                'id' => $data->my_carousel));
+            $this->page->requires->js_call_amd('theme_shoelace/carousel', 'init', $jsdata);
+
             $data->centered = (\theme_shoelace\toolbox::get_setting('slidecaptioncentred')) ? ' centred' : '';
 
             $captionoptions = \theme_shoelace\toolbox::get_setting('slidecaptionoptions');

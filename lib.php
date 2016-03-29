@@ -34,7 +34,6 @@ function theme_shoelace_process_css($css, $theme) {
     $logo = \theme_shoelace\toolbox::setting_file_url('logo', 'logo');
     $css = theme_shoelace_set_logo($css, $logo);
 
-
     // Set the slide header colour.
     $slideshowcolor = \theme_shoelace\toolbox::get_setting('slideshowcolor');
     $css = \theme_shoelace\toolbox::set_colour($css, $slideshowcolor, '[[setting:slideshowcolor]]', '#30add1');
@@ -163,14 +162,19 @@ function theme_shoelace_extra_less($theme) {
  * @return bool
  */
 function theme_shoelace_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
+    static $theme;
+    if (empty($theme)) {
+        $theme = theme_config::load('shoelace');
+    }
     if ($context->contextlevel == CONTEXT_SYSTEM) {
         if ($filearea === 'logo') {
-            $theme = theme_config::load('shoelace');
             // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
             if (!array_key_exists('cacheability', $options)) {
                 $options['cacheability'] = 'public';
             }
             return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
+        } else if (preg_match("/^(slide)[1-9][0-9]*image$/", $filearea)) {
+            return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else {
             send_file_not_found();
         }
