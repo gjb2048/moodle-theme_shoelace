@@ -78,6 +78,7 @@ trait core_renderer_toolbox {
         if ($this->page->pagelayout == 'course') {
             $this->page->requires->js_call_amd('theme_shoelace/course_navigation', 'init');
         }
+        $this->page->requires->js_call_amd('theme_shoelace/scroll', 'init');
 
         return $this->render_wrapper_template();
     }
