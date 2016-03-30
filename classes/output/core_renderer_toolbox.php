@@ -78,6 +78,10 @@ trait core_renderer_toolbox {
         if ($this->page->pagelayout == 'course') {
             $this->page->requires->js_call_amd('theme_shoelace/course_navigation', 'init');
         }
+        if (\theme_shoelace\toolbox::get_setting('navbarscroll') == 2) {
+            $data = array('data' => array('navbarscrollupamount' => \theme_shoelace\toolbox::get_setting('navbarscrollupamount')));
+            $this->page->requires->js_call_amd('theme_shoelace/scroll', 'init', $data);
+        }
 
         return $this->render_wrapper_template();
     }

@@ -122,11 +122,28 @@ textarea, .uneditable-input {
 // responsive-navbar.less
 // --------------------------------------------------
 @media (max-width: @navbarCollapseWidth) {
+  // Refix the navbar.
+  .navbar-fixed-top {
+    position: fixed;
+    .navbar-inner {
+        padding: 0;
+    }
+  }
   .navbar-inverse .nav-collapse .nav > li > a:hover,
   .navbar-inverse .nav-collapse .nav > li > a:focus,
   .navbar-inverse .nav-collapse .dropdown-menu a:hover,
   .navbar-inverse .nav-collapse .dropdown-menu a:focus {
     color: @bodyBackgroundAlt;
+  }
+}
+
+// responsive-767px-max.less
+// --------------------------------------------------
+@media (max-width: 767px) {
+  // Negative indent the now static "fixed" navbar
+  .navbar-fixed-top {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 

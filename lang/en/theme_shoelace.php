@@ -77,6 +77,12 @@ $string['navbartextcolourdesc'] = 'Set the colour for the navbar text.';
 $string['cdnfonts'] = 'Content delivery network fonts';
 $string['cdnfonts_desc'] = 'Use content delivery network fonts';
 
+$string['navbarscroll'] = 'Show / hide the navbar on scroll';
+$string['navbarscroll_desc'] = 'Scroll down to hide the navbar, scroll up more than {$a->upamount} pixels in a single gesture or get near the top to show the navbar.';
+
+$string['navbarscrollupamount'] = 'Navbar scroll up amount';
+$string['navbarscrollupamount_desc'] = 'Amount of up scrolling before the navbar will show when \'navbarscroll\' is \'Yes\', between {$a->lower} and {$a->upper} pixels.';
+
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
 
@@ -185,3 +191,7 @@ $string['antigravity'] = 'Back to top';
 
 // Mustache.
 $string['norendertemplatemethod'] = 'Cannot render template, renderer method (\'{$a->callablemethod}\') not found.';
+
+// shoelace_admin_setting_configinteger.
+$string['asconfigintlower'] = '{$a->value} is less than the lower range limit of {$a->lower}';
+$string['asconfigintupper'] = '{$a->value} is greater than the upper range limit of {$a->upper}';

@@ -35,6 +35,13 @@ $generalsettings->add(new admin_setting_heading('theme_shoelace_generalheading',
     get_string('generalheadingsub', 'theme_shoelace'),
     format_text(get_string('generalheadingdesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
 if ($ADMIN->fulltree) {
+    global $CFG;
+    if (file_exists("{$CFG->dirroot}/theme/shoelace/shoelace_admin_setting_configinteger.php")) {
+        require_once($CFG->dirroot . '/theme/shoelace/shoelace_admin_setting_configinteger.php');
+    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/shoelace/shoelace_admin_setting_configinteger.php")) {
+        require_once($CFG->themedir . '/shoelace/shoelace_admin_setting_configinteger.php');
+    }
+
     // Theme colour setting.
     $name = 'theme_shoelace/themecolour';
     $title = get_string('themecolour', 'theme_shoelace');
@@ -65,6 +72,41 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $generalsettings->add($setting);
 
+    // Invert Navbar to dark background.
+    $name = 'theme_shoelace/invert';
+    $title = get_string('invert', 'theme_shoelace');
+    $description = get_string('invertdesc', 'theme_shoelace');
+    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $generalsettings->add($setting);
+
+    /* Hide/show navbar on scroll. */
+    $name = 'theme_shoelace/navbarscroll';
+    $title = get_string('navbarscroll', 'theme_shoelace');
+    $upamount = get_config('theme_shoelace', 'navbarscrollupamount');
+    $upamountdefault = 240;
+    if ($upamount == 0) {
+        $upamount = $upamountdefault;
+    }
+    $description = get_string('navbarscroll_desc', 'theme_shoelace',
+        array('upamount' => $upamount));
+    $default = 2;
+    $choices = array(
+        1 => new lang_string('no'),   // No.
+        2 => new lang_string('yes')   // Yes.
+    );
+    $generalsettings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
+    /* Navbar scroll up amount. */
+    $name = 'theme_shoelace/navbarscrollupamount';
+    $title = get_string('navbarscrollupamount', 'theme_shoelace');
+    $lower = 0;
+    $upper = 500;
+    $description = get_string('navbarscrollupamount_desc', 'theme_shoelace',
+        array('lower' => $lower, 'upper' => $upper));
+    $setting = new shoelace_admin_setting_configinteger($name, $title, $description, $upamountdefault, $lower, $upper);
+    $generalsettings->add($setting);
+
     /* CDN Fonts - 1 = no, 2 = yes. */
     $name = 'theme_shoelace/cdnfonts';
     $title = get_string('cdnfonts', 'theme_shoelace');
@@ -75,14 +117,6 @@ if ($ADMIN->fulltree) {
         2 => new lang_string('yes')   // Yes.
     );
     $generalsettings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
-
-    // Invert Navbar to dark background.
-    $name = 'theme_shoelace/invert';
-    $title = get_string('invert', 'theme_shoelace');
-    $description = get_string('invertdesc', 'theme_shoelace');
-    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $generalsettings->add($setting);
 
     // Logo file setting.
     $name = 'theme_shoelace/logo';
