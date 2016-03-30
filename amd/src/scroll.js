@@ -13,6 +13,7 @@ define(['jquery', 'core/log'], function($, log) {
         settings.elementHeight = settings.theElement.height();
         var tally = 0;
         var diff = 0;
+        var currentElementTop = 0;
         var down = false;
         var last = $(this).scrollTop();
         var current = last;
@@ -24,10 +25,15 @@ define(['jquery', 'core/log'], function($, log) {
         };
 
         var setElementTop = function(pixels) {
+            //var newTop = currentElementTop
             if (pixels > settings.elementHeight) {
                 pixels = settings.elementHeight;
             }
-            settings.theElement.css('top', '-' + pixels + 'px');
+            currentElementTop = pixels;
+            if (currentElementTop < 0) {
+                currentElementTop = 0;
+            }
+            settings.theElement.css('top', '-' + currentElementTop + 'px');
         }
 
         this.on('mouseup', function (evt) {
@@ -71,13 +77,18 @@ define(['jquery', 'core/log'], function($, log) {
             if (current > last) {
                 down = true;
                 diff = current - last;
+                tally += diff;
             } else {
                 down = false;
                 diff = last - current;
+                tally -= diff;
+                if (tally >= settings.move) {
+                    
+                }
             }
-            tally += diff;
             log.debug('SCDf: ' + diff);
             log.debug('SCTa: ' + tally);
+			
             last = current;
         });
 
@@ -85,7 +96,7 @@ define(['jquery', 'core/log'], function($, log) {
     };
     
     $.fn.shoelaceScroll.defaults = {
-        move: 20
+        move: 50
     };
 }($));
 
