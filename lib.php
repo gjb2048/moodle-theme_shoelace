@@ -30,9 +30,13 @@ function theme_shoelace_process_css($css, $theme) {
     $outputus = $PAGE->get_renderer('theme_shoelace', 'core');
     \theme_shoelace\toolbox::set_core_renderer($outputus);
 
-    // Set the background image for the logo.
+    // Set the logo.
     $logo = \theme_shoelace\toolbox::setting_file_url('logo', 'logo');
-    $css = theme_shoelace_set_logo($css, $logo);
+    $css = \theme_shoelace\toolbox::set_setting($css, '[[setting:logo]]', $logo, '');
+
+    // Set the logo height.
+    $logoheight = \theme_shoelace\toolbox::get_setting('logoheight');
+    $css = \theme_shoelace\toolbox::set_height_setting($css, '[[setting:logoheight]]', $logoheight, 75);
 
     // Set the slide header colour.
     $slideshowcolor = \theme_shoelace\toolbox::get_setting('slideshowcolor');
@@ -65,31 +69,7 @@ function theme_shoelace_process_css($css, $theme) {
     if (empty($customcss)) {
         $customcss = null;
     }
-    $css = theme_shoelace_set_customcss($css, $customcss);
-
-    return $css;
-}
-
-function theme_shoelace_set_logo($css, $logo) {
-    $tag = '[[setting:logo]]';
-    $replacement = $logo;
-    if (is_null($replacement)) {
-        $replacement = '';
-    }
-
-    $css = str_replace($tag, $replacement, $css);
-
-    return $css;
-}
-
-function theme_shoelace_set_customcss($css, $customcss) {
-    $tag = '[[setting:customcss]]';
-    $replacement = $customcss;
-    if (is_null($replacement)) {
-        $replacement = '';
-    }
-
-    $css = str_replace($tag, $replacement, $css);
+    $css = \theme_shoelace\toolbox::set_setting($css, '[[setting:customcss]]', $customcss, '');
 
     return $css;
 }

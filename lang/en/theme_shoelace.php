@@ -61,7 +61,7 @@ $string['configtitle'] = 'Shoelace';
 
 $string['credit'] = 'The Shoelace theme for Moodle is developed and maintained by ';
 
-$string['generalsettings'] = 'General';
+$string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for Shoelace here.';
 
@@ -75,13 +75,13 @@ $string['navbartextcolour'] = 'Navbar text colour';
 $string['navbartextcolourdesc'] = 'Set the colour for the navbar text.';
 
 $string['cdnfonts'] = 'Content delivery network fonts';
-$string['cdnfonts_desc'] = 'Use content delivery network fonts';
+$string['cdnfontsdesc'] = 'Use content delivery network fonts';
 
 $string['navbarscroll'] = 'Show / hide the navbar on scroll';
-$string['navbarscroll_desc'] = 'Scroll down to hide the navbar, scroll up more than {$a->upamount} pixels in a single gesture or get near the top to show the navbar.';
+$string['navbarscrolldesc'] = 'Scroll down to hide the navbar, scroll up more than {$a->upamount} pixels in a single gesture or get near the top to show the navbar.';
 
 $string['navbarscrollupamount'] = 'Navbar scroll up amount';
-$string['navbarscrollupamount_desc'] = 'Amount of up scrolling before the navbar will show when \'navbarscroll\' is \'Yes\', between {$a->lower} and {$a->upper} pixels.';
+$string['navbarscrollupamountdesc'] = 'Amount of up scrolling before the navbar will show when \'navbarscroll\' is \'Yes\', between {$a->lower} and {$a->upper} pixels.';
 
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
@@ -93,9 +93,10 @@ $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Inverts text and theme colour for the navbar at the top of the page.';
 
 $string['logo'] = 'Logo';
-$string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>
-If the height of your logo is more than 75px add the following CSS rule to the Custom CSS box below.<br>
-a.logo {height: 100px;} or whatever height in pixels the logo is.';
+$string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>Set the height of the logo with the \'logoheight\' setting.';
+
+$string['logoheight'] = 'Logo height';
+$string['logoheightdesc'] = 'Logo height between {$a->lower} and {$a->upper} pixels.';
 
 $string['nummarketingblocks'] = 'Maximum number of blocks per row in the marketing area';
 $string['nummarketingblocksdesc'] = 'The maximum blocks per row in the marketing area.';
@@ -113,6 +114,26 @@ $string['displaybeforelogin'] = 'Show before login only';
 $string['displayafterlogin'] = 'Show after login only';
 $string['dontdisplay'] = 'Never show';
 
+// Look and feel.
+$string['lookandfeelheading'] = 'Look and feel';
+$string['lookandfeelsub'] = 'Look and feel settings';
+$string['lookandfeeldesc'] = 'Set the colours for the theme.';
+
+// Frontpage.
+$string['frontpageheading'] = 'Frontpage';
+$string['frontpagesub'] = 'Frontpage settings';
+$string['frontpagedesc'] = 'Set the frontpage settings.';
+
+// Navbar.
+$string['navbarheading'] = 'Navbar';
+$string['navbarsub'] = 'Navbar settings';
+$string['navbardesc'] = 'Set the navbar settings.';
+
+// Footer.
+$string['footerheading'] = 'Footer';
+$string['footersub'] = 'Footer settings';
+$string['footerdesc'] = 'Set the footer settings.';
+
 // Slideshow.
 $string['slideshowheading'] = 'Slide show';
 $string['slideshowheadingsub'] = 'Dynamic slide show for the front page';
@@ -122,7 +143,7 @@ $string['toggleslideshow'] = 'Toggle slide show display';
 $string['toggleslideshowdesc'] = 'Choose if you wish to hide or show the slide show.';
 
 $string['numberofslides'] = 'Number of slides';
-$string['numberofslides_desc'] = 'Number of slides on the slider.';
+$string['numberofslidesdesc'] = 'Number of slides on the slider.';
 
 $string['hideonphone'] = 'Hide slide show on mobiles';
 $string['hideonphonedesc'] = 'Choose if you wish to disable slide show on mobiles.';

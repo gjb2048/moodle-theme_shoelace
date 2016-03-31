@@ -30,17 +30,40 @@ $settings = null;
 $ADMIN->add('themes', new admin_category('theme_shoelace', 'Shoelace'));
 
 // General settings.
-$generalsettings = new admin_settingpage('theme_shoelace_generic', get_string('generalsettings', 'theme_shoelace'));
-$generalsettings->add(new admin_setting_heading('theme_shoelace_generalheading',
-    get_string('generalheadingsub', 'theme_shoelace'),
-    format_text(get_string('generalheadingdesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
+$generalsettings = new admin_settingpage('theme_shoelace_generic', get_string('generalheading', 'theme_shoelace'));
 if ($ADMIN->fulltree) {
-    global $CFG;
-    if (file_exists("{$CFG->dirroot}/theme/shoelace/shoelace_admin_setting_configinteger.php")) {
-        require_once($CFG->dirroot . '/theme/shoelace/shoelace_admin_setting_configinteger.php');
-    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/shoelace/shoelace_admin_setting_configinteger.php")) {
-        require_once($CFG->themedir . '/shoelace/shoelace_admin_setting_configinteger.php');
-    }
+    $generalsettings->add(new admin_setting_heading('theme_shoelace_generalheading',
+        get_string('generalheadingsub', 'theme_shoelace'),
+        format_text(get_string('generalheadingdesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
+
+    /* CDN Fonts - 1 = no, 2 = yes. */
+    $name = 'theme_shoelace/cdnfonts';
+    $title = get_string('cdnfonts', 'theme_shoelace');
+    $description = get_string('cdnfontsdesc', 'theme_shoelace');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('no'),   // No.
+        2 => new lang_string('yes')   // Yes.
+    );
+    $generalsettings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
+    // Custom CSS file.
+    $name = 'theme_shoelace/customcss';
+    $title = get_string('customcss', 'theme_shoelace');
+    $description = get_string('customcssdesc', 'theme_shoelace');
+    $default = '';
+    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $generalsettings->add($setting);
+}
+$ADMIN->add('theme_shoelace', $generalsettings);
+
+// Look and feel settings.
+$lookandfeelsettings = new admin_settingpage('theme_shoelace_lookandfeel', get_string('lookandfeelheading', 'theme_shoelace'));
+if ($ADMIN->fulltree) {
+    $lookandfeelsettings->add(new admin_setting_heading('theme_shoelace_lookandfeelheading',
+        get_string('lookandfeelsub', 'theme_shoelace'),
+        format_text(get_string('lookandfeeldesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
 
     // Theme colour setting.
     $name = 'theme_shoelace/themecolour';
@@ -50,7 +73,7 @@ if ($ADMIN->fulltree) {
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $generalsettings->add($setting);
+    $lookandfeelsettings->add($setting);
 
     // Text colour setting.
     $name = 'theme_shoelace/textcolour';
@@ -60,7 +83,7 @@ if ($ADMIN->fulltree) {
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $generalsettings->add($setting);
+    $lookandfeelsettings->add($setting);
 
     // Navbar text colour setting.
     $name = 'theme_shoelace/navbartextcolour';
@@ -70,53 +93,7 @@ if ($ADMIN->fulltree) {
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $generalsettings->add($setting);
-
-    // Invert Navbar to dark background.
-    $name = 'theme_shoelace/invert';
-    $title = get_string('invert', 'theme_shoelace');
-    $description = get_string('invertdesc', 'theme_shoelace');
-    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $generalsettings->add($setting);
-
-    /* Hide/show navbar on scroll. */
-    $name = 'theme_shoelace/navbarscroll';
-    $title = get_string('navbarscroll', 'theme_shoelace');
-    $upamount = get_config('theme_shoelace', 'navbarscrollupamount');
-    $upamountdefault = 240;
-    if ($upamount == 0) {
-        $upamount = $upamountdefault;
-    }
-    $description = get_string('navbarscroll_desc', 'theme_shoelace',
-        array('upamount' => $upamount));
-    $default = 2;
-    $choices = array(
-        1 => new lang_string('no'),   // No.
-        2 => new lang_string('yes')   // Yes.
-    );
-    $generalsettings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
-
-    /* Navbar scroll up amount. */
-    $name = 'theme_shoelace/navbarscrollupamount';
-    $title = get_string('navbarscrollupamount', 'theme_shoelace');
-    $lower = 0;
-    $upper = 500;
-    $description = get_string('navbarscrollupamount_desc', 'theme_shoelace',
-        array('lower' => $lower, 'upper' => $upper));
-    $setting = new shoelace_admin_setting_configinteger($name, $title, $description, $upamountdefault, $lower, $upper);
-    $generalsettings->add($setting);
-
-    /* CDN Fonts - 1 = no, 2 = yes. */
-    $name = 'theme_shoelace/cdnfonts';
-    $title = get_string('cdnfonts', 'theme_shoelace');
-    $description = get_string('cdnfonts_desc', 'theme_shoelace');
-    $default = 1;
-    $choices = array(
-        1 => new lang_string('no'),   // No.
-        2 => new lang_string('yes')   // Yes.
-    );
-    $generalsettings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+    $lookandfeelsettings->add($setting);
 
     // Logo file setting.
     $name = 'theme_shoelace/logo';
@@ -124,7 +101,33 @@ if ($ADMIN->fulltree) {
     $description = get_string('logodesc', 'theme_shoelace');
     $setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $generalsettings->add($setting);
+    $lookandfeelsettings->add($setting);
+
+    global $CFG;
+    if (file_exists("{$CFG->dirroot}/theme/shoelace/shoelace_admin_setting_configinteger.php")) {
+        require_once($CFG->dirroot . '/theme/shoelace/shoelace_admin_setting_configinteger.php');
+    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/shoelace/shoelace_admin_setting_configinteger.php")) {
+        require_once($CFG->themedir . '/shoelace/shoelace_admin_setting_configinteger.php');
+    }
+    // Logo height.
+    $name = 'theme_shoelace/logoheight';
+    $title = get_string('logoheight', 'theme_shoelace');
+    $default = 75;
+    $lower = 10;
+    $upper = 500;
+    $description = get_string('logoheightdesc', 'theme_shoelace',
+        array('lower' => $lower, 'upper' => $upper));
+    $setting = new shoelace_admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+    $lookandfeelsettings->add($setting);
+}
+$ADMIN->add('theme_shoelace', $lookandfeelsettings);
+
+// Frontpage settings.
+$frontpagesettings = new admin_settingpage('theme_shoelace_frontpage', get_string('frontpageheading', 'theme_shoelace'));
+if ($ADMIN->fulltree) {
+    $frontpagesettings->add(new admin_setting_heading('theme_shoelace_frontpageheading',
+        get_string('frontpagesub', 'theme_shoelace'),
+        format_text(get_string('frontpagedesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
 
     // Number of marketing blocks.
     $name = 'theme_shoelace/nummarketingblocks';
@@ -138,7 +141,61 @@ if ($ADMIN->fulltree) {
     );
     $default = 2;
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $generalsettings->add($setting);
+    $frontpagesettings->add($setting);
+}
+$ADMIN->add('theme_shoelace', $frontpagesettings);
+
+// Navbar settings.
+$navbarsettings = new admin_settingpage('theme_shoelace_navbar', get_string('navbarheading', 'theme_shoelace'));
+if ($ADMIN->fulltree) {
+    $navbarsettings->add(new admin_setting_heading('theme_shoelace_navbarheading',
+        get_string('navbarsub', 'theme_shoelace'),
+        format_text(get_string('navbardesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
+
+    // Invert Navbar to dark background.
+    $name = 'theme_shoelace/invert';
+    $title = get_string('invert', 'theme_shoelace');
+    $description = get_string('invertdesc', 'theme_shoelace');
+    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $navbarsettings->add($setting);
+
+    // Hide/show navbar on scroll.
+    $name = 'theme_shoelace/navbarscroll';
+    $title = get_string('navbarscroll', 'theme_shoelace');
+    $upamount = get_config('theme_shoelace', 'navbarscrollupamount');
+    $upamountdefault = 240;
+    if ($upamount == 0) {
+        $upamount = $upamountdefault;
+    }
+    $description = get_string('navbarscrolldesc', 'theme_shoelace',
+        array('upamount' => $upamount));
+    $default = 2;
+    $choices = array(
+        1 => new lang_string('no'),   // No.
+        2 => new lang_string('yes')   // Yes.
+    );
+    $navbarsettings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
+    // Navbar scroll up amount.
+    $name = 'theme_shoelace/navbarscrollupamount';
+    $title = get_string('navbarscrollupamount', 'theme_shoelace');
+    $lower = 0;
+    $upper = 500;
+    $description = get_string('navbarscrollupamountdesc', 'theme_shoelace',
+        array('lower' => $lower, 'upper' => $upper));
+    $setting = new shoelace_admin_setting_configinteger($name, $title, $description, $upamountdefault, $lower, $upper);
+    $navbarsettings->add($setting);
+}
+$ADMIN->add('theme_shoelace', $navbarsettings);
+
+// Footer settings.
+$footersettings = new admin_settingpage('theme_shoelace_footer', get_string('footerheading', 'theme_shoelace'));
+if ($ADMIN->fulltree) {
+    $footersettings->add(new admin_setting_heading('theme_shoelace_footerheading',
+        get_string('footersub', 'theme_shoelace'),
+        format_text(get_string('footerdesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
+
 
     // Number of footer blocks.
     $name = 'theme_shoelace/numfooterblocks';
@@ -152,7 +209,7 @@ if ($ADMIN->fulltree) {
     );
     $default = 2;
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $generalsettings->add($setting);
+    $footersettings->add($setting);
 
     // Footnote setting.
     $name = 'theme_shoelace/footnote';
@@ -161,23 +218,14 @@ if ($ADMIN->fulltree) {
     $default = '';
     $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $generalsettings->add($setting);
-
-    // Custom CSS file.
-    $name = 'theme_shoelace/customcss';
-    $title = get_string('customcss', 'theme_shoelace');
-    $description = get_string('customcssdesc', 'theme_shoelace');
-    $default = '';
-    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $generalsettings->add($setting);
+    $footersettings->add($setting);
 }
-$ADMIN->add('theme_shoelace', $generalsettings);
+$ADMIN->add('theme_shoelace', $footersettings);
 
 // Slideshow settings.
-$shoelacesettingsslideshow = new admin_settingpage('theme_shoelace_slideshow', get_string('slideshowheading', 'theme_shoelace'));
+$slideshowsettings = new admin_settingpage('theme_shoelace_slideshow', get_string('slideshowheading', 'theme_shoelace'));
 if ($ADMIN->fulltree) {
-    $shoelacesettingsslideshow->add(new admin_setting_heading('theme_shoelace_slideshow',
+    $slideshowsettings->add(new admin_setting_heading('theme_shoelace_slideshow',
         get_string('slideshowheadingsub', 'theme_shoelace'),
         format_text(get_string('slideshowdesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
 
@@ -193,12 +241,12 @@ if ($ADMIN->fulltree) {
     $choices = array(1 => $alwaysdisplay, 2 => $displaybeforelogin, 3 => $displayafterlogin, 0 => $dontdisplay);
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $shoelacesettingsslideshow->add($setting);
+    $slideshowsettings->add($setting);
 
     // Number of slides.
     $name = 'theme_shoelace/numberofslides';
     $title = get_string('numberofslides', 'theme_shoelace');
-    $description = get_string('numberofslides_desc', 'theme_shoelace');
+    $description = get_string('numberofslidesdesc', 'theme_shoelace');
     $default = 4;
     $choices = array(
         1 => '1',
@@ -218,7 +266,7 @@ if ($ADMIN->fulltree) {
         15 => '15',
         16 => '16'
     );
-    $shoelacesettingsslideshow->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+    $slideshowsettings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Hide slideshow on phones.
     $name = 'theme_shoelace/hideontablet';
@@ -227,7 +275,7 @@ if ($ADMIN->fulltree) {
     $default = false;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $shoelacesettingsslideshow->add($setting);
+    $slideshowsettings->add($setting);
 
     // Hide slideshow on tablet.
     $name = 'theme_shoelace/hideonphone';
@@ -236,7 +284,7 @@ if ($ADMIN->fulltree) {
     $default = true;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $shoelacesettingsslideshow->add($setting);
+    $slideshowsettings->add($setting);
 
     // Slide interval.
     $name = 'theme_shoelace/slideinterval';
@@ -245,7 +293,7 @@ if ($ADMIN->fulltree) {
     $default = '5000';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $shoelacesettingsslideshow->add($setting);
+    $slideshowsettings->add($setting);
 
     // Slide caption text colour setting.
     $name = 'theme_shoelace/slidecaptiontextcolor';
@@ -255,7 +303,7 @@ if ($ADMIN->fulltree) {
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $shoelacesettingsslideshow->add($setting);
+    $slideshowsettings->add($setting);
 
     // Slide caption background colour setting.
     $name = 'theme_shoelace/slidecaptionbackgroundcolor';
@@ -265,7 +313,7 @@ if ($ADMIN->fulltree) {
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $shoelacesettingsslideshow->add($setting);
+    $slideshowsettings->add($setting);
 
     // Show caption centred.
     $name = 'theme_shoelace/slidecaptioncentred';
@@ -274,7 +322,7 @@ if ($ADMIN->fulltree) {
     $default = false;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $shoelacesettingsslideshow->add($setting);
+    $slideshowsettings->add($setting);
 
     // Show caption options.
     $name = 'theme_shoelace/slidecaptionoptions';
@@ -288,7 +336,7 @@ if ($ADMIN->fulltree) {
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $shoelacesettingsslideshow->add($setting);
+    $slideshowsettings->add($setting);
 
     // Slide button colour setting.
     $name = 'theme_shoelace/slidebuttoncolor';
@@ -298,7 +346,7 @@ if ($ADMIN->fulltree) {
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $shoelacesettingsslideshow->add($setting);
+    $slideshowsettings->add($setting);
 
     // Slide button hover colour setting.
     $name = 'theme_shoelace/slidebuttonhovercolor';
@@ -308,7 +356,7 @@ if ($ADMIN->fulltree) {
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $shoelacesettingsslideshow->add($setting);
+    $slideshowsettings->add($setting);
 
     $numberofslides = get_config('theme_shoelace', 'numberofslides');
     for ($i = 1; $i <= $numberofslides; $i++) {
@@ -317,7 +365,7 @@ if ($ADMIN->fulltree) {
         $heading = get_string('slideno', 'theme_shoelace', array('slide' => $i));
         $information = get_string('slidenodesc', 'theme_shoelace', array('slide' => $i));
         $setting = new admin_setting_heading($name, $heading, $information);
-        $shoelacesettingsslideshow->add($setting);
+        $slideshowsettings->add($setting);
 
         // Title.
         $name = 'theme_shoelace/slide'.$i;
@@ -326,7 +374,7 @@ if ($ADMIN->fulltree) {
         $default = '';
         $setting = new admin_setting_configtext($name, $title, $description, $default);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $shoelacesettingsslideshow->add($setting);
+        $slideshowsettings->add($setting);
 
         // Image.
         $name = 'theme_shoelace/slide'.$i.'image';
@@ -334,7 +382,7 @@ if ($ADMIN->fulltree) {
         $description = get_string('slideimagedesc', 'theme_shoelace');
         $setting = new admin_setting_configstoredfile($name, $title, $description, 'slide'.$i.'image');
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $shoelacesettingsslideshow->add($setting);
+        $slideshowsettings->add($setting);
 
         // Caption text.
         $name = 'theme_shoelace/slide'.$i.'caption';
@@ -343,7 +391,7 @@ if ($ADMIN->fulltree) {
         $default = '';
         $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $shoelacesettingsslideshow->add($setting);
+        $slideshowsettings->add($setting);
 
         // URL.
         $name = 'theme_shoelace/slide'.$i.'url';
@@ -352,7 +400,7 @@ if ($ADMIN->fulltree) {
         $default = '';
         $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $shoelacesettingsslideshow->add($setting);
+        $slideshowsettings->add($setting);
 
         // URL target.
         $name = 'theme_shoelace/slide'.$i.'target';
@@ -365,14 +413,15 @@ if ($ADMIN->fulltree) {
         $choices = array('_self' => $target1, '_blank' => $target2, '_parent' => $target3);
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $shoelacesettingsslideshow->add($setting);
+        $slideshowsettings->add($setting);
     }
 }
-$ADMIN->add('theme_shoelace', $shoelacesettingsslideshow);
+$ADMIN->add('theme_shoelace', $slideshowsettings);
 
 $styleguidesetting = new admin_settingpage('theme_shoelace_styleguide', get_string('styleguide', 'theme_shoelace'));
 if ($ADMIN->fulltree) {
     // Style guide.
+    global $CFG;
     if (file_exists("{$CFG->dirroot}/theme/shoelace/shoelace_admin_setting_styleguide.php")) {
         require_once($CFG->dirroot . '/theme/shoelace/shoelace_admin_setting_styleguide.php');
     } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/shoelace/shoelace_admin_setting_styleguide.php")) {

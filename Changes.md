@@ -1,6 +1,6 @@
 Version Information
 ===================
-Version 3.0.2
+Version 3.0.2rc
   1. Style guide typo.
   2. Convert to Mustache templates.
   3. Fix: Course table of contents block navigation for fixed navbar.
@@ -11,6 +11,10 @@ Version 3.0.2
   8. Fix padding top for navbar.
   9. Add frontpage carousel.
  10. Update to FontAwesome 4.5.0.
+ 11. Added navbar scroll hide / show feature.
+ 12. Tidied up the settings.
+ 13. Added logo height setting.
+ 14. Turned on docking and adjusted navbar to suit.
 
 Version 3.0.1
   1. Update .gitattributes file.

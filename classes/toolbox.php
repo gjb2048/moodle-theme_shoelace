@@ -192,6 +192,26 @@ class toolbox {
         return $return;
     }
 
+    static public function set_setting($css, $tag, $value, $default) {
+        $replacement = $value;
+        if (is_null($replacement)) {
+            $replacement = $default;
+        }
+
+        $css = str_replace($tag, $replacement, $css);
+        return $css;
+    }
+
+    static public function set_height_setting($css, $tag, $value, $default) {
+        $replacement = $value;
+        if (empty($replacement)) {
+            $replacement = $default;
+        }
+
+        $css = str_replace($tag, 'height: '.$replacement.'px;', $css);
+        return $css;
+    }
+
     static public function set_colour($css, $themecolour, $tag, $defaultcolour, $alpha = null) {
         if (!($themecolour)) {
             $replacement = $defaultcolour;
