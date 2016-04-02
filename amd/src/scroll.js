@@ -20,8 +20,9 @@ define(['jquery', 'core/log'], function($, log) {
             var last = $(this).scrollTop();
             var current = last;
 
-            log.debug('shoelaceScroll - Element height + 1: ' + settings.elementHeight);
-            log.debug('shoelaceScroll - Scroll up amount  : ' + settings.scrollupamount);
+            log.debug('shoelaceScroll - Element height + 1 : ' + settings.elementHeight);
+            log.debug('shoelaceScroll - Scroll up amount   : ' + settings.scrollupamount);
+            log.debug('shoelaceScroll - Current scroll pos : ' + last);
 
             var setElementTop = function() {
                 if (down) {
@@ -113,6 +114,13 @@ define(['jquery', 'core/log'], function($, log) {
                 log.debug('SCTally: ' + tally);
                 last = current;
             });
+
+            if (last > 0) {
+                // Down the page on load.
+                down = true;
+                diff = last;
+                setElementTop();
+            }
 
             return this;
         };
