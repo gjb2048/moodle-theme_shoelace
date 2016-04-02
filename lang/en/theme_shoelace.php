@@ -135,9 +135,9 @@ $string['footersub'] = 'Footer settings';
 $string['footerdesc'] = 'Set the footer settings.';
 
 // Slideshow.
-$string['slideshowheading'] = 'Slide show';
-$string['slideshowheadingsub'] = 'Dynamic slide show for the front page';
-$string['slideshowdesc'] = 'This creates a dynamic slide show of up to sixteen slides for you to promote important elements of your site.  The show is responsive where image height is set according to screen size.  The recommended height is 300px.  The width is set at 100% and therefore the actual height will be smaller if the width is greater than the screen size.  At smaller screen sizes the height is reduced dynamically without the need to provide separate images.  For reference screen width < 767px = height 165px, width between 768px and 979px = height 225px and width > 980px = height 300px.  If no image is selected for a slide, then the default_slide image in the pix folder is used.';
+$string['frontpageslideshowheading'] = 'Frontpage slide show';
+$string['frontpageslideshowheadingsub'] = 'Dynamic slide show for the front page';
+$string['frontpageslideshowdesc'] = 'This creates a dynamic slide show of up to sixteen slides for you to promote important elements of your site.  The show is responsive where image height is set according to screen size.  The recommended height is 300px.  The width is set at 100% and therefore the actual height will be smaller if the width is greater than the screen size.  At smaller screen sizes the height is reduced dynamically without the need to provide separate images.  For reference screen width < 767px = height 165px, width between 768px and 979px = height 225px and width > 980px = height 300px.  If no image is selected for a slide, then the default_slide image in the pix folder is used.';
 
 $string['toggleslideshow'] = 'Toggle slide show display';
 $string['toggleslideshowdesc'] = 'Choose if you wish to hide or show the slide show.';

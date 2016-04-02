@@ -122,29 +122,6 @@ if ($ADMIN->fulltree) {
 }
 $ADMIN->add('theme_shoelace', $lookandfeelsettings);
 
-// Frontpage settings.
-$frontpagesettings = new admin_settingpage('theme_shoelace_frontpage', get_string('frontpageheading', 'theme_shoelace'));
-if ($ADMIN->fulltree) {
-    $frontpagesettings->add(new admin_setting_heading('theme_shoelace_frontpageheading',
-        get_string('frontpagesub', 'theme_shoelace'),
-        format_text(get_string('frontpagedesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
-
-    // Number of marketing blocks.
-    $name = 'theme_shoelace/nummarketingblocks';
-    $title = get_string('nummarketingblocks', 'theme_shoelace');
-    $description = get_string('nummarketingblocksdesc', 'theme_shoelace');
-    $choices = array(
-        1 => new lang_string('one', 'theme_shoelace'),
-        2 => new lang_string('two', 'theme_shoelace'),
-        3 => new lang_string('three', 'theme_shoelace'),
-        4 => new lang_string('four', 'theme_shoelace')
-    );
-    $default = 2;
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $frontpagesettings->add($setting);
-}
-$ADMIN->add('theme_shoelace', $frontpagesettings);
-
 // Navbar settings.
 $navbarsettings = new admin_settingpage('theme_shoelace_navbar', get_string('navbarheading', 'theme_shoelace'));
 if ($ADMIN->fulltree) {
@@ -222,12 +199,35 @@ if ($ADMIN->fulltree) {
 }
 $ADMIN->add('theme_shoelace', $footersettings);
 
-// Slideshow settings.
-$slideshowsettings = new admin_settingpage('theme_shoelace_slideshow', get_string('slideshowheading', 'theme_shoelace'));
+// Frontpage settings.
+$frontpagesettings = new admin_settingpage('theme_shoelace_frontpage', get_string('frontpageheading', 'theme_shoelace'));
 if ($ADMIN->fulltree) {
-    $slideshowsettings->add(new admin_setting_heading('theme_shoelace_slideshow',
-        get_string('slideshowheadingsub', 'theme_shoelace'),
-        format_text(get_string('slideshowdesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
+    $frontpagesettings->add(new admin_setting_heading('theme_shoelace_frontpageheading',
+        get_string('frontpagesub', 'theme_shoelace'),
+        format_text(get_string('frontpagedesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
+
+    // Number of marketing blocks.
+    $name = 'theme_shoelace/nummarketingblocks';
+    $title = get_string('nummarketingblocks', 'theme_shoelace');
+    $description = get_string('nummarketingblocksdesc', 'theme_shoelace');
+    $choices = array(
+        1 => new lang_string('one', 'theme_shoelace'),
+        2 => new lang_string('two', 'theme_shoelace'),
+        3 => new lang_string('three', 'theme_shoelace'),
+        4 => new lang_string('four', 'theme_shoelace')
+    );
+    $default = 2;
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $frontpagesettings->add($setting);
+}
+$ADMIN->add('theme_shoelace', $frontpagesettings);
+
+// Frontpage slideshow settings.
+$frontpageslideshowsettings = new admin_settingpage('theme_shoelace_frontpageslideshow', get_string('frontpageslideshowheading', 'theme_shoelace'));
+if ($ADMIN->fulltree) {
+    $frontpageslideshowsettings->add(new admin_setting_heading('theme_shoelace_frontpageslideshow',
+        get_string('frontpageslideshowheadingsub', 'theme_shoelace'),
+        format_text(get_string('frontpageslideshowdesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
 
     // Toggle slideshow.
     $name = 'theme_shoelace/toggleslideshow';
@@ -241,7 +241,7 @@ if ($ADMIN->fulltree) {
     $choices = array(1 => $alwaysdisplay, 2 => $displaybeforelogin, 3 => $displayafterlogin, 0 => $dontdisplay);
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $slideshowsettings->add($setting);
+    $frontpageslideshowsettings->add($setting);
 
     // Number of slides.
     $name = 'theme_shoelace/numberofslides';
@@ -266,7 +266,7 @@ if ($ADMIN->fulltree) {
         15 => '15',
         16 => '16'
     );
-    $slideshowsettings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+    $frontpageslideshowsettings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Hide slideshow on phones.
     $name = 'theme_shoelace/hideontablet';
@@ -275,7 +275,7 @@ if ($ADMIN->fulltree) {
     $default = false;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $slideshowsettings->add($setting);
+    $frontpageslideshowsettings->add($setting);
 
     // Hide slideshow on tablet.
     $name = 'theme_shoelace/hideonphone';
@@ -284,7 +284,7 @@ if ($ADMIN->fulltree) {
     $default = true;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $slideshowsettings->add($setting);
+    $frontpageslideshowsettings->add($setting);
 
     // Slide interval.
     $name = 'theme_shoelace/slideinterval';
@@ -293,7 +293,7 @@ if ($ADMIN->fulltree) {
     $default = '5000';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $slideshowsettings->add($setting);
+    $frontpageslideshowsettings->add($setting);
 
     // Slide caption text colour setting.
     $name = 'theme_shoelace/slidecaptiontextcolor';
@@ -303,7 +303,7 @@ if ($ADMIN->fulltree) {
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $slideshowsettings->add($setting);
+    $frontpageslideshowsettings->add($setting);
 
     // Slide caption background colour setting.
     $name = 'theme_shoelace/slidecaptionbackgroundcolor';
@@ -313,7 +313,7 @@ if ($ADMIN->fulltree) {
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $slideshowsettings->add($setting);
+    $frontpageslideshowsettings->add($setting);
 
     // Show caption centred.
     $name = 'theme_shoelace/slidecaptioncentred';
@@ -322,7 +322,7 @@ if ($ADMIN->fulltree) {
     $default = false;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $slideshowsettings->add($setting);
+    $frontpageslideshowsettings->add($setting);
 
     // Show caption options.
     $name = 'theme_shoelace/slidecaptionoptions';
@@ -336,7 +336,7 @@ if ($ADMIN->fulltree) {
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $slideshowsettings->add($setting);
+    $frontpageslideshowsettings->add($setting);
 
     // Slide button colour setting.
     $name = 'theme_shoelace/slidebuttoncolor';
@@ -346,7 +346,7 @@ if ($ADMIN->fulltree) {
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $slideshowsettings->add($setting);
+    $frontpageslideshowsettings->add($setting);
 
     // Slide button hover colour setting.
     $name = 'theme_shoelace/slidebuttonhovercolor';
@@ -356,7 +356,7 @@ if ($ADMIN->fulltree) {
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $slideshowsettings->add($setting);
+    $frontpageslideshowsettings->add($setting);
 
     $numberofslides = get_config('theme_shoelace', 'numberofslides');
     for ($i = 1; $i <= $numberofslides; $i++) {
@@ -365,7 +365,7 @@ if ($ADMIN->fulltree) {
         $heading = get_string('slideno', 'theme_shoelace', array('slide' => $i));
         $information = get_string('slidenodesc', 'theme_shoelace', array('slide' => $i));
         $setting = new admin_setting_heading($name, $heading, $information);
-        $slideshowsettings->add($setting);
+        $frontpageslideshowsettings->add($setting);
 
         // Title.
         $name = 'theme_shoelace/slide'.$i;
@@ -374,7 +374,7 @@ if ($ADMIN->fulltree) {
         $default = '';
         $setting = new admin_setting_configtext($name, $title, $description, $default);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $slideshowsettings->add($setting);
+        $frontpageslideshowsettings->add($setting);
 
         // Image.
         $name = 'theme_shoelace/slide'.$i.'image';
@@ -382,7 +382,7 @@ if ($ADMIN->fulltree) {
         $description = get_string('slideimagedesc', 'theme_shoelace');
         $setting = new admin_setting_configstoredfile($name, $title, $description, 'slide'.$i.'image');
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $slideshowsettings->add($setting);
+        $frontpageslideshowsettings->add($setting);
 
         // Caption text.
         $name = 'theme_shoelace/slide'.$i.'caption';
@@ -391,7 +391,7 @@ if ($ADMIN->fulltree) {
         $default = '';
         $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $slideshowsettings->add($setting);
+        $frontpageslideshowsettings->add($setting);
 
         // URL.
         $name = 'theme_shoelace/slide'.$i.'url';
@@ -400,7 +400,7 @@ if ($ADMIN->fulltree) {
         $default = '';
         $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $slideshowsettings->add($setting);
+        $frontpageslideshowsettings->add($setting);
 
         // URL target.
         $name = 'theme_shoelace/slide'.$i.'target';
@@ -413,10 +413,10 @@ if ($ADMIN->fulltree) {
         $choices = array('_self' => $target1, '_blank' => $target2, '_parent' => $target3);
         $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
         $setting->set_updatedcallback('theme_reset_all_caches');
-        $slideshowsettings->add($setting);
+        $frontpageslideshowsettings->add($setting);
     }
 }
-$ADMIN->add('theme_shoelace', $slideshowsettings);
+$ADMIN->add('theme_shoelace', $frontpageslideshowsettings);
 
 $styleguidesetting = new admin_settingpage('theme_shoelace_styleguide', get_string('styleguide', 'theme_shoelace'));
 if ($ADMIN->fulltree) {
