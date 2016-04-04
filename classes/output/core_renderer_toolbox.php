@@ -313,7 +313,7 @@ trait core_renderer_toolbox {
     protected function render_cdnfonts_tile_template() {
         $data = new \stdClass();
 
-        return $this->render_from_template('theme_shoelace/#cdfonts', $data);
+        return $this->render_from_template('theme_shoelace/#cdnfonts', $data);
     }
 
     protected function render_header_tile_template() {

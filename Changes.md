@@ -1,5 +1,9 @@
 Version Information
 ===================
+Version 3.0.2.1rc
+  1. Fix cdn template name.
+  2. Add default_slide pix.
+
 Version 3.0.2rc
   1. Style guide typo.
   2. Convert to Mustache templates.
