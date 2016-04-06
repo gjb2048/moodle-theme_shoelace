@@ -362,16 +362,31 @@ trait core_renderer_toolbox {
     }
 
     protected function showslider() {
-        $noslides = \theme_shoelace\toolbox::get_setting('numberofslides');
-        if ($noslides) {
+    	$showslides = false;
+        $toggleslider = \theme_shoelace\toolbox::get_setting('toggleslider');
+        switch($toggleslider){
+        	case 1: $showslides = true;
+        		break;
+        	case 2: $showslides = !(isloggedin());
+        		break;
+        	case 3: $showslides = isloggedin();
+        		break;
+        	case 0:
+        	default: 
+
+        }
+        
+        $slidecount = \theme_shoelace\toolbox::get_setting('numberofslides');
+        if ($showslides && $slidecount>0) {
+            $showslides = true;
             $devicetype = \core_useragent::get_device_type(); // In useragent.php.
             if (($devicetype == "mobile") && \theme_shoelace\toolbox::get_setting('hideonphone')) {
-                $noslides = false;
+                $showslides = false;
             } else if (($devicetype == "tablet") && \theme_shoelace\toolbox::get_setting('hideontablet')) {
-                $noslides = false;
+                $showslides = false;
             }
         }
-        return $noslides;
+        return $showslides;
     }
 
     protected function render_carousel_tile_template() {
