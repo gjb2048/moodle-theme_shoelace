@@ -1,5 +1,9 @@
 Version Information
 ===================
+Version 3.0.2.2rc
+  1. Fixes to slide show - #4 - thanks to Justin Hunt.
+  2. Tidy up slide show code.
+
 Version 3.0.2.1rc
   1. Fix cdn template name.
   2. Add default_slide pix.
