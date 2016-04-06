@@ -362,16 +362,45 @@ trait core_renderer_toolbox {
     }
 
     protected function showslider() {
-        $noslides = \theme_shoelace\toolbox::get_setting('numberofslides');
-        if ($noslides) {
+    	//Show no slides by default
+    	$showslides = false;
+    	
+    	//show slides according to toggle setting
+        $toggleslider = \theme_shoelace\toolbox::get_setting('toggleslideshow');
+        switch($toggleslider){
+        	case 1: $showslides = true;
+        		break;
+        	case 2: $showslides = !(isloggedin());
+        		break;
+        	case 3: $showslides = isloggedin();
+        		break;
+        	case 0:
+        	default: 
+        }
+        
+        //get the specified slidecount
+        $numberofslides = \theme_shoelace\toolbox::get_setting('numberofslides');
+        
+        //id we can show slides and we have slides, then finally check if we can show 
+        //on this device
+        if ($showslides && $numberofslides>0) {
             $devicetype = \core_useragent::get_device_type(); // In useragent.php.
             if (($devicetype == "mobile") && \theme_shoelace\toolbox::get_setting('hideonphone')) {
-                $noslides = false;
+                $showslides = false;
             } else if (($devicetype == "tablet") && \theme_shoelace\toolbox::get_setting('hideontablet')) {
-                $noslides = false;
+                $showslides = false;
             }
+        }else{
+        	$showslides = false;
         }
-        return $noslides;
+        
+        //If all is ok, return the slidenumber to show
+        //else return 0
+        if($showslides){
+        	return $numberofslides;
+        }else{
+        	return 0;
+        }
     }
 
     protected function render_carousel_tile_template() {
@@ -415,7 +444,7 @@ trait core_renderer_toolbox {
                     // Strip links from the caption to prevent link in a link.
                     $slidecaption = preg_replace('/<a href=\"(.*?)\">(.*?)<\/a>/', "\\2", $slidecaption);
                 }
-                $slideimagealt = strip_tags($slidetitle);
+                $slideimagealt = strip_tags($slidetitle); 
 
                 $indicator = '<li data-target="#'.$data->my_carousel.'" data-slide-to="'.($slideindex - 1).'"';
                 if ($slideindex == 1) {
