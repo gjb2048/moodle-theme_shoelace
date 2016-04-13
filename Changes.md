@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.0.2.2
+  1. Update to FontAwesome 4.6.1.
+
 Version 3.0.2.2rc
   1. Fixes to slide show - #4 - thanks to Justin Hunt.
   2. Tidy up slide show code.
