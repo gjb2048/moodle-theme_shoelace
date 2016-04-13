@@ -48,19 +48,6 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         parent::__construct($page, $target);
     }
 
-    public function get_tile_file($filename) {
-        global $CFG;
-        $filename .= '.php';
-
-        if (file_exists("$CFG->dirroot/theme/shoelace/layout/tiles/$filename")) {
-            return "$CFG->dirroot/theme/shoelace/layout/tiles/$filename";
-        } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/shoelace/layout/tiles/$filename")) {
-            return "$CFG->themedir/shoelace/layout/tiles/$filename";
-        } else {
-            return dirname(__FILE__)."/$filename";
-        }
-    }
-
     public function get_less_file($filename) {
         global $CFG;
         $filename .= '.less';
