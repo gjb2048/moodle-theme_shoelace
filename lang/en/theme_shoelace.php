@@ -59,7 +59,7 @@ clicking here to sponsor.
 
 $string['configtitle'] = 'Shoelace';
 
-$string['credit'] = 'The Shoelace theme for Moodle is developed and maintained by ';
+$string['credit'] = 'The Shoelace theme for Moodle is developed by ';
 
 $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
