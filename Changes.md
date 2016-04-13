@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.1.0.1
+  1. Alpha version for Moodle 3.1 dev.
+
 Version 3.0.2.2
   1. Update to FontAwesome 4.6.1.
 

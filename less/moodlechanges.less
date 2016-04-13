@@ -377,27 +377,6 @@ table.generaltable {
     }
 }
 
-// Two page columns no blocks.
-//body.editing {
-//    &.content-only #region-main.span9, // Two column layout with no block or all blocks docked.
-//    &.empty-region-side-post #region-bs-main-and-pre.span9, // LTR with no post area.
-//    &.empty-region-side-pre #region-bs-main-and-post.span9, // RTL with no pre area.
-//    &.empty-region-side-post #region-bs-main-and-post.span9 #region-main.span8, // RTL with no post area.
-//    &.jsenabled.docked-region-side-post #region-bs-main-and-pre.span9, // LTR with all post blocks docked.
-//    &.jsenabled.docked-region-side-post #region-bs-main-and-post.span9 #region-main.span8,
-//    &.jsenabled.docked-region-side-pre #region-bs-main-and-post.span9 { // RTL with all pre blocks docked.
-//        .fluid-span(9);
-//    }
-//    &.empty-region-side-pre #region-bs-main-and-pre.span9 #region-main.span8, // LTR with no pre area.
-//    &.jsenabled.docked-region-side-pre #region-bs-main-and-pre.span9 #region-main.span8 { // LTR with all pre blocks docked.
-//        .fluid-span(8);
-//        float: left;
-//        &.pull-right {
-//            float: right;
-//        }
-//    }
-//}
-
 // All docked - works with both two and three columns.
 .docked-region-side-pre {
     #region-main {
@@ -464,4 +443,9 @@ table.generaltable {
             }
         }
     }
+}
+
+// Search box.
+.navbar .fa {
+  color: @navbarLinkColor;
 }

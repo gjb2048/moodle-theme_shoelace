@@ -333,6 +333,7 @@ trait core_renderer_toolbox {
                 array('context' => \context_course::instance(\SITEID)));
 
             $data->gotobottom_menu = $this->gotobottom_menu();
+            $data->search_box = $this->search_box();
             $data->user_menu = $this->user_menu();
             $data->custom_menu = $this->custom_menu();
             $data->page_heading_menu = $this->page_heading_menu();
