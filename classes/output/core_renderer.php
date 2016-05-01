@@ -81,9 +81,11 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             $breadcrumbs[] = $this->render($item);
         }
         $listitems = html_writer::start_tag('li').implode("$divider".html_writer::end_tag('li').
-            html_writer::start_tag('li'), $breadcrumbs) . html_writer::end_tag('li');
-        $title = html_writer::tag('span', get_string('pagepath'), array('class' => 'accesshide'));
-        return $title.html_writer::tag('ul', "$listitems", array('class' => 'breadcrumb'));
+            html_writer::start_tag('li'), $breadcrumbs).html_writer::end_tag('li');
+        $title = html_writer::tag('span', get_string('pagepath'), array('class' => 'accesshide', 'id' => 'navbar-label'));
+        return $title.html_writer::start_tag('nav', array('aria-labelledby' => 'navbar-label')).
+            html_writer::tag('ul', "$listitems", array('class' => 'breadcrumb')).
+            html_writer::end_tag('nav');
     }
 
     /**
