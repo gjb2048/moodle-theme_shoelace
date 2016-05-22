@@ -1,5 +1,9 @@
 Version Information
 ===================
+Version 3.1.0.2
+  1. Release candidate version for Moodle 3.1.
+  2. Added favicon.ico.
+
 Version 3.1.0.1
   1. Alpha version for Moodle 3.1 dev.
 
