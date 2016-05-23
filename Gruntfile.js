@@ -111,7 +111,7 @@ module.exports = function(grunt) { // jshint ignore:line
                 src: 'pix_core/**/*.svg',
                 overwrite: true,
                 replacements: [{
-                    from: '#999999',
+                    from: '#999',
                     to: svgcolor
                 }]
             },
@@ -119,7 +119,7 @@ module.exports = function(grunt) { // jshint ignore:line
                 src: 'pix_plugins/**/*.svg',
                 overwrite: true,
                 replacements: [{
-                    from: '#999999',
+                    from: '#999',
                     to: svgcolor
                 }]
             }
