@@ -39,4 +39,30 @@ class core_renderer_maintenance extends \core_renderer_maintenance {
         parent::__construct($page, $target);
         $this->themeconfig = array(\theme_config::load('shoelace'));
     }
+
+    // The page.
+    public function render_page() {
+        $data = new \stdClass();
+        $data->htmlattributes = $this->htmlattributes();
+        $data->page_title = $this->page_title();
+        $data->favicon = $this->favicon();
+        $data->standard_head_html = $this->standard_head_html();
+
+        $data->body_attributes = $this->body_attributes();
+        $data->standard_top_of_body_html = $this->standard_top_of_body_html();
+        $data->pagelayout = $this->render_maintenance_template();
+        $data->standard_end_of_body_html = $this->standard_end_of_body_html();
+
+        return $this->render_from_template('theme_shoelace/wrapper_layout', $data);
+    }
+
+    protected function render_maintenance_template() {
+        $data = new \stdClass();
+
+        $data->heading = $this->page_heading();
+        $data->main_content = $this->main_content();
+        $data->footer = $this->standard_footer_html();
+
+        return $this->render_from_template('theme_shoelace/maintenance', $data);
+    }
 }

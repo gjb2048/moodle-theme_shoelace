@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.1.0.3
+  1. Change in architecture a liitle for child themes.
 
 Version 3.1.0.2
   1. Release candidate version for Moodle 3.1.
