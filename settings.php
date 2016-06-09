@@ -75,9 +75,46 @@ $ADMIN->add('theme_shoelace', $generalsettings);
 // Layout settings.
 $layoutsettings = new admin_settingpage('theme_shoelace_layout', get_string('layoutheading', 'theme_shoelace'));
 if ($ADMIN->fulltree) {
+    global $CFG, $PAGE;
+    if (file_exists("{$CFG->dirroot}/theme/shoelace/shoelace_admin_setting_configradio.php")) {
+        require_once($CFG->dirroot . '/theme/shoelace/shoelace_admin_setting_configradio.php');
+    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/shoelace/shoelace_admin_setting_configradio.php")) {
+        require_once($CFG->themedir . '/shoelace/shoelace_admin_setting_configradio.php');
+    }
+
     $layoutsettings->add(new admin_setting_heading('theme_shoelace_layoutheading',
         get_string('layoutsub', 'theme_shoelace'),
         format_text(get_string('layoutdesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
+
+    $default = 'columns2';
+    $choices = array(
+        'columns1' => get_string('columns1layout', 'theme_shoelace'),
+        'columns2' => get_string('columns2layout', 'theme_shoelace'),
+        'columns3' => get_string('columns3layout', 'theme_shoelace'),
+        'columns3middle' => get_string('columns3middlelayout', 'theme_shoelace')
+    );
+    /*
+    $images = array(
+        1 => 'breadcrumbstyled',
+        4 => 'breadcrumbstylednocollapse',
+        2 => 'breadcrumbsimple',
+        3 => 'breadcrumbthin'
+    );*/
+    $images = array();
+
+    $excludelayouts = array('frontpage', 'login', 'popup', 'frametop', 'embedded', 'maintenance', 'print', 'redirect');
+    // Choose layout.
+    foreach ($PAGE->theme->layouts as $key => $value) {
+        // Exclude some layouts.
+        if (in_array($key, $excludelayouts)) {
+            continue;
+        }
+        $name = 'theme_shoelace/layout_'.$key;
+        $title = get_string('layoutsetting', 'theme_shoelace', array('layout' => $key));
+        $description = get_string('layoutsettingdesc', 'theme_shoelace', array('layout' => $key));
+        $setting = new shoelace_admin_setting_configradio($name, $title, $description, $default, $choices, false, $images);
+        $layoutsettings->add($setting);
+    }
 }
 $ADMIN->add('theme_shoelace', $layoutsettings);
 

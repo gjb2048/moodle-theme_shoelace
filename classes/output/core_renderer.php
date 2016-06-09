@@ -202,7 +202,12 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     // Mustache.
     protected function render_wrapper_template() {
-        $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
+        $layout = \theme_shoelace\toolbox::get_setting('layout_'.$this->page->pagelayout);
+        if ($layout) {
+            $mustache = $layout;
+        } else {
+            $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
+        }
 
         $data = new \stdClass();
         $data->htmlattributes = $this->htmlattributes();

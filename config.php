@@ -73,7 +73,7 @@ $THEME->layouts = array(
     'base' => array(
         'file' => 'layout.php',
         'mustache' => 'columns1',
-        'regions' => $empty,
+        'regions' => $regions,
         'defaultregion' => 'footer'
     ),
     // Standard layout with blocks, this is recommended for most pages with general information.
