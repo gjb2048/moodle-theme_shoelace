@@ -98,8 +98,11 @@ $string['logodesc'] = 'Please upload your custom logo here if you want to add it
 $string['logoheight'] = 'Logo height';
 $string['logoheightdesc'] = 'Logo height between {$a->lower} and {$a->upper} pixels.';
 
-$string['nummarketingblocks'] = 'Maximum number of blocks per row in the marketing area';
-$string['nummarketingblocksdesc'] = 'The maximum blocks per row in the marketing area.';
+$string['nummarketingblocks'] = 'Maximum number of blocks per row in the frontpage marketing (middle) area';
+$string['nummarketingblocksdesc'] = 'The maximum blocks per row in the frontpage marketing (middle) area.';
+
+$string['nummiddleblocks'] = 'Maximum number of blocks per row in the middle area';
+$string['nummiddleblocksdesc'] = 'The maximum blocks per row in the middle area.';
 
 $string['numfooterblocks'] = 'Maximum number of blocks per row in the footer';
 $string['numfooterblocksdesc'] = 'The maximum blocks per row in the footer.';
@@ -113,6 +116,11 @@ $string['alwaysdisplay'] = 'Always show';
 $string['displaybeforelogin'] = 'Show before login only';
 $string['displayafterlogin'] = 'Show after login only';
 $string['dontdisplay'] = 'Never show';
+
+// Layout.
+$string['layoutheading'] = 'Layout';
+$string['layoutsub'] = 'Layout settings';
+$string['layoutdesc'] = 'Set the layouts for the theme.';
 
 // Look and feel.
 $string['lookandfeelheading'] = 'Look and feel';
@@ -202,7 +210,7 @@ $string['pluginname'] = 'Shoelace';
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
 $string['region-footer'] = 'Footer';
-$string['region-marketing'] = 'Marketing';
+$string['region-middle'] = 'Middle';
 
 // Navbar.
 $string['gotobottom'] = 'Go to the bottom of the page';

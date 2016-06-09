@@ -47,6 +47,20 @@ if ($ADMIN->fulltree) {
     );
     $generalsettings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
+    // Number of marketing blocks.
+    $name = 'theme_shoelace/nummiddleblocks';
+    $title = get_string('nummiddleblocks', 'theme_shoelace');
+    $description = get_string('nummiddleblocksdesc', 'theme_shoelace');
+    $choices = array(
+        1 => new lang_string('one', 'theme_shoelace'),
+        2 => new lang_string('two', 'theme_shoelace'),
+        3 => new lang_string('three', 'theme_shoelace'),
+        4 => new lang_string('four', 'theme_shoelace')
+    );
+    $default = 2;
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $generalsettings->add($setting);
+
     // Custom CSS file.
     $name = 'theme_shoelace/customcss';
     $title = get_string('customcss', 'theme_shoelace');
@@ -57,6 +71,15 @@ if ($ADMIN->fulltree) {
     $generalsettings->add($setting);
 }
 $ADMIN->add('theme_shoelace', $generalsettings);
+
+// Layout settings.
+$layoutsettings = new admin_settingpage('theme_shoelace_layout', get_string('layoutheading', 'theme_shoelace'));
+if ($ADMIN->fulltree) {
+    $layoutsettings->add(new admin_setting_heading('theme_shoelace_layoutheading',
+        get_string('layoutsub', 'theme_shoelace'),
+        format_text(get_string('layoutdesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
+}
+$ADMIN->add('theme_shoelace', $layoutsettings);
 
 // Look and feel settings.
 $lookandfeelsettings = new admin_settingpage('theme_shoelace_lookandfeel', get_string('lookandfeelheading', 'theme_shoelace'));

@@ -273,31 +273,50 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     protected function render_columns2_template() {
         if ($this->page->user_is_editing()) {
-            $hassidepre = true;
+            $hasblocks = true;
+            $haspre = true;
+            $hasmiddle = true;
+            $haspost = true;
         } else {
-            $hassidepre = (empty($this->page->layout_options['noblocks']) &&
-                $this->page->blocks->region_has_content('side-pre', $this));
+            if (empty($this->page->layout_options['noblocks'])) {
+                $haspre = $this->page->blocks->region_has_content('side-pre', $this);
+                $hasmiddle = $this->page->blocks->region_has_content('middle', $this);
+                $haspost = $this->page->blocks->region_has_content('side-post', $this);
+                $hasblocks = ($haspre || $haspost || $hasmiddle);
+            } else {
+                $hasblocks = false;
+            }
         }
 
         $regionmain = 'span9';
-        if ($hassidepre) {
-            $sidepre = 'span3';
+        if ($hasblocks) {
+            $side = 'span3';
         } else {
             $regionmain = 'span12';
         }
         if (!right_to_left()) {
             // Layout mark-up for LTR languages.
-            if ($hassidepre) {
+            if ($hasblocks) {
                 $regionmain .= ' pull-right';
-                $sidepre .= ' desktop-first-column';
+                $side .= ' desktop-first-column';
             }
         }
 
         $data = $this->get_base_data();
 
         $data->regionmain = $regionmain;
-        if ($hassidepre) {
-            $data->blocks_side_pre = $this->shoelaceblocks('side-pre', $sidepre);
+        if ($hasblocks) {
+            $data->blocks = '<div class="'.$side.'">';
+            if ($haspre) {
+                $data->blocks .= $this->shoelaceblocks('side-pre');
+            }
+            if ($hasmiddle) {
+                $data->blocks .= $this->shoelaceblocks('middle');
+            }
+            if ($haspost) {
+                $data->blocks .= $this->shoelaceblocks('side-post');
+            }
+            $data->blocks .= '</div>';
         }
         $data->header_tile = $this->render_template('header_tile');
         $data->page_header_tile = $this->render_template('page_header_tile');
@@ -308,10 +327,78 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     protected function get_threecolumns_common_data() {
         if ($this->page->user_is_editing()) {
-            $hassidepre = $hassidepost = true;
+            $hassidepre = $hassidepost = $hasmiddle = $hassidepremiddle = true;
         } else {
             $hassidepre = (empty($this->page->layout_options['noblocks']) &&
                 $this->page->blocks->region_has_content('side-pre', $this));
+            $hasmiddle = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('middle', $this));
+            $hassidepremiddle = (($hassidepre) || ($hasmiddle));
+            $hassidepost = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('side-post', $this));
+        }
+
+        if ($hassidepremiddle) {
+            $regionmain = 'span8';
+            $sidepremiddle = 'span4';
+        } else {
+            $regionmain = 'span12';
+        }
+
+        if ($hassidepost) {
+            $regionmainbox = 'span9';
+            $sidepost = 'span3';
+        } else {
+            $regionmainbox = 'span12';
+        }
+
+        if (right_to_left()) {
+            // Layout mark-up for RTL languages.
+            if ($hassidepost) {
+                $regionmainbox .= ' pull-right';
+                $sidepost .= ' desktop-first-column';
+            }
+        } else {
+            // Layout mark-up for LTR languages.
+            if ($hassidepremiddle) {
+                $regionmain .= ' pull-right';
+                $sidepremiddle .= ' desktop-first-column';
+            }
+        }
+
+        $data = $this->get_base_data();
+
+        $data->regionmainbox = $regionmainbox;
+        $data->regionmain = $regionmain;
+
+        if ($hassidepremiddle) {
+            $data->blocks_side_pre_middle = '<div class="'.$sidepremiddle.'">';
+            if ($hassidepre) {
+                $data->blocks_side_pre_middle .= $this->shoelaceblocks('side-pre');
+            }
+            if ($hasmiddle) {
+                $data->blocks_side_pre_middle .= $this->shoelaceblocks('middle');
+            }
+            $data->blocks_side_pre_middle .= '</div>';
+        }
+
+        if ($hassidepost) {
+            $data->blocks_side_post = $this->shoelaceblocks('side-post', $sidepost);
+        }
+        $data->header_tile = $this->render_template('header_tile');
+        $data->footer_tile = $this->render_template('footer_tile');
+
+        return $data;
+    }
+
+    protected function get_threecolumns_middle_common_data($middlecolumns) {
+        if ($this->page->user_is_editing()) {
+            $hassidepre = $hassidepost = $hasmiddle = true;
+        } else {
+            $hassidepre = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('side-pre', $this));
+            $hasmiddle = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('middle', $this));
             $hassidepost = (empty($this->page->layout_options['noblocks']) &&
                 $this->page->blocks->region_has_content('side-post', $this));
         }
@@ -348,9 +435,14 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
         $data->regionmainbox = $regionmainbox;
         $data->regionmain = $regionmain;
+
+        if (($middlecolumns) && ($hasmiddle)) {
+            $data->blocks_middle = $this->shoelaceblocks('middle', 'row-fluid', 'aside', $middlecolumns);
+        }
         if ($hassidepre) {
             $data->blocks_side_pre = $this->shoelaceblocks('side-pre', $sidepre);
         }
+
         if ($hassidepost) {
             $data->blocks_side_post = $this->shoelaceblocks('side-post', $sidepost);
         }
@@ -366,6 +458,12 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         return $this->render_from_template('theme_shoelace/columns3', $data);
     }
 
+    protected function render_columns3middle_template() {
+        $data = $this->get_threecolumns_middle_common_data(\theme_shoelace\toolbox::get_setting('nummiddleblocks'));
+        $data->page_header_tile = $this->render_template('page_header_tile');
+        return $this->render_from_template('theme_shoelace/columns3middle', $data);
+    }
+
     protected function render_secure_template() {
         // Template does not have course content header and footer, so even though in data will not be rendered.
         $data = $this->get_threecolumns_common_data();
@@ -374,7 +472,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
     }
 
     protected function render_frontpage_template() {
-        $data = $this->get_threecolumns_common_data();
+        $data = $this->get_threecolumns_middle_common_data(\theme_shoelace\toolbox::get_setting('nummarketingblocks'));
 
         // Logo only on frontpage.
         $logo = \theme_shoelace\toolbox::get_setting('logo');
@@ -387,12 +485,6 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         }
 
         $data->page_header_tile = '<header id="page-header" class="clearfix">'.$heading.'</header>';
-
-        // Marketing blocks.
-        $nummarketingblocks = \theme_shoelace\toolbox::get_setting('nummarketingblocks');
-        if ($nummarketingblocks) {
-            $data->marketing_blocks = $this->shoelaceblocks('marketing', 'row-fluid', 'aside', $nummarketingblocks);
-        }
 
         // Slideshow.
         $data->slideshow = $this->render_template('carousel_tile');
@@ -624,8 +716,10 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         if (empty($this->page->layout_options['nofooter'])) {
             $data = new \stdClass();
 
-            if ($this->page->blocks->is_known_region('footer')) {
-                $data->footer_blocks = $this->render_template('footer_blocks_tile');
+            if (($this->page->user_is_editing()) || (!empty($this->page->layout_options['noblocks']))) {
+                if ($this->page->blocks->is_known_region('footer')) {
+                    $data->footer_blocks = $this->render_template('footer_blocks_tile');
+                }
             }
 
             $data->course_footer = $this->course_footer();

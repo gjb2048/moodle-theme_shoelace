@@ -66,10 +66,7 @@ $THEME->parents_exclude_javascripts = array(
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 
 $empty = array();
-$col1regions = array('footer');
-$col2regions = array('side-pre', 'footer');
-$col3regions = array('side-pre', 'side-post', 'footer');
-$fpregions = array('side-pre', 'side-post', 'marketing', 'footer');
+$regions = array('side-pre', 'side-post', 'middle', 'footer');
 
 $THEME->layouts = array(
     // Most backwards compatible layout without the blocks - this is the layout used by default.
@@ -83,49 +80,49 @@ $THEME->layouts = array(
     'standard' => array(
         'file' => 'layout.php',
         'mustache' => 'columns3',
-        'regions' => $col3regions,
+        'regions' => $regions,
         'defaultregion' => 'side-pre'
     ),
     // Main course page.
     'course' => array(
         'file' => 'layout.php',
         'mustache' => 'columns3',
-        'regions' => $col3regions,
+        'regions' => $regions,
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true)
     ),
     'coursecategory' => array(
         'file' => 'layout.php',
         'mustache' => 'columns3',
-        'regions' => $col3regions,
+        'regions' => $regions,
         'defaultregion' => 'side-pre'
     ),
     // Part of course, typical for modules - default page layout if $cm specified in require_login().
     'incourse' => array(
         'file' => 'layout.php',
         'mustache' => 'columns3',
-        'regions' => $col3regions,
+        'regions' => $regions,
         'defaultregion' => 'side-pre'
     ),
     // The site home page.
     'frontpage' => array(
         'file' => 'layout.php',
         'mustache' => 'frontpage',
-        'regions' => $fpregions,
+        'regions' => $regions,
         'defaultregion' => 'side-pre'
     ),
     // Server administration scripts.
     'admin' => array(
         'file' => 'layout.php',
         'mustache' => 'columns2',
-        'regions' => $col2regions,
+        'regions' => $regions,
         'defaultregion' => 'side-pre'
     ),
     // My dashboard page.
     'mydashboard' => array(
         'file' => 'layout.php',
         'mustache' => 'columns3',
-        'regions' => $col3regions,
+        'regions' => $regions,
         'defaultregion' => 'side-pre',
         'options' => array('langmenu' => true)
     ),
@@ -133,7 +130,7 @@ $THEME->layouts = array(
     'mypublic' => array(
         'file' => 'layout.php',
         'mustache' => 'columns3',
-        'regions' => $col3regions,
+        'regions' => $regions,
         'defaultregion' => 'side-pre'
     ),
     'login' => array(
@@ -187,14 +184,14 @@ $THEME->layouts = array(
     'report' => array(
         'file' => 'layout.php',
         'mustache' => 'columns2',
-        'regions' => $col2regions,
+        'regions' => $regions,
         'defaultregion' => 'side-pre'
     ),
     // The pagelayout used for safebrowser and securewindow.
     'secure' => array(
         'file' => 'layout.php',
         'mustache' => 'secure',
-        'regions' => $col3regions,
+        'regions' => $regions,
         'defaultregion' => 'side-pre'
     ),
 );
