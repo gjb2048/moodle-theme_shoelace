@@ -24,28 +24,20 @@
   @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 }}
 {{!
-  @template theme_shoelace/frontpage
+  @template theme_shoelace/columns3middle
 
-  Moodle frontpage template.
+  Moodle three columns with middle template.
 
-  The purpose of this template is to render the frontpage layout.
+  The purpose of this template is to render a three column with middle layout.
 }}
 {{{header_tile}}}
 
 <div id="page" class="container-fluid">
     {{{page_header_tile}}}
 
-    {{#slideshow}}
-    <div class="row-fluid">
-        <div class="span12">
-            {{{slideshow}}}
-        </div>
-    </div>
-    {{/slideshow}}
-
-    {{#marketing_blocks}}
-    {{{marketing_blocks}}}
-    {{/marketing_blocks}}
+    {{#blocks_middle}}
+    {{{blocks_middle}}}
+    {{/blocks_middle}}
 
     <div id="page-content" class="row-fluid">
         <div id="region-main-box" class="{{{regionmainbox}}}">

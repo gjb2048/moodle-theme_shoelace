@@ -41,7 +41,9 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     protected $shoelace = null; // Used for determining if this is a Shoelace or child of renderer.
 
+    protected $syntaxhighlighterenabled = false;
     protected $themeconfig = array();
+    protected $layout;
 
     public function __construct(\moodle_page $page, $target) {
         $this->themeconfig[] = \theme_config::load('shoelace');
@@ -202,7 +204,12 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     // Mustache.
     protected function render_wrapper_template() {
-        $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
+        $this->layout = \theme_shoelace\toolbox::get_setting('layout_'.$this->page->pagelayout);
+        if ($this->layout) {
+            $mustache = $this->layout;
+        } else {
+            $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
+        }
 
         $data = new \stdClass();
         $data->htmlattributes = $this->htmlattributes();
@@ -266,38 +273,108 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
         $data->header_tile = $this->render_template('header_tile');
         $data->page_header_tile = $this->render_template('page_header_tile');
+
+        if ($this->page->user_is_editing()) {
+            $hasblocks = true;
+            $haspre = true;
+            $hasmiddle = true;
+            $haspost = true;
+        } else {
+            if (empty($this->page->layout_options['noblocks'])) {
+                $haspre = $this->page->blocks->region_has_content('side-pre', $this);
+                $hasmiddle = $this->page->blocks->region_has_content('middle', $this);
+                $haspost = $this->page->blocks->region_has_content('side-post', $this);
+                $hasblocks = ($haspre || $haspost || $hasmiddle);
+            } else {
+                $hasblocks = false;
+            }
+        }
+
+        if ($hasblocks) {
+            $blockcolumns = \theme_shoelace\toolbox::get_setting('nummiddleblocks');
+            $data->blocks = '<div class="row-fluid onecblocks">';
+            if ($haspre) {
+                $data->blocks .= $this->shoelaceblocks('side-pre', 'row-fluid', 'aside', $blockcolumns);
+            }
+            if ($hasmiddle) {
+                $data->blocks .= $this->shoelaceblocks('middle', 'row-fluid', 'aside', $blockcolumns);
+            }
+            if ($haspost) {
+                $data->blocks .= $this->shoelaceblocks('side-post', 'row-fluid', 'aside', $blockcolumns);
+            }
+            $data->blocks .= '</div>';
+        }
+
         $data->footer_tile = $this->render_template('footer_tile');
 
         return $this->render_from_template('theme_shoelace/columns1', $data);
     }
 
+    protected function render_columns2l_template() {
+        return $this->render_columns2_template();
+    }
+
+    protected function render_columns2r_template() {
+        return $this->render_columns2_template();
+    }
+
     protected function render_columns2_template() {
         if ($this->page->user_is_editing()) {
-            $hassidepre = true;
+            $hasblocks = true;
+            $haspre = true;
+            $hasmiddle = true;
+            $haspost = true;
         } else {
-            $hassidepre = (empty($this->page->layout_options['noblocks']) &&
-                $this->page->blocks->region_has_content('side-pre', $this));
+            if (empty($this->page->layout_options['noblocks'])) {
+                $haspre = $this->page->blocks->region_has_content('side-pre', $this);
+                $hasmiddle = $this->page->blocks->region_has_content('middle', $this);
+                $haspost = $this->page->blocks->region_has_content('side-post', $this);
+                $hasblocks = ($haspre || $haspost || $hasmiddle);
+            } else {
+                $hasblocks = false;
+            }
+        }
+
+        // Default is left, but if the layout is set then can use that.
+        $left = true;
+        if ((!empty($this->layout)) && ($this->layout == 'columns2r')) {
+            $left = false;
+        }
+
+        // RTL is flipped.
+        if (right_to_left()) {
+            $left = !$left;
         }
 
         $regionmain = 'span9';
-        if ($hassidepre) {
-            $sidepre = 'span3';
+        if ($hasblocks) {
+            $side = 'span3';
+            if ($left) {
+                // Layout mark-up for LTR languages.
+                if ($hasblocks) {
+                    $regionmain .= ' pull-right';
+                    $side .= ' desktop-first-column';
+                }
+            }
         } else {
             $regionmain = 'span12';
-        }
-        if (!right_to_left()) {
-            // Layout mark-up for LTR languages.
-            if ($hassidepre) {
-                $regionmain .= ' pull-right';
-                $sidepre .= ' desktop-first-column';
-            }
         }
 
         $data = $this->get_base_data();
 
         $data->regionmain = $regionmain;
-        if ($hassidepre) {
-            $data->blocks_side_pre = $this->shoelaceblocks('side-pre', $sidepre);
+        if ($hasblocks) {
+            $data->blocks = '<div class="'.$side.' manyblocks">';
+            if ($haspre) {
+                $data->blocks .= $this->shoelaceblocks('side-pre');
+            }
+            if ($hasmiddle) {
+                $data->blocks .= $this->shoelaceblocks('middle');
+            }
+            if ($haspost) {
+                $data->blocks .= $this->shoelaceblocks('side-post');
+            }
+            $data->blocks .= '</div>';
         }
         $data->header_tile = $this->render_template('header_tile');
         $data->page_header_tile = $this->render_template('page_header_tile');
@@ -308,10 +385,78 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     protected function get_threecolumns_common_data() {
         if ($this->page->user_is_editing()) {
-            $hassidepre = $hassidepost = true;
+            $hassidepre = $hassidepost = $hasmiddle = $hassidepremiddle = true;
         } else {
             $hassidepre = (empty($this->page->layout_options['noblocks']) &&
                 $this->page->blocks->region_has_content('side-pre', $this));
+            $hasmiddle = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('middle', $this));
+            $hassidepremiddle = (($hassidepre) || ($hasmiddle));
+            $hassidepost = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('side-post', $this));
+        }
+
+        if ($hassidepremiddle) {
+            $regionmain = 'span8';
+            $sidepremiddle = 'span4';
+        } else {
+            $regionmain = 'span12';
+        }
+
+        if ($hassidepost) {
+            $regionmainbox = 'span9';
+            $sidepost = 'span3';
+        } else {
+            $regionmainbox = 'span12';
+        }
+
+        if (right_to_left()) {
+            // Layout mark-up for RTL languages.
+            if ($hassidepost) {
+                $regionmainbox .= ' pull-right';
+                $sidepost .= ' desktop-first-column';
+            }
+        } else {
+            // Layout mark-up for LTR languages.
+            if ($hassidepremiddle) {
+                $regionmain .= ' pull-right';
+                $sidepremiddle .= ' desktop-first-column';
+            }
+        }
+
+        $data = $this->get_base_data();
+
+        $data->regionmainbox = $regionmainbox;
+        $data->regionmain = $regionmain;
+
+        if ($hassidepremiddle) {
+            $data->blocks_side_pre_middle = '<div class="'.$sidepremiddle.' manyblocks">';
+            if ($hassidepre) {
+                $data->blocks_side_pre_middle .= $this->shoelaceblocks('side-pre');
+            }
+            if ($hasmiddle) {
+                $data->blocks_side_pre_middle .= $this->shoelaceblocks('middle');
+            }
+            $data->blocks_side_pre_middle .= '</div>';
+        }
+
+        if ($hassidepost) {
+            $data->blocks_side_post = $this->shoelaceblocks('side-post', $sidepost);
+        }
+        $data->header_tile = $this->render_template('header_tile');
+        $data->footer_tile = $this->render_template('footer_tile');
+
+        return $data;
+    }
+
+    protected function get_threecolumns_middle_common_data($middlecolumns) {
+        if ($this->page->user_is_editing()) {
+            $hassidepre = $hassidepost = $hasmiddle = true;
+        } else {
+            $hassidepre = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('side-pre', $this));
+            $hasmiddle = (empty($this->page->layout_options['noblocks']) &&
+                $this->page->blocks->region_has_content('middle', $this));
             $hassidepost = (empty($this->page->layout_options['noblocks']) &&
                 $this->page->blocks->region_has_content('side-post', $this));
         }
@@ -346,15 +491,21 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
         $data = $this->get_base_data();
 
+        $data->header_tile = $this->render_template('header_tile');
+
         $data->regionmainbox = $regionmainbox;
         $data->regionmain = $regionmain;
+
+        if (($middlecolumns) && ($hasmiddle)) {
+            $data->blocks_middle = $this->shoelaceblocks('middle', 'row-fluid', 'aside', $middlecolumns);
+        }
         if ($hassidepre) {
             $data->blocks_side_pre = $this->shoelaceblocks('side-pre', $sidepre);
         }
+
         if ($hassidepost) {
             $data->blocks_side_post = $this->shoelaceblocks('side-post', $sidepost);
         }
-        $data->header_tile = $this->render_template('header_tile');
         $data->footer_tile = $this->render_template('footer_tile');
 
         return $data;
@@ -366,6 +517,12 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         return $this->render_from_template('theme_shoelace/columns3', $data);
     }
 
+    protected function render_columns3middle_template() {
+        $data = $this->get_threecolumns_middle_common_data(\theme_shoelace\toolbox::get_setting('nummiddleblocks'));
+        $data->page_header_tile = $this->render_template('page_header_tile');
+        return $this->render_from_template('theme_shoelace/columns3middle', $data);
+    }
+
     protected function render_secure_template() {
         // Template does not have course content header and footer, so even though in data will not be rendered.
         $data = $this->get_threecolumns_common_data();
@@ -373,9 +530,133 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         return $this->render_from_template('theme_shoelace/secure', $data);
     }
 
-    protected function render_frontpage_template() {
-        $data = $this->get_threecolumns_common_data();
+    protected function get_frontpage_onecolumn_middle_common_data($middlecolumns) {
+        $data = $this->get_base_data();
 
+        $data->header_tile = $this->render_template('header_tile');
+
+        if ($this->page->user_is_editing()) {
+            $hasblocks = true;
+            $haspre = true;
+            $hasmiddle = true;
+            $haspost = true;
+        } else {
+            if (empty($this->page->layout_options['noblocks'])) {
+                $haspre = $this->page->blocks->region_has_content('side-pre', $this);
+                $hasmiddle = $this->page->blocks->region_has_content('middle', $this);
+                $haspost = $this->page->blocks->region_has_content('side-post', $this);
+                $hasblocks = ($haspre || $haspost || $hasmiddle);
+            } else {
+                $hasblocks = false;
+            }
+        }
+
+        if ($hasblocks) {
+            if (($middlecolumns) && ($hasmiddle)) {
+                $data->blocks_middle = $this->shoelaceblocks('middle', 'row-fluid', 'aside', $middlecolumns);
+            }
+            if (($haspre) || ($haspost)) {
+                $blockcolumns = \theme_shoelace\toolbox::get_setting('nummiddleblocks');
+                $data->blocks = '<div class="row-fluid onecblocks">';
+                if ($haspre) {
+                    $data->blocks .= $this->shoelaceblocks('side-pre', 'row-fluid', 'aside', $blockcolumns);
+                }
+                if ($haspost) {
+                    $data->blocks .= $this->shoelaceblocks('side-post', 'row-fluid', 'aside', $blockcolumns);
+                }
+                $data->blocks .= '</div>';
+            }
+        }
+
+        $data->footer_tile = $this->render_template('footer_tile');
+
+        return $data;
+    }
+
+    protected function get_frontpage_twocolumns_middle_common_data($middlecolumns, $left) {
+        if ($this->page->user_is_editing()) {
+            $hasblocks = true;
+            $haspre = true;
+            $hasmiddle = true;
+            $haspost = true;
+        } else {
+            if (empty($this->page->layout_options['noblocks'])) {
+                $haspre = $this->page->blocks->region_has_content('side-pre', $this);
+                $hasmiddle = $this->page->blocks->region_has_content('middle', $this);
+                $haspost = $this->page->blocks->region_has_content('side-post', $this);
+                $hasblocks = ($haspre || $haspost || $hasmiddle);
+            } else {
+                $hasblocks = false;
+            }
+        }
+
+        // RTL is flipped.
+        if (right_to_left()) {
+            $left = !$left;
+        }
+
+        $regionmain = 'span9';
+        if ($hasblocks) {
+            $side = 'span3';
+            if ($left) {
+                // Layout mark-up for LTR languages.
+                if ($hasblocks) {
+                    $regionmain .= ' pull-right';
+                    $side .= ' desktop-first-column';
+                }
+            }
+        } else {
+            $regionmain = 'span12';
+        }
+
+        $data = $this->get_base_data();
+
+        $data->header_tile = $this->render_template('header_tile');
+
+        $data->regionmain = $regionmain;
+        if ($hasblocks) {
+            if (($haspre) || ($haspost)) {
+                $data->blocks = '<div class="'.$side.' manyblocks">';
+                if ($haspre) {
+                    $data->blocks .= $this->shoelaceblocks('side-pre');
+                }
+                if ($haspost) {
+                    $data->blocks .= $this->shoelaceblocks('side-post');
+                }
+                $data->blocks .= '</div>';
+            }
+            if (($middlecolumns) && ($hasmiddle)) {
+                $data->blocks_middle = $this->shoelaceblocks('middle', 'row-fluid', 'aside', $middlecolumns);
+            }
+        }
+
+        $data->footer_tile = $this->render_template('footer_tile');
+
+        return $data;
+    }
+
+    protected function render_frontpage_template() {
+        $frontpagelayout = \theme_shoelace\toolbox::get_setting('frontpagelayout');
+        $nummarketingblocks = \theme_shoelace\toolbox::get_setting('nummarketingblocks');
+        switch ($frontpagelayout) {
+            case 1:
+                $data = $this->get_frontpage_onecolumn_middle_common_data($nummarketingblocks);
+                $template = 'frontpage1';
+            break;
+            case 21:
+                $data = $this->get_frontpage_twocolumns_middle_common_data($nummarketingblocks, true);
+                $template = 'frontpage2';
+            break;
+            case 22:
+                $data = $this->get_frontpage_twocolumns_middle_common_data($nummarketingblocks, false);
+                $template = 'frontpage2';
+            break;
+            case 3:
+            default:
+                $data = $this->get_threecolumns_middle_common_data($nummarketingblocks);
+                $template = 'frontpage3';
+            break;
+        }
         // Logo only on frontpage.
         $logo = \theme_shoelace\toolbox::get_setting('logo');
         if (!empty($logo)) {
@@ -388,16 +669,20 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
         $data->page_header_tile = '<header id="page-header" class="clearfix">'.$heading.'</header>';
 
-        // Marketing blocks.
-        $nummarketingblocks = \theme_shoelace\toolbox::get_setting('nummarketingblocks');
-        if ($nummarketingblocks) {
-            $data->marketing_blocks = $this->shoelaceblocks('marketing', 'row-fluid', 'aside', $nummarketingblocks);
-        }
-
         // Slideshow.
         $data->slideshow = $this->render_template('carousel_tile');
 
-        return $this->render_from_template('theme_shoelace/frontpage', $data);
+        // Slideshow and marketing blocks position.
+        $slideshowmarketingpos = \theme_shoelace\toolbox::get_setting('slideshowmarketingpos');
+        if ($slideshowmarketingpos) {
+            // Slideshow below.
+            $data->slideshow_marketing_tile = $this->render_from_template('theme_shoelace/#marketingslideshow', $data);
+        } else {
+            // Slideshow above.
+            $data->slideshow_marketing_tile = $this->render_from_template('theme_shoelace/#slideshowmarketing', $data);
+        }
+
+        return $this->render_from_template('theme_shoelace/'.$template, $data);
     }
 
     protected function render_popup_template() {
@@ -624,8 +909,10 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         if (empty($this->page->layout_options['nofooter'])) {
             $data = new \stdClass();
 
-            if ($this->page->blocks->is_known_region('footer')) {
-                $data->footer_blocks = $this->render_template('footer_blocks_tile');
+            if (($this->page->user_is_editing()) || (!empty($this->page->layout_options['noblocks']))) {
+                if ($this->page->blocks->is_known_region('footer')) {
+                    $data->footer_blocks = $this->render_template('footer_blocks_tile');
+                }
             }
 
             $data->course_footer = $this->course_footer();
@@ -679,19 +966,26 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             'data-droptarget' => '1'
         );
 
+        $regioncontent = '';
+        $editing = $this->page->user_is_editing();
+        if ($editing) {
+            $regioncontent .= html_writer::tag('span', get_string('region-'.$region, 'theme_shoelace'),
+                array('class' => 'regionname'));
+        }
+
         if ($this->page->blocks->region_has_content($region, $this)) {
             if ($blocksperrow > 0) {
-                $editing = $this->page->user_is_editing();
                 if ($editing) {
                     $attributes['class'] .= ' '.$region.'-edit';
                 }
-                $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($region,
-                    $blocksperrow, $editing), $attributes);
+                $regioncontent .= $this->shoelace_blocks_for_region($region, $blocksperrow, $editing);
+                $output = html_writer::tag($tag, $regioncontent, $attributes);
             } else {
-                $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
+                $regioncontent .= $this->blocks_for_region($region);
+                $output = html_writer::tag($tag, $regioncontent, $attributes);
             }
         } else {
-            $output = html_writer::tag($tag, '', $attributes);
+            $output = html_writer::tag($tag, $regioncontent, $attributes);
         }
 
         return $output;
@@ -820,6 +1114,295 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         $content .= html_writer::end_tag('ul');
 
         return $content;
+    }
+
+    /**
+     * The standard tags (meta tags, links to stylesheets and JavaScript, etc.)
+     * that should be included in the <head> tag. Designed to be called in theme
+     * layout.php files.
+     *
+     * @return string HTML fragment.
+     */
+    public function standard_head_html() {
+        switch ($this->page->pagelayout) {
+            case 'course':
+            case 'incourse':
+                $this->syntax_highlighter();
+        }
+        return parent::standard_head_html();
+    }
+
+    /**
+     * Gets the current category.
+     *
+     * @return int Category id.
+     */
+    protected function get_current_category() {
+        $catid = 0;
+
+        if (is_array($this->page->categories)) {
+            $catids = array_keys($this->page->categories);
+            $catid = reset($catids);
+        } else if (!empty($$this->page->course->category)) {
+            $catid = $this->page->course->category;
+        }
+
+        return $catid;
+    }
+
+    protected function syntax_highlighter() {
+        if ($this->get_setting('syntaxhighlight') == 2) {
+            if (in_array($this->get_current_category(), explode(',', $this->get_setting('syntaxhighlightcat'))) !== false) {
+                $this->page->requires->js('/theme/shoelace/javascript/syntaxhighlighter_3_0_83/scripts/shCore.js');
+                $this->page->requires->js('/theme/shoelace/javascript/syntaxhighlighter_3_0_83/scripts/shAutoloader.js');
+                $this->page->requires->css('/theme/shoelace/javascript/syntaxhighlighter_3_0_83/styles/shCore.css');
+                $this->page->requires->css('/theme/shoelace/javascript/syntaxhighlighter_3_0_83/styles/shThemeDefault.css');
+                $this->syntaxhighlighterenabled = true;
+            }
+        }
+    }
+
+    /**
+     * The standard tags (typically script tags that are not needed earlier) that
+     * should be output after everything else. Designed to be called in theme layout.php files.
+     *
+     * @return string HTML fragment.
+     */
+    public function standard_end_of_body_html() {
+        global $CFG;
+
+        $output = '';
+
+        $context = \context_course::instance($this->page->course->id);
+        // Typically if you can update the course settings then you can use syntax highlighting.
+        if (($this->syntaxhighlighterenabled) && (\has_capability('moodle/course:update', $context))) {
+            $output .= html_writer::start_tag('div', array('class' => 'syntaxhighlightmodal'));
+            $output .= '<a href="#mySHModal" role="button" class="btn" data-toggle="modal">Syntax highlighing help</a>';
+
+            $output .= '<div id="mySHModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mySHModalLabel" ';
+            $output .= 'aria-hidden="true">';
+            $output .= '<div class="modal-header">';
+            $output .= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>';
+            $output .= '<h3 id="mySHModalLabel">'.get_string('syntaxhighlightpage', 'theme_shoelace').'</h3>';
+            $output .= '</div>';
+            $output .= '<div class="modal-body">';
+            $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
+            $output .= html_writer::start_tag('div', array('class' => 'span12 lead'));
+            $output .= html_writer::tag('p', get_string('syntaxhelpone', 'theme_shoelace',
+                array('html' => htmlentities(get_string('syntaxsummary', 'theme_shoelace')))));
+            $output .= html_writer::tag('p', get_string('syntaxhelptwo', 'theme_shoelace'));
+            $output .= html_writer::start_tag('table', array('class' => 'syntax'));
+            $output .= html_writer::start_tag('thead');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('th', get_string('syntaxhelpthree', 'theme_shoelace'));
+            $output .= html_writer::tag('th', get_string('syntaxhelpfour', 'theme_shoelace'));
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::end_tag('thead');
+            $output .= html_writer::start_tag('tbody');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'ActionScript3');
+            $output .= html_writer::tag('td', 'as3, actionscript3');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Bash/shell');
+            $output .= html_writer::tag('td', 'bash, shell');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'ColdFusion');
+            $output .= html_writer::tag('td', 'cf, coldfusion');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'C#');
+            $output .= html_writer::tag('td', 'c-sharp, csharp');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'C++');
+            $output .= html_writer::tag('td', 'cpp, c');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'CSS');
+            $output .= html_writer::tag('td', 'css');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Delphi');
+            $output .= html_writer::tag('td', 'delphi, pas, pascal');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Diff');
+            $output .= html_writer::tag('td', 'diff, patch');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Erlang');
+            $output .= html_writer::tag('td', 'erl, erlang');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Groovy');
+            $output .= html_writer::tag('td', 'groovy');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'JavaScript');
+            $output .= html_writer::tag('td', 'js, jscript, javascript');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Java');
+            $output .= html_writer::tag('td', 'java');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'JavaFX');
+            $output .= html_writer::tag('td', 'jfx, javafx');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Perl');
+            $output .= html_writer::tag('td', 'perl, pl');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'PHP');
+            $output .= html_writer::tag('td', 'php');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Plain Text');
+            $output .= html_writer::tag('td', 'plain, text');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'PowerShell');
+            $output .= html_writer::tag('td', 'ps, powershell');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Python');
+            $output .= html_writer::tag('td', 'py, python');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Ruby');
+            $output .= html_writer::tag('td', 'rails, ror, ruby');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Scala');
+            $output .= html_writer::tag('td', 'scala');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'SQL');
+            $output .= html_writer::tag('td', 'sql');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Visual Basic');
+            $output .= html_writer::tag('td', 'vb, vbnet');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'XML');
+            $output .= html_writer::tag('td', 'xml, xhtml, xslt, html, xhtml');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::end_tag('tbody');
+            $output .= html_writer::end_tag('table');
+            $output .= html_writer::empty_tag('br');
+            $output .= html_writer::tag('p', get_string('syntaxhelpfive', 'theme_shoelace'));
+            $output .= html_writer::start_tag('pre');
+            $output .= htmlentities('<pre class="brush: java">').PHP_EOL;
+            $output .= 'public class Test'.PHP_EOL;
+            $output .= '{'.PHP_EOL;
+            $output .= '   private String name = "Java program";'.PHP_EOL;
+            $output .= PHP_EOL;
+            $output .= '   public static void main (String args[])'.PHP_EOL;
+            $output .= '   {'.PHP_EOL;
+            $output .= '      Test us = new Test();'.PHP_EOL;
+            $output .= '      System.out.println(us.getName());'.PHP_EOL;
+            $output .= '   }'.PHP_EOL;
+            $output .= PHP_EOL;
+            $output .= '   public String getName()'.PHP_EOL;
+            $output .= '   {'.PHP_EOL;
+            $output .= '      return name;'.PHP_EOL;
+            $output .= '   }'.PHP_EOL;
+            $output .= '}'.PHP_EOL;
+            $output .= htmlentities('</pre>');
+            $output .= html_writer::end_tag('pre');
+            $output .= html_writer::tag('p', get_string('syntaxhelpsix', 'theme_shoelace'));
+            $output .= '<pre class="brush: java">'.PHP_EOL;
+            $output .= 'public class Test'.PHP_EOL;
+            $output .= '{'.PHP_EOL;
+            $output .= '   private String name = "Java program";'.PHP_EOL;
+            $output .= PHP_EOL;
+            $output .= '   public static void main (String args[])'.PHP_EOL;
+            $output .= '   {'.PHP_EOL;
+            $output .= '      Test us = new Test();'.PHP_EOL;
+            $output .= '      System.out.println(us.getName());'.PHP_EOL;
+            $output .= '   }'.PHP_EOL;
+            $output .= PHP_EOL;
+            $output .= '   public String getName()'.PHP_EOL;
+            $output .= '   {'.PHP_EOL;
+            $output .= '      return name;'.PHP_EOL;
+            $output .= '   }'.PHP_EOL;
+            $output .= '}'.PHP_EOL;
+            $output .= '</pre>'.PHP_EOL;
+            $output .= html_writer::tag('p', get_string('syntaxhelpseven', 'theme_shoelace').' \''.html_writer::tag('a', 'SyntaxHighlighter',
+                array('href' => '//alexgorbatchev.com/SyntaxHighlighter/', 'target' => '_blank')).'\'.');
+            $output .= html_writer::end_tag('div');
+            $output .= html_writer::end_tag('div');
+            $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
+            $output .= html_writer::start_tag('div',  array('class' => 'span12'));
+            $output .= html_writer::tag('p', html_writer::tag('a', 'SyntaxHighlighter',
+                array('href' => '//alexgorbatchev.com/SyntaxHighlighter/', 'target' => '_blank')).
+                ' - '.html_writer::tag('span', 'Alex Gorbatchev 2004-2011', array ('class' => 'copyright')).
+                ' - LGPL v3 '.html_writer::tag('a', 'www.gnu.org/copyleft/lesser.html',
+                array('href' => '//www.gnu.org/copyleft/lesser.html', 'target' => '_blank')),
+                array ('class' => 'text-center span12'));
+            $output .= html_writer::end_tag('div');
+            $output .= html_writer::end_tag('div');
+            $output .= '</div>';
+            $output .= '<div class="modal-footer">';
+            $output .= '<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>';
+            $output .= '</div>';
+            $output .= '</div>';
+            $output .= html_writer::end_tag('div');
+        }
+
+        $output .= html_writer::start_tag('div', array ('class' => 'themecredit')).
+            get_string('credit', 'theme_shoelace').
+            html_writer::link('//about.me/gjbarnard', 'Gareth J Barnard', array('target' => '_blank')).
+            html_writer::end_tag('div');
+        $output .= parent::standard_end_of_body_html();
+
+        if ($this->syntaxhighlighterenabled) {
+            $syscontext = \context_system::instance();
+            $itemid = \theme_get_revision();
+            $url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php",
+                "/$syscontext->id/theme_shoelace/syntaxhighlighter/$itemid/");
+            $url = preg_replace('|^https?://|i', '//', $url->out(false));
+
+            $script = "require(['jquery', 'core/log'], function($, log) {";  // Use AMD to get jQuery.
+            $script .= "log.debug('Shoelace SyntaxHighlighter AMD autoloader');";
+            $script .= "$('document').ready(function(){";
+            $script .= "SyntaxHighlighter.autoloader(";
+            $script .= "[ 'applescript', '" . $url . "shBrushAppleScript.js' ],";
+            $script .= "[ 'actionscript3', 'as3', '" . $url . "shBrushAS3.js' ],";
+            $script .= "[ 'bash', 'shell', '" . $url . "shBrushBash.js' ],";
+            $script .= "[ 'coldfusion', 'cf', '" . $url . "shBrushColdFusion.js' ],";
+            $script .= "[ 'cpp', 'c', '" . $url . "shBrushCpp.js' ],";
+            $script .= "[ 'c#', 'c-sharp', 'csharp', '" . $url . "shBrushCSharp.js' ],";
+            $script .= "[ 'css', '" . $url . "shBrushCss.js' ],";
+            $script .= "[ 'delphi', 'pascal', '" . $url . "shBrushDelphi.js' ],";
+            $script .= "[ 'diff', 'patch', 'pas', '" . $url . "shBrushDiff.js' ],";
+            $script .= "[ 'erl', 'erlang', '" . $url . "shBrushErlang.js' ],";
+            $script .= "[ 'groovy', '" . $url . "shBrushGroovy.js' ],";
+            $script .= "[ 'haxe hx', '" . $url . "shBrushHaxe.js', ],";
+            $script .= "[ 'java', '" . $url . "shBrushJava.js' ],";
+            $script .= "[ 'jfx', 'javafx', '" . $url . "shBrushJavaFX.js' ],";
+            $script .= "[ 'js', 'jscript', 'javascript', '" . $url . "shBrushJScript.js' ],";
+            $script .= "[ 'perl', 'pl', '" . $url . "shBrushPerl.js' ],";
+            $script .= "[ 'php', '" . $url . "shBrushPhp.js' ],";
+            $script .= "[ 'text', 'plain', '" . $url . "shBrushPlain.js' ],";
+            $script .= "[ 'py', 'python', '" . $url . "shBrushPython.js' ],";
+            $script .= "[ 'ruby', 'rails', 'ror', 'rb', '" . $url . "shBrushRuby.js' ],";
+            $script .= "[ 'scala', '" . $url . "shBrushScala.js' ],";
+            $script .= "[ 'sql', '" . $url . "shBrushSql.js' ],";
+            $script .= "[ 'vb', 'vbnet', '" . $url . "shBrushVb.js' ],";
+            $script .= "[ 'xml', 'xhtml', 'xslt', 'html', '" . $url . "shBrushXml.js' ]";
+            $script .= ');';
+            $script .= 'SyntaxHighlighter.all(); console.log("Syntax Highlighter Init");';
+            $script .= '});';
+            $script .= '});';
+            $output .= html_writer::script($script);
+        }
+
+        return $output;
     }
 
     public function anti_gravity() {

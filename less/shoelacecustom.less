@@ -1,4 +1,8 @@
 // Shoelace custom.
+#region-main {
+    background-color: @pageColour;
+    box-shadow: @shoelaceBoxShadow;
+}
 
 // Anti gravity.
 .antiGravity {
@@ -49,12 +53,79 @@ fieldset {
     min-width: 0;
 }
 
+// Page
+.regionname {
+    color: @pageTextColour;
+    text-align: center;
+    display: block;
+}
+
+// One column layout blocks.
+body:not(.editing) div.onecblocks {
+    margin-top: 10px;
+
+    background-color: @pageColour;
+    border: 1px solid darken(@bodyBackground, 5%);
+    border-radius: @shoelaceBorderRadius;
+    box-shadow: @shoelaceBoxShadow;
+    opacity: @shoelaceOpacity;
+
+    .block {
+        background-color: transparent;
+        border: medium none transparent;
+        border-radius: 0;
+        box-shadow: none;
+        opacity: inherit;
+    }
+}
+
+body.editing {
+    div.onecblocks,
+    div.manyblocks {
+        aside.block-region:not(:first-of-type) {
+            border-top: solid 0 transparent;
+        }
+    }
+}
+
+// Footer.
 #page-footer {
-    .themecredit {
-        font-size: 7pt;
-        text-align: center;
-        a, a:hover {
-            color: inherit;
+    color: @pageTextColour;
+    a {
+        color: @pageTextColour;
+        &:hover, &:focus {
+            color: @pageTextColourHover;
+        }
+    }
+    .helplink a {
+        background-color: @pageColour;
+        color: @linkColor;
+        &:hover, &:focus {
+            color: @linkColorHover;
+        }
+        box-shadow: @shoelaceBoxShadow;
+        opacity: @shoelaceOpacity;
+        padding: 2px;
+    }
+}
+
+.themecredit {
+    color: @pageTextColour;
+    font-size: 7pt;
+    text-align: center;
+    a, a:hover {
+        color: @pageTextColour;
+    }
+}
+
+.syntaxhighlightmodal {
+    text-align: center;
+    margin: 0 auto;
+    #mySHModal {
+        text-align: left;
+        width: 674px;
+        pre {
+            font-size: 21px;
         }
     }
 }
@@ -142,7 +213,7 @@ fieldset {
         display: block;
     }
     .carousel-indicators {
-        border-radius: @baseBorderRadius;
+        border-radius: @shoelaceBorderRadius;
         padding-right: 5px;
         padding-top: 2px;
         padding-bottom: 2px;

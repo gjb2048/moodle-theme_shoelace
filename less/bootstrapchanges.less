@@ -1,10 +1,16 @@
 // My changes to Bootstrap
 
+// alerts.less
+// --------------------------------------------------
+.alert {
+    border-radius: @shoelaceBorderRadius;
+}
+
 // breadcrumbs.less
 // --------------------------------------------------
 
 .breadcrumb {
-  background-color: rgba(red(@wellBackground), green(@wellBackground), blue(@wellBackground), 0.7);
+  background-color: @pageColour;
   > li {
     text-shadow: 0 1px 0 @textShadow;
   }
@@ -14,6 +20,8 @@
 // --------------------------------------------------
 .btn {
   .buttonBackground(@btnBackground, @btnBackgroundHighlight, @navbarText, 0 1px 1px rgba(255,255,255,.75));
+
+  border-radius: @shoelaceBorderRadius;
 
   color: @navbarText;
   // Hover/focus state
@@ -91,6 +99,7 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   color: @textColor;
+  border-radius: @shoelaceBorderRadius;
 }
 
 textarea, .uneditable-input {
