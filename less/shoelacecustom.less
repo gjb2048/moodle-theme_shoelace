@@ -61,6 +61,16 @@ fieldset {
             color: @pageTextColourHover;
         }
     }
+    .helplink a {
+        background-color: @pageColour;
+        color: @linkColor;
+        &:hover, &:focus {
+            color: @linkColorHover;
+        }
+        box-shadow: @shoelaceBoxShadow;
+        opacity: @shoelaceOpacity;
+        padding: 2px;
+    }
     .themecredit {
         font-size: 7pt;
         text-align: center;
@@ -153,7 +163,7 @@ fieldset {
         display: block;
     }
     .carousel-indicators {
-        border-radius: @baseBorderRadius;
+        border-radius: @shoelaceBorderRadius;
         padding-right: 5px;
         padding-top: 2px;
         padding-bottom: 2px;

@@ -65,50 +65,14 @@ $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for Shoelace here.';
 
-$string['themecolour'] = 'Theme colour';
-$string['themecolourdesc'] = 'Set the colour for the theme.';
-
-$string['pagecolour'] = 'Page colour';
-$string['pagecolourdesc'] = 'Set the colour for the page.';
-
-$string['textcolour'] = 'Text colour';
-$string['textcolourdesc'] = 'Set the colour for the text.';
-
-$string['navbartextcolour'] = 'Navbar text colour';
-$string['navbartextcolourdesc'] = 'Set the colour for the navbar text.';
-
 $string['cdnfonts'] = 'Content delivery network fonts';
 $string['cdnfontsdesc'] = 'Use content delivery network fonts';
-
-$string['navbarscroll'] = 'Show / hide the navbar on scroll';
-$string['navbarscrolldesc'] = 'Scroll down to hide the navbar, scroll up more than {$a->upamount} pixels in a single gesture or get near the top to show the navbar.';
-
-$string['navbarscrollupamount'] = 'Navbar scroll up amount';
-$string['navbarscrollupamountdesc'] = 'Amount of up scrolling before the navbar will show when \'navbarscroll\' is \'Yes\', between {$a->lower} and {$a->upper} pixels.';
 
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
 
-$string['footnote'] = 'Footnote';
-$string['footnotedesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.';
-
-$string['invert'] = 'Invert navbar';
-$string['invertdesc'] = 'Inverts text and theme colour for the navbar at the top of the page.';
-
-$string['logo'] = 'Logo';
-$string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>Set the height of the logo with the \'logoheight\' setting.';
-
-$string['logoheight'] = 'Logo height';
-$string['logoheightdesc'] = 'Logo height between {$a->lower} and {$a->upper} pixels.';
-
-$string['nummarketingblocks'] = 'Maximum number of blocks per row in the frontpage marketing (middle) area';
-$string['nummarketingblocksdesc'] = 'The maximum blocks per row in the frontpage marketing (middle) area.';
-
 $string['nummiddleblocks'] = 'Maximum number of blocks per row in the middle area';
 $string['nummiddleblocksdesc'] = 'The maximum blocks per row in the middle area.';
-
-$string['numfooterblocks'] = 'Maximum number of blocks per row in the footer';
-$string['numfooterblocksdesc'] = 'The maximum blocks per row in the footer.';
 
 $string['one'] = 'One';
 $string['two'] = 'Two';
@@ -136,20 +100,62 @@ $string['lookandfeelheading'] = 'Look and feel';
 $string['lookandfeelsub'] = 'Look and feel settings';
 $string['lookandfeeldesc'] = 'Set the colours for the theme.';
 
+$string['themecolour'] = 'Theme colour';
+$string['themecolourdesc'] = 'Set the colour for the theme.';
+
+$string['backgroundcolour'] = 'Background colour';
+$string['backgroundcolourdesc'] = 'Set the background colour for the page.';
+
+$string['pagecolour'] = 'Page colour';
+$string['pagecolourdesc'] = 'Set the colour for the page.';
+
+$string['pagetextcolour'] = 'Page text colour';
+$string['pagetextcolourdesc'] = 'Set the colour for the page text.';
+
+$string['textcolour'] = 'Text colour';
+$string['textcolourdesc'] = 'Set the colour for the text.';
+
+$string['navbartextcolour'] = 'Navbar text colour';
+$string['navbartextcolourdesc'] = 'Set the colour for the navbar text.';
+
+$string['logo'] = 'Logo';
+$string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>Set the height of the logo with the \'logoheight\' setting.';
+
+$string['logoheight'] = 'Logo height';
+$string['logoheightdesc'] = 'Logo height between {$a->lower} and {$a->upper} pixels.';
+
 // Frontpage.
 $string['frontpageheading'] = 'Frontpage';
 $string['frontpagesub'] = 'Frontpage settings';
 $string['frontpagedesc'] = 'Set the frontpage settings.';
+
+$string['nummarketingblocks'] = 'Maximum number of blocks per row in the frontpage marketing (middle) area';
+$string['nummarketingblocksdesc'] = 'The maximum blocks per row in the frontpage marketing (middle) area.';
 
 // Navbar.
 $string['navbarheading'] = 'Navbar';
 $string['navbarsub'] = 'Navbar settings';
 $string['navbardesc'] = 'Set the navbar settings.';
 
+$string['invert'] = 'Invert navbar';
+$string['invertdesc'] = 'Inverts text and theme colour for the navbar at the top of the page.';
+
+$string['navbarscroll'] = 'Show / hide the navbar on scroll';
+$string['navbarscrolldesc'] = 'Scroll down to hide the navbar, scroll up more than {$a->upamount} pixels in a single gesture or get near the top to show the navbar.';
+
+$string['navbarscrollupamount'] = 'Navbar scroll up amount';
+$string['navbarscrollupamountdesc'] = 'Amount of up scrolling before the navbar will show when \'navbarscroll\' is \'Yes\', between {$a->lower} and {$a->upper} pixels.';
+
 // Footer.
 $string['footerheading'] = 'Footer';
 $string['footersub'] = 'Footer settings';
 $string['footerdesc'] = 'Set the footer settings.';
+
+$string['numfooterblocks'] = 'Maximum number of blocks per row in the footer';
+$string['numfooterblocksdesc'] = 'The maximum blocks per row in the footer.';
+
+$string['footnote'] = 'Footnote';
+$string['footnotedesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.';
 
 // Slideshow.
 $string['frontpageslideshowheading'] = 'Frontpage slide show';

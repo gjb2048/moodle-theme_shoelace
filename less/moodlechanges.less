@@ -74,8 +74,11 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
     font-style: italic;
 }
 
-.page-context-header .page-header-headings h1 {
-    color: @pageTextColour;
+#page-header,
+.page-context-header .page-header-headings {
+    h1 {
+        color: @pageTextColour;
+    }
 }
 
 // core.less and modules.less
@@ -137,12 +140,16 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
     width: 100%;
 }
 
+.coursebox {
+    border-radius: @shoelaceBorderRadius;
+}
+
 .coursebox .content .summary {
     float: none;
 }
 
 .coursebox .teachers {
-    margin:0;
+    margin: 0;
 }
 
 .courses .coursebox.collapsed {
@@ -150,12 +157,26 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 }
 
 .courses .coursebox.even {
-    background-color: lighten(@bodyBackground, 3%);
+    background-color: lighten(@bodyBackgroundAlt, 3%);
+    color: @navbarText;
+    a {
+       color: @navbarLinkColor;
+       &:hover, &:focus {
+           color: @navbarLinkColorHover;
+       }
+    }
 }
 
 .courses .coursebox:hover,
 .course_category_tree .courses > .paging.paging-morelink:hover {
-    background-color: lighten(@bodyBackground, 5%);
+    background-color: lighten(@bodyBackgroundAlt, 5%);
+    color: @navbarText;
+    a {
+       color: @navbarLinkColorHover;
+       &:hover, &:focus {
+           color: @navbarLinkColorHover;
+       }
+    }
 }
 
 .course_category_tree .category .numberofcourse {
@@ -181,9 +202,48 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 
 // debug.less
 // --------------------------------------------------
-#page-footer .block-region p {
-    text-align: left;
+#page-footer {
+    .block-region p {
+        text-align: left;
+    }
+    .performanceinfo .cachesused .cache-definition-stats {
+        color: @textColor;
+    }
 }
+
+// filemanager.less
+// --------------------------------------------------
+.fp-viewbar {
+    border-radius: @shoelaceBorderRadius;
+    a.fp-vb-icons {
+        border-radius: @shoelaceBorderRadius;
+    }
+}
+
+.fp-btn-add,
+.fp-btn-download,
+.fp-btn-mkdir,
+.fp-tb-help,
+.fp-tb-manage,
+.fp-tb-logout,
+.fp-tb-refresh {
+    a {
+        border-radius: @shoelaceBorderRadius;
+    }
+}
+
+.fp-toolbar {
+    .fp-btn-add,
+    .fp-btn-download,
+    .fp-btn-mkdir,
+    .fp-tb-help,
+    .fp-tb-manage,
+    .fp-tb-logout,
+    .fp-tb-refresh {
+        border-radius: @shoelaceBorderRadius;
+    }
+}
+
 
 // forms.less
 // --------------------------------------------------
@@ -212,6 +272,10 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 }
 .dir-rtl .mform .fitem .fitemtitle {
     float: right;
+}
+
+.form-defaultinfo, .form-label .form-shortname {
+    color: @textColor;
 }
 
 // My additions for https://moodle.org/mod/forum/discuss.php?d=234329.
