@@ -271,6 +271,38 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
         $data->header_tile = $this->render_template('header_tile');
         $data->page_header_tile = $this->render_template('page_header_tile');
+
+        if ($this->page->user_is_editing()) {
+            $hasblocks = true;
+            $haspre = true;
+            $hasmiddle = true;
+            $haspost = true;
+        } else {
+            if (empty($this->page->layout_options['noblocks'])) {
+                $haspre = $this->page->blocks->region_has_content('side-pre', $this);
+                $hasmiddle = $this->page->blocks->region_has_content('middle', $this);
+                $haspost = $this->page->blocks->region_has_content('side-post', $this);
+                $hasblocks = ($haspre || $haspost || $hasmiddle);
+            } else {
+                $hasblocks = false;
+            }
+        }
+
+        if ($hasblocks) {
+            $blockcolumns = \theme_shoelace\toolbox::get_setting('nummiddleblocks');
+            $data->blocks = '<div class="row-fluid onecblocks">';
+            if ($haspre) {
+                $data->blocks .= $this->shoelaceblocks('side-pre', 'row-fluid', 'aside', $blockcolumns);
+            }
+            if ($hasmiddle) {
+                $data->blocks .= $this->shoelaceblocks('middle', 'row-fluid', 'aside', $blockcolumns);
+            }
+            if ($haspost) {
+                $data->blocks .= $this->shoelaceblocks('side-post', 'row-fluid', 'aside', $blockcolumns);
+            }
+            $data->blocks .= '</div>';
+        }
+
         $data->footer_tile = $this->render_template('footer_tile');
 
         return $this->render_from_template('theme_shoelace/columns1', $data);

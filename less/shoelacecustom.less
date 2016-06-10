@@ -53,6 +53,26 @@ fieldset {
     min-width: 0;
 }
 
+// One column layout blocks.
+div.onecblocks {
+    margin-top: 10px;
+
+    background-color: @pageColour;
+    border: 1px solid darken(@bodyBackground, 5%);
+    border-radius: @shoelaceBorderRadius;
+    box-shadow: @shoelaceBoxShadow;
+    opacity: @shoelaceOpacity;
+
+    .block {
+        background-color: transparent;
+        border: medium none transparent;
+        border-radius: 0;
+        box-shadow: none;
+        opacity: inherit;
+    }
+}
+
+// Footer.
 #page-footer {
     color: @pageTextColour;
     a {
