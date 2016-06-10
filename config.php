@@ -158,7 +158,8 @@ $THEME->layouts = array(
     ),
     // Embeded pages, like iframe/object embeded in moodleform - it needs as much space as possible.
     'embedded' => array(
-        'file' => 'embedded.php',
+        'file' => 'layout.php',
+        'mustache' => 'embedded',
         'regions' => $empty
     ),
     // Used during upgrade and install, and for the 'This site is undergoing maintenance' message.
@@ -178,7 +179,8 @@ $THEME->layouts = array(
     ),
     // The pagelayout used when a redirection is occuring.
     'redirect' => array(
-        'file' => 'embedded.php',
+        'file' => 'layout.php',
+        'mustache' => 'embedded',
         'regions' => $empty
     ),
     // The pagelayout used for reports.
