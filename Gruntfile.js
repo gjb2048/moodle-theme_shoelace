@@ -89,7 +89,7 @@ module.exports = function(grunt) { // jshint ignore:line
     decachephp += 'require(\'' + configfile + '\');';
     decachephp += 'theme_reset_all_caches();';
 
-    var svgcolor = grunt.option('svgcolor') || '#7575E0';
+    var svgcolor = grunt.option('svgcolor') || '#b8bce7';
 
     grunt.initConfig({
         copy: {

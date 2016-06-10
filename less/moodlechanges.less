@@ -15,7 +15,11 @@ body {
 // blocks.less
 // --------------------------------------------------
 .block {
-    border: 1px solid darken(@bodyBackgroundAlt, 5%);
+    background-color: @pageColour;
+    border: 1px solid darken(@bodyBackground, 5%);
+    border-radius: @shoelaceBorderRadius;
+    box-shadow: @shoelaceBoxShadow;
+    opacity: @shoelaceOpacity;
 }
 
 .block .header .title h2,
@@ -43,6 +47,9 @@ body {
 .breadcrumb {
     overflow: hidden;
     width: 100%;
+    border-radius: @shoelaceBorderRadius;
+    box-shadow: @shoelaceBoxShadow;
+    opacity: @shoelaceOpacity;
 }
 
 li.breadcrumb-button {
@@ -60,10 +67,15 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 .dimmed_category a:visited {
     .muted;
 }
+
 .activity.label .dimmed_text {
     .opacity(100);
     color: @grayLight;
     font-style: italic;
+}
+
+.page-context-header .page-header-headings h1 {
+    color: @pageTextColour;
 }
 
 // core.less and modules.less
@@ -209,6 +221,16 @@ table {
     .uneditable-input {
        width: auto;
     }
+}
+
+table#form td.submit,
+.form-buttons,
+.path-admin .buttons,
+#fitem_id_submitbutton,
+.fp-content-center form + div,
+div.backup-section + form,
+#fgroup_id_buttonar {
+    background-color: @pageColour;
 }
 
 // grade.less

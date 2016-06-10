@@ -1,4 +1,8 @@
 // Shoelace custom.
+#region-main {
+    background-color: @pageColour;
+    box-shadow: @shoelaceBoxShadow;
+}
 
 // Anti gravity.
 .antiGravity {
@@ -50,6 +54,13 @@ fieldset {
 }
 
 #page-footer {
+    color: @pageTextColour;
+    a {
+        color: @pageTextColour;
+        &:hover, &:focus {
+            color: @pageTextColourHover;
+        }
+    }
     .themecredit {
         font-size: 7pt;
         text-align: center;

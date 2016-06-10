@@ -94,6 +94,9 @@ function theme_shoelace_less_variables($theme) {
     if (!empty($theme->settings->themecolour)) {
         $variables['bodyBackgroundAlt'] = $theme->settings->themecolour;
     }
+    if (!empty($theme->settings->pagecolour)) {
+        $variables['bodyBackground'] = $theme->settings->pagecolour;
+    }
     if (!empty($theme->settings->textcolour)) {
         $variables['textColor'] = $theme->settings->textcolour;
     }

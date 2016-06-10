@@ -68,6 +68,9 @@ $string['generalheadingdesc'] = 'Configure the general settings for Shoelace her
 $string['themecolour'] = 'Theme colour';
 $string['themecolourdesc'] = 'Set the colour for the theme.';
 
+$string['pagecolour'] = 'Page colour';
+$string['pagecolourdesc'] = 'Set the colour for the page.';
+
 $string['textcolour'] = 'Text colour';
 $string['textcolourdesc'] = 'Set the colour for the text.';
 
