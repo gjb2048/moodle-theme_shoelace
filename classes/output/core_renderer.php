@@ -810,19 +810,25 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             'data-droptarget' => '1'
         );
 
+        $regioncontent = '';
+        $editing = $this->page->user_is_editing();
+        if ($editing) {
+            $regioncontent .= html_writer::tag('div', get_string('region-'.$region, 'theme_shoelace'), array('class' => 'regionname'));
+        }
+
         if ($this->page->blocks->region_has_content($region, $this)) {
             if ($blocksperrow > 0) {
-                $editing = $this->page->user_is_editing();
                 if ($editing) {
                     $attributes['class'] .= ' '.$region.'-edit';
                 }
-                $output = html_writer::tag($tag, $this->shoelace_blocks_for_region($region,
-                    $blocksperrow, $editing), $attributes);
+                $regioncontent .= $this->shoelace_blocks_for_region($region, $blocksperrow, $editing);
+                $output = html_writer::tag($tag, $regioncontent, $attributes);
             } else {
-                $output = html_writer::tag($tag, $this->blocks_for_region($region), $attributes);
+                $regioncontent .= $this->blocks_for_region($region);
+                $output = html_writer::tag($tag, $regioncontent, $attributes);
             }
         } else {
-            $output = html_writer::tag($tag, '', $attributes);
+            $output = html_writer::tag($tag, $regioncontent, $attributes);
         }
 
         return $output;
