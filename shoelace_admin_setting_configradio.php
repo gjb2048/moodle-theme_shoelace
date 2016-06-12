@@ -159,6 +159,8 @@ class shoelace_admin_setting_configradio extends admin_setting {
             }
             if (!$this->inline) {
                 $radiohtml .= '<br>';
+            } else {
+                $radiohtml .= '<span>&nbsp;</span>';
             }
         }
         return array($radiohtml, $warning);

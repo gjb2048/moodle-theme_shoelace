@@ -57,10 +57,11 @@ fieldset {
 .regionname {
     color: @pageTextColour;
     text-align: center;
+    display: block;
 }
 
 // One column layout blocks.
-div.onecblocks {
+body:not(.editing) div.onecblocks {
     margin-top: 10px;
 
     background-color: @pageColour;
@@ -75,6 +76,15 @@ div.onecblocks {
         border-radius: 0;
         box-shadow: none;
         opacity: inherit;
+    }
+}
+
+body.editing {
+    div.onecblocks,
+    div.manyblocks {
+        aside.block-region:not(:first-of-type) {
+            border-top: solid 0 transparent;
+        }
     }
 }
 

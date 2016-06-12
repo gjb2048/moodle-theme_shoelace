@@ -100,14 +100,12 @@ if ($ADMIN->fulltree) {
         'columns3' => get_string('columns3layout', 'theme_shoelace'),
         'columns3middle' => get_string('columns3middlelayout', 'theme_shoelace')
     );
-    /*
     $images = array(
-        1 => 'breadcrumbstyled',
-        4 => 'breadcrumbstylednocollapse',
-        2 => 'breadcrumbsimple',
-        3 => 'breadcrumbthin'
-    );*/
-    $images = array();
+        'columns1' => 'one_column',
+        'columns2' => 'two_columns',
+        'columns3' => 'three_columns',
+        'columns3middle' => 'three_columns_middle'
+    );
 
     $excludelayouts = array('frontpage', 'login', 'popup', 'frametop', 'embedded', 'maintenance', 'print', 'redirect');
     // Choose layout.
@@ -119,7 +117,7 @@ if ($ADMIN->fulltree) {
         $name = 'theme_shoelace/layout_'.$key;
         $title = get_string('layoutsetting', 'theme_shoelace', array('layout' => $key));
         $description = get_string('layoutsettingdesc', 'theme_shoelace', array('layout' => $key));
-        $setting = new shoelace_admin_setting_configradio($name, $title, $description, $default, $choices, false, $images);
+        $setting = new shoelace_admin_setting_configradio($name, $title, $description, $default, $choices, true, $images);
         $layoutsettings->add($setting);
     }
 }

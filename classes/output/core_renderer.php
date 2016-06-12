@@ -343,7 +343,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
         $data->regionmain = $regionmain;
         if ($hasblocks) {
-            $data->blocks = '<div class="'.$side.'">';
+            $data->blocks = '<div class="'.$side.' manyblocks">';
             if ($haspre) {
                 $data->blocks .= $this->shoelaceblocks('side-pre');
             }
@@ -409,7 +409,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         $data->regionmain = $regionmain;
 
         if ($hassidepremiddle) {
-            $data->blocks_side_pre_middle = '<div class="'.$sidepremiddle.'">';
+            $data->blocks_side_pre_middle = '<div class="'.$sidepremiddle.' manyblocks">';
             if ($hassidepre) {
                 $data->blocks_side_pre_middle .= $this->shoelaceblocks('side-pre');
             }
@@ -813,7 +813,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         $regioncontent = '';
         $editing = $this->page->user_is_editing();
         if ($editing) {
-            $regioncontent .= html_writer::tag('div', get_string('region-'.$region, 'theme_shoelace'), array('class' => 'regionname'));
+            $regioncontent .= html_writer::tag('span', get_string('region-'.$region, 'theme_shoelace'), array('class' => 'regionname'));
         }
 
         if ($this->page->blocks->region_has_content($region, $this)) {
