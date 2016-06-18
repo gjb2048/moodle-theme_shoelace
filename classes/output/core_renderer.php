@@ -42,6 +42,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
     protected $shoelace = null; // Used for determining if this is a Shoelace or child of renderer.
 
     protected $themeconfig = array();
+    protected $layout;
 
     public function __construct(\moodle_page $page, $target) {
         $this->themeconfig[] = \theme_config::load('shoelace');
@@ -202,9 +203,9 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     // Mustache.
     protected function render_wrapper_template() {
-        $layout = \theme_shoelace\toolbox::get_setting('layout_'.$this->page->pagelayout);
-        if ($layout) {
-            $mustache = $layout;
+        $this->layout = \theme_shoelace\toolbox::get_setting('layout_'.$this->page->pagelayout);
+        if ($this->layout) {
+            $mustache = $this->layout;
         } else {
             $mustache = $this->page->theme->layouts[$this->page->pagelayout]['mustache'];
         }
@@ -308,6 +309,14 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         return $this->render_from_template('theme_shoelace/columns1', $data);
     }
 
+    protected function render_columns2l_template() {
+        return $this->render_columns2_template();
+    }
+
+    protected function render_columns2r_template() {
+        return $this->render_columns2_template();
+    }
+
     protected function render_columns2_template() {
         if ($this->page->user_is_editing()) {
             $hasblocks = true;
@@ -325,18 +334,29 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             }
         }
 
+        // Default is left, but if the layout is set then can use that.
+        $left = true;
+        if ((!empty($this->layout)) && ($this->layout == 'columns2r')) {
+            $left = false;
+        }
+
+        // RTL is flipped.
+        if (right_to_left()) {
+            $left = !$left;
+        }
+
         $regionmain = 'span9';
         if ($hasblocks) {
             $side = 'span3';
+            if ($left) {
+                // Layout mark-up for LTR languages.
+                if ($hasblocks) {
+                    $regionmain .= ' pull-right';
+                    $side .= ' desktop-first-column';
+                }
+            }
         } else {
             $regionmain = 'span12';
-        }
-        if (!right_to_left()) {
-            // Layout mark-up for LTR languages.
-            if ($hasblocks) {
-                $regionmain .= ' pull-right';
-                $side .= ' desktop-first-column';
-            }
         }
 
         $data = $this->get_base_data();
@@ -526,7 +546,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         // Slideshow.
         $data->slideshow = $this->render_template('carousel_tile');
 
-        return $this->render_from_template('theme_shoelace/frontpage', $data);
+        return $this->render_from_template('theme_shoelace/frontpage3', $data);
     }
 
     protected function render_popup_template() {

@@ -93,16 +93,18 @@ if ($ADMIN->fulltree) {
         get_string('layoutsub', 'theme_shoelace'),
         format_text(get_string('layoutdesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
 
-    $default = 'columns2';
+    $default = 'columns2l';
     $choices = array(
         'columns1' => get_string('columns1layout', 'theme_shoelace'),
-        'columns2' => get_string('columns2layout', 'theme_shoelace'),
+        'columns2l' => get_string('columns2llayout', 'theme_shoelace'),
+        'columns2r' => get_string('columns2rlayout', 'theme_shoelace'),
         'columns3' => get_string('columns3layout', 'theme_shoelace'),
         'columns3middle' => get_string('columns3middlelayout', 'theme_shoelace')
     );
     $images = array(
         'columns1' => 'one_column',
-        'columns2' => 'two_columns',
+        'columns2l' => 'two_columns_l',
+        'columns2r' => 'two_columns_r',
         'columns3' => 'three_columns',
         'columns3middle' => 'three_columns_middle'
     );

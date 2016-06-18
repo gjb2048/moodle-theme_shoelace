@@ -114,7 +114,7 @@ $THEME->layouts = array(
     // Server administration scripts.
     'admin' => array(
         'file' => 'layout.php',
-        'mustache' => 'columns2',
+        'mustache' => 'columns2l',
         'regions' => $regions,
         'defaultregion' => 'side-pre'
     ),
@@ -183,7 +183,7 @@ $THEME->layouts = array(
     // The pagelayout used for reports.
     'report' => array(
         'file' => 'layout.php',
-        'mustache' => 'columns2',
+        'mustache' => 'columns2l',
         'regions' => $regions,
         'defaultregion' => 'side-pre'
     ),

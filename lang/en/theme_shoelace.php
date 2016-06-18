@@ -91,7 +91,8 @@ $string['layoutdesc'] = 'Set the layouts for the theme.';
 $string['layoutsetting'] = '{$a->layout} layout';
 $string['layoutsettingdesc'] = 'Choose the layout of the \'{$a->layout}\' layout.';
 $string['columns1layout'] = 'One column';
-$string['columns2layout'] = 'Two column';
+$string['columns2llayout'] = 'Two column left';
+$string['columns2rlayout'] = 'Two column right';
 $string['columns3layout'] = 'Three column';
 $string['columns3middlelayout'] = 'Three columns with a middle';
 
