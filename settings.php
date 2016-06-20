@@ -316,6 +316,23 @@ if ($ADMIN->fulltree) {
     $default = 2;
     $setting = new shoelace_admin_setting_configselect($name, $title, $description, $default, $choices);
     $frontpagesettings->add($setting);
+
+    // Slide show / marketing blocks position.
+    $name = 'theme_shoelace/slideshowmarketingpos';
+    $title = get_string('slideshowmarketingpos', 'theme_shoelace');
+    $description = get_string('slideshowmarketingposdesc', 'theme_shoelace');
+    $default = 0;
+    $choices = array(
+        0 => get_string('slideshowabovemarketingpos', 'theme_shoelace'),
+        1 => get_string('slideshowbelowmarketingpos', 'theme_shoelace')
+    );
+    $images = array(
+        0 => 'slideshowabovemarketingpos',
+        1 => 'slideshowbelowmarketingpos'
+    );
+    $setting = new shoelace_admin_setting_configradio($name, $title, $description, $default, $choices, true, $images);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $frontpagesettings->add($setting);
 }
 $ADMIN->add('theme_shoelace', $frontpagesettings);
 

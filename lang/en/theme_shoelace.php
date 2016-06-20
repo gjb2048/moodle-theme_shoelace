@@ -133,6 +133,11 @@ $string['frontpagedesc'] = 'Set the frontpage settings.';
 $string['nummarketingblocks'] = 'Maximum number of blocks per row in the frontpage marketing (middle) area';
 $string['nummarketingblocksdesc'] = 'The maximum blocks per row in the frontpage marketing (middle) area.';
 
+$string['slideshowmarketingpos'] = 'Slide show and marketing blocks position';
+$string['slideshowmarketingposdesc'] = 'Set the position of the slide show and marketing blocks.';
+$string['slideshowabovemarketingpos'] = 'Slide show above the marketing blocks';
+$string['slideshowbelowmarketingpos'] = 'Slide show below the marketing blocks';
+
 // Navbar.
 $string['navbarheading'] = 'Navbar';
 $string['navbarsub'] = 'Navbar settings';

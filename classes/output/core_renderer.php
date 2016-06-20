@@ -546,6 +546,16 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         // Slideshow.
         $data->slideshow = $this->render_template('carousel_tile');
 
+        // Slideshow and marketing blocks position.
+        $slideshowmarketingpos = \theme_shoelace\toolbox::get_setting('slideshowmarketingpos');
+        if ($slideshowmarketingpos) {
+            // Slideshow below.
+            $data->slideshow_marketing_tile = $this->render_from_template('theme_shoelace/#marketingslideshow', $data);
+        } else {
+            // Slideshow above.
+            $data->slideshow_marketing_tile = $this->render_from_template('theme_shoelace/#slideshowmarketing', $data);
+        }
+
         return $this->render_from_template('theme_shoelace/frontpage3', $data);
     }
 
