@@ -303,6 +303,27 @@ if ($ADMIN->fulltree) {
         get_string('frontpagesub', 'theme_shoelace'),
         format_text(get_string('frontpagedesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
 
+    $default = 3;
+    $choices = array(
+        1 => get_string('columns1layout', 'theme_shoelace'),
+        21 => get_string('columns2llayout', 'theme_shoelace'),
+        22 => get_string('columns2rlayout', 'theme_shoelace'),
+        3 => get_string('columns3layout', 'theme_shoelace')
+    );
+    $images = array(
+        1 => 'frontpage_one',
+        21 => 'frontpage_two_l',
+        22 => 'frontpage_two_r',
+        3 => 'frontpage_three'
+    );
+
+    // Choose layout.
+    $name = 'theme_shoelace/frontpagelayout';
+    $title = get_string('frontpagelayout', 'theme_shoelace');
+    $description = get_string('frontpagelayoutdesc', 'theme_shoelace');
+    $setting = new shoelace_admin_setting_configradio($name, $title, $description, $default, $choices, true, $images);
+    $frontpagesettings->add($setting);
+
     // Number of marketing blocks.
     $name = 'theme_shoelace/nummarketingblocks';
     $title = get_string('nummarketingblocks', 'theme_shoelace');
@@ -331,7 +352,6 @@ if ($ADMIN->fulltree) {
         1 => 'slideshowbelowmarketingpos'
     );
     $setting = new shoelace_admin_setting_configradio($name, $title, $description, $default, $choices, true, $images);
-    $setting->set_updatedcallback('theme_reset_all_caches');
     $frontpagesettings->add($setting);
 }
 $ADMIN->add('theme_shoelace', $frontpagesettings);

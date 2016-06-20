@@ -490,6 +490,8 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
         $data = $this->get_base_data();
 
+        $data->header_tile = $this->render_template('header_tile');
+
         $data->regionmainbox = $regionmainbox;
         $data->regionmain = $regionmain;
 
@@ -503,7 +505,6 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         if ($hassidepost) {
             $data->blocks_side_post = $this->shoelaceblocks('side-post', $sidepost);
         }
-        $data->header_tile = $this->render_template('header_tile');
         $data->footer_tile = $this->render_template('footer_tile');
 
         return $data;
@@ -528,9 +529,133 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         return $this->render_from_template('theme_shoelace/secure', $data);
     }
 
-    protected function render_frontpage_template() {
-        $data = $this->get_threecolumns_middle_common_data(\theme_shoelace\toolbox::get_setting('nummarketingblocks'));
+    protected function get_frontpage_onecolumn_middle_common_data($middlecolumns) {
+        $data = $this->get_base_data();
 
+        $data->header_tile = $this->render_template('header_tile');
+
+        if ($this->page->user_is_editing()) {
+            $hasblocks = true;
+            $haspre = true;
+            $hasmiddle = true;
+            $haspost = true;
+        } else {
+            if (empty($this->page->layout_options['noblocks'])) {
+                $haspre = $this->page->blocks->region_has_content('side-pre', $this);
+                $hasmiddle = $this->page->blocks->region_has_content('middle', $this);
+                $haspost = $this->page->blocks->region_has_content('side-post', $this);
+                $hasblocks = ($haspre || $haspost || $hasmiddle);
+            } else {
+                $hasblocks = false;
+            }
+        }
+
+        if ($hasblocks) {
+            $blockcolumns = \theme_shoelace\toolbox::get_setting('nummiddleblocks');
+            if (($haspre) || ($haspost)) {
+                $data->blocks = '<div class="row-fluid onecblocks">';
+                if ($haspre) {
+                    $data->blocks .= $this->shoelaceblocks('side-pre', 'row-fluid', 'aside', $blockcolumns);
+                }
+                if ($haspost) {
+                    $data->blocks .= $this->shoelaceblocks('side-post', 'row-fluid', 'aside', $blockcolumns);
+                }
+                $data->blocks .= '</div>';
+            }
+            if (($middlecolumns) && ($hasmiddle)) {
+                $data->blocks_middle = $this->shoelaceblocks('middle', 'row-fluid', 'aside', $middlecolumns);
+            }
+        }
+
+        $data->footer_tile = $this->render_template('footer_tile');
+
+        return $data;
+    }
+
+    protected function get_frontpage_twocolumns_middle_common_data($middlecolumns, $left) {
+        if ($this->page->user_is_editing()) {
+            $hasblocks = true;
+            $haspre = true;
+            $hasmiddle = true;
+            $haspost = true;
+        } else {
+            if (empty($this->page->layout_options['noblocks'])) {
+                $haspre = $this->page->blocks->region_has_content('side-pre', $this);
+                $hasmiddle = $this->page->blocks->region_has_content('middle', $this);
+                $haspost = $this->page->blocks->region_has_content('side-post', $this);
+                $hasblocks = ($haspre || $haspost || $hasmiddle);
+            } else {
+                $hasblocks = false;
+            }
+        }
+
+        // RTL is flipped.
+        if (right_to_left()) {
+            $left = !$left;
+        }
+
+        $regionmain = 'span9';
+        if ($hasblocks) {
+            $side = 'span3';
+            if ($left) {
+                // Layout mark-up for LTR languages.
+                if ($hasblocks) {
+                    $regionmain .= ' pull-right';
+                    $side .= ' desktop-first-column';
+                }
+            }
+        } else {
+            $regionmain = 'span12';
+        }
+
+        $data = $this->get_base_data();
+
+        $data->header_tile = $this->render_template('header_tile');
+
+        $data->regionmain = $regionmain;
+        if ($hasblocks) {
+            if (($haspre) || ($haspost)) {
+                $data->blocks = '<div class="'.$side.' manyblocks">';
+                if ($haspre) {
+                    $data->blocks .= $this->shoelaceblocks('side-pre');
+                }
+                if ($haspost) {
+                    $data->blocks .= $this->shoelaceblocks('side-post');
+                }
+                $data->blocks .= '</div>';
+            }
+            if (($middlecolumns) && ($hasmiddle)) {
+                $data->blocks_middle = $this->shoelaceblocks('middle', 'row-fluid', 'aside', $middlecolumns);
+            }
+        }
+
+        $data->footer_tile = $this->render_template('footer_tile');
+
+        return $data;
+    }
+
+    protected function render_frontpage_template() {
+        $frontpagelayout = \theme_shoelace\toolbox::get_setting('frontpagelayout');
+        $nummarketingblocks = \theme_shoelace\toolbox::get_setting('nummarketingblocks');
+        switch ($frontpagelayout) {
+            case 1:
+                $data = $this->get_frontpage_onecolumn_middle_common_data($nummarketingblocks);
+                $template = 'frontpage1';
+            break;
+            case 21:
+                $data = $this->get_frontpage_twocolumns_middle_common_data($nummarketingblocks, true);
+                $template = 'frontpage2';
+            break;
+            case 22:
+                $data = $this->get_frontpage_twocolumns_middle_common_data($nummarketingblocks, false);
+                $template = 'frontpage2';
+            break;
+            case 3:
+            default:
+                $data = $this->get_threecolumns_middle_common_data($nummarketingblocks);
+                $template = 'frontpage3';
+            break;
+        }
         // Logo only on frontpage.
         $logo = \theme_shoelace\toolbox::get_setting('logo');
         if (!empty($logo)) {
@@ -556,7 +681,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             $data->slideshow_marketing_tile = $this->render_from_template('theme_shoelace/#slideshowmarketing', $data);
         }
 
-        return $this->render_from_template('theme_shoelace/frontpage3', $data);
+        return $this->render_from_template('theme_shoelace/'.$template, $data);
     }
 
     protected function render_popup_template() {

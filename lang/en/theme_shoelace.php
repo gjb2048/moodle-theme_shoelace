@@ -130,6 +130,9 @@ $string['frontpageheading'] = 'Frontpage';
 $string['frontpagesub'] = 'Frontpage settings';
 $string['frontpagedesc'] = 'Set the frontpage settings.';
 
+$string['frontpagelayout'] = 'Frontpage layout';
+$string['frontpagelayoutdesc'] = 'Layout of the frontpage.';
+
 $string['nummarketingblocks'] = 'Maximum number of blocks per row in the frontpage marketing (middle) area';
 $string['nummarketingblocksdesc'] = 'The maximum blocks per row in the frontpage marketing (middle) area.';
 

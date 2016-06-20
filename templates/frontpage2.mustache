@@ -24,29 +24,32 @@
   @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 }}
 {{!
-  @template theme_shoelace/columns1
+  @template theme_shoelace/frontpage2
 
-  Moodle one column template.
+  Moodle frontpage template.
 
-  The purpose of this template is to render a one column layout.
+  The purpose of this template is to render the frontpage two column layout.
 }}
 {{{header_tile}}}
 
 <div id="page" class="container-fluid">
     {{{page_header_tile}}}
 
-    <div id="page-content" class="row-fluid">
-        <section id="region-main" class="span12">
-            {{{course_content_header}}}
-            {{{main_content}}}
-            {{{course_content_footer}}}
-        </section>
-        <div id="region-main-shoelace-shadow"></div>
-    </div>
+    {{{slideshow_marketing_tile}}}
 
-    {{#blocks}}
-        {{{blocks}}}
-    {{/blocks}}
+    <div id="page-content" class="row-fluid">
+        <div id="region-main" class="{{{regionmain}}}">
+            <section id="region-main-shoelace">
+                {{{course_content_header}}}
+                {{{main_content}}}
+                {{{course_content_footer}}}
+            </section>
+            <div id="region-main-shoelace-shadow"></div>
+        </div>
+        {{#blocks}}
+            {{{blocks}}}
+        {{/blocks}}
+    </div>
 
     {{{footer_tile}}}
 </div>
