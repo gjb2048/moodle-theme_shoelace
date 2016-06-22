@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="11.313709"
-     inkscape:cx="7.0100199"
+     inkscape:cx="28.122467"
      inkscape:cy="26.190906"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -64,44 +64,37 @@
     <rect
        style="opacity:1;fill:none;fill-opacity:1;stroke:#7575e0;stroke-width:1.125;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4138-8"
-       width="45.444351"
-       height="18.441271"
-       x="-60.335911"
-       y="1019.2198"
+       width="45.154003"
+       height="29.376242"
+       x="-60.102348"
+       y="1019.1882"
        transform="scale(-1,1)" />
     <rect
-       style="opacity:1;fill:#7575e0;fill-opacity:1;stroke:#7575e0;stroke-width:1.31518197;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect4138-8-8"
-       width="56.375965"
-       height="8.2396603"
-       x="3.9283085"
-       y="1040.1738" />
-    <rect
-       style="opacity:1;fill:#7575e0;fill-opacity:1;stroke:#7575e0;stroke-width:1.12479055;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#7575e0;fill-opacity:1;stroke:#7575e0;stroke-width:1.12500203;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4138-8-8-2-1"
-       width="19.069899"
-       height="8.7273245"
-       x="-1037.9792"
-       y="-20.37604"
-       transform="matrix(0.00749432,-0.99997192,-0.99999881,-0.00154209,0,0)" />
+       width="29.300001"
+       height="8.972908"
+       x="-1048.4197"
+       y="-17.887243"
+       transform="matrix(0.00501493,-0.99998743,-0.99999734,-0.00230454,0,0)" />
     <rect
        style="opacity:1;fill:none;fill-opacity:1;stroke:#7575e0;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4138-8-4"
        width="40.798203"
        height="12.156287"
-       x="11.450316"
+       x="11.627093"
        y="992.40271" />
     <rect
        style="opacity:1;fill:#7575e0;fill-opacity:1;stroke:#7575e0;stroke-width:1.42001975;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4138-8-8-6"
        width="56.035568"
        height="9.663991"
-       x="3.8316326"
+       x="4.0084095"
        y="1006.7991" />
     <g
        id="g8108"
-       style="fill:none;stroke:#7575e0;stroke-width:6.24766575;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(0.12665601,0,0,0.20227333,22.424689,790.77998)">
+       style="fill:none;stroke:#7575e0;stroke-width:6.24766588;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       transform="matrix(0.12665601,0,0,0.20227333,22.601465,790.77998)">
       <path
          inkscape:connector-curvature="0"
          inkscape:connector-type="polyline"
@@ -124,7 +117,7 @@
     <g
        id="g8108-8"
        style="fill:none;stroke:#7575e0;stroke-width:2.55634499;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(-0.33906586,0,0,0.45131211,47.577136,536.66523)">
+       transform="matrix(-0.33906586,0,0,0.45131211,47.753912,536.66523)">
       <path
          inkscape:connector-curvature="0"
          inkscape:connector-type="polyline"

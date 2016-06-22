@@ -551,8 +551,11 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         }
 
         if ($hasblocks) {
-            $blockcolumns = \theme_shoelace\toolbox::get_setting('nummiddleblocks');
+            if (($middlecolumns) && ($hasmiddle)) {
+                $data->blocks_middle = $this->shoelaceblocks('middle', 'row-fluid', 'aside', $middlecolumns);
+            }
             if (($haspre) || ($haspost)) {
+                $blockcolumns = \theme_shoelace\toolbox::get_setting('nummiddleblocks');
                 $data->blocks = '<div class="row-fluid onecblocks">';
                 if ($haspre) {
                     $data->blocks .= $this->shoelaceblocks('side-pre', 'row-fluid', 'aside', $blockcolumns);
@@ -561,9 +564,6 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
                     $data->blocks .= $this->shoelaceblocks('side-post', 'row-fluid', 'aside', $blockcolumns);
                 }
                 $data->blocks .= '</div>';
-            }
-            if (($middlecolumns) && ($hasmiddle)) {
-                $data->blocks_middle = $this->shoelaceblocks('middle', 'row-fluid', 'aside', $middlecolumns);
             }
         }
 

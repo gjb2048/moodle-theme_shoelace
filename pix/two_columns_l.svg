@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="two_columns.svg">
+   sodipodi:docname="two_columns_l.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="16"
-     inkscape:cx="25.97063"
+     inkscape:cx="16.75188"
      inkscape:cy="24.499087"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -62,26 +62,19 @@
        x="1.1667186"
        y="1005.5913" />
     <rect
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#7575E0;stroke-width:1.12604105;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#7575e0;stroke-width:1.125;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4138-8"
-       width="29.398468"
-       height="29.137735"
-       x="14.631239"
-       y="1008.5374" />
+       width="29.214197"
+       height="39.703461"
+       x="14.723374"
+       y="1008.6295" />
     <rect
-       style="opacity:1;fill:#7575E0;fill-opacity:1;stroke:#7575E0;stroke-width:1.12258637;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect4138-8-8"
-       width="40.36203"
-       height="8.384902"
-       x="3.7722299"
-       y="1040.016" />
-    <rect
-       style="opacity:1;fill:#7575E0;fill-opacity:1;stroke:#7575E0;stroke-width:1.12258792;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#7575e0;fill-opacity:1;stroke:#7575e0;stroke-width:1.125;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4138-8-8-2"
-       width="29.050259"
-       height="8.5395155"
-       x="-1037.5874"
-       y="-1.152988"
-       transform="matrix(-0.00481372,-0.99998841,0.99999712,-0.00240087,0,0)" />
+       width="39.679043"
+       height="8.3665237"
+       x="-1048.329"
+       y="6.7291999"
+       transform="matrix(0.00266984,-0.99999644,0.9999944,-0.00334712,0,0)" />
   </g>
 </svg>
