@@ -164,6 +164,8 @@ function theme_shoelace_pluginfile($course, $cm, $context, $filearea, $args, $fo
             return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
         } else if (preg_match("/^(slide)[1-9][0-9]*image$/", $filearea)) {
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
+        } else if ($filearea === 'syntaxhighlighter') {
+            \theme_shoelace\toolbox::serve_syntaxhighlighter($args[1]);
         } else {
             send_file_not_found();
         }

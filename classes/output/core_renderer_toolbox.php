@@ -61,14 +61,4 @@ trait core_renderer_toolbox {
     public function pix_url($imagename, $component = 'moodle') {
         return end($this->themeconfig)->pix_url($imagename, $component);
     }
-
-    public function standard_footer_html() {
-        $output = parent::standard_footer_html();
-        $output .= html_writer::start_tag('div', array ('class' => 'themecredit')).
-                   get_string('credit', 'theme_shoelace').
-                   html_writer::link('//about.me/gjbarnard', 'Gareth J Barnard', array('target' => '_blank')).
-                   html_writer::end_tag('div');
-
-        return $output;
-    }
 }

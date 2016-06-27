@@ -41,6 +41,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     protected $shoelace = null; // Used for determining if this is a Shoelace or child of renderer.
 
+    protected $syntaxhighlighterenabled = false;
     protected $themeconfig = array();
     protected $layout;
 
@@ -1112,6 +1113,77 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         $content .= html_writer::end_tag('ul');
 
         return $content;
+    }
+
+    protected function syntax_highlighter() {
+        if ($this->get_setting('syntaxhighlight') == 2) {
+            if (strpos($this->page->course->summary, get_string('syntaxsummary', 'theme_shoelace')) !== false) {
+                $this->page->requires->js('/theme/shoelace/javascript/syntaxhighlighter_3_0_83/scripts/shCore.js');
+                $this->page->requires->js('/theme/shoelace/javascript/syntaxhighlighter_3_0_83/scripts/shAutoloader.js');
+                $this->page->requires->css('/theme/shoelace/javascript/syntaxhighlighter_3_0_83/styles/shCore.css');
+                $this->page->requires->css('/theme/shoelace/javascript/syntaxhighlighter_3_0_83/styles/shThemeDefault.css');
+                $this->syntaxhighlighterenabled = true;
+            }
+        }
+    }
+
+    /**
+     * The standard tags (typically script tags that are not needed earlier) that
+     * should be output after everything else. Designed to be called in theme layout.php files.
+     *
+     * @return string HTML fragment.
+     */
+    public function standard_end_of_body_html() {
+        global $CFG;
+        $output .= html_writer::start_tag('div', array ('class' => 'themecredit')).
+            get_string('credit', 'theme_shoelace').
+            html_writer::link('//about.me/gjbarnard', 'Gareth J Barnard', array('target' => '_blank')).
+            html_writer::end_tag('div');
+        $output .= parent::standard_end_of_body_html();
+
+        if ($this->syntaxhighlighterenabled) {
+            $syscontext = \context_system::instance();
+            $itemid = \theme_get_revision();
+            $url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php",
+                "/$syscontext->id/theme_shoelace/syntaxhighlighter/$itemid/");
+            $url = preg_replace('|^https?://|i', '//', $url->out(false));
+
+            $script = "require(['jquery', 'core/log'], function($, log) {";  // Use AMD to get jQuery.
+            $script .= "log.debug('Shoelace SyntaxHighlighter AMD autoloader');";
+            $script .= "$('document').ready(function(){";
+            $script .= "SyntaxHighlighter.autoloader(";
+            $script .= "[ 'applescript', '" . $url . "shBrushAppleScript.js' ],";
+            $script .= "[ 'actionscript3', 'as3', '" . $url . "shBrushAS3.js' ],";
+            $script .= "[ 'bash', 'shell', '" . $url . "shBrushBash.js' ],";
+            $script .= "[ 'coldfusion', 'cf', '" . $url . "shBrushColdFusion.js' ],";
+            $script .= "[ 'cpp', 'c', '" . $url . "shBrushCpp.js' ],";
+            $script .= "[ 'c#', 'c-sharp', 'csharp', '" . $url . "shBrushCSharp.js' ],";
+            $script .= "[ 'css', '" . $url . "shBrushCss.js' ],";
+            $script .= "[ 'delphi', 'pascal', '" . $url . "shBrushDelphi.js' ],";
+            $script .= "[ 'diff', 'patch', 'pas', '" . $url . "shBrushDiff.js' ],";
+            $script .= "[ 'erl', 'erlang', '" . $url . "shBrushErlang.js' ],";
+            $script .= "[ 'groovy', '" . $url . "shBrushGroovy.js' ],";
+            $script .= "[ 'haxe hx', '" . $url . "shBrushHaxe.js', ],";
+            $script .= "[ 'java', '" . $url . "shBrushJava.js' ],";
+            $script .= "[ 'jfx', 'javafx', '" . $url . "shBrushJavaFX.js' ],";
+            $script .= "[ 'js', 'jscript', 'javascript', '" . $url . "shBrushJScript.js' ],";
+            $script .= "[ 'perl', 'pl', '" . $url . "shBrushPerl.js' ],";
+            $script .= "[ 'php', '" . $url . "shBrushPhp.js' ],";
+            $script .= "[ 'text', 'plain', '" . $url . "shBrushPlain.js' ],";
+            $script .= "[ 'py', 'python', '" . $url . "shBrushPython.js' ],";
+            $script .= "[ 'ruby', 'rails', 'ror', 'rb', '" . $url . "shBrushRuby.js' ],";
+            $script .= "[ 'scala', '" . $url . "shBrushScala.js' ],";
+            $script .= "[ 'sql', '" . $url . "shBrushSql.js' ],";
+            $script .= "[ 'vb', 'vbnet', '" . $url . "shBrushVb.js' ],";
+            $script .= "[ 'xml', 'xhtml', 'xslt', 'html', '" . $url . "shBrushXml.js' ]";
+            $script .= ');';
+            $script .= 'SyntaxHighlighter.all(); console.log("Syntax Highlighter Init");';
+            $script .= '});';
+            $script .= '});';
+            $output .= html_writer::script($script);
+        }
+
+        return $output;
     }
 
     public function anti_gravity() {

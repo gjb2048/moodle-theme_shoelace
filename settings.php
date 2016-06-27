@@ -68,6 +68,18 @@ if ($ADMIN->fulltree) {
     $setting = new shoelace_admin_setting_configselect($name, $title, $description, $default, $choices);
     $generalsettings->add($setting);
 
+    // Activate syntax highlighting - 1 = no, 2 = yes.
+    $name = 'theme_shoelace/syntaxhighlight';
+    $title = get_string('syntaxhighlight', 'theme_shoelace');
+    $description = get_string('syntaxhighlight_desc', 'theme_shoelace');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('no'), // No.
+        2 => new lang_string('yes') // Yes.
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $generalsettings->add($setting);
+
     // Custom CSS file.
     $name = 'theme_shoelace/customcss';
     $title = get_string('customcss', 'theme_shoelace');
