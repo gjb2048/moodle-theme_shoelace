@@ -157,6 +157,31 @@ class toolbox {
         return \get_config('theme_'.$themename, $setting);
     }
 
+    static public function get_categories_list() {
+        static $catlist = null;
+        if (empty($catlist)) {
+            global $DB;
+            $catlist = $DB->get_records('course_categories', null, 'sortorder', 'id, name, depth, path');
+
+            foreach ($catlist as $category) {
+                $category->parents = array();
+                if ($category->depth > 1 ) {
+                    $path = preg_split('|/|', $category->path, -1, PREG_SPLIT_NO_EMPTY);
+                    $category->namechunks = array();
+                    foreach ($path as $parentid) {
+                        $category->namechunks[] = $catlist[$parentid]->name;
+                        $category->parents[] = $parentid;
+                    }
+                    $category->parents = array_reverse($category->parents);
+                } else {
+                    $category->namechunks = array($category->name);
+                }
+            }
+        }
+
+        return $catlist;
+    }
+
     /**
      * Returns an object containing HTML for the areas affected by settings.
      *

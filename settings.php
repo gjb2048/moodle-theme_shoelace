@@ -80,6 +80,21 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $generalsettings->add($setting);
 
+    if (get_config('theme_shoelace', 'syntaxhighlight') == 2) {
+        // Syntax highlighting categories.
+        $coursecats = \theme_shoelace\toolbox::get_categories_list();
+        $coursecatsoptions = array();
+        foreach ($coursecats as $catkey => $catvalue) {
+            $coursecatsoptions[$catkey] = join(' / ', $catvalue->namechunks);
+        }
+        $name = 'theme_shoelace/syntaxhighlightcat';
+        $title = get_string('syntaxhighlightcat', 'theme_shoelace');
+        $description = get_string('syntaxhighlightcatdesc', 'theme_shoelace');
+        $default = array();
+        $setting = new admin_setting_configmultiselect($name, $title, $description, $default, $coursecatsoptions);
+        $generalsettings->add($setting);
+    }
+
     // Custom CSS file.
     $name = 'theme_shoelace/customcss';
     $title = get_string('customcss', 'theme_shoelace');

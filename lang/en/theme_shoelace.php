@@ -257,6 +257,8 @@ $string['syntaxhelpfour'] = 'Brush alias';
 $string['syntaxhelpfive'] = 'For example:';
 $string['syntaxhelpsix'] = 'becomes:';
 $string['syntaxhelpseven'] = 'More information on';
+$string['syntaxhighlightcat'] = 'Syntax highlighting course categories';
+$string['syntaxhighlightcatdesc'] = 'Activate syntax highlighting in courses with the selected categories.  A help page will be added to the footer of courses.';
 
 // shoelace_admin_setting_configinteger.
 $string['asconfigintlower'] = '{$a->value} is less than the lower range limit of {$a->lower}';
