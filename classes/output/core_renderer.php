@@ -1115,9 +1115,43 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         return $content;
     }
 
+    /**
+     * The standard tags (meta tags, links to stylesheets and JavaScript, etc.)
+     * that should be included in the <head> tag. Designed to be called in theme
+     * layout.php files.
+     *
+     * @return string HTML fragment.
+     */
+    public function standard_head_html() {
+        switch ($this->page->pagelayout) {
+            case 'course':
+            case 'incourse':
+                $this->syntax_highlighter();
+        }
+        return parent::standard_head_html();
+    }
+
+    /**
+     * Gets the current category.
+     *
+     * @return int Category id.
+     */
+    protected function get_current_category() {
+        $catid = 0;
+
+        if (is_array($this->page->categories)) {
+            $catids = array_keys($this->page->categories);
+            $catid = reset($catids);
+        } else if (!empty($$this->page->course->category)) {
+            $catid = $this->page->course->category;
+        }
+
+        return $catid;
+    }
+
     protected function syntax_highlighter() {
         if ($this->get_setting('syntaxhighlight') == 2) {
-            if (strpos($this->page->course->summary, get_string('syntaxsummary', 'theme_shoelace')) !== false) {
+            if (in_array($this->get_current_category(), explode(',', $this->get_setting('syntaxhighlightcat'))) !== false) {
                 $this->page->requires->js('/theme/shoelace/javascript/syntaxhighlighter_3_0_83/scripts/shCore.js');
                 $this->page->requires->js('/theme/shoelace/javascript/syntaxhighlighter_3_0_83/scripts/shAutoloader.js');
                 $this->page->requires->css('/theme/shoelace/javascript/syntaxhighlighter_3_0_83/styles/shCore.css');
@@ -1135,7 +1169,186 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      */
     public function standard_end_of_body_html() {
         global $CFG;
-        $output = html_writer::start_tag('div', array ('class' => 'themecredit')).
+
+        $output = '';
+
+        if ($this->syntaxhighlighterenabled) {
+            $output .= html_writer::start_tag('div', array('class' => 'syntaxhighlightmodal'));
+            $output .= '<a href="#mySHModal" role="button" class="btn" data-toggle="modal">Syntax highlighing help</a>';
+ 
+            $output .= '<div id="mySHModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mySHModalLabel" aria-hidden="true">';
+            $output .= '<div class="modal-header">';
+            $output .= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>';
+            $output .= '<h3 id="mySHModalLabel">'.get_string('syntaxhighlightpage', 'theme_shoelace').'</h3>';
+            $output .= '</div>';
+            $output .= '<div class="modal-body">';
+            $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
+            $output .= html_writer::start_tag('div', array('class' => 'span12 lead'));
+            $output .= html_writer::tag('p', get_string('syntaxhelpone', 'theme_shoelace',
+                array('html' => htmlentities(get_string('syntaxsummary', 'theme_shoelace')))));
+            $output .= html_writer::tag('p', get_string('syntaxhelptwo', 'theme_shoelace'));
+            $output .= html_writer::start_tag('table', array('class' => 'syntax'));
+            $output .= html_writer::start_tag('thead');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('th', get_string('syntaxhelpthree', 'theme_shoelace'));
+            $output .= html_writer::tag('th', get_string('syntaxhelpfour', 'theme_shoelace'));
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::end_tag('thead');
+            $output .= html_writer::start_tag('tbody');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'ActionScript3');
+            $output .= html_writer::tag('td', 'as3, actionscript3');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Bash/shell');
+            $output .= html_writer::tag('td', 'bash, shell');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'ColdFusion');
+            $output .= html_writer::tag('td', 'cf, coldfusion');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'C#');
+            $output .= html_writer::tag('td', 'c-sharp, csharp');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'C++');
+            $output .= html_writer::tag('td', 'cpp, c');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'CSS');
+            $output .= html_writer::tag('td', 'css');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Delphi');
+            $output .= html_writer::tag('td', 'delphi, pas, pascal');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Diff');
+            $output .= html_writer::tag('td', 'diff, patch');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Erlang');
+            $output .= html_writer::tag('td', 'erl, erlang');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Groovy');
+            $output .= html_writer::tag('td', 'groovy');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'JavaScript');
+            $output .= html_writer::tag('td', 'js, jscript, javascript');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Java');
+            $output .= html_writer::tag('td', 'java');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'JavaFX');
+            $output .= html_writer::tag('td', 'jfx, javafx');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Perl');
+            $output .= html_writer::tag('td', 'perl, pl');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'PHP');
+            $output .= html_writer::tag('td', 'php');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Plain Text');
+            $output .= html_writer::tag('td', 'plain, text');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'PowerShell');
+            $output .= html_writer::tag('td', 'ps, powershell');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Python');
+            $output .= html_writer::tag('td', 'py, python');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Ruby');
+            $output .= html_writer::tag('td', 'rails, ror, ruby');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Scala');
+            $output .= html_writer::tag('td', 'scala');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'SQL');
+            $output .= html_writer::tag('td', 'sql');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'Visual Basic');
+            $output .= html_writer::tag('td', 'vb, vbnet');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('td', 'XML');
+            $output .= html_writer::tag('td', 'xml, xhtml, xslt, html, xhtml');
+            $output .= html_writer::end_tag('tr');
+            $output .= html_writer::end_tag('tbody');
+            $output .= html_writer::end_tag('table');
+            $output .= html_writer::empty_tag('br');
+            $output .= html_writer::tag('p', get_string('syntaxhelpfive', 'theme_shoelace'));
+            $output .= html_writer::start_tag('pre');
+            $output .= htmlentities('<pre class="brush: java">').PHP_EOL;
+            $output .= 'public class Test'.PHP_EOL;
+            $output .= '{'.PHP_EOL;
+            $output .= '   private String name = "Java program";'.PHP_EOL;
+            $output .= PHP_EOL;
+            $output .= '   public static void main (String args[])'.PHP_EOL;
+            $output .= '   {'.PHP_EOL;
+            $output .= '      Test us = new Test();'.PHP_EOL;
+            $output .= '      System.out.println(us.getName());'.PHP_EOL;
+            $output .= '   }'.PHP_EOL;
+            $output .= PHP_EOL;
+            $output .= '   public String getName()'.PHP_EOL;
+            $output .= '   {'.PHP_EOL;
+            $output .= '      return name;'.PHP_EOL;
+            $output .= '   }'.PHP_EOL;
+            $output .= '}'.PHP_EOL;
+            $output .= htmlentities('</pre>');
+            $output .= html_writer::end_tag('pre');
+            $output .= html_writer::tag('p', get_string('syntaxhelpsix', 'theme_shoelace'));
+            $output .= '<pre class="brush: java">'.PHP_EOL;
+            $output .= 'public class Test'.PHP_EOL;
+            $output .= '{'.PHP_EOL;
+            $output .= '   private String name = "Java program";'.PHP_EOL;
+            $output .= PHP_EOL;
+            $output .= '   public static void main (String args[])'.PHP_EOL;
+            $output .= '   {'.PHP_EOL;
+            $output .= '      Test us = new Test();'.PHP_EOL;
+            $output .= '      System.out.println(us.getName());'.PHP_EOL;
+            $output .= '   }'.PHP_EOL;
+            $output .= PHP_EOL;
+            $output .= '   public String getName()'.PHP_EOL;
+            $output .= '   {'.PHP_EOL;
+            $output .= '      return name;'.PHP_EOL;
+            $output .= '   }'.PHP_EOL;
+            $output .= '}'.PHP_EOL;
+            $output .= '</pre>'.PHP_EOL;
+            $output .= html_writer::tag('p', get_string('syntaxhelpseven', 'theme_shoelace').' \''.html_writer::tag('a', 'SyntaxHighlighter',
+                array('href' => '//alexgorbatchev.com/SyntaxHighlighter/', 'target' => '_blank')).'\'.');
+            $output .= html_writer::end_tag('div');
+            $output .= html_writer::end_tag('div');
+            $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
+            $output .= html_writer::start_tag('div',  array('class' => 'span12'));
+            $output .= html_writer::tag('p', html_writer::tag('a', 'SyntaxHighlighter', array('href' => '//alexgorbatchev.com/SyntaxHighlighter/',
+                'target' => '_blank')).' - '.html_writer::tag('span', 'Alex Gorbatchev 2004-2011', array ('class' => 'copyright')).
+                ' - LGPL v3 '.html_writer::tag('a', 'www.gnu.org/copyleft/lesser.html', array('href' => '//www.gnu.org/copyleft/lesser.html',
+                'target' => '_blank')), array ('class' => 'text-center span12'));
+            $output .= html_writer::end_tag('div');
+            $output .= html_writer::end_tag('div');
+            $output .= '</div>';
+            $output .= '<div class="modal-footer">';
+            $output .= '<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>';
+            $output .= '</div>';
+            $output .= '</div>';
+            $output .= html_writer::end_tag('div');
+        }
+
+        $output .= html_writer::start_tag('div', array ('class' => 'themecredit')).
             get_string('credit', 'theme_shoelace').
             html_writer::link('//about.me/gjbarnard', 'Gareth J Barnard', array('target' => '_blank')).
             html_writer::end_tag('div');

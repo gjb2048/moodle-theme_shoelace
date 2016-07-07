@@ -107,11 +107,25 @@ body.editing {
         opacity: @shoelaceOpacity;
         padding: 2px;
     }
-    .themecredit {
-        font-size: 7pt;
-        text-align: center;
-        a, a:hover {
-            color: inherit;
+}
+
+.themecredit {
+    color: @pageTextColour;
+    font-size: 7pt;
+    text-align: center;
+    a, a:hover {
+        color: @pageTextColour;
+    }
+}
+
+.syntaxhighlightmodal {
+    text-align: center;
+    margin: 0 auto;
+    #mySHModal {
+        text-align: left;
+        width: 674px;
+        pre {
+            font-size: 21px;
         }
     }
 }
