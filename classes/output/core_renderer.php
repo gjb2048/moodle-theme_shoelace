@@ -1135,7 +1135,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      */
     public function standard_end_of_body_html() {
         global $CFG;
-        $output .= html_writer::start_tag('div', array ('class' => 'themecredit')).
+        $output = html_writer::start_tag('div', array ('class' => 'themecredit')).
             get_string('credit', 'theme_shoelace').
             html_writer::link('//about.me/gjbarnard', 'Gareth J Barnard', array('target' => '_blank')).
             html_writer::end_tag('div');
