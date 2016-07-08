@@ -969,7 +969,8 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         $regioncontent = '';
         $editing = $this->page->user_is_editing();
         if ($editing) {
-            $regioncontent .= html_writer::tag('span', get_string('region-'.$region, 'theme_shoelace'), array('class' => 'regionname'));
+            $regioncontent .= html_writer::tag('span', get_string('region-'.$region, 'theme_shoelace'),
+                array('class' => 'regionname'));
         }
 
         if ($this->page->blocks->region_has_content($region, $this)) {
@@ -1172,11 +1173,14 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
         $output = '';
 
-        if ($this->syntaxhighlighterenabled) {
+        $context = \context_course::instance($this->page->course->id);
+        // Typically if you can update the course settings then you can use syntax highlighting.
+        if (($this->syntaxhighlighterenabled) && (\has_capability('moodle/course:update', $context))) {
             $output .= html_writer::start_tag('div', array('class' => 'syntaxhighlightmodal'));
             $output .= '<a href="#mySHModal" role="button" class="btn" data-toggle="modal">Syntax highlighing help</a>';
- 
-            $output .= '<div id="mySHModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mySHModalLabel" aria-hidden="true">';
+
+            $output .= '<div id="mySHModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mySHModalLabel" ';
+            $output .= 'aria-hidden="true">';
             $output .= '<div class="modal-header">';
             $output .= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>';
             $output .= '<h3 id="mySHModalLabel">'.get_string('syntaxhighlightpage', 'theme_shoelace').'</h3>';
@@ -1334,10 +1338,12 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             $output .= html_writer::end_tag('div');
             $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
             $output .= html_writer::start_tag('div',  array('class' => 'span12'));
-            $output .= html_writer::tag('p', html_writer::tag('a', 'SyntaxHighlighter', array('href' => '//alexgorbatchev.com/SyntaxHighlighter/',
-                'target' => '_blank')).' - '.html_writer::tag('span', 'Alex Gorbatchev 2004-2011', array ('class' => 'copyright')).
-                ' - LGPL v3 '.html_writer::tag('a', 'www.gnu.org/copyleft/lesser.html', array('href' => '//www.gnu.org/copyleft/lesser.html',
-                'target' => '_blank')), array ('class' => 'text-center span12'));
+            $output .= html_writer::tag('p', html_writer::tag('a', 'SyntaxHighlighter',
+                array('href' => '//alexgorbatchev.com/SyntaxHighlighter/', 'target' => '_blank')).
+                ' - '.html_writer::tag('span', 'Alex Gorbatchev 2004-2011', array ('class' => 'copyright')).
+                ' - LGPL v3 '.html_writer::tag('a', 'www.gnu.org/copyleft/lesser.html',
+                array('href' => '//www.gnu.org/copyleft/lesser.html', 'target' => '_blank')),
+                array ('class' => 'text-center span12'));
             $output .= html_writer::end_tag('div');
             $output .= html_writer::end_tag('div');
             $output .= '</div>';
