@@ -248,7 +248,7 @@ $string['norendertemplatemethod'] = 'Cannot render template, renderer method (\'
 // Syntax highlighter.
 $string['syntaxsummary'] = '<pre class="sh"></pre>';
 $string['syntaxhighlight'] = 'Activate syntax highlighting';
-$string['syntaxhighlight_desc'] = 'Activate syntax highlighting in courses.  A help page will be added to the footer menu of courses.';
+$string['syntaxhighlight_desc'] = 'Activate syntax highlighting in courses.  When \'Yes\' you will be able to select the desired categories with the \'syntaxhighlightcat\' setting.';
 $string['syntaxhighlightpage'] = 'Syntax highlighting help';
 $string['syntaxhelpone'] = 'Add the html \'{$a->html}\' to the course summary in HTML mode.';
 $string['syntaxhelptwo'] = 'Then when editing (such as a label) surround your code with a \'pre\' tag and add the class="brush: alias" where \'alias\' is one of the following:';
@@ -258,7 +258,7 @@ $string['syntaxhelpfive'] = 'For example:';
 $string['syntaxhelpsix'] = 'becomes:';
 $string['syntaxhelpseven'] = 'More information on';
 $string['syntaxhighlightcat'] = 'Syntax highlighting course categories';
-$string['syntaxhighlightcatdesc'] = 'Activate syntax highlighting in courses with the selected categories.  A help page will be added to the footer of courses.';
+$string['syntaxhighlightcatdesc'] = 'Syntax highlighting in courses within the selected categories.  A help modal will be added to the footer of courses within the selected categories for course editors when editing.';
 
 // shoelace_admin_setting_configinteger.
 $string['asconfigintlower'] = '{$a->value} is less than the lower range limit of {$a->lower}';
