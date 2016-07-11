@@ -43,6 +43,24 @@ if ($ADMIN->fulltree) {
         get_string('generalheadingsub', 'theme_shoelace'),
         format_text(get_string('generalheadingdesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
 
+    // Custom CSS file.
+    $name = 'theme_shoelace/customcss';
+    $title = get_string('customcss', 'theme_shoelace');
+    $description = get_string('customcssdesc', 'theme_shoelace');
+    $default = '';
+    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $generalsettings->add($setting);
+}
+$ADMIN->add('theme_shoelace', $generalsettings);
+
+// Feature settings.
+$featuresettings = new admin_settingpage('theme_shoelace_features', get_string('featureheading', 'theme_shoelace'));
+if ($ADMIN->fulltree) {
+    $featuresettings->add(new admin_setting_heading('theme_shoelace_featureheading',
+        get_string('featureheadingsub', 'theme_shoelace'),
+        format_text(get_string('featureheadingdesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
+
     /* CDN Fonts - 1 = no, 2 = yes. */
     $name = 'theme_shoelace/cdnfonts';
     $title = get_string('cdnfonts', 'theme_shoelace');
@@ -52,7 +70,7 @@ if ($ADMIN->fulltree) {
         1 => new lang_string('no'),   // No.
         2 => new lang_string('yes')   // Yes.
     );
-    $generalsettings->add(new shoelace_admin_setting_configselect($name, $title, $description, $default, $choices));
+    $featuresettings->add(new shoelace_admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Number of marketing blocks.
     $name = 'theme_shoelace/nummiddleblocks';
@@ -66,7 +84,7 @@ if ($ADMIN->fulltree) {
     );
     $default = 2;
     $setting = new shoelace_admin_setting_configselect($name, $title, $description, $default, $choices);
-    $generalsettings->add($setting);
+    $featuresettings->add($setting);
 
     // Activate syntax highlighting - 1 = no, 2 = yes.
     $name = 'theme_shoelace/syntaxhighlight';
@@ -78,7 +96,7 @@ if ($ADMIN->fulltree) {
         2 => new lang_string('yes') // Yes.
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
-    $generalsettings->add($setting);
+    $featuresettings->add($setting);
 
     if (get_config('theme_shoelace', 'syntaxhighlight') == 2) {
         // Syntax highlighting categories.
@@ -92,19 +110,10 @@ if ($ADMIN->fulltree) {
         $description = get_string('syntaxhighlightcatdesc', 'theme_shoelace');
         $default = array();
         $setting = new admin_setting_configmultiselect($name, $title, $description, $default, $coursecatsoptions);
-        $generalsettings->add($setting);
+        $featuresettings->add($setting);
     }
-
-    // Custom CSS file.
-    $name = 'theme_shoelace/customcss';
-    $title = get_string('customcss', 'theme_shoelace');
-    $description = get_string('customcssdesc', 'theme_shoelace');
-    $default = '';
-    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $generalsettings->add($setting);
 }
-$ADMIN->add('theme_shoelace', $generalsettings);
+$ADMIN->add('theme_shoelace', $featuresettings);
 
 // Layout settings.
 $layoutsettings = new admin_settingpage('theme_shoelace_layout', get_string('layoutheading', 'theme_shoelace'));

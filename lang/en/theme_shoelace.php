@@ -65,14 +65,8 @@ $string['generalheading'] = 'General';
 $string['generalheadingsub'] = 'General settings';
 $string['generalheadingdesc'] = 'Configure the general settings for Shoelace here.';
 
-$string['cdnfonts'] = 'Content delivery network fonts';
-$string['cdnfontsdesc'] = 'Use content delivery network fonts';
-
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
-
-$string['nummiddleblocks'] = 'Maximum number of blocks per row in the middle area';
-$string['nummiddleblocksdesc'] = 'The maximum blocks per row in the middle area.';
 
 $string['one'] = 'One';
 $string['two'] = 'Two';
@@ -83,6 +77,17 @@ $string['alwaysdisplay'] = 'Always show';
 $string['displaybeforelogin'] = 'Show before login only';
 $string['displayafterlogin'] = 'Show after login only';
 $string['dontdisplay'] = 'Never show';
+
+// Features.
+$string['featureheading'] = 'Features';
+$string['featureheadingsub'] = 'Feature settings';
+$string['featureheadingdesc'] = 'Configure the feature settings for Shoelace here.';
+
+$string['cdnfonts'] = 'Content delivery network fonts';
+$string['cdnfontsdesc'] = 'Use content delivery network fonts';
+
+$string['nummiddleblocks'] = 'Maximum number of blocks per row in the middle area';
+$string['nummiddleblocksdesc'] = 'The maximum blocks per row in the middle area.';
 
 // Layout.
 $string['layoutheading'] = 'Layout';
