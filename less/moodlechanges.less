@@ -54,7 +54,6 @@ body {
 
 .breadcrumb {
     overflow: hidden;
-    width: 100%;
     border-radius: @shoelaceBorderRadius;
     box-shadow: @shoelaceBoxShadow;
     opacity: @shoelaceOpacity;
@@ -532,6 +531,11 @@ table.generaltable {
             }
         }
     }
+}
+
+// MDL-55185.
+.img-responsive {
+    margin: 0 !important;
 }
 
 // Search box.

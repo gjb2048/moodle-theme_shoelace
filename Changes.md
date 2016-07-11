@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.1.1.0
+  1. Shoelace reborn.
+
 Version 3.1.0.3
   1. Change in architecture a liitle for child themes.
 
