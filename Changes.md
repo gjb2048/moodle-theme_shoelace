@@ -4,6 +4,7 @@ Version 3.1.1.0
   1. Shoelace reborn.
   2. MDL-39661.
   3. MDL-53152.
+  4. Fix broken syntax highlighting JS loading.
 
 Version 3.1.0.3
   1. Change in architecture a liitle for child themes.
