@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="two_columns_l.svg">
+   sodipodi:docname="two_columns_r.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -27,7 +27,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="16"
      inkscape:cx="16.75188"
-     inkscape:cy="24.499087"
+     inkscape:cy="22.990209"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -55,26 +55,27 @@
      id="layer1"
      transform="translate(0,-1004.3622)">
     <rect
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#7575E0;stroke-width:2.24517274;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#999999;stroke-width:2.24517274;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4138"
        width="45.666569"
        height="45.604069"
        x="1.1667186"
        y="1005.5913" />
     <rect
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#7575E0;stroke-width:1.125;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#999999;stroke-width:1.125;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4138-8"
        width="29.214197"
        height="39.703461"
-       x="14.723374"
-       y="1008.6295" />
+       x="-33.144489"
+       y="1008.6295"
+       transform="scale(-1,1)" />
     <rect
-       style="opacity:1;fill:#7575E0;fill-opacity:1;stroke:#7575E0;stroke-width:1.125;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#999999;fill-opacity:1;stroke:#999999;stroke-width:1.125;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4138-8-8-2"
        width="39.679043"
        height="8.3665237"
-       x="-1048.329"
-       y="6.7291999"
-       transform="matrix(0.00266984,-0.99999644,0.9999944,-0.00334712,0,0)" />
+       x="-1048.1687"
+       y="-41.139359"
+       transform="matrix(-0.00266984,-0.99999644,-0.9999944,-0.00334712,0,0)" />
   </g>
 </svg>

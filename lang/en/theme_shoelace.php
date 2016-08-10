@@ -124,6 +124,12 @@ $string['textcolourdesc'] = 'Set the colour for the text.';
 $string['navbartextcolour'] = 'Navbar text colour';
 $string['navbartextcolourdesc'] = 'Set the colour for the navbar text.';
 
+$string['iconcoloursetting'] = 'Use icon colour setting';
+$string['iconcoloursetting_desc'] = 'Use the icon colour setting for the icons.  The icon colour functionality is new.  If you experience problems with it, then turn it off and run \'grunt svg\' on the Node.js command prompt.  Please see \'Gruntfile.js\' for full details.';
+
+$string['iconcolour'] = 'Icon colour';
+$string['iconcolour_desc'] = 'The colour for the icons.';
+
 $string['logo'] = 'Logo';
 $string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>Set the height of the logo with the \'logoheight\' setting.';
 

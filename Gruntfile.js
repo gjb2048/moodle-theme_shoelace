@@ -33,7 +33,7 @@
  *               Done here as core Gruntfile.js currently *nix only.
  *
  * grunt svg                 Change the colour of the SVGs in pix_core by
- *                           text replacing #999999 with a new hex color.
+ *                           text replacing #999999 with a new hex colour.
  *                           Note this requires the SVGs to be #999999 to
  *                           start with or the replace will do nothing
  *                           so should usually be preceded by copying
@@ -41,7 +41,7 @@
  *
  *                           Options:
  *
- *                           --svgcolor=<hexcolor> Hex color to use for SVGs
+ *                           --svgcolour=<hexcolour> Hex colour to use for SVGs
  *
  * Plumbing tasks & targets:
  * -------------------------
@@ -89,7 +89,7 @@ module.exports = function(grunt) { // jshint ignore:line
     decachephp += 'require(\'' + configfile + '\');';
     decachephp += 'theme_reset_all_caches();';
 
-    var svgcolor = grunt.option('svgcolor') || '#7575E0';
+    var svgcolour = grunt.option('svgcolour') || '#7575E0';
 
     grunt.initConfig({
         copy: {
@@ -110,6 +110,12 @@ module.exports = function(grunt) { // jshint ignore:line
                 cwd:  'pix_plugins_originals/',
                 src:  '**',
                 dest: 'pix_plugins/',
+            },
+            svg_fp: {
+                 expand: true,
+                 cwd:  'pix_fp_originals/',
+                 src:  '**',
+                 dest: 'pix/fp/',
             }
         },
         replace: {
@@ -118,7 +124,7 @@ module.exports = function(grunt) { // jshint ignore:line
                 overwrite: true,
                 replacements: [{
                     from: '#999999',
-                    to: svgcolor
+                    to: svgcolour
                 }]
             },
             svg_colours_core: {
@@ -126,7 +132,7 @@ module.exports = function(grunt) { // jshint ignore:line
                 overwrite: true,
                 replacements: [{
                     from: '#999',
-                    to: svgcolor
+                    to: svgcolour
                 }]
             },
             svg_colours_plugins: {
@@ -134,8 +140,16 @@ module.exports = function(grunt) { // jshint ignore:line
                 overwrite: true,
                 replacements: [{
                     from: '#999',
-                    to: svgcolor
+                    to: svgcolour
                 }]
+            },
+            svg_colours_fp: {
+                src: 'pix/fp/**/*.svg',
+                    overwrite: true,
+                    replacements: [{
+                        from: '#999',
+                        to: svgcolour
+                    }]
             }
         },
         svgmin: {                       // Task.
@@ -214,9 +228,9 @@ module.exports = function(grunt) { // jshint ignore:line
     grunt.registerTask("default", ["watch"]);
     grunt.registerTask("decache", ["exec:decache"]);
 
-    grunt.registerTask("copy:svg", ["copy:svg_pix", "copy:svg_core", "copy:svg_plugins"]);
+    grunt.registerTask("copy:svg", ["copy:svg_pix", "copy:svg_core", "copy:svg_plugins", "copy:svg_fp"]);
     grunt.registerTask("replace:svg_colours", ["replace:svg_colours_pix", "replace:svg_colours_core",
-        "replace:svg_colours_plugins"]);
+        "replace:svg_colours_plugins", "replace:svg_colours_fp"]);
     grunt.registerTask("svg", ["copy:svg", "replace:svg_colours", "svgmin"]);
     grunt.registerTask("amd", ["jshint", "uglify", "decache"]);
 };

@@ -5,6 +5,9 @@ Version 3.1.1.0
   2. MDL-39661.
   3. MDL-53152.
   4. Fix broken syntax highlighting JS loading.
+  5. Add missing assign mod icons.
+  6. Add missing file icons.
+  7. Add icon SVG colour changing code.
 
 Version 3.1.0.3
   1. Change in architecture a liitle for child themes.

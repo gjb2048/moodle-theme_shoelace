@@ -64,6 +64,11 @@ function theme_shoelace_process_css($css, $theme) {
     $slidebuttonhcolor = \theme_shoelace\toolbox::get_setting('slidebuttonhovercolor');
     $css = \theme_shoelace\toolbox::set_colour($css, $slidebuttonhcolor, '[[setting:slidebuttonhovercolor]]', '#217a94');
 
+    // Icon colour.
+    if (\theme_shoelace\toolbox::get_setting('iconcoloursetting')) {
+        \theme_shoelace\toolbox::change_icons();
+    }
+
     // Set custom CSS.
     $customcss = \theme_shoelace\toolbox::get_setting('customcss');
     if (empty($customcss)) {

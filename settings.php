@@ -228,6 +228,24 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $lookandfeelsettings->add($setting);
 
+    // Icon colour setting 'setting' - to enable / disable the functionality.
+    $name = 'theme_shoelace/iconcoloursetting';
+    $title = get_string('iconcoloursetting', 'theme_shoelace');
+    $description = get_string('iconcoloursetting_desc', 'theme_shoelace');
+    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $lookandfeelsettings->add($setting);
+
+    // Icon colour setting.
+    $name = 'theme_shoelace/iconcolour';
+    $title = get_string('iconcolour', 'theme_shoelace');
+    $description = get_string('iconcolour_desc', 'theme_shoelace');
+    $default = '#7575E0';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $lookandfeelsettings->add($setting);
+
     // Logo file setting.
     $name = 'theme_shoelace/logo';
     $title = get_string('logo', 'theme_shoelace');
