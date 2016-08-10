@@ -23,7 +23,7 @@ env:
   - MOODLE_BRANCH=MOODLE_31_STABLE
   - IGNORE_PATHS=amd/build,amd/src/bootstrap.js,javascript/html5shiv.js,javascript/syntaxhighlighter_3_0_83/
   # Ignore custom.css until CSSlint can be instructed to ignore lines for '[[setting:customcss]]'.
-  - IGNORE_NAMES=*.txt,custom.css
+  - IGNORE_NAMES=*.txt,custom.css,font.css,font-awesome.css
  matrix:
   - DB=pgsql
   - DB=mysqli

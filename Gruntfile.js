@@ -112,10 +112,10 @@ module.exports = function(grunt) { // jshint ignore:line
                 dest: 'pix_plugins/',
             },
             svg_fp: {
-                 expand: true,
-                 cwd:  'pix_fp_originals/',
-                 src:  '**',
-                 dest: 'pix/fp/',
+                expand: true,
+                cwd:  'pix_fp_originals/',
+                src:  '**',
+                dest: 'pix/fp/',
             }
         },
         replace: {
@@ -145,11 +145,11 @@ module.exports = function(grunt) { // jshint ignore:line
             },
             svg_colours_fp: {
                 src: 'pix/fp/**/*.svg',
-                    overwrite: true,
-                    replacements: [{
-                        from: '#999',
-                        to: svgcolour
-                    }]
+                overwrite: true,
+                replacements: [{
+                    from: '#999',
+                    to: svgcolour
+                }]
             }
         },
         svgmin: {                       // Task.

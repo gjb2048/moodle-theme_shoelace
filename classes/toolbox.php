@@ -393,7 +393,7 @@ class toolbox {
                 }
                 if (is_dir("$root/$filename")) {
                     self::svg_files($files, "$root/$filename");
-                } else if (strpos($filename, '.svg') !== FALSE) { // TODO: See if 'finfo_file' is better.
+                } else if (strpos($filename, '.svg') !== false) { // TODO: See if 'finfo_file' is better.
                     $files[] = $root . '/' . $filename;
                 }
             }
