@@ -8,6 +8,7 @@ Version 3.1.1.0
   5. Add missing assign mod icons.
   6. Add missing file icons.
   7. Add icon SVG colour changing code.
+  8. Fix maintenance layout.
 
 Version 3.1.0.3
   1. Change in architecture a liitle for child themes.
