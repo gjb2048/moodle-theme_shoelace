@@ -85,9 +85,9 @@
 // Tables
 // -------------------------
 @tableBackground:                   transparent; // overall background-color
-@tableBackgroundAccent:             lighten(@bodyBackgroundAlt, 12%); // for striping
-@tableBackgroundHover:              lighten(@bodyBackgroundAlt, 15%); // for hover
-@tableBorder:                       #ddd; // table and cell border
+@tableBackgroundAccent:             @themeColour; // for striping
+@tableBackgroundHover:              lighten(@themeColour, 12%); // for hover
+@tableBorder:                       @bodyBackground; //#ddd; // table and cell border
 
 // Buttons
 // -------------------------
@@ -135,12 +135,11 @@
 @dropdownDividerBottom:         #999;
 
 @dropdownLinkColor:             @textColor;
-@dropdownLinkColorHover:        darken(@dropdownLinkColor, 10%);
+@dropdownLinkColorHover:        @themeTextColour;
 @dropdownLinkColorActive:       darken(@dropdownLinkColorHover, 10%);
 
-@dropdownLinkBackgroundActive:  @wholeBackground;
-@dropdownLinkBackgroundHover:   lighten(@dropdownLinkBackgroundActive, 8%);
-
+@dropdownLinkBackgroundActive:  lighten(@dropdownLinkBackgroundHover, 8%);
+@dropdownLinkBackgroundHover:   @themeColour;
 
 
 // COMPONENT VARIABLES
@@ -178,9 +177,9 @@
 @navbarBackground:                darken(@navbarBackgroundHighlight, 5%);
 @navbarBorder:                    darken(@navbarBackground, 12%);
 
-@navbarText:                      @textColor;
+@navbarText:                      @themeTextColour;
 @navbarLinkColor:                 @navbarText;
-@navbarLinkColorHover:            darken(@navbarText, 5%);
+@navbarLinkColorHover:            darken(@navbarText, 2%);
 @navbarLinkColorActive:           @navbarLinkColorHover;
 @navbarLinkBackgroundHover:       transparent;
 @navbarLinkBackgroundActive:      darken(@navbarBackground, 5%);
@@ -300,5 +299,7 @@
 @shoelaceBoxShadow: 1px 1px 1px @grayLightish;
 @shoelaceOpacity: 0.9;
 @pageColour: @white;
-@pageTextColour: #b8bce7;
-@pageTextColourHover: lighten(@pageTextColour, 5%);
+@backgroundTextColour: #b8bce7;
+@backgroundTextColourHover: lighten(@backgroundTextColour, 5%);
+@themeColour: @bodyBackgroundAlt;
+@themeTextColour: @white;

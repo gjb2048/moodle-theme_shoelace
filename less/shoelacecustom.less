@@ -40,9 +40,6 @@ table {
         word-break: break-word;
         word-wrap: break-word;
     }
-    th:first-of-type, td:first-of-type {
-        padding-left: 0px;
-    }
 }
 
 table.flexible, .generaltable {
@@ -55,7 +52,7 @@ fieldset {
 
 // Page
 .regionname {
-    color: @pageTextColour;
+    color: @backgroundTextColour;
     text-align: center;
     display: block;
 }
@@ -90,11 +87,11 @@ body.editing {
 
 // Footer.
 #page-footer {
-    color: @pageTextColour;
+    color: @backgroundTextColour;
     a {
-        color: @pageTextColour;
+        color: @backgroundTextColour;
         &:hover, &:focus {
-            color: @pageTextColourHover;
+            color: @backgroundTextColourHover;
         }
     }
     .helplink a {
@@ -110,11 +107,11 @@ body.editing {
 }
 
 .themecredit {
-    color: @pageTextColour;
+    color: @backgroundTextColour;
     font-size: 7pt;
     text-align: center;
     a, a:hover {
-        color: @pageTextColour;
+        color: @backgroundTextColour;
     }
 }
 

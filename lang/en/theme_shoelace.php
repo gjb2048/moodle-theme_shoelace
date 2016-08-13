@@ -109,20 +109,20 @@ $string['lookandfeeldesc'] = 'Set the colours for the theme.';
 $string['themecolour'] = 'Theme colour';
 $string['themecolourdesc'] = 'Set the colour for the theme.';
 
+$string['themetextcolour'] = 'Theme text colour';
+$string['themetextcolourdesc'] = 'Set the colour for the text when used with the theme colour.';
+
 $string['backgroundcolour'] = 'Background colour';
-$string['backgroundcolourdesc'] = 'Set the background colour for the page.';
+$string['backgroundcolourdesc'] = 'Set the background colour around the page.';
+
+$string['backgroundtextcolour'] = 'Background text colour';
+$string['backgroundtextcolourdesc'] = 'Set the colour for the background text around the page.';
 
 $string['pagecolour'] = 'Page colour';
 $string['pagecolourdesc'] = 'Set the colour for the page.';
 
-$string['pagetextcolour'] = 'Page text colour';
-$string['pagetextcolourdesc'] = 'Set the colour for the page text.';
-
 $string['textcolour'] = 'Text colour';
-$string['textcolourdesc'] = 'Set the colour for the text.';
-
-$string['navbartextcolour'] = 'Navbar text colour';
-$string['navbartextcolourdesc'] = 'Set the colour for the navbar text.';
+$string['textcolourdesc'] = 'Set the colour for the text on the page.';
 
 $string['iconcoloursetting'] = 'Use icon colour setting';
 $string['iconcoloursetting_desc'] = 'Use the icon colour setting for the icons.  The icon colour functionality is new.  If you experience problems with it, then turn it off and run \'grunt svg\' on the Node.js command prompt.  Please see \'Gruntfile.js\' for full details.';

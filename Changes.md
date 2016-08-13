@@ -9,6 +9,9 @@ Version 3.1.1.0
   6. Add missing file icons.
   7. Add icon SVG colour changing code.
   8. Fix maintenance layout.
+  9. Page -> Background text colour so that setting is more descriptive.
+ 10. Navbar -> Theme text colour so that the setting is more descriptive.
+ 11. General tidy up of styles.
 
 Version 3.1.0.3
   1. Change in architecture a liitle for child themes.

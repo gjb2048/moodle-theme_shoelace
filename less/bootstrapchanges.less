@@ -122,10 +122,37 @@ textarea, .uneditable-input {
   color: @textColor;
 }
 
+// Active state, and it's :hover/:focus to override normal :hover/:focus
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover,
+.nav-tabs > .active > a:focus {
+    color: @pageColour;
+    background-color: @textColor;
+}
+
 // navbar.less
 // --------------------------------------------------
 .navbar .btn-navbar .icon-bar {
-  background-color: @textColor;
+    background-color: @textColor;
+}
+
+// pagination.less
+// --------------------------------------------------
+.pagination ul > li > a,
+.pagination ul > li > span {
+    color: @themeTextColour;
+}
+
+.pagination ul > .active > a,
+.pagination ul > .active > span {
+    color: @themeTextColour;
+}
+
+.pagination ul > .disabled > span,
+.pagination ul > .disabled > a,
+.pagination ul > .disabled > a:hover,
+.pagination ul > .disabled > a:focus {
+    color: @textColor;
 }
 
 // responsive-navbar.less
@@ -167,6 +194,25 @@ a:focus {
 // --------------------------------------------------
 .thumbnail .caption {
     color: @textColor;
+}
+
+// tables.less
+// --------------------------------------------------
+
+// ZEBRA-STRIPING
+// --------------
+
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+.table-striped {
+    tbody {
+        > tr:nth-child(odd) > td,
+        > tr:nth-child(odd) > th {
+            color: @themeTextColour;
+            &.muted {
+                color: darken(@themeTextColour, 5%);
+            }
+        }
+    }
 }
 
 // type.less
