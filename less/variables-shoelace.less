@@ -131,8 +131,8 @@
 // -------------------------
 @dropdownBackground:            @pageColour;
 @dropdownBorder:                rgba(0,0,0,.2);
-@dropdownDividerTop:            @bodyBackgroundAlt;
-@dropdownDividerBottom:         #999;
+@dropdownDividerTop:            transparent;
+@dropdownDividerBottom:         @bodyBackground;
 
 @dropdownLinkColor:             @textColor;
 @dropdownLinkColorHover:        @themeTextColour;
@@ -234,8 +234,8 @@
 @successBackground:       #dff0d8;
 @successBorder:           darken(spin(@successBackground, -10), 5%);
 
-@infoText:                @textColor;
-@infoBackground:          lighten(@bodyBackgroundAlt, 10%);
+@infoText:                @themeTextColour;
+@infoBackground:          @themeColour;
 @infoBorder:              darken(spin(@infoBackground, -10), 7%);
 
 
