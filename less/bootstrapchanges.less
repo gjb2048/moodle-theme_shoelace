@@ -1,9 +1,12 @@
 // My changes to Bootstrap
 
-// alerts.less
+// alerts.less / modals.less
 // --------------------------------------------------
 .alert {
     border-radius: @shoelaceBorderRadius;
+}
+
+.alert, .modal-header {
     .close {
         color: @white;
         .opacity(90);
@@ -126,6 +129,26 @@ textarea, .uneditable-input {
   // Webkit
   outline: 2px auto @textColor;
   outline-offset: -2px;
+}
+
+// modals.less
+// --------------------------------------------------
+.modal {
+  border-radius: @borderRadiusSmall;
+}
+
+.modal-header {
+  color: @themeTextColour;
+  background-color: @themeColour;
+  border-bottom: 1px solid @bodyBackground;
+  .border-radius(@borderRadiusSmall @borderRadiusSmall 0 0);
+}
+
+.modal-footer {
+  background-color: @bodyBackground;
+  border-top: 1px solid darken(@bodyBackground, 5%);
+  .border-radius(0 0 @borderRadiusSmall @borderRadiusSmall);
+  .box-shadow(none);
 }
 
 // navs.less
