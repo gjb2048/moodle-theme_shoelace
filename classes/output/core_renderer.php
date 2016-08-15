@@ -1186,14 +1186,12 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             $output .= '<div class="modal-body">';
             $output .= html_writer::start_tag('div', array('class' => 'row-fluid'));
             $output .= html_writer::start_tag('div', array('class' => 'span12 lead'));
-            $output .= html_writer::tag('p', get_string('syntaxhelpone', 'theme_shoelace',
-                array('html' => htmlentities(get_string('syntaxsummary', 'theme_shoelace')))));
-            $output .= html_writer::tag('p', get_string('syntaxhelptwo', 'theme_shoelace'));
+            $output .= html_writer::tag('p', get_string('syntaxhelpone', 'theme_shoelace'));
             $output .= html_writer::start_tag('table', array('class' => 'syntax'));
             $output .= html_writer::start_tag('thead');
             $output .= html_writer::start_tag('tr');
+            $output .= html_writer::tag('th', get_string('syntaxhelptwo', 'theme_shoelace'));
             $output .= html_writer::tag('th', get_string('syntaxhelpthree', 'theme_shoelace'));
-            $output .= html_writer::tag('th', get_string('syntaxhelpfour', 'theme_shoelace'));
             $output .= html_writer::end_tag('tr');
             $output .= html_writer::end_tag('thead');
             $output .= html_writer::start_tag('tbody');
@@ -1292,7 +1290,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             $output .= html_writer::end_tag('tbody');
             $output .= html_writer::end_tag('table');
             $output .= html_writer::empty_tag('br');
-            $output .= html_writer::tag('p', get_string('syntaxhelpfive', 'theme_shoelace'));
+            $output .= html_writer::tag('p', get_string('syntaxhelpfour', 'theme_shoelace'));
             $output .= html_writer::start_tag('pre');
             $output .= htmlentities('<pre class="brush: java">').PHP_EOL;
             $output .= 'public class Test'.PHP_EOL;
@@ -1312,7 +1310,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             $output .= '}'.PHP_EOL;
             $output .= htmlentities('</pre>');
             $output .= html_writer::end_tag('pre');
-            $output .= html_writer::tag('p', get_string('syntaxhelpsix', 'theme_shoelace'));
+            $output .= html_writer::tag('p', get_string('syntaxhelpfive', 'theme_shoelace'));
             $output .= '<pre class="brush: java">'.PHP_EOL;
             $output .= 'public class Test'.PHP_EOL;
             $output .= '{'.PHP_EOL;
@@ -1330,6 +1328,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             $output .= '   }'.PHP_EOL;
             $output .= '}'.PHP_EOL;
             $output .= '</pre>'.PHP_EOL;
+            $output .= html_writer::tag('p', get_string('syntaxhelpsix', 'theme_shoelace'));
             $output .= html_writer::tag('p', get_string('syntaxhelpseven', 'theme_shoelace').' \''.html_writer::tag('a', 'SyntaxHighlighter',
                 array('href' => '//alexgorbatchev.com/SyntaxHighlighter/', 'target' => '_blank')).'\'.');
             $output .= html_writer::end_tag('div');

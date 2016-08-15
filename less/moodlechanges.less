@@ -75,6 +75,12 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
     margin: 0 0 0 5px;
 }
 
+input {
+    &.fp-btn-choose {
+        margin-bottom: @shoelaceGap;
+    }
+}
+
 // core.less
 // --------------------------------------------------
 .dimmed_category a:visited {
@@ -116,7 +122,7 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
 
 .userenrolment {
     .col_userdetails, .col_lastcourseaccess {
-        padding: 6px;
+        padding: @shoelaceGap;
     }
 }
 
@@ -249,6 +255,10 @@ li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div i
     }
 }
 
+.filepicker-filelist,
+.filemanager-container {
+    border: 1px solid @bodyBackground;
+}
 
 // forms.less
 // --------------------------------------------------
@@ -567,5 +577,5 @@ table.generaltable {
 
 // Enrolment.
 #page-enrol-users #filterform {
-    margin-top: 6px;
+    margin-top: @shoelaceGap;
 }

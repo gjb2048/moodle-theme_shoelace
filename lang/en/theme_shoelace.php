@@ -257,19 +257,18 @@ $string['antigravity'] = 'Back to top';
 $string['norendertemplatemethod'] = 'Cannot render template, renderer method (\'{$a->callablemethod}\') not found.';
 
 // Syntax highlighter.
-$string['syntaxsummary'] = '<pre class="sh"></pre>';
 $string['syntaxhighlight'] = 'Activate syntax highlighting';
 $string['syntaxhighlight_desc'] = 'Activate syntax highlighting in courses.  When \'Yes\' you will be able to select the desired categories with the \'syntaxhighlightcat\' setting.';
 $string['syntaxhighlightpage'] = 'Syntax highlighting help';
-$string['syntaxhelpone'] = 'Add the html \'{$a->html}\' to the course summary in HTML mode.';
-$string['syntaxhelptwo'] = 'Then when editing (such as a label) surround your code with a \'pre\' tag and add the class="brush: alias" where \'alias\' is one of the following:';
-$string['syntaxhelpthree'] = 'Brush name';
-$string['syntaxhelpfour'] = 'Brush alias';
-$string['syntaxhelpfive'] = 'For example:';
-$string['syntaxhelpsix'] = 'becomes:';
+$string['syntaxhelpone'] = 'When editing anything (such as a label) with the text editor surround your code with a \'pre\' tag and add the class="brush: alias" where \'alias\' is one of the following:';
+$string['syntaxhelptwo'] = 'Brush name';
+$string['syntaxhelpthree'] = 'Brush alias';
+$string['syntaxhelpfour'] = 'For example:';
+$string['syntaxhelpfive'] = 'becomes:';
+$string['syntaxhelpsix'] = 'If you cannot see this help on a course then ask the administrator to activate \'Syntax highlighting\' for the courses\' category.';
 $string['syntaxhelpseven'] = 'More information on';
 $string['syntaxhighlightcat'] = 'Syntax highlighting course categories';
-$string['syntaxhighlightcatdesc'] = 'Syntax highlighting in courses within the selected categories.  A help modal will be added to the footer of courses within the selected categories for course editors when editing.';
+$string['syntaxhighlightcatdesc'] = 'Syntax highlighting in courses within the selected categories.  A help button that brings up a popup will be added to the footer of courses within the selected categories for course editors when editing.';
 
 // shoelace_admin_setting_configinteger.
 $string['asconfigintlower'] = '{$a->value} is less than the lower range limit of {$a->lower}';
