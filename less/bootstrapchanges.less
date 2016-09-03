@@ -16,6 +16,9 @@
         }
     }
 }
+.alert-info a {
+  color: @infoText;
+}
 
 // breadcrumbs.less
 // --------------------------------------------------
@@ -242,9 +245,10 @@ a:focus {
     tbody {
         > tr:nth-child(odd) > td,
         > tr:nth-child(odd) > th {
-            color: @themeTextColour;
+            color: inherit;
+            background-color: inherit;
             &.muted {
-                color: darken(@themeTextColour, 5%);
+                color: inherit;
             }
             a {
                 color: inherit;
@@ -257,7 +261,8 @@ a:focus {
     tbody {
         tr:hover > td,
         tr:hover > th {
-            color: @themeTextColour;
+            color: inherit;
+            background-color: inherit;
         }
     }
 }
@@ -269,6 +274,10 @@ h1, h2, h3, h4, h5, h6 {
         color: inherit;
     }
 }
+
+.muted               { color: darken(@textColor, 15%); }
+a.muted:hover,
+a.muted:focus        { color: darken(@textColor, 20%); }
 
 // wells.less
 // --------------------------------------------------
