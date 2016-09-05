@@ -245,13 +245,19 @@ a:focus {
     tbody {
         > tr:nth-child(odd) > td,
         > tr:nth-child(odd) > th {
-            color: inherit;
-            background-color: inherit;
+            color: @themeTextColour;
             &.muted {
-                color: inherit;
+                color: darken(@themeTextColour, 5%);
             }
-            a {
-                color: inherit;
+            a, div {
+                color: inherit !important;
+            }
+            img {
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: @baseBorderRadius;
+                margin-left: 1px;
+                margin-right: 1px;
+                padding: 2px;
             }
         }
     }
@@ -261,8 +267,10 @@ a:focus {
     tbody {
         tr:hover > td,
         tr:hover > th {
-            color: inherit;
-            background-color: inherit;
+            color: @themeTextColour;
+            a, div {
+                color: inherit !important;
+            }
         }
     }
 }
