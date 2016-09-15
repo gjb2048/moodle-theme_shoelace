@@ -5,6 +5,14 @@ body {
     padding-top: 45px;
 }
 
+// admin.less
+// --------------------------------------------------
+#page-admin-plugins #plugins-control-panel .pluginname .displayname img.icon {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    vertical-align: top;
+}
+
 // backup-restore.less
 // --------------------------------------------------
 .backup-restore .backup-section > h2.header,
@@ -333,26 +341,33 @@ div.backup-section + form,
 // --------------------------------------------------
 .gradetreebox td.colspan,
 .gradetreebox tr.category .cell {
+    color: @themeTextColour;
     background-color: @bodyBackgroundAlt;
 }
 
-/*
-.path-grade-report-grader #region-main {
-    width: auto;
+.path-grade-report-grader #region-main #region-main-shoelace {
+    background-color: @pageColour;
+}
+
+.dir-ltr.path-grade-report-grader #region-main #region-main-shoelace {
     float: left;
 }
-*/
+
+.dir-rtl.path-grade-report-grader #region-main #region-main-shoelace {
+    float: right;
+}
 
 .path-grade-report-grader .gradeparent tr:nth-of-type(even) .cell {
-    background-color: @bodyBackground;
+    background-color: @pageColour;
 }
 
 .path-grade-report-grader .gradeparent .floater {
     .cell:nth-of-type(odd), &.lastrow .cell.header {
+        color: @themeTextColour;
         background-color: @bodyBackgroundAlt;
     }
     .cell:nth-of-type(even), &.heading .cell.header {
-        background-color: @bodyBackground;
+        background-color: @pageColour;
     }
 }
 // My additions from https://moodle.org/mod/forum/discuss.php?d=234329:...

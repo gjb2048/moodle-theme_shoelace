@@ -16,8 +16,16 @@
         }
     }
 }
+.dir-rtl .alert {
+    padding: 8px 14px 8px 35px;
+    .close {
+        float: left;
+        right: 30px;
+    }
+}
+
 .alert-info a {
-  color: @infoText;
+    color: @infoText;
 }
 
 // breadcrumbs.less
@@ -258,6 +266,9 @@ a:focus {
                 margin-left: 1px;
                 margin-right: 1px;
                 padding: 2px;
+                &.noicon {
+                    background-color: transparent;
+                }
             }
         }
     }
