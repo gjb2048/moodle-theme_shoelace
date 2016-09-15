@@ -110,7 +110,7 @@ customisations / improvements for a negotiated fee.
 When reporting an issue you can post in the theme's forum on Moodle.org (currently 'moodle.org/mod/forum/view.php?id=46')
 or contact me direct (details at the bottom).
 
-It is essential that you provide as much information as possible, the critical information being the contents of the format's 
+It is essential that you provide as much information as possible, the critical information being the contents of the theme's 
 version.php file.  Other version information such as specific Moodle version, theme name and version also helps.  A screen shot
 can be really useful in visualising the issue along with any files you consider to be relevant.
 
