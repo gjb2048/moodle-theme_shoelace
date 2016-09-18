@@ -38,6 +38,14 @@ function theme_shoelace_process_css($css, $theme) {
     $logoheight = \theme_shoelace\toolbox::get_setting('logoheight');
     $css = \theme_shoelace\toolbox::set_height_setting($css, '[[setting:logoheight]]', $logoheight, 75);
 
+    // Set the background image.
+    $backgroundimage = \theme_shoelace\toolbox::setting_file_url('backgroundimage', 'backgroundimage');
+    $css = \theme_shoelace\toolbox::set_background_image($css, $backgroundimage);
+
+    // Set the background style for the page.
+    $bgimagestyle = \theme_shoelace\toolbox::get_setting('backgroundimagestyle');
+    $css = \theme_shoelace\toolbox::set_background_image_style($css, $bgimagestyle);
+
     // Set the slide header colour.
     $slideshowcolor = \theme_shoelace\toolbox::get_setting('slideshowcolor');
     $css = \theme_shoelace\toolbox::set_colour($css, $slideshowcolor, '[[setting:slideshowcolor]]', '#30add1');
@@ -161,14 +169,16 @@ function theme_shoelace_pluginfile($course, $cm, $context, $filearea, $args, $fo
         $theme = theme_config::load('shoelace');
     }
     if ($context->contextlevel == CONTEXT_SYSTEM) {
+        // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
+        if (!array_key_exists('cacheability', $options)) {
+            $options['cacheability'] = 'public';
+        }
         if ($filearea === 'logo') {
-            // By default, theme files must be cache-able by both browsers and proxies.  From 'More' theme.
-            if (!array_key_exists('cacheability', $options)) {
-                $options['cacheability'] = 'public';
-            }
             return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
         } else if (preg_match("/^(slide)[1-9][0-9]*image$/", $filearea)) {
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
+        } else if ($filearea === 'backgroundimage') {
+            return $theme->setting_file_serve('backgroundimage', $args, $forcedownload, $options);
         } else if ($filearea === 'syntaxhighlighter') {
             \theme_shoelace\toolbox::serve_syntaxhighlighter($args[1]);
         } else {

@@ -115,6 +115,15 @@ $string['themetextcolourdesc'] = 'Set the colour for the text when used with the
 $string['backgroundcolour'] = 'Background colour';
 $string['backgroundcolourdesc'] = 'Set the background colour around the page.';
 
+$string['backgroundimage'] = 'Background image';
+$string['backgroundimagedesc'] = 'Set the background image around the page.';
+
+$string['backgroundimagestyle'] = 'Background image style';
+$string['backgroundimagestyledesc'] = 'Select the style for the background image.';
+$string['stylefixed'] = 'Fixed';
+$string['styletiled'] = 'Tiled';
+$string['stylestretch'] = 'Stretch';
+
 $string['backgroundtextcolour'] = 'Background text colour';
 $string['backgroundtextcolourdesc'] = 'Set the colour for the background text around the page.';
 

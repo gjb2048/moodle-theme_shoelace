@@ -1,5 +1,12 @@
 /* Shoelace Custom CSS
 -------------------------*/
+body {
+    background-image: [[setting:backgroundimage]];
+    background-attachment: [[setting:backgroundimageattach]];
+    background-repeat: [[setting:backgroundimagerepeat]];
+    background-size: [[setting:backgroundimagesize]];
+}
+
 a.logo {
     background-image: url('[[setting:logo]]');
     background-repeat: no-repeat;

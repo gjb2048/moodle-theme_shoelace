@@ -198,6 +198,29 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $lookandfeelsettings->add($setting);
 
+    // Page background image.
+    $name = 'theme_shoelace/backgroundimage';
+    $title = get_string('backgroundimage', 'theme_shoelace');
+    $description = get_string('backgroundimagedesc', 'theme_shoelace');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'backgroundimage');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $lookandfeelsettings->add($setting);
+
+    // Background style.
+    $name = 'theme_shoelace/backgroundimagestyle';
+    $title = get_string('backgroundimagestyle', 'theme_shoelace');
+    $description = get_string('backgroundimagestyledesc', 'theme_shoelace');
+    $default = 'fixed';
+    $setting = new shoelace_admin_setting_configselect($name, $title, $description, $default,
+        array(
+            'fixed' => get_string('stylefixed', 'theme_shoelace'),
+            'tiled' => get_string('styletiled', 'theme_shoelace'),
+            'stretch' => get_string('stylestretch', 'theme_shoelace')
+        )
+    );
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $lookandfeelsettings->add($setting);
+
     // Background text colour setting.
     $name = 'theme_shoelace/backgroundtextcolour';
     $title = get_string('backgroundtextcolour', 'theme_shoelace');

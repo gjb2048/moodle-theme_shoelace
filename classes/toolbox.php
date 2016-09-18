@@ -250,6 +250,37 @@ class toolbox {
         return $css;
     }
 
+    static public function set_background_image($css, $backgroundimage) {
+        $tag = '[[setting:backgroundimage]]';
+        if (!($backgroundimage)) {
+            $replacement = 'none';
+        } else {
+            $replacement = 'url(\''.$backgroundimage.'\')';
+        }
+        $css = str_replace($tag, $replacement, $css);
+        return $css;
+    }
+
+    static public function set_background_image_style($css, $style) {
+        $tagattach = '[[setting:backgroundimageattach]]';
+        $tagrepeat = '[[setting:backgroundimagerepeat]]';
+        $tagsize = '[[setting:backgroundimagesize]]';
+        $replacementattach = 'fixed';
+        $replacementrepeat = 'no-repeat';
+        $replacementsize = 'cover';
+        if ($style === 'tiled') {
+            $replacementrepeat = 'repeat';
+            $replacementsize = 'auto';
+        } else if ($style === 'stretch') {
+            $replacementattach = 'scroll';
+        }
+
+        $css = str_replace($tagattach, $replacementattach, $css);
+        $css = str_replace($tagrepeat, $replacementrepeat, $css);
+        $css = str_replace($tagsize, $replacementsize, $css);
+        return $css;
+    }
+
     static public function serve_syntaxhighlighter($filename) {
         global $CFG;
         if (file_exists("{$CFG->dirroot}/theme/shoelace/javascript/syntaxhighlighter_3_0_83/scripts/")) {
