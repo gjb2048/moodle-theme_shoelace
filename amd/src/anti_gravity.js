@@ -24,7 +24,13 @@ define(['jquery', 'core/log'], function($, log) {
 
         $("a[href$='#page-footer']").click(function(e) {
             e.preventDefault();
-            var target = $('#page-footer');
+            var target = $('.form-buttons');
+            if (!target.length) {
+                target = $('.form-submit');
+            }
+            if (!target.length) {
+                target = $('#page-footer');
+            }
             $('html, body').animate({scrollTop : target.offset().top}, animateduration);
             return false;
         });
