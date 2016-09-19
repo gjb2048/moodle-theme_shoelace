@@ -408,6 +408,10 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             $sidepost = 'span3';
         } else {
             $regionmainbox = 'span12';
+            if ($hassidepremiddle) {
+                $regionmain = 'span9';
+                $sidepremiddle = 'span3';
+            }
         }
 
         if (right_to_left()) {
