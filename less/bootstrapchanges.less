@@ -32,55 +32,55 @@
 // --------------------------------------------------
 
 .breadcrumb {
-  background-color: @pageColour;
-  > li {
-    text-shadow: 0 1px 0 @textShadow;
-  }
+    background-color: @pageColour;
+    > li {
+        text-shadow: 0 1px 0 @textShadow;
+    }
 }
 
 // buttons.less
 // --------------------------------------------------
 .btn {
-  .buttonBackground(@btnBackground, @btnBackgroundHighlight, @navbarText, 0 1px 1px rgba(255,255,255,.75));
+    .buttonBackground(@btnBackground, @btnBackgroundHighlight, @navbarText, 0 1px 1px rgba(255,255,255,.75));
 
-  border-radius: @shoelaceBorderRadius;
+    border-radius: @shoelaceBorderRadius;
 
-  color: @navbarText;
-  // Hover/focus state
-  &:hover,
-  &:focus {
     color: @navbarText;
-  }
+    // Hover/focus state
+    &:hover,
+    &:focus {
+        color: @navbarText;
+    }
 }
 
 // Redo success buttons etc. as 'btn' class above overrode 'btn-success' etc. in CSS, so make more specialised.
 .btn.btn-primary {
-  .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+    .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
 }
 // Warning appears are orange
 .btn.btn-warning {
-  .buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
+    .buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
 }
 // Danger and error appear as red
 .btn.btn-danger {
-  .buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
+    .buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
 }
 // Success appears as green
 .btn.btn-success {
-  .buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
+    .buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
 }
 // Info appears as a neutral blue
 .btn.btn-info {
-  .buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
+    .buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
 }
 // Inverse appears as dark gray
 .btn.btn-inverse {
-  .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+    .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
 }
 
 // code.less
 code, pre {
-  color: @textColor;
+    color: @textColor;
 }
 
 // dropdowns.less.
@@ -88,18 +88,18 @@ code, pre {
 // Hover/Focus state
 // -----------
 @media (max-width: @navbarCollapseWidth) {
-  .navbar-inverse .dropdown-menu > li > a:hover,
-  .navbar-inverse .dropdown-menu > li > a:focus,
-  .navbar-inverse .dropdown-submenu:hover > a,
-  .navbar-inverse .dropdown-submenu:focus > a {
-    #gradient > .vertical(@navbarInverseBackgroundHighlight, darken(@navbarInverseBackgroundHighlight, 5%));
-  }
+    .navbar-inverse .dropdown-menu > li > a:hover,
+    .navbar-inverse .dropdown-menu > li > a:focus,
+    .navbar-inverse .dropdown-submenu:hover > a,
+    .navbar-inverse .dropdown-submenu:focus > a {
+        #gradient > .vertical(@navbarInverseBackgroundHighlight, darken(@navbarInverseBackgroundHighlight, 5%));
+    }
 }
 
 // forms.less
 // --------------------------------------------------
 legend {
-  color: @textColor;
+    color: @textColor;
 }
 
 // Shared size and type resets
@@ -120,8 +120,9 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  color: @textColor;
-  border-radius: @shoelaceBorderRadius;
+    background-color: @pageColour;
+    color: @textColor;
+    border-radius: @shoelaceBorderRadius;
 }
 
 textarea, .uneditable-input {
@@ -135,37 +136,37 @@ textarea, .uneditable-input {
 // mixins.less
 // --------------------------------------------------
 .tab-focus() {
-  // Default
-  outline: thin dotted @textColor;
-  // Webkit
-  outline: 2px auto @textColor;
-  outline-offset: -2px;
+    // Default
+    outline: thin dotted @textColor;
+    // Webkit
+    outline: 2px auto @textColor;
+    outline-offset: -2px;
 }
 
 // modals.less
 // --------------------------------------------------
 .modal {
-  border-radius: @borderRadiusSmall;
+    border-radius: @borderRadiusSmall;
 }
 
 .modal-header {
-  color: @themeTextColour;
-  background-color: @themeColour;
-  border-bottom: 1px solid @bodyBackground;
-  .border-radius(@borderRadiusSmall @borderRadiusSmall 0 0);
+    color: @themeTextColour;
+    background-color: @themeColour;
+    border-bottom: 1px solid @bodyBackground;
+    .border-radius(@borderRadiusSmall @borderRadiusSmall 0 0);
 }
 
 .modal-footer {
-  background-color: @bodyBackground;
-  border-top: 1px solid darken(@bodyBackground, 5%);
-  .border-radius(0 0 @borderRadiusSmall @borderRadiusSmall);
-  .box-shadow(none);
+    background-color: @bodyBackground;
+    border-top: 1px solid darken(@bodyBackground, 5%);
+    .border-radius(0 0 @borderRadiusSmall @borderRadiusSmall);
+    .box-shadow(none);
 }
 
 // navs.less
 // --------------------------------------------------
 .nav-header {
-  color: @textColor;
+    color: @textColor;
 }
 
 // Active state, and it's :hover/:focus to override normal :hover/:focus
@@ -204,36 +205,36 @@ textarea, .uneditable-input {
 // responsive-navbar.less
 // --------------------------------------------------
 @media (max-width: @navbarCollapseWidth) {
-  // Refix the navbar.
-  .navbar-fixed-top {
-    position: fixed;
-    .navbar-inner {
-        padding: 0;
+    // Refix the navbar.
+    .navbar-fixed-top {
+        position: fixed;
+        .navbar-inner {
+            padding: 0;
+        }
     }
-  }
-  .navbar-inverse .nav-collapse .nav > li > a:hover,
-  .navbar-inverse .nav-collapse .nav > li > a:focus,
-  .navbar-inverse .nav-collapse .dropdown-menu a:hover,
-  .navbar-inverse .nav-collapse .dropdown-menu a:focus {
-    color: @bodyBackgroundAlt;
-  }
+    .navbar-inverse .nav-collapse .nav > li > a:hover,
+    .navbar-inverse .nav-collapse .nav > li > a:focus,
+    .navbar-inverse .nav-collapse .dropdown-menu a:hover,
+    .navbar-inverse .nav-collapse .dropdown-menu a:focus {
+        color: @bodyBackgroundAlt;
+    }
 }
 
 // responsive-767px-max.less
 // --------------------------------------------------
 @media (max-width: 767px) {
-  // Negative indent the now static "fixed" navbar
-  .navbar-fixed-top {
-    margin-left: 0;
-    margin-right: 0;
-  }
+    // Negative indent the now static "fixed" navbar
+    .navbar-fixed-top {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 // scaffolding.less
 // --------------------------------------------------
 a:hover,
 a:focus {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 // thumbnails.less
@@ -301,6 +302,6 @@ a.muted:focus        { color: darken(@textColor, 20%); }
 // wells.less
 // --------------------------------------------------
 .well {
-  background-color: rgba(red(@wellBackground), green(@wellBackground), blue(@wellBackground), 0.7);
-  border: 1px dotted darken(@wellBackground, 7%);
+    background-color: rgba(red(@wellBackground), green(@wellBackground), blue(@wellBackground), 0.7);
+    border: 1px dotted darken(@wellBackground, 7%);
 }

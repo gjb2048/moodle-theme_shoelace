@@ -2,7 +2,7 @@
 
 // buttons.less.
 button, input.form-submit, input[type="button"], input[type="submit"], input[type="reset"] {
-  text-shadow: none;
+    text-shadow: none;
 }
 
 // core.less.
@@ -18,67 +18,67 @@ button, input.form-submit, input[type="button"], input[type="submit"], input[typ
 
 // course.less.
 #page-course-index .coursebox > .info > .coursename a {
-  background-position: left 0.2em;
+    background-position: left 0.2em;
 }
 
 // navbar.less.
 .navbar-inverse {
-  .btn-navbar .icon-bar {
-    background-color: @navbarInverseText;
-  }
-  &.navbar {
-    .brand, .menubar > li > a {
-      text-shadow: 1px 1px 1px @black;
-      font-weight: bolder;
+    .btn-navbar .icon-bar {
+        background-color: @navbarInverseText;
     }
-  }
+    &.navbar {
+        .brand, .menubar > li > a {
+            text-shadow: 1px 1px 1px @black;
+            font-weight: bolder;
+        }
+    }
 }
 
 // Column blocks.
 .rowblocks-fluid-span (@columns, @fluidGridColumnWidth, @fluidGridGutterWidth) {
-  width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
-  *width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%);
+    width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
+    *width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%);
 }
 
 aside.side-pre-edit,
 aside.middle-edit,
 aside.side-post-edit,
 aside.footer-edit {
-  .block {
-    .rowblocks-fluid-span(3, @fluidGridColumnWidth, @fluidGridGutterWidth);
-    display: block;
-    float: left;
-    min-height: 140px;
-    max-height: 140px;
-    overflow-y: auto;
-    margin-left: @fluidGridGutterWidth;
-    .box-sizing(border-box);
-  }
+    .block {
+        .rowblocks-fluid-span(3, @fluidGridColumnWidth, @fluidGridGutterWidth);
+        display: block;
+        float: left;
+        min-height: 140px;
+        max-height: 140px;
+        overflow-y: auto;
+        margin-left: @fluidGridGutterWidth;
+        .box-sizing(border-box);
+    }
 }
 
 // MDL-44074.
 @media (min-width: 768px) and (max-width: 979px) {
-  aside.side-pre-edit,
-  aside.middle-edit,
-  aside.side-post-edit,
-  aside.footer-edit {
-    .block {
-      .rowblocks-fluid-span(3, @fluidGridColumnWidth768, @fluidGridGutterWidth768);
-      margin-left: @fluidGridGutterWidth768;
+    aside.side-pre-edit,
+    aside.middle-edit,
+    aside.side-post-edit,
+    aside.footer-edit {
+        .block {
+          .rowblocks-fluid-span(3, @fluidGridColumnWidth768, @fluidGridGutterWidth768);
+          margin-left: @fluidGridGutterWidth768;
+        }
     }
-  }
 }
 
 @media (min-width: 1200px) {
-  aside.side-pre-edit,
-  aside.middle-edit,
-  aside.side-post-edit,
-  aside.footer-edit {
-    .block {
-      .rowblocks-fluid-span(3, @fluidGridColumnWidth1200, @fluidGridGutterWidth1200);
-      margin-left: @fluidGridGutterWidth1200;
-   }
-  }
+    aside.side-pre-edit,
+    aside.middle-edit,
+    aside.side-post-edit,
+    aside.footer-edit {
+        .block {
+            .rowblocks-fluid-span(3, @fluidGridColumnWidth1200, @fluidGridGutterWidth1200);
+            margin-left: @fluidGridGutterWidth1200;
+        }
+    }
 }
 
 // Eliminates need for 'desktop-first-column' but does not work in IE8.
@@ -87,36 +87,44 @@ aside#block-region-side-pre,
 aside#block-region-middle,
 aside#block-region-side-post,
 aside#block-region-footer {
-  div.row-fluid div.block:first-of-type {
-    margin-left: 0;
-  }
+    div.row-fluid div.block:first-of-type {
+        margin-left: 0;
+    }
 }
 
 // Support multiple rows when editing otherwise above works, see: http://www.w3schools.com/cssref/sel_nth-of-type.asp
 .rowblocks-nth(@index) {
-  aside.side-pre-edit,
-  aside.middle-edit,
-  aside.side-post-edit,
-  aside.footer-edit {
-    div.block:nth-of-type(@{index}) {
-      margin-left: 0;
+    aside.side-pre-edit,
+    aside.middle-edit,
+    aside.side-post-edit,
+    aside.footer-edit {
+        div.block:nth-of-type(@{index}) {
+            margin-left: 0;
+        }
     }
-  }
 }
 
 .rowblocks-nthX (@index) when (@index > 0) {
-  .rowblocks-nth(@index);
-  .rowblocks-nthX(@index - 4);
+    .rowblocks-nth(@index);
+    .rowblocks-nthX(@index - 4);
 }
 
 .rowblocks-nthX(37); // Ten rows.
 
 #region-main-shoelace div[role="main"] {
-  padding: 8px;
+    padding: 8px;
 }
 
 @media (max-width: @navbarCollapseWidth) {
-  #region-main-shoelace {
-     margin-bottom: 12px;
-  }
+    #region-main-shoelace {
+        margin-bottom: 12px;
+    }
+}
+
+// Mod_assign grader.
+#page-mod-assign-grader {
+    div[data-region="grade-actions-panel"] .collapse-buttons .btn {
+        background-color: @pageColour;
+        background-image: none;
+    }
 }

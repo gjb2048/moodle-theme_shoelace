@@ -198,6 +198,16 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $lookandfeelsettings->add($setting);
 
+    // Background text colour setting.
+    $name = 'theme_shoelace/backgroundtextcolour';
+    $title = get_string('backgroundtextcolour', 'theme_shoelace');
+    $description = get_string('backgroundtextcolourdesc', 'theme_shoelace');
+    $default = '#b8bce7';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $lookandfeelsettings->add($setting);
+
     // Page background image.
     $name = 'theme_shoelace/backgroundimage';
     $title = get_string('backgroundimage', 'theme_shoelace');
@@ -218,16 +228,6 @@ if ($ADMIN->fulltree) {
             'stretch' => get_string('stylestretch', 'theme_shoelace')
         )
     );
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $lookandfeelsettings->add($setting);
-
-    // Background text colour setting.
-    $name = 'theme_shoelace/backgroundtextcolour';
-    $title = get_string('backgroundtextcolour', 'theme_shoelace');
-    $description = get_string('backgroundtextcolourdesc', 'theme_shoelace');
-    $default = '#b8bce7';
-    $previewconfig = null;
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $lookandfeelsettings->add($setting);
 
