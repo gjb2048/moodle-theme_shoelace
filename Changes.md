@@ -14,6 +14,7 @@ Version 3.1.1.0
  11. General tidy up of styles.
  12. Add background image settings.
  13. Tidy up Grader.
+ 14. Alternative MDL-55185 solution.
 
 Version 3.1.0.3
   1. Change in architecture a liitle for child themes.
