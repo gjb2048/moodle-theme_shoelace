@@ -912,8 +912,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
     protected function render_footer_tile_template() {
         if (empty($this->page->layout_options['nofooter'])) {
             $data = new \stdClass();
-
-            if (($this->page->user_is_editing()) || (!empty($this->page->layout_options['noblocks']))) {
+            if (($this->page->user_is_editing()) || (empty($this->page->layout_options['noblocks']))) {
                 if ($this->page->blocks->is_known_region('footer')) {
                     $data->footer_blocks = $this->render_template('footer_blocks_tile');
                 }
@@ -973,14 +972,15 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         $regioncontent = '';
         $editing = $this->page->user_is_editing();
         if ($editing) {
-            $regioncontent .= html_writer::tag('span', get_string('region-'.$region, 'theme_shoelace'),
+            $regioncontent .= html_writer::tag('span', html_writer::tag('span', get_string('region-'.$region, 'theme_shoelace')),
                 array('class' => 'regionname'));
         }
 
         if ($this->page->blocks->region_has_content($region, $this)) {
             if ($blocksperrow > 0) {
+                $attributes['class'] .= ' rowblock-blocks';
                 if ($editing) {
-                    $attributes['class'] .= ' '.$region.'-edit';
+                    $attributes['class'] .= ' rowblock-edit';
                 }
                 $regioncontent .= $this->shoelace_blocks_for_region($region, $blocksperrow, $editing);
                 $output = html_writer::tag($tag, $regioncontent, $attributes);

@@ -534,8 +534,25 @@ table.generaltable {
     }
 }
 
-.editing {
-    .block-region {
+.editing .block-region {
+    padding-top: 24px;
+    position: relative;
+    .regionname {
+        display: block;
+        left: 0;
+        margin: 2px 0;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 100%;
+        span {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: @baseBorderRadius;
+            color: @white;
+            padding: 2px;
+        }
+    }
+    &.yui3-dd-drop-active-valid {
         min-height: 100px;
         border: dotted 2px @pageColour;
     }

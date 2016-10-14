@@ -40,10 +40,7 @@ button, input.form-submit, input[type="button"], input[type="submit"], input[typ
     *width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%);
 }
 
-aside.side-pre-edit,
-aside.middle-edit,
-aside.side-post-edit,
-aside.footer-edit {
+aside.rowblock-edit {
     .block {
         .rowblocks-fluid-span(3, @fluidGridColumnWidth, @fluidGridGutterWidth);
         display: block;
@@ -58,10 +55,7 @@ aside.footer-edit {
 
 // MDL-44074.
 @media (min-width: 768px) and (max-width: 979px) {
-    aside.side-pre-edit,
-    aside.middle-edit,
-    aside.side-post-edit,
-    aside.footer-edit {
+    aside.rowblock-edit {
         .block {
           .rowblocks-fluid-span(3, @fluidGridColumnWidth768, @fluidGridGutterWidth768);
           margin-left: @fluidGridGutterWidth768;
@@ -70,10 +64,7 @@ aside.footer-edit {
 }
 
 @media (min-width: 1200px) {
-    aside.side-pre-edit,
-    aside.middle-edit,
-    aside.side-post-edit,
-    aside.footer-edit {
+    aside.rowblock-edit {
         .block {
             .rowblocks-fluid-span(3, @fluidGridColumnWidth1200, @fluidGridGutterWidth1200);
             margin-left: @fluidGridGutterWidth1200;
@@ -81,23 +72,20 @@ aside.footer-edit {
     }
 }
 
-// Eliminates need for 'desktop-first-column' but does not work in IE8.
-// Info on: http://www.w3schools.com/cssref/sel_first-of-type.asp
-aside#block-region-side-pre,
-aside#block-region-middle,
-aside#block-region-side-post,
-aside#block-region-footer {
-    div.row-fluid div.block:first-of-type {
-        margin-left: 0;
+@media (min-width: 768px) {
+    aside.rowblock-blocks div.row-fluid {
+        display: flex;
+        // Eliminates need for 'desktop-first-column' but does not work in IE8.
+        // Info on: http://www.w3schools.com/cssref/sel_first-of-type.asp
+        .dir-ltr & div.block:first-of-type, .dir-rtl & div.block:last-of-type {
+            margin-left: 0;
+        }
     }
 }
 
 // Support multiple rows when editing otherwise above works, see: http://www.w3schools.com/cssref/sel_nth-of-type.asp
 .rowblocks-nth(@index) {
-    aside.side-pre-edit,
-    aside.middle-edit,
-    aside.side-post-edit,
-    aside.footer-edit {
+    aside.rowblock-edit {
         div.block:nth-of-type(@{index}) {
             margin-left: 0;
         }
