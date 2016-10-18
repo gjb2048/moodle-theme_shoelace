@@ -16,6 +16,7 @@ Version 3.1.1.0
  13. Tidy up Grader.
  14. Alternative MDL-55185 solution.
  15. Fix slide title colour with 'Beside' caption option.
+ 16. Fix opacity issue with the action menu when editing blocks.
 
 Version 3.1.0.3
   1. Change in architecture a liitle for child themes.

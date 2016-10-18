@@ -23,11 +23,10 @@ body {
 // blocks.less
 // --------------------------------------------------
 .block {
-    background-color: @pageColour;
+    background-color: rgba(red(@pageColour), green(@pageColour), blue(@pageColour), 0.9);
     border: 1px solid darken(@bodyBackground, 5%);
     border-radius: @shoelaceBorderRadius;
     box-shadow: @shoelaceBoxShadow;
-    opacity: @shoelaceOpacity;
 }
 
 #region-main .block {
