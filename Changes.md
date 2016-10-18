@@ -1,7 +1,7 @@
 Version Information
 ===================
 Version 3.1.1.0
-  1. Shoelace reborn.
+  1. Shoelace reinvented.
   2. MDL-39661.
   3. MDL-53152.
   4. Fix broken syntax highlighting JS loading.
@@ -19,7 +19,7 @@ Version 3.1.1.0
  16. Fix opacity issue with the action menu when editing blocks.
 
 Version 3.1.0.3
-  1. Change in architecture a liitle for child themes.
+  1. Change in architecture a little for child themes.
 
 Version 3.1.0.2
   1. Release candidate version for Moodle 3.1.
