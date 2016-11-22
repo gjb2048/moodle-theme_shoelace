@@ -103,7 +103,8 @@ $THEME->layouts = array(
         'file' => 'layout.php',
         'mustache' => 'frontpage',
         'regions' => $regions,
-        'defaultregion' => 'side-pre'
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true)
     ),
     // Server administration scripts.
     'admin' => array(

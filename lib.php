@@ -31,12 +31,68 @@ function theme_shoelace_process_css($css, $theme) {
     \theme_shoelace\toolbox::set_core_renderer($outputus);
 
     // Set the logo.
-    $logo = \theme_shoelace\toolbox::setting_file_url('logo', 'logo');
+    $logoname = get_config('core_admin', 'logo');
+    if ($logoname) {
+        global $CFG;
+          
+        require_once("$CFG->libdir/filelib.php");
+
+        $fs = get_file_storage();
+
+        $fileinfo = array(
+            'component' => 'core_admin',
+            'filearea' => 'logo',
+            'itemid' => 0,
+            'contextid' => context_system::instance()->id,
+            'filepath' => '/',
+            'filename' => $logoname);
+ 
+        $file = $fs->get_file($fileinfo['contextid'], $fileinfo['component'], $fileinfo['filearea'],
+            $fileinfo['itemid'], $fileinfo['filepath'], $fileinfo['filename']);
+        $imageinfo = $file->get_imageinfo();
+        $logo = moodle_url::make_pluginfile_url($fileinfo['contextid'], $fileinfo['component'], $fileinfo['filearea'],
+            '0'.$fileinfo['filepath'], theme_get_revision(), $fileinfo['filename']); 
+        $logoheight = $imageinfo['width'];
+            } else {
+        $logo = '';
+        $logoheight = '';
+    }
     $css = \theme_shoelace\toolbox::set_setting($css, '[[setting:logo]]', $logo, '');
 
     // Set the logo height.
-    $logoheight = \theme_shoelace\toolbox::get_setting('logoheight');
     $css = \theme_shoelace\toolbox::set_height_setting($css, '[[setting:logoheight]]', $logoheight, 75);
+
+    // Set the compact logo.
+    $compactlogoname = get_config('core_admin', 'logocompact');
+    if ($compactlogoname) {
+        global $CFG;
+          
+        require_once("$CFG->libdir/filelib.php");
+
+        $fs = get_file_storage();
+
+        $fileinfo = array(
+            'component' => 'core_admin',
+            'filearea' => 'logocompact',
+            'itemid' => 0,
+            'contextid' => context_system::instance()->id,
+            'filepath' => '/',
+            'filename' => $compactlogoname);
+ 
+        $file = $fs->get_file($fileinfo['contextid'], $fileinfo['component'], $fileinfo['filearea'],
+            $fileinfo['itemid'], $fileinfo['filepath'], $fileinfo['filename']);
+        $imageinfo = $file->get_imageinfo();
+        $compactlogo = moodle_url::make_pluginfile_url($fileinfo['contextid'], $fileinfo['component'], $fileinfo['filearea'],
+            '0'.$fileinfo['filepath'], theme_get_revision(), $fileinfo['filename']); 
+        $compactlogoheight = $imageinfo['width'];
+    } else {
+        $compactlogo = $logo;
+        $compactlogoheight = $logoheight;
+    }
+    $css = \theme_shoelace\toolbox::set_setting($css, '[[setting:compactlogo]]', $compactlogo, '');
+
+    // Set the compact logo height.
+    $css = \theme_shoelace\toolbox::set_height_setting($css, '[[setting:compactlogoheight]]', $compactlogoheight, 75);
 
     // Set the background image.
     $backgroundimage = \theme_shoelace\toolbox::setting_file_url('backgroundimage', 'backgroundimage');

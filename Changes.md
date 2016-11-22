@@ -1,5 +1,12 @@
 Version Information
 ===================
+Version 3.2.0.1
+  1. Beta for Moodle 3.2.
+  2. Removed logo setting in favour of new core logo and compact logo.  Will automatically calculate height from the images.
+  3. Add compact logo to navigation bar if there.
+  4. Fixed goto bottom icon on inverse navbar.
+  5. Fixed caret on inverse navbar.
+
 Version 3.1.1.0
   1. Shoelace reinvented.
   2. MDL-39661.

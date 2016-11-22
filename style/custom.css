@@ -8,21 +8,27 @@ body {
 }
 
 a.logo {
-    background-image: url('[[setting:logo]]');
     background-repeat: no-repeat;
     background-position: 0 0;
     display: block;
     float: left;
-    [[setting:logoheight]]
     margin: 0;
     padding: 0;
     width: 100%;
 }
 
-.dir-rtl a.logo {
-    background-position: 100% 0;
-    display: block;
-    float: right;
+@media (min-width: 768px) {
+    a.logo {
+        background-image: url('[[setting:logo]]');
+        [[setting:logoheight]]
+    }
+}
+
+@media (max-width: 767px) {
+    a.logo {
+        background-image: url('[[setting:compactlogo]]');
+        [[setting:compactlogoheight]]
+    }    
 }
 
 #region-main-shoelace-shadow {
@@ -33,10 +39,6 @@ a.logo {
     margin: 0 auto;
     display: block;
     clear: both; /* Clear floats that are sometimes used to make the #region-main-shoelace fit the content, i.e Editing Quiz. */
-}
-
-.dir-rtl .breadcrumb-nav {
-    float: right;
 }
 
 /* Custom CSS Settings

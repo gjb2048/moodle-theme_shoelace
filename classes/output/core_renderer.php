@@ -662,12 +662,10 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             break;
         }
         // Logo only on frontpage.
-        $logo = \theme_shoelace\toolbox::get_setting('logo');
-        if (!empty($logo)) {
+        if (!empty(get_config('core_admin', 'logo'))) {
             global $CFG;
             $heading = \html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
         } else {
-            global $OUTPUT;
             $heading = $this->page_heading();
         }
 
@@ -716,18 +714,25 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
             // Add the page data from the theme settings.
             $data->html_navbarclass = '';
-            $inversenavbar = \theme_shoelace\toolbox::get_setting('inversenavbar');  // Refactor.
-            if (!empty($this->page->theme->settings->invert)) {
+            $inversenavbar = \theme_shoelace\toolbox::get_setting('invert');  // Refactor.
+            if (!empty($inversenavbar)) {
                 $data->html_navbarclass = ' navbar-inverse';
             }
-
+            
             $data->wwwroot = $CFG->wwwroot;
             $data->shortname = \format_string($SITE->shortname, true,
                 array('context' => \context_course::instance(\SITEID)));
 
+            $data->compact_logo = '';
+            $compactlogourl = $this->get_compact_logo_url(null, 35);
+            if ($compactlogourl) {
+                $data->compact_logo = '<a class="compactlogo" href="'.$CFG->wwwroot.'"><img title="'.$data->shortname.'" src="'.$compactlogourl.'"></a>';
+            }
+
             $data->gotobottom_menu = $this->gotobottom_menu();
             $data->search_box = $this->search_box();
             $data->user_menu = $this->user_menu();
+            $data->navbar_plugin_output = $this->navbar_plugin_output();
             $data->custom_menu = $this->custom_menu();
             $data->page_heading_menu = $this->page_heading_menu();
 
@@ -1431,7 +1436,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
      * @return string HTML for the header bar.
      */
     public function context_header($headerinfo = null, $headinglevel = 1) {
-        if ($headinglevel == 1 && !empty($this->page->theme->settings->logo)) {
+        if ($headinglevel == 1 && !empty(get_config('core_admin', 'logo'))) {
             global $CFG;
             return html_writer::link($CFG->wwwroot, '', array('title' => get_string('home'), 'class' => 'logo'));
         }

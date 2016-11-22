@@ -26,7 +26,7 @@
         text-decoration: none;
         border-radius: 1em;
         color: @themeTextColour;
-        i.fa {
+        i.@{fa-css-prefix} {
             border-radius: 45px;
             box-shadow: 0px 0px 25px #ffffff;
             background-color: rgba(255, 255, 255, 0.4);
@@ -60,14 +60,21 @@ fieldset {
     min-width: 0;
 }
 
-// Page
+// Navbar.
+.navbar .compactlogo {
+    float: left;
+    padding: 3px 10px;
+    margin-left: -10px;
+}
+
+// Page.
 .regionname {
     color: @backgroundTextColour;
     text-align: center;
     display: block;
 }
 
-// Embedded
+// Embedded.
 body.pagelayout-embedded {
     background-color: @pageColour;
     .themecredit {
@@ -510,10 +517,7 @@ body.editing {
 
 // Navbar and dock.
 body.has_dock {
-    &.dir-ltr .navbar .navbar-inner {
+    .navbar .navbar-inner {
         padding-left: 42px;
-    }
-    &.dir-rtl .navbar .navbar-inner {
-        padding-right: 42px;
     }
 }

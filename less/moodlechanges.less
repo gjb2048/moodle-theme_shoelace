@@ -125,6 +125,14 @@ input {
             border-top-color: @navbarLinkColorActive;
         }
     }
+
+    .navbar-inverse .moodle-actionmenu[data-enhance] .toggle-display.textmenu .caret {
+        border-top-color: @linkColor;
+        &:hover,
+        &:active {
+            border-top-color: @linkColorHover;
+        }
+    }
 }
 
 .userenrolment {
@@ -289,10 +297,6 @@ input {
     //margin-left: -20px;
     margin-left: inherit;
 }
-.dir-rtl .mform fieldset.collapsible legend a.fheader {
-    //margin-right: -20px;
-    margin-right: inherit;
-}
 
 #adminsettings h3 {
     color: inherit;
@@ -303,9 +307,6 @@ input {
 .mform legend a,
 .mform legend a:hover {
     color: @textColor;
-}
-.dir-rtl .mform .fitem .fitemtitle {
-    float: right;
 }
 
 .form-defaultinfo, .form-label .form-shortname {
@@ -348,12 +349,8 @@ div.backup-section + form,
     background-color: @pageColour;
 }
 
-.dir-ltr.path-grade-report-grader #region-main #region-main-shoelace {
+.path-grade-report-grader #region-main #region-main-shoelace {
     float: left;
-}
-
-.dir-rtl.path-grade-report-grader #region-main #region-main-shoelace {
-    float: right;
 }
 
 .path-grade-report-grader .gradeparent tr:nth-of-type(even) .cell {
@@ -503,9 +500,6 @@ table.generaltable {
 @media (min-width: 768px) {
     body.has_dock #page {
         padding-left: 65px;
-    }
-    body.has_dock.dir-rtl #page {
-        padding-right: 65px;
     }
 }
 

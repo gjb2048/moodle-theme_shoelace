@@ -16,13 +16,6 @@
         }
     }
 }
-.dir-rtl .alert {
-    padding: 8px 14px 8px 35px;
-    .close {
-        float: left;
-        right: 30px;
-    }
-}
 
 .alert-info a {
     color: @infoText;
@@ -181,6 +174,24 @@ textarea, .uneditable-input {
 // --------------------------------------------------
 .navbar .btn-navbar .icon-bar {
     background-color: @textColor;
+}
+
+.navbar-inverse {
+    .nav li.dropdown > a:hover .caret,
+    .nav li.dropdown > a:focus .caret {
+        border-top-color: @linkColorHover;
+        border-bottom-color: @linkColorHover;
+    }
+    .nav li.dropdown > .dropdown-toggle .caret {
+        border-top-color: @linkColor;
+        border-bottom-color: @linkColor;
+    }
+    .nav li.dropdown.open > .dropdown-toggle .caret,
+    .nav li.dropdown.active > .dropdown-toggle .caret,
+    .nav li.dropdown.open.active > .dropdown-toggle .caret {
+        border-top-color: @linkColorHover;
+        border-bottom-color: @linkColorHover;
+    }
 }
 
 // pagination.less
