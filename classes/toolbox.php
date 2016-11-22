@@ -27,6 +27,8 @@
 
 namespace theme_shoelace;
 
+defined('MOODLE_INTERNAL') || die();
+
 class toolbox {
 
     protected $corerenderer = null;

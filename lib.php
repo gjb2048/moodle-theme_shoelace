@@ -25,6 +25,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
+
 function theme_shoelace_process_css($css, $theme) {
     global $PAGE;
     $outputus = $PAGE->get_renderer('theme_shoelace', 'core');
@@ -34,7 +36,7 @@ function theme_shoelace_process_css($css, $theme) {
     $logoname = get_config('core_admin', 'logo');
     if ($logoname) {
         global $CFG;
-          
+
         require_once("$CFG->libdir/filelib.php");
 
         $fs = get_file_storage();
@@ -46,14 +48,14 @@ function theme_shoelace_process_css($css, $theme) {
             'contextid' => context_system::instance()->id,
             'filepath' => '/',
             'filename' => $logoname);
- 
+
         $file = $fs->get_file($fileinfo['contextid'], $fileinfo['component'], $fileinfo['filearea'],
             $fileinfo['itemid'], $fileinfo['filepath'], $fileinfo['filename']);
         $imageinfo = $file->get_imageinfo();
         $logo = moodle_url::make_pluginfile_url($fileinfo['contextid'], $fileinfo['component'], $fileinfo['filearea'],
-            '0'.$fileinfo['filepath'], theme_get_revision(), $fileinfo['filename']); 
+            '0'.$fileinfo['filepath'], theme_get_revision(), $fileinfo['filename']);
         $logoheight = $imageinfo['width'];
-            } else {
+    } else {
         $logo = '';
         $logoheight = '';
     }
@@ -66,7 +68,7 @@ function theme_shoelace_process_css($css, $theme) {
     $compactlogoname = get_config('core_admin', 'logocompact');
     if ($compactlogoname) {
         global $CFG;
-          
+
         require_once("$CFG->libdir/filelib.php");
 
         $fs = get_file_storage();
@@ -78,12 +80,12 @@ function theme_shoelace_process_css($css, $theme) {
             'contextid' => context_system::instance()->id,
             'filepath' => '/',
             'filename' => $compactlogoname);
- 
+
         $file = $fs->get_file($fileinfo['contextid'], $fileinfo['component'], $fileinfo['filearea'],
             $fileinfo['itemid'], $fileinfo['filepath'], $fileinfo['filename']);
         $imageinfo = $file->get_imageinfo();
         $compactlogo = moodle_url::make_pluginfile_url($fileinfo['contextid'], $fileinfo['component'], $fileinfo['filearea'],
-            '0'.$fileinfo['filepath'], theme_get_revision(), $fileinfo['filename']); 
+            '0'.$fileinfo['filepath'], theme_get_revision(), $fileinfo['filename']);
         $compactlogoheight = $imageinfo['width'];
     } else {
         $compactlogo = $logo;

@@ -29,6 +29,9 @@
  * Toolbox unit tests for the Shoelace theme.
  * @group theme_shoehorn
  */
+
+defined('MOODLE_INTERNAL') || die();
+
 class theme_shoelace_toolbox_testcase extends advanced_testcase {
 
     protected $outputus;

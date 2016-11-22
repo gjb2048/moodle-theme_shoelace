@@ -29,6 +29,9 @@
  * Core renderer unit tests for the Shoelace theme.
  * @group theme_shoelace
  */
+
+defined('MOODLE_INTERNAL') || die();
+
 class theme_shoelace_corerenderer_testcase extends advanced_testcase {
 
     protected $outputus;

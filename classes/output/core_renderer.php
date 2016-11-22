@@ -34,6 +34,8 @@ use block_contents;
 use block_move_target;
 use moodle_url;
 
+defined('MOODLE_INTERNAL') || die();
+
 require_once($CFG->dirroot . '/theme/bootstrapbase/renderers/core_renderer.php');  // Urrgh, but it works for child themes.
 
 class core_renderer extends \theme_bootstrapbase_core_renderer {
@@ -718,7 +720,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             if (!empty($inversenavbar)) {
                 $data->html_navbarclass = ' navbar-inverse';
             }
-            
+
             $data->wwwroot = $CFG->wwwroot;
             $data->shortname = \format_string($SITE->shortname, true,
                 array('context' => \context_course::instance(\SITEID)));
