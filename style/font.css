@@ -26,52 +26,59 @@
  */
 
 @font-face {
-  font-family: 'Cabin';
-  font-style: normal;
-  font-weight: 400;
-  src: url('[[font:theme|Cabin-Regular.otf]]');
+    font-family: 'Cabin';
+    font-style: normal;
+    font-weight: 400;
+    src: url('[[font:theme|Cabin-Regular.otf]]');
 }
+
 @font-face {
-  font-family: 'Cabin';
-  font-style: normal;
-  font-weight: 500;
-  src: url('[[font:theme|Cabin-Medium.otf]]');
+    font-family: 'Cabin';
+    font-style: normal;
+    font-weight: 500;
+    src: url('[[font:theme|Cabin-Medium.otf]]');
 }
+
 @font-face {
-  font-family: 'Cabin';
-  font-style: normal;
-  font-weight: 600;
-  src: url('[[font:theme|Cabin-SemiBold.otf]]');
+    font-family: 'Cabin';
+    font-style: normal;
+    font-weight: 600;
+    src: url('[[font:theme|Cabin-SemiBold.otf]]');
 }
+
 @font-face {
-  font-family: 'Cabin';
-  font-style: normal;
-  font-weight: 700;
-  src: url('[[font:theme|Cabin-Bold.otf]]');
+    font-family: 'Cabin';
+    font-style: normal;
+    font-weight: 700;
+    src: url('[[font:theme|Cabin-Bold.otf]]');
 }
+
 @font-face {
-  font-family: 'Cabin';
-  font-style: italic;
-  font-weight: 400;
-  src: url('[[font:theme|Cabin-Italic.otf]]');
+    font-family: 'Cabin';
+    font-style: italic;
+    font-weight: 400;
+    src: url('[[font:theme|Cabin-Italic.otf]]');
 }
+
 @font-face {
-  font-family: 'Cabin';
-  font-style: italic;
-  font-weight: 500;
-  src: url('[[font:theme|Cabin-MediumItalic.otf]]');
+    font-family: 'Cabin';
+    font-style: italic;
+    font-weight: 500;
+    src: url('[[font:theme|Cabin-MediumItalic.otf]]');
 }
+
 @font-face {
-  font-family: 'Cabin';
-  font-style: italic;
-  font-weight: 600;
-  src: url('[[font:theme|Cabin-SemiBoldItalic.otf]]');
+    font-family: 'Cabin';
+    font-style: italic;
+    font-weight: 600;
+   src: url('[[font:theme|Cabin-SemiBoldItalic.otf]]');
 }
+
 @font-face {
-  font-family: 'Cabin';
-  font-style: italic;
-  font-weight: 700;
-  src: url('[[font:theme|Cabin-BoldItalic.otf]]');
+    font-family: 'Cabin';
+    font-style: italic;
+    font-weight: 700;
+    src: url('[[font:theme|Cabin-BoldItalic.otf]]');
 }
 
 @font-face {

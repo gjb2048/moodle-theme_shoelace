@@ -46,7 +46,7 @@ body {
     font-weight: bold;
     line-height: @baseLineHeight;
     color: @textColor;
-    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
 // breadcrumbs.less - mine
@@ -55,7 +55,7 @@ body {
     margin-top: 4px;
     display: inline;
 }
-.breadcrumb >li > .divider {
+.breadcrumb > li > .divider {
     color: @iconColor;
 }
 
@@ -68,12 +68,13 @@ body {
 
 li.breadcrumb-button {
     float: right;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
-li.breadcrumb-button .singlebutton div, li.breadcrumb-button .singlebutton div input {
+li.breadcrumb-button .singlebutton div,
+li.breadcrumb-button .singlebutton div input {
     float: right;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 // buttons.less
@@ -136,7 +137,8 @@ input {
 }
 
 .userenrolment {
-    .col_userdetails, .col_lastcourseaccess {
+    .col_userdetails,
+    .col_lastcourseaccess {
         padding: @shoelaceGap;
     }
 }
@@ -193,7 +195,7 @@ input {
 }
 
 .courses .coursebox.collapsed {
-    border:1px solid lighten(@bodyBackground, 5%);
+    border: 1px solid lighten(@bodyBackground, 5%);
 }
 
 .courses .coursebox.even {
@@ -289,7 +291,8 @@ input {
 
 // forms.less
 // --------------------------------------------------
-.form-defaultinfo, .form-label .form-shortname {
+.form-defaultinfo,
+.form-label .form-shortname {
     word-break: break-word;
 }
 
@@ -309,7 +312,8 @@ input {
     color: @textColor;
 }
 
-.form-defaultinfo, .form-label .form-shortname {
+.form-defaultinfo,
+.form-label .form-shortname {
     color: @textColor;
 }
 
@@ -323,7 +327,7 @@ table {
     input,
     textarea,
     .uneditable-input {
-       width: auto;
+        width: auto;
     }
 }
 
@@ -358,11 +362,13 @@ div.backup-section + form,
 }
 
 .path-grade-report-grader .gradeparent .floater {
-    .cell:nth-of-type(odd), &.lastrow .cell.header {
+    .cell:nth-of-type(odd),
+    &.lastrow .cell.header {
         color: @themeTextColour;
         background-color: @bodyBackgroundAlt;
     }
-    .cell:nth-of-type(even), &.heading .cell.header {
+    .cell:nth-of-type(even),
+    &.heading .cell.header {
         background-color: @pageColour;
     }
 }
@@ -373,7 +379,8 @@ div.backup-section + form,
     }
 
     tr.category th.cell.rowspan {
-        border-width:0; border-left:1px solid lighten(@shoelaceBlue, 20%);
+        border-width: 0;
+        border-left: 1px solid lighten(@shoelaceBlue, 20%);
     }
 
     tr.category th.cell.rowspan:hover {
@@ -381,7 +388,7 @@ div.backup-section + form,
     }
 
     td.name {
-        border-left: 0px;
+        border-left: 0;
     }
 
     td.colspan {
@@ -449,10 +456,14 @@ table.generaltable {
 
 // Grade report wrapping.
 // gradereport_grader.css.
-.path-grade-report-grader .gradestable th.user, .path-grade-report-grader .gradestable th.range,
-.path-grade-report-grader .flexible th, .path-grade-report-grader .flexible td,
-.path-grade-report-grader .flexible th a, .path-grade-report-grader .flexible td a,
-.path-grade-report-grader .gradestable th.range, .path-grade-report-grader td {
+.path-grade-report-grader .gradestable th.user,
+.path-grade-report-grader .gradestable th.range,
+.path-grade-report-grader .flexible th,
+.path-grade-report-grader .flexible td,
+.path-grade-report-grader .flexible th a,
+.path-grade-report-grader .flexible td a,
+.path-grade-report-grader .gradestable th.range,
+.path-grade-report-grader td {
     white-space: pre-line; // http://www.w3schools.com/cssref/pr_text_white-space.asp.
 }
 
@@ -462,7 +473,7 @@ table.generaltable {
     // My alteration.
     .path-admin .buttons,
     .form-buttons {
-        padding-left: 0px;
+        padding-left: 0;
     }
 }
 

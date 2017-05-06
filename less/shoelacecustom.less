@@ -15,20 +15,21 @@
     display: none;
     font-size: 32px;
     line-height: 1;
-    padding: 10px 10px 8px 10px; 
+    padding: 10px 10px 8px 10px;
     position: fixed;
     right: 40px;
-    text-align: center; 
+    text-align: center;
     text-decoration: none;
     color: @themeTextColour;
     cursor: pointer;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         text-decoration: none;
         border-radius: 1em;
         color: @themeTextColour;
         i.@{fa-css-prefix} {
             border-radius: 45px;
-            box-shadow: 0px 0px 25px #ffffff;
+            box-shadow: 0 0 25px #fff;
             background-color: rgba(255, 255, 255, 0.4);
         }
     }
@@ -36,13 +37,15 @@
 
 // Attempt to solve overflowing table issue: https://moodle.org/mod/forum/discuss.php?d=279883 - related to: https://moodle.org/mod/forum/discuss.php?d=274915 - which might be too - code comes from: https://github.com/gjb2048/moodle-theme_shoehorn/issues/5
 table {
-    th:first-child, td:first-child {
+    th:first-child,
+    td:first-child {
         word-break: break-word;
         word-wrap: break-word;
     }
 }
 
-table.flexible, .generaltable {
+table.flexible,
+.generaltable {
     //max-width: 100%; // Add in when move to BS3.
 }
 
@@ -118,14 +121,16 @@ body.editing {
     color: @backgroundTextColour;
     a {
         color: @backgroundTextColour;
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             color: @backgroundTextColourHover;
         }
     }
     .helplink a {
         background-color: @pageColour;
         color: @linkColor;
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             color: @linkColorHover;
         }
         box-shadow: @shoelaceBoxShadow;
@@ -138,7 +143,8 @@ body.editing {
     color: @backgroundTextColour;
     font-size: 7pt;
     text-align: center;
-    a, a:hover {
+    a,
+    a:hover {
         color: @backgroundTextColour;
     }
 }
@@ -157,7 +163,8 @@ body.editing {
 
 // Contributed plugins.
 .block_course_contents a.dimmed {
-    &:link, &:visited {
+    &:link,
+    &:visited {
         color: @grayLight;
     }
 }
@@ -191,7 +198,7 @@ body.editing {
                 }
             }
             &.side-caption .carousel-image {
-                box-shadow: 0px 0px 8px #222;
+                box-shadow: 0 0 8px #222;
                 padding: 8px;
                 background-color: #fff;
                 margin-left: -8px;
@@ -199,7 +206,7 @@ body.editing {
         }
         a,
         a:hover,
-            a:active {
+        a:active {
             text-decoration: none;
             height: 100%;
         }
@@ -209,15 +216,17 @@ body.editing {
             .carousel-caption-inner {
                 margin: 0 auto;
             }
-            h4, div {
-                padding: 0px 20px;
+            h4,
+            div {
+                padding: 0 20px;
             }
             div {
                 line-height: 1;
             }
         }
         &.centred {
-            .carousel-caption, div.the-side-caption {
+            .carousel-caption,
+            div.the-side-caption {
                 text-align: center;
             }
         }
@@ -229,15 +238,15 @@ body.editing {
     .carousel-control {
         display: none; // Shown when carousel hovered on, see below.
         background-color: transparent;
-        border: 0px;
+        border: 0;
         font-size: 30px;
         &:hover,
-            &:focus {
+        &:focus {
             background-color: transparent;
-            border: 0px;
+            border: 0;
         }
     }
-    &:hover .carousel-control{
+    &:hover .carousel-control {
         display: block;
     }
     .carousel-indicators {
@@ -293,6 +302,7 @@ body.editing {
             height: 36px;
         }
     }
+
     @media (max-width: 767px) {
         .carousel-inner {
             > .item {
@@ -318,7 +328,8 @@ body.editing {
                     margin-top: 6.5%;
                 }
             }
-            &.below > .item, > .item.side-caption {
+            &.below > .item,
+            > .item.side-caption {
                 height: 280px;
                 .carousel-caption {
                     height: 45px;
@@ -382,6 +393,7 @@ body.editing {
             height: 40px;
         }
     }
+
     @media (min-width: 768px) and (max-width: 979px) {
         .carousel-inner {
             > .item {
@@ -481,7 +493,8 @@ body.editing {
             .carousel-caption-inner {
                 max-width: ~"[[setting:pagewidth]]";
             }
-            h4, div {
+            h4,
+            div {
                 color: ~"[[setting:slidecaptiontextcolor]]";
             }
         }
@@ -503,7 +516,7 @@ body.editing {
 
     // Carousel indicator pips.
     .carousel-indicators {
-        box-shadow: 0px 0px 8px ~"[[setting:slidebuttoncolor]]";
+        box-shadow: 0 0 8px ~"[[setting:slidebuttoncolor]]";
         li {
             background-color: ~"[[setting:slidebuttoncolor]]";
         }

@@ -6,7 +6,8 @@
     border-radius: @shoelaceBorderRadius;
 }
 
-.alert, .modal-header {
+.alert,
+.modal-header {
     .close {
         color: @white;
         .opacity(90);
@@ -34,7 +35,7 @@
 // buttons.less
 // --------------------------------------------------
 .btn {
-    .buttonBackground(@btnBackground, @btnBackgroundHighlight, @navbarText, 0 1px 1px rgba(255,255,255,.75));
+    .buttonBackground(@btnBackground, @btnBackgroundHighlight, @navbarText, 0 1px 1px rgba(255, 255, 255, .75));
 
     border-radius: @shoelaceBorderRadius;
 
@@ -72,7 +73,8 @@
 }
 
 // code.less
-code, pre {
+code,
+pre {
     color: @textColor;
 }
 
@@ -118,7 +120,8 @@ input[type="color"],
     border-radius: @shoelaceBorderRadius;
 }
 
-textarea, .uneditable-input {
+textarea,
+.uneditable-input {
     width: 96%;
 }
 
@@ -269,7 +272,8 @@ a:focus {
             &.muted {
                 color: darken(@themeTextColour, 5%);
             }
-            a, div {
+            a,
+            div {
                 color: inherit !important;
             }
             img {
@@ -291,7 +295,8 @@ a:focus {
         tr:hover > td,
         tr:hover > th {
             color: @themeTextColour;
-            a, div {
+            a,
+            div {
                 color: inherit !important;
             }
         }
@@ -300,15 +305,24 @@ a:focus {
 
 // type.less
 // --------------------------------------------------
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     small {
         color: inherit;
     }
 }
 
-.muted               { color: darken(@textColor, 15%); }
+.muted {
+    color: darken(@textColor, 15%);
+}
 a.muted:hover,
-a.muted:focus        { color: darken(@textColor, 20%); }
+a.muted:focus {
+    color: darken(@textColor, 20%);
+}
 
 // wells.less
 // --------------------------------------------------

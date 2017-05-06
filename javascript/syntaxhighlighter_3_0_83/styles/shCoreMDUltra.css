@@ -1,3 +1,5 @@
+/* stylelint-disable */
+/* Disabling as third party styles. */
 /**
  * SyntaxHighlighter
  * http://alexgorbatchev.com/SyntaxHighlighter
@@ -322,3 +324,4 @@
 .syntaxhighlighter .color3, .syntaxhighlighter .color3 a {
   color: #ffaa3e !important;
 }
+/* stylelint-enable */

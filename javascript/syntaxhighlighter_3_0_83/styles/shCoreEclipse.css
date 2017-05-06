@@ -1,3 +1,5 @@
+/* stylelint-disable */
+/* Disabling as third party styles. */
 /**
  * SyntaxHighlighter
  * http://alexgorbatchev.com/SyntaxHighlighter
@@ -337,3 +339,4 @@
   font-style: italic !important;
   color: #2a00ff !important;
 }
+/* stylelint-enable */

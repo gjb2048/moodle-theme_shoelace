@@ -1,3 +1,5 @@
+/* stylelint-disable */
+/* Disabling as third party styles. */
 /**
  * SyntaxHighlighter
  * http://alexgorbatchev.com/SyntaxHighlighter
@@ -329,3 +331,4 @@
 .syntaxhighlighter .keyword {
   font-weight: bold !important;
 }
+/* stylelint-enable */

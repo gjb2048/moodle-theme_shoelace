@@ -1,5 +1,8 @@
 /* Shoelace Custom CSS
 -------------------------*/
+/* stylelint-disable */
+/* Disabling as setting custom styles. */
+
 body {
     background-image: [[setting:backgroundimage]];
     background-attachment: [[setting:backgroundimageattach]];
@@ -44,3 +47,5 @@ a.logo {
 /* Custom CSS Settings
 -------------------------*/
 [[setting:customcss]]
+
+/* stylelint-enable */
