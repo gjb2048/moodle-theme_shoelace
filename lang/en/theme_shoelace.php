@@ -277,7 +277,7 @@ $string['syntaxhelpseven'] = 'More information on';
 $string['syntaxhighlightcat'] = 'Syntax highlighting course categories';
 $string['syntaxhighlightcatdesc'] = 'Syntax highlighting in courses within the selected categories.  A help button that brings up a popup will be added to the footer of courses within the selected categories for course editors when editing.';
 
-// shoelace_admin_setting_configinteger.
+// File shoelace_admin_setting_configinteger.php.
 $string['asconfigintlower'] = '{$a->value} is less than the lower range limit of {$a->lower}';
 $string['asconfigintupper'] = '{$a->value} is greater than the upper range limit of {$a->upper}';
 $string['asconfigintnan'] = '{$a->value} is not a number';
