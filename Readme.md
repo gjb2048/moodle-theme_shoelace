@@ -13,8 +13,8 @@ About
  * author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 
-Maintained by
-=============
+Developed and maintained by
+===========================
 G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE.
 Moodle profile | http://moodle.org/user/profile.php?id=442195
 Web profile | http://about.me/gjbarnard
@@ -51,23 +51,21 @@ by:
 PayPal - Please contact me via my 'Moodle profile' (above) for details as I am an individual and therefore am unable to have
 'buy me now' buttons under their terms.
 
-Flattr - https://flattr.com/profile/gjb2048
-
 Sponsorships may allow me to provide you with more or better features in less time.
 
 Customisation
 =============
 If you like this theme and would like me to customise it, transpose functionality to another theme or build a new theme
-from scratch, then I offer competitive rates.  Please contact me via www.gjbarnard.co.uk/contact/ or gjbarnard at gmail dot com
-to discuss your requirements.
+from scratch, then I offer competitive rates.  Please contact me via my 'Moodle profile' in 'Developed and maintained by'
+above to discuss your requirements.
 
 Required version of Moodle
 ==========================
-This version works with Moodle 3.2 version 2016120500.00 (Build: 20161205) and above within the 3.2 branch until the
+This version works with Moodle 3.3beta+ version 2017050300.00 (Build: 20170503) and above within the 3.3 branch until the
 next release.
 
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
-'docs.moodle.org/32/en/Installing_Moodle'.
+'docs.moodle.org/33/en/Installing_Moodle'.
 
 Installation
 ============
@@ -107,8 +105,8 @@ functionality that is out of its control.
 I operate a policy that I will fix all genuine issues for free.  Improvements are at my discretion.  I am happy to make bespoke
 customisations / improvements for a negotiated fee. 
 
-When reporting an issue you can post in the theme's forum on Moodle.org (currently 'moodle.org/mod/forum/view.php?id=46')
-or contact me direct (details at the bottom).
+When reporting an issue you can post in the theme's forum on Moodle.org (currently 'moodle.org/mod/forum/view.php?id=46'),
+create an issue here: https://github.com/gjb2048/moodle-theme_shoelace/issues or contact me direct (details at the bottom).
 
 It is essential that you provide as much information as possible, the critical information being the contents of the theme's 
 version.php file.  Other version information such as specific Moodle version, theme name and version also helps.  A screen shot

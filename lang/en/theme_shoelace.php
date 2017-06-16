@@ -20,7 +20,7 @@
  * @package    theme
  * @subpackage shoelace
  * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -46,13 +46,9 @@ Website: <a href="http://about.me/gjbarnard">about.me/gjbarnard</a>
 <p>This theme is provided to you for free, and if you want to express your gratitude for using this theme, please consider sponsoring by:
 <h4>PayPal</h4>
 <p>Please contact me via my <a href="http://moodle.org/user/profile.php?id=442195" target="_blank">\'Moodle profile\'</a> for details as I am an individual and therefore am unable to have \'buy me now\' buttons under their terms.</p>
-<h4>Flattr</h4>
-<a href="https://flattr.com/profile/gjb2048" target="_blank">
-clicking here to sponsor.
-</a>
 <br>Sponsorships may allow me to provide you with more or better features in less time.</p>
 <h3>Report a bug:</h3>
-<p><a href="http://tracker.moodle.org">http://tracker.moodle.org</a></p>
+<p><a href="https://github.com/gjb2048/moodle-theme_shoelace/issues">github.com/gjb2048/moodle-theme_shoelace/issues</a></p>
 <h3>More information</h3>
 <p><a href="shoelace/Readme.md">How to use this theme.</a></p>
 </div></div>';
