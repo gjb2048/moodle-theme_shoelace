@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.3.0.1
+  1. Beta for Moodle 3.3.
+
 Version 3.2.1.0
   1. Update to FontAwesome 4.7.0.
   2. Fix syntax highlight modal - related to MDLSITE-4887.

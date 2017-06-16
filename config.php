@@ -203,3 +203,5 @@ if ((is_array($properties)) && ($properties['version'] <= 8.0)) {
 }
 
 $THEME->csspostprocess = 'theme_shoelace_process_css';
+
+$THEME->iconsystem = \core\output\icon_system::FONTAWESOME;

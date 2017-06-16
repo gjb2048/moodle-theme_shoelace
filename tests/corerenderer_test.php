@@ -66,7 +66,7 @@ class theme_shoelace_corerenderer_testcase extends advanced_testcase {
     }
 
     public function test_pix() {
-        $ouricon = \theme_shoelace\toolbox::pix_url('icon', 'theme');
+        $ouricon = \theme_shoelace\toolbox::image_url('icon', 'theme');
 
         $this->assertEquals('http://www.example.com/moodle/theme/image.php/_s/shoelace/theme/1/icon', $ouricon->out(false));
     }

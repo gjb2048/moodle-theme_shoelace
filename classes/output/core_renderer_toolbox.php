@@ -58,7 +58,7 @@ trait core_renderer_toolbox {
         return null;
     }
 
-    public function pix_url($imagename, $component = 'moodle') {
-        return end($this->themeconfig)->pix_url($imagename, $component);
+    public function image_url($imagename, $component = 'moodle') {
+        return end($this->themeconfig)->image_url($imagename, $component);
     }
 }

@@ -263,7 +263,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_shoelace/iconcolour';
     $title = get_string('iconcolour', 'theme_shoelace');
     $description = get_string('iconcolour_desc', 'theme_shoelace');
-    $default = '#7575E0';
+    $default = '#653cae';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');

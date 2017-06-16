@@ -84,9 +84,9 @@ class toolbox {
         return $us->setting_file_url($setting, $filearea);
     }
 
-    static public function pix_url($imagename, $component) {
+    static public function image_url($imagename, $component) {
         $us = self::check_corerenderer();
-        return $us->pix_url($imagename, $component);
+        return $us->image_url($imagename, $component);
     }
 
     static private function check_corerenderer() {

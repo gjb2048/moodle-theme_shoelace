@@ -49,21 +49,37 @@ body {
     text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
+.block_navigation .block_tree .fa[aria-hidden="true"],
+.block_settings .block_tree .fa[aria-hidden="true"] {
+    display: inline-block;
+}
+
+.block_navigation .block_tree p.hasicon,
+.block_settings .block_tree p.hasicon {
+    padding-left: 4px;
+    text-indent: -2px;
+}
+
+.block_navigation .block_tree .tree_item.branch,
+.block_settings .block_tree .tree_item.branch {
+    padding-left: 20px;
+}
+
 // breadcrumbs.less - mine
 // --------------------------------------------------
 .breadcrumb > li {
-    margin-top: 4px;
     display: inline;
+    margin-top: 4px;
 }
 .breadcrumb > li > .divider {
     color: @iconColor;
 }
 
 .breadcrumb {
-    overflow: hidden;
     border-radius: @shoelaceBorderRadius;
     box-shadow: @shoelaceBoxShadow;
     opacity: @shoelaceOpacity;
+    overflow: hidden;
 }
 
 li.breadcrumb-button {
@@ -157,9 +173,9 @@ input {
     .sectionname > span,
     .content > div,  /* All the divs but the activities which are in a UL. */
     .activity .activityinstance {
-        opacity: 1;
         color: @grayLight;
         font-style: italic;
+        opacity: 1;
     }
     .sectionname > span a {
         color: inherit;
@@ -212,7 +228,7 @@ input {
 }
 
 .course_category_tree .paging.paging-morelink a {
-    font-size:90%;
+    font-size: 90%;
 }
 
 /* My Overrides */
@@ -226,6 +242,13 @@ input {
     .coursebox > .info > .coursename a {
         background-position: left 0.2em;
     }
+}
+
+.path-course-view li.activity span.autocompletion img,
+.path-course-view li.activity form.togglecompletion .btn {
+    background-color: transparent;
+    background-image: none;
+    border-color: transparent;
 }
 
 // debug.less
