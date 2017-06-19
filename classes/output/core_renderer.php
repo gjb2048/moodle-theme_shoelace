@@ -76,9 +76,9 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         } else {
             $dividericon = 'fa-angle-right';
         }
-        $divider = html_writer::tag('span', html_writer::start_tag('span',
+        $divider = html_writer::tag('span', html_writer::start_tag('i',
             array('class' => 'fa '.$dividericon.' fa-lg', 'aria-hidden' => 'true')).
-            html_writer::end_tag('span'), array('class' => 'divider'));
+            html_writer::end_tag('i'), array('class' => 'divider'));
         $breadcrumbs = array();
         foreach ($items as $item) {
             $item->hideicon = true;
@@ -111,8 +111,8 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             $title = get_string('turneditingon');
             $icon = 'icon-edit';
         }
-        return html_writer::tag('a', html_writer::start_tag('span', array('class' => $icon . ' icon-white')) .
-            html_writer::end_tag('span'), array('href' => $url, 'class' => 'btn ' . $btn, 'title' => $title));
+        return html_writer::tag('a', html_writer::start_tag('i', array('class' => $icon . ' icon-white')) .
+            html_writer::end_tag('i'), array('href' => $url, 'class' => 'btn ' . $btn, 'title' => $title));
     }
 
     /**
@@ -1111,7 +1111,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         if (($this->page->pagelayout == 'course') ||
             ($this->page->pagelayout == 'incourse') ||
             ($this->page->pagelayout == 'admin')) { // Go to bottom.
-            $gotobottom = html_writer::tag('span', '',
+            $gotobottom = html_writer::tag('i', '',
                 array('class' => 'fa fa-arrow-circle-o-down slgotobottom', 'aria-hidden' => 'true'));
             $url = new moodle_url($this->page->url);
             $url->set_anchor('page-footer');
@@ -1412,7 +1412,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
     }
 
     public function anti_gravity() {
-        $icon = html_writer::start_tag('span',
+        $icon = html_writer::start_tag('i',
             array('class' => 'fa fa-arrow-circle-o-up', 'aria-hidden' => 'true')).
             html_writer::end_tag('span');
         $antigravity = html_writer::tag('span', $icon, array('class' => 'antiGravity', 'title' => get_string('antigravity',
