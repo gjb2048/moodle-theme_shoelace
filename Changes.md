@@ -2,6 +2,7 @@ Version Information
 ===================
 Version 3.3.0.2
   1. Fix user menu icons.
+  2. Fix too many anti-gravity icons.
 
 Version 3.3.0.1
   1. Beta for Moodle 3.3.

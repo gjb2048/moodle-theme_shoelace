@@ -1412,9 +1412,8 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
     }
 
     public function anti_gravity() {
-        $icon = html_writer::start_tag('i',
-            array('class' => 'fa fa-arrow-circle-o-up', 'aria-hidden' => 'true')).
-            html_writer::end_tag('span');
+        $icon = html_writer::tag('i', '',
+            array('class' => 'fa fa-arrow-circle-o-up', 'aria-hidden' => 'true'));
         $antigravity = html_writer::tag('span', $icon, array('class' => 'antiGravity', 'title' => get_string('antigravity',
             'theme_shoelace')));
 
