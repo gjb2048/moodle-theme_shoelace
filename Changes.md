@@ -3,6 +3,8 @@ Version Information
 Version 3.3.0.2
   1. Fix user menu icons.
   2. Fix too many anti-gravity icons.
+  3. Fix unselected rows in the grading table.
+  4. Fix button 'icon' colour.
 
 Version 3.3.0.1
   1. Beta for Moodle 3.3.

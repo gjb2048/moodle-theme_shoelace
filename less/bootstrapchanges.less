@@ -35,16 +35,8 @@
 // buttons.less
 // --------------------------------------------------
 .btn {
-    .buttonBackground(@btnBackground, @btnBackgroundHighlight, @navbarText, 0 1px 1px rgba(255, 255, 255, .75));
-
     border-radius: @shoelaceBorderRadius;
-
-    color: @navbarText;
-    // Hover/focus state
-    &:hover,
-    &:focus {
-        color: @navbarText;
-    }
+    .buttonBackground(@btnBackground, @btnBackgroundHighlight, @textColor, 0 1px 1px rgba(255, 255, 255, .75));
 }
 
 // Redo success buttons etc. as 'btn' class above overrode 'btn-success' etc. in CSS, so make more specialised.
@@ -274,7 +266,7 @@ a:focus {
             }
             a,
             div {
-                color: inherit !important;
+                color: inherit;
             }
             img {
                 background-color: rgba(255, 255, 255, 0.8);
@@ -297,7 +289,7 @@ a:focus {
             color: @themeTextColour;
             a,
             div {
-                color: inherit !important;
+                color: inherit;
             }
         }
     }

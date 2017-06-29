@@ -662,3 +662,18 @@ img[style*="margin: 0 .5em;"] {
     background-color: @tableBackgroundAccent;
     box-shadow: @shoelaceBoxShadow;
 }
+
+// Assign.
+.path-mod-assign .gradingtable tr {
+    &.selectedrow, &.unselectedrow {
+        td {
+            color: inherit;
+        }
+    }
+    > td a.btn-primary {
+        color: @white;
+    }
+    &:hover > td a.btn-primary {
+        color: @white;
+    }
+}
