@@ -77,9 +77,6 @@ $string['featureheading'] = 'Features';
 $string['featureheadingsub'] = 'Feature settings';
 $string['featureheadingdesc'] = 'Configure the feature settings for Shoelace here.';
 
-$string['cdnfonts'] = 'Content delivery network fonts';
-$string['cdnfontsdesc'] = 'Use content delivery network fonts';
-
 $string['nummiddleblocks'] = 'Maximum number of blocks per row in the middle area';
 $string['nummiddleblocksdesc'] = 'The maximum blocks per row in the middle area.';
 
@@ -138,6 +135,36 @@ $string['logodesc'] = 'Please upload your custom logo here if you want to add it
 
 $string['logoheight'] = 'Logo height';
 $string['logoheightdesc'] = 'Logo height between {$a->lower} and {$a->upper} pixels.';
+
+// Font settings.
+$string['fontsettings'] = 'Font';
+$string['fontheadingsub'] = 'Font settings';
+$string['fontheadingdesc'] = 'Select and enter the fonts that you want to use in your Moodle environment.';
+$string['fontselect'] = 'Font type selector';
+$string['fontselectdesc'] = 'Choose from the list of available font defining mechanisms:<ul><li>\'Theme fonts\' are where the font is already installed with the theme.</li><li>\'CDN theme fonts\' are where the fonts specified by the theme are delivered over CDN (Content delivery network).</li><li>\'Custom fonts\' are where you specify the name and upload the font files for the font.  Notes: <ul><li>Not specifying a font name will cause the theme font to be used.</li><li>If both the heading and body fonts are the same then specify the name twice but only upload the font file (of each type you have) to either the heading or body section.</li></ul></li></ul>Please save to show the options for your choice.';
+$string['fonttypetheme'] = 'Theme fonts';
+$string['fonttypethemecdn'] = 'CDN theme fonts';
+$string['fonttypecustom'] = 'Custom fonts';
+$string['fontnameheading'] = 'Heading font';
+$string['fontnameheadingdesc'] = 'Enter the exact name of the font to use for headings.';
+$string['fontnamebody'] = 'Text font';
+$string['fontnamebodydesc'] = 'Enter the exact name of the font to use for all other text.';
+
+// Font files.
+$string['fontfiles'] = 'Font files';
+$string['fontfilesdesc'] = 'Upload your font files here.';
+$string['fontfilettfheading'] = 'Heading TTF font file';
+$string['fontfileotfheading'] = 'Heading OTF font file';
+$string['fontfilewoffheading'] = 'Heading WOFF font file';
+$string['fontfilewofftwoheading'] = 'Heading WOFF2 font file';
+$string['fontfileeotheading'] = 'Heading EOT font file';
+$string['fontfilesvgheading'] = 'Heading SVG font file';
+$string['fontfilettfbody'] = 'Body TTF font file';
+$string['fontfileotfbody'] = 'Body OTF font file';
+$string['fontfilewoffbody'] = 'Body WOFF font file';
+$string['fontfilewofftwobody'] = 'Body WOFF2 font file';
+$string['fontfileeotbody'] = 'Body EOT font file';
+$string['fontfilesvgbody'] = 'Body SVG font file';
 
 // Frontpage.
 $string['frontpageheading'] = 'Frontpage';

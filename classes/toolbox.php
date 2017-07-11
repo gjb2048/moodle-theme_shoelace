@@ -145,6 +145,63 @@ class toolbox {
         return $content;
     }
 
+    static public function get_font_content() {
+        $content = '';
+        $fontselect = self::get_setting('fontselect');
+        if ((!empty($fontselect)) && ($fontselect == 3)) {
+            $fontnameheading = self::get_setting('fontnameheading');
+            $fontnamebody = self::get_setting('fontnamebody');
+            if (!empty($fontnameheading)) {
+                $content .= self::get_font_face($fontnameheading, 'heading');
+            }
+            if (!empty($fontnamebody)) {
+                $content .= self::get_font_face($fontnamebody, 'body');
+            }
+        }
+
+        return $content;
+    }
+
+    static protected function get_font_face($fontname, $type) {
+        $content = '';
+
+        $fontfiles = array();
+        $fontfileeot = self::setting_file_url('fontfileeot'.$type, 'fontfileeot'.$type);
+        if (!empty($fontfileeot)) {
+            $fontfiles[] = "url('".$fontfileeot."?#iefix') format('embedded-opentype')";
+        }
+        $fontfilewoff = self::setting_file_url('fontfilewoff'.$type, 'fontfilewoff'.$type);
+        if (!empty($fontfilewoff)) {
+            $fontfiles[] = "url('".$fontfilewoff."') format('woff')";
+        }
+        $fontfilewofftwo = self::setting_file_url('fontfilewofftwo' . $type, 'fontfilewofftwo'.$type);
+        if (!empty($fontfilewofftwo)) {
+            $fontfiles[] = "url('".$fontfilewofftwo."') format('woff2')";
+        }
+        $fontfileotf = self::setting_file_url('fontfileotf'.$type, 'fontfileotf'.$type);
+        if (!empty($fontfileotf)) {
+            $fontfiles[] = "url('".$fontfileotf."') format('opentype')";
+        }
+        $fontfilettf = self::setting_file_url('fontfilettf'.$type, 'fontfilettf'.$type);
+        if (!empty($fontfilettf)) {
+            $fontfiles[] = "url('".$fontfilettf."') format('truetype')";
+        }
+        $fontfilesvg = self::setting_file_url('fontfilesvg'.$type, 'fontfilesvg'.$type);
+        if (!empty($fontfilesvg)) {
+            $fontfiles[] = "url('".$fontfilesvg."') format('svg')";
+        }
+
+        if (!empty($fontfiles)) {
+            $content .= '@font-face {'.PHP_EOL.'font-family: "'.$fontname.'";'.PHP_EOL;
+            $content .= !empty($fontfileeot) ? "src: url('".$fontfileeot."');".PHP_EOL : '';
+            $content .= "src: ";
+            $content .= implode(",".PHP_EOL." ", $fontfiles);
+            $content .= ";".PHP_EOL."}";
+        }
+
+        return $content;
+    }
+
     /**
      * Finds the given setting in the theme using the get_config core function for when the
      * theme_config object has not been created.

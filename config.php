@@ -36,10 +36,12 @@ $THEME->lessfile = 'moodleallshoelace';
 $THEME->lessvariablescallback = 'theme_shoelace_less_variables';
 $THEME->extralesscallback = 'theme_shoelace_extra_less';
 
-$cdnfonts = \theme_shoelace\toolbox::get_config_setting('cdnfonts');
-if (!empty($cdnfonts) && ($cdnfonts == 1)) {
-    $THEME->sheets[] = 'font';
-    $THEME->sheets[] = 'font-awesome';
+$fontselect = \theme_shoelace\toolbox::get_config_setting('fontselect');
+if (!empty($fontselect)) {
+    if (($fontselect == 1) || ($fontselect == 3)) {
+        $THEME->sheets[] = 'font';
+        $THEME->sheets[] = 'font-awesome';
+    }
 }
 
 $THEME->sheets[] = 'custom';

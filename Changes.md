@@ -6,6 +6,7 @@ Version 3.3.0.2
   3. Fix unselected rows in the grading table.
   4. Fix button 'icon' colour.
   5. Fix file picker icons.
+  6. Add ability to set and upload custom heading and body fonts.
 
 Version 3.3.0.1
   1. Beta for Moodle 3.3.

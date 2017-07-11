@@ -61,17 +61,6 @@ if ($ADMIN->fulltree) {
         get_string('featureheadingsub', 'theme_shoelace'),
         format_text(get_string('featureheadingdesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
 
-    /* CDN Fonts - 1 = no, 2 = yes. */
-    $name = 'theme_shoelace/cdnfonts';
-    $title = get_string('cdnfonts', 'theme_shoelace');
-    $description = get_string('cdnfontsdesc', 'theme_shoelace');
-    $default = 1;
-    $choices = array(
-        1 => new lang_string('no'),   // No.
-        2 => new lang_string('yes')   // Yes.
-    );
-    $featuresettings->add(new shoelace_admin_setting_configselect($name, $title, $description, $default, $choices));
-
     // Number of marketing blocks.
     $name = 'theme_shoelace/nummiddleblocks';
     $title = get_string('nummiddleblocks', 'theme_shoelace');
@@ -98,7 +87,7 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $featuresettings->add($setting);
 
-    if (get_config('theme_shoelace', 'syntaxhighlight') == 2) {
+    if (\theme_shoelace\toolbox::get_config_setting('syntaxhighlight') == 2) {
         // Syntax highlighting categories.
         $coursecats = \theme_shoelace\toolbox::get_categories_list();
         $coursecatsoptions = array();
@@ -268,6 +257,152 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $lookandfeelsettings->add($setting);
+
+    // This is the descriptor for the font settings.
+    $name = 'theme_shoelace/fontheading';
+    $heading = get_string('fontheadingsub', 'theme_shoelace');
+    $information = get_string('fontheadingdesc', 'theme_shoelace');
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $lookandfeelsettings->add($setting);
+
+    // Font selector.
+    $name = 'theme_shoelace/fontselect';
+    $title = get_string('fontselect', 'theme_shoelace');
+    $description = get_string('fontselectdesc', 'theme_shoelace');
+    $default = 1;
+    $choices = array(
+        1 => get_string('fonttypetheme', 'theme_shoelace'),
+        2 => get_string('fonttypethemecdn', 'theme_shoelace'),
+        3 => get_string('fonttypecustom', 'theme_shoelace')
+    );
+    $setting = new shoelace_admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $lookandfeelsettings->add($setting);
+
+    if (\theme_shoelace\toolbox::get_config_setting('fontselect') == 3) {
+        // Heading font name.
+        $name = 'theme_shoelace/fontnameheading';
+        $title = get_string('fontnameheading', 'theme_shoelace');
+        $description = get_string('fontnameheadingdesc', 'theme_shoelace');
+        $default = 'Varela Round';
+        $setting = new admin_setting_configtext($name, $title, $description, $default);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+
+        // Text font name.
+        $name = 'theme_shoelace/fontnamebody';
+        $title = get_string('fontnamebody', 'theme_shoelace');
+        $description = get_string('fontnamebodydesc', 'theme_shoelace');
+        $default = 'Cabin';
+        $setting = new admin_setting_configtext($name, $title, $description, $default);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+
+        // This is the descriptor for the font files.
+        $name = 'theme_shoelace/fontfiles';
+        $heading = get_string('fontfiles', 'theme_shoelace');
+        $information = get_string('fontfilesdesc', 'theme_shoelace');
+        $setting = new admin_setting_heading($name, $heading, $information);
+        $lookandfeelsettings->add($setting);
+
+        // Heading fonts.
+        // TTF font.
+        $name = 'theme_shoelace/fontfilettfheading';
+        $title = get_string('fontfilettfheading', 'theme_shoelace');
+        $description = '';
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfilettfheading');
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+
+        // OTF font.
+        $name = 'theme_shoelace/fontfileotfheading';
+        $title = get_string('fontfileotfheading', 'theme_shoelace');
+        $description = '';
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfileotfheading');
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+
+        // WOFF font.
+        $name = 'theme_shoelace/fontfilewoffheading';
+        $title = get_string('fontfilewoffheading', 'theme_shoelace');
+        $description = '';
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfilewoffheading');
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+
+        // WOFF2 font.
+        $name = 'theme_shoelace/fontfilewofftwoheading';
+        $title = get_string('fontfilewofftwoheading', 'theme_shoelace');
+        $description = '';
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfilewofftwoheading');
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+
+        // EOT font.
+        $name = 'theme_shoelace/fontfileeotheading';
+        $title = get_string('fontfileeotheading', 'theme_shoelace');
+        $description = '';
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfileeotheading');
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+
+        // SVG font.
+        $name = 'theme_shoelace/fontfilesvgheading';
+        $title = get_string('fontfilesvgheading', 'theme_shoelace');
+        $description = '';
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfilesvgheading');
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+
+        // Body fonts.
+        // TTF font.
+        $name = 'theme_shoelace/fontfilettfbody';
+        $title = get_string('fontfilettfbody', 'theme_shoelace');
+        $description = '';
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfilettfbody');
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+
+        // OTF font.
+        $name = 'theme_shoelace/fontfileotfbody';
+        $title = get_string('fontfileotfbody', 'theme_shoelace');
+        $description = '';
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfileotfbody');
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+
+        // WOFF font.
+        $name = 'theme_shoelace/fontfilewoffbody';
+        $title = get_string('fontfilewoffbody', 'theme_shoelace');
+        $description = '';
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfilewoffbody');
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+
+        // WOFF2 font.
+        $name = 'theme_shoelace/fontfilewofftwobody';
+        $title = get_string('fontfilewofftwobody', 'theme_shoelace');
+        $description = '';
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfilewofftwobody');
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+
+        // EOT font.
+        $name = 'theme_shoelace/fontfileeotbody';
+        $title = get_string('fontfileeotbody', 'theme_shoelace');
+        $description = '';
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfileeotbody');
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+
+        // SVG font.
+        $name = 'theme_shoelace/fontfilesvgbody';
+        $title = get_string('fontfilesvgbody', 'theme_shoelace');
+        $description = '';
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfilesvgbody');
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $lookandfeelsettings->add($setting);
+    }
 }
 $ADMIN->add('theme_shoelace', $lookandfeelsettings);
 
@@ -289,7 +424,7 @@ if ($ADMIN->fulltree) {
     // Hide/show navbar on scroll.
     $name = 'theme_shoelace/navbarscroll';
     $title = get_string('navbarscroll', 'theme_shoelace');
-    $upamount = get_config('theme_shoelace', 'navbarscrollupamount');
+    $upamount = \theme_shoelace\toolbox::get_config_setting('navbarscrollupamount');
     $upamountdefault = 240;
     if ($upamount == 0) {
         $upamount = $upamountdefault;
@@ -551,7 +686,7 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $frontpageslideshowsettings->add($setting);
 
-    $numberofslides = get_config('theme_shoelace', 'numberofslides');
+    $numberofslides = \theme_shoelace\toolbox::get_config_setting('numberofslides');
     for ($i = 1; $i <= $numberofslides; $i++) {
         // This is the descriptor for the slide.
         $name = 'theme_shoelace/slide'.$i.'info';

@@ -220,8 +220,8 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         $data->standard_head_html = $this->standard_head_html();
 
         if ($mustache != 'maintenance') {
-            $cdnfonts = \theme_shoelace\toolbox::get_setting('cdnfonts');
-            if (!empty($cdnfonts) && ($cdnfonts == 2)) {
+            $fontselect = \theme_shoelace\toolbox::get_setting('fontselect');
+            if (!empty($fontselect) && ($fontselect == 2)) {
                 $data->cdn_fonts = $this->render_template('cdnfonts_tile');
             }
         }

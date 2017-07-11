@@ -157,28 +157,43 @@ function theme_shoelace_process_css($css, $theme) {
  * @return array of LESS variables without the @.
  */
 function theme_shoelace_less_variables($theme) {
-    if (empty($theme)) {  // Child theme needs to supply 'null' so that we use our 'theme_config' object instead.
-        $theme = \theme_config::load('shoelace');
-    }
     $variables = array();
 
-    if (!empty($theme->settings->themecolour)) {
-        $variables['bodyBackgroundAlt'] = $theme->settings->themecolour;
+    $themecolour = \theme_shoelace\toolbox::get_setting('themecolour');
+    if (!empty($themecolour)) {
+        $variables['bodyBackgroundAlt'] = $themecolour;
     }
-    if (!empty($theme->settings->themetextcolour)) {
-        $variables['themeTextColour'] = $theme->settings->themetextcolour;
+    $themetextcolour = \theme_shoelace\toolbox::get_setting('themetextcolour');
+    if (!empty($themetextcolour)) {
+        $variables['themeTextColour'] = $themetextcolour;
     }
-    if (!empty($theme->settings->backgroundcolour)) {
-        $variables['bodyBackground'] = $theme->settings->backgroundcolour;
+    $backgroundcolour = \theme_shoelace\toolbox::get_setting('backgroundcolour');
+    if (!empty($backgroundcolour)) {
+        $variables['bodyBackground'] = $backgroundcolour;
     }
-    if (!empty($theme->settings->backgroundtextcolour)) {
-        $variables['backgroundTextColour'] = $theme->settings->backgroundtextcolour;
+    $backgroundtextcolour = \theme_shoelace\toolbox::get_setting('backgroundtextcolour');
+    if (!empty($backgroundtextcolour)) {
+        $variables['backgroundTextColour'] = $backgroundtextcolour;
     }
-    if (!empty($theme->settings->pagecolour)) {
-        $variables['pageColour'] = $theme->settings->pagecolour;
+    $pagecolour = \theme_shoelace\toolbox::get_setting('pagecolour');
+    if (!empty($pagecolour)) {
+        $variables['pageColour'] = $pagecolour;
     }
-    if (!empty($theme->settings->textcolour)) {
-        $variables['textColor'] = $theme->settings->textcolour;
+    $textcolour = \theme_shoelace\toolbox::get_setting('textcolour');
+    if (!empty($textcolour)) {
+        $variables['textColor'] = $textcolour;
+    }
+
+    $fontselect = \theme_shoelace\toolbox::get_setting('fontselect');
+    if ((!empty($fontselect)) && ($fontselect == 3)) {
+        $fontnameheading = \theme_shoelace\toolbox::get_setting('fontnameheading');
+        $fontnamebody = \theme_shoelace\toolbox::get_setting('fontnamebody');
+        if (!empty($fontnameheading)) {
+            $variables['headingsFontFamily'] = '"'.$fontnameheading.'", "Varela Round", "Helvetica Neue", Helvetica, Arial, sans-serif';
+        }
+        if (!empty($fontnamebody)) {
+            $variables['baseFontFamily'] = '"'.$fontnamebody.'", "Cabin", "Helvetica Neue", Helvetica, Arial, sans-serif';
+        }
     }
 
     return $variables;
@@ -200,6 +215,7 @@ function theme_shoelace_extra_less($theme) {
     $content = '@import "'.$CFG->dirroot.'/theme/bootstrapbase/less/moodle";';
 
     $content .= \theme_shoelace\toolbox::get_extra_less('variables-shoelace');
+    $content .= \theme_shoelace\toolbox::get_font_content();
     $content .= \theme_shoelace\toolbox::get_extra_less('bootstrapchanges');
     $content .= \theme_shoelace\toolbox::get_extra_less('moodlechanges');
     $content .= \theme_shoelace\toolbox::get_extra_less('shoelacechanges');
@@ -234,6 +250,9 @@ function theme_shoelace_pluginfile($course, $cm, $context, $filearea, $args, $fo
         if ($filearea === 'logo') {
             return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
         } else if (preg_match("/^(slide)[1-9][0-9]*image$/", $filearea)) {
+            return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
+        } else if (preg_match("/^fontfile(eot|otf|svg|ttf|woff|woff2)(heading|body)$/", $filearea)) {
+            // Ref: http://www.regexr.com/.
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         } else if ($filearea === 'backgroundimage') {
             return $theme->setting_file_serve('backgroundimage', $args, $forcedownload, $options);
