@@ -7,6 +7,7 @@ Version 3.3.0.2
   4. Fix button 'icon' colour.
   5. Fix file picker icons.
   6. Add ability to set and upload custom heading and body fonts.
+  7. Added 'Seamless' option to 'Look and feel', which ignores all background settings and use page / text colours along with removing borders / shadows where needed.
 
 Version 3.3.0.1
   1. Beta for Moodle 3.3.

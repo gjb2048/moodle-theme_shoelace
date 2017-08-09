@@ -220,6 +220,14 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $lookandfeelsettings->add($setting);
 
+    // Seamless setting.
+    $name = 'theme_shoelace/seamless';
+    $title = get_string('seamless', 'theme_shoelace');
+    $description = get_string('seamlessdesc', 'theme_shoelace');
+    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $lookandfeelsettings->add($setting);
+
     // Page colour setting.
     $name = 'theme_shoelace/pagecolour';
     $title = get_string('pagecolour', 'theme_shoelace');

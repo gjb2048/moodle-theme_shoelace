@@ -36,7 +36,7 @@
 // --------------------------------------------------
 .btn {
     border-radius: @shoelaceBorderRadius;
-    .buttonBackground(@btnBackground, @btnBackgroundHighlight, @textColor, 0 1px 1px rgba(255, 255, 255, .75));
+    .buttonBackground(@btnBackground, @btnBackgroundHighlight, @themeTextColour, 0 1px 1px rgba(red(@btnBackground), green(@btnBackground), blue(@btnBackground), .75));
 }
 
 // Redo success buttons etc. as 'btn' class above overrode 'btn-success' etc. in CSS, so make more specialised.

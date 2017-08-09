@@ -91,9 +91,9 @@
 
 // Buttons
 // -------------------------
-@btnBackground:                     darken(@bodyBackgroundAlt, 5%);
-@btnBackgroundHighlight:            darken(@bodyBackgroundAlt, 10%);
-@btnBorder:                         darken(@grayLighter, 20%);
+@btnBackground:                     @bodyBackgroundAlt;
+@btnBackgroundHighlight:            lighten(@bodyBackgroundAlt, 5%);
+@btnBorder:                         darken(@bodyBackgroundAlt, 10%);
 
 @btnPrimaryBackground:              @linkColor;
 @btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
@@ -173,8 +173,8 @@
 @navbarCollapseDesktopWidth:      (@navbarCollapseWidth + 1);
 
 @navbarHeight:                    40px;
-@navbarBackgroundHighlight:       @bodyBackgroundAlt;
-@navbarBackground:                darken(@navbarBackgroundHighlight, 5%);
+@navbarBackgroundHighlight:       lighten(@bodyBackgroundAlt, 5%);
+@navbarBackground:                @bodyBackgroundAlt;
 @navbarBorder:                    darken(@navbarBackground, 12%);
 
 @navbarText:                      @themeTextColour;

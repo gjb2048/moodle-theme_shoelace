@@ -95,10 +95,6 @@ li.breadcrumb-button .singlebutton div input {
 
 // buttons.less
 // --------------------------------------------------
-.btn-lineup {
-    margin: 0 0 0 5px;
-}
-
 input {
     &.fp-btn-choose {
         margin-bottom: @shoelaceGap;
@@ -303,13 +299,34 @@ input {
     .fp-tb-manage,
     .fp-tb-logout,
     .fp-tb-refresh {
+        border: 1px solid @textColor;
+        border-bottom: 1px solid @textColor;
         border-radius: @shoelaceBorderRadius;
+        box-shadow: 1px 1px 4px @textColor;
     }
+}
+
+.fp-viewbar {
+    border: 1px solid @textColor;
+    border-bottom: 1px solid @textColor;
+    border-radius: @shoelaceBorderRadius;
+    box-shadow: 1px 1px 4px @textColor;
 }
 
 .filepicker-filelist,
 .filemanager-container {
-    border: 1px solid @bodyBackground;
+    border: 1px solid @textColor;
+}
+
+.filemanager .fp-navbar {
+    border-left: 1px solid @textColor;
+    border-right: 1px solid @textColor;
+    border-top: 1px solid @textColor;
+}
+
+.filepicker-filelist .filepicker-container,
+.filemanager.fm-noitems .fm-empty-container {
+    border: 2px dashed @textColor;
 }
 
 // forms.less

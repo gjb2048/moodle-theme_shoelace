@@ -167,19 +167,32 @@ function theme_shoelace_less_variables($theme) {
     if (!empty($themetextcolour)) {
         $variables['themeTextColour'] = $themetextcolour;
     }
-    $backgroundcolour = \theme_shoelace\toolbox::get_setting('backgroundcolour');
-    if (!empty($backgroundcolour)) {
-        $variables['bodyBackground'] = $backgroundcolour;
-    }
-    $backgroundtextcolour = \theme_shoelace\toolbox::get_setting('backgroundtextcolour');
-    if (!empty($backgroundtextcolour)) {
-        $variables['backgroundTextColour'] = $backgroundtextcolour;
-    }
+
+    $seamless = \theme_shoelace\toolbox::get_setting('seamless');
     $pagecolour = \theme_shoelace\toolbox::get_setting('pagecolour');
+    $textcolour = \theme_shoelace\toolbox::get_setting('textcolour');
+
+    if (!$seamless) {
+        $backgroundcolour = \theme_shoelace\toolbox::get_setting('backgroundcolour');
+        if (!empty($backgroundcolour)) {
+            $variables['bodyBackground'] = $backgroundcolour;
+        }
+        $backgroundtextcolour = \theme_shoelace\toolbox::get_setting('backgroundtextcolour');
+        if (!empty($backgroundtextcolour)) {
+            $variables['backgroundTextColour'] = $backgroundtextcolour;
+        }
+    } else {
+        if (!empty($pagecolour)) {
+            $variables['bodyBackground'] = $pagecolour;
+        }
+        if (!empty($textcolour)) {
+            $variables['backgroundTextColour'] = $textcolour;
+        }
+    }
+
     if (!empty($pagecolour)) {
         $variables['pageColour'] = $pagecolour;
     }
-    $textcolour = \theme_shoelace\toolbox::get_setting('textcolour');
     if (!empty($textcolour)) {
         $variables['textColor'] = $textcolour;
     }
@@ -220,7 +233,13 @@ function theme_shoelace_extra_less($theme) {
     $content .= \theme_shoelace\toolbox::get_extra_less('moodlechanges');
     $content .= \theme_shoelace\toolbox::get_extra_less('shoelacechanges');
     $content .= \theme_shoelace\toolbox::get_extra_less('variables-fontawesome');
+
     $content .= \theme_shoelace\toolbox::get_extra_less('shoelacecustom');
+
+    $seamless = \theme_shoelace\toolbox::get_setting('seamless');
+    if ($seamless) {
+        $content .= \theme_shoelace\toolbox::get_extra_less('shoelaceseamless');
+    }
 
     return $content;
 }

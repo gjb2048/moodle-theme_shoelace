@@ -118,6 +118,9 @@ $string['stylestretch'] = 'Stretch';
 $string['backgroundtextcolour'] = 'Background text colour';
 $string['backgroundtextcolourdesc'] = 'Set the colour for the background text around the page.';
 
+$string['seamless'] = 'Seamless';
+$string['seamlessdesc'] = 'Ignore all background settings and use page / text colours along with removing borders / shadows where needed.  Turn on for a clearer look.';
+
 $string['pagecolour'] = 'Page colour';
 $string['pagecolourdesc'] = 'Set the colour for the page.';
 
