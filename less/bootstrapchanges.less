@@ -39,29 +39,9 @@
     .buttonBackground(@btnBackground, @btnBackgroundHighlight, @themeTextColour, 0 1px 1px rgba(red(@btnBackground), green(@btnBackground), blue(@btnBackground), .75));
 }
 
-// Redo success buttons etc. as 'btn' class above overrode 'btn-success' etc. in CSS, so make more specialised.
-.btn.btn-primary {
-    .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
-}
-// Warning appears are orange
-.btn.btn-warning {
-    .buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
-}
-// Danger and error appear as red
-.btn.btn-danger {
-    .buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
-}
-// Success appears as green
-.btn.btn-success {
-    .buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
-}
-// Info appears as a neutral blue
-.btn.btn-info {
-    .buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
-}
-// Inverse appears as dark gray
-.btn.btn-inverse {
-    .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+// Redo with text colour added.
+.btn-primary {
+    .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight, @themeTextColour);
 }
 
 // code.less
@@ -121,6 +101,11 @@ textarea,
     border-top: 1px solid @bodyBackground;
 }
 
+.help-block,
+.help-inline {
+    color: lighten(@textColor, 5%); // lighten the text some for contrast
+}
+
 // mixins.less
 // --------------------------------------------------
 .tab-focus() {
@@ -156,13 +141,18 @@ textarea,
 .nav-header {
     color: @textColor;
 }
+.nav > li > a:hover,
+.nav > li > a:focus {
+    background-color: @bodyBackgroundAlt;
+    color: @themeTextColour;
+}
 
 // Active state, and it's :hover/:focus to override normal :hover/:focus
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover,
 .nav-tabs > .active > a:focus {
-    color: @pageColour;
-    background-color: @textColor;
+    background-color: @bodyBackgroundAlt;
+    color: @themeTextColour;
 }
 
 // navbar.less

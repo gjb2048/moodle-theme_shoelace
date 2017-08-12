@@ -45,7 +45,7 @@
 // Links
 // -------------------------
 @linkColor:             @textColor;
-@linkColorHover:        lighten(@linkColor, 20%);
+@linkColorHover:        lighten(@linkColor, 2%);
 
 
 // Typography
@@ -95,8 +95,8 @@
 @btnBackgroundHighlight:            lighten(@bodyBackgroundAlt, 5%);
 @btnBorder:                         darken(@bodyBackgroundAlt, 10%);
 
-@btnPrimaryBackground:              @linkColor;
-@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
+@btnPrimaryBackground:              @themeColour;
+@btnPrimaryBackgroundHighlight:     lighten(@btnPrimaryBackground, 10%);
 
 @btnInfoBackground:                 #5bc0de;
 @btnInfoBackgroundHighlight:        #2f96b4;
@@ -302,3 +302,7 @@
 @backgroundTextColourHover: lighten(@backgroundTextColour, 5%);
 @themeColour: @bodyBackgroundAlt;
 @themeTextColour: @white;
+
+// Chart API
+@doughnut-empty-colour: rgba(red(@bodyBackgroundAlt), green(@bodyBackgroundAlt), blue(@bodyBackgroundAlt), 0.4);
+@doughnut-fill-colour: @themeColour;

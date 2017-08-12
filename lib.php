@@ -181,18 +181,25 @@ function theme_shoelace_less_variables($theme) {
         if (!empty($backgroundtextcolour)) {
             $variables['backgroundTextColour'] = $backgroundtextcolour;
         }
+        if (!empty($pagecolour)) {
+            $variables['pageColour'] = $pagecolour;
+        }
     } else {
         if (!empty($pagecolour)) {
-            $variables['bodyBackground'] = $pagecolour;
+            $backgroundimage = \theme_shoelace\toolbox::setting_file_url('backgroundimage', 'backgroundimage');
+            if (!empty($backgroundimage)) {
+                $variables['bodyBackground'] = 'transparent';
+                $variables['pageColour'] = 'transparent';
+            } else {
+                $variables['bodyBackground'] = $pagecolour;
+                $variables['pageColour'] = $pagecolour;
+            }
         }
         if (!empty($textcolour)) {
             $variables['backgroundTextColour'] = $textcolour;
         }
     }
 
-    if (!empty($pagecolour)) {
-        $variables['pageColour'] = $pagecolour;
-    }
     if (!empty($textcolour)) {
         $variables['textColor'] = $textcolour;
     }

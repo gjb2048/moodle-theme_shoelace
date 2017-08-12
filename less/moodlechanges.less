@@ -20,6 +20,34 @@ body {
     color: @textColor;
 }
 
+// breadcrumbs.less - mine
+// --------------------------------------------------
+.breadcrumb > li {
+    display: inline;
+    margin-top: 4px;
+}
+.breadcrumb > li > .divider {
+    color: @iconColor;
+}
+
+.breadcrumb {
+    border-radius: @shoelaceBorderRadius;
+    box-shadow: @shoelaceBoxShadow;
+    opacity: @shoelaceOpacity;
+    overflow: hidden;
+}
+
+li.breadcrumb-button {
+    float: right;
+    margin-top: 0;
+}
+
+li.breadcrumb-button .singlebutton div,
+li.breadcrumb-button .singlebutton div input {
+    float: right;
+    margin-bottom: 0;
+}
+
 // blocks.less
 // --------------------------------------------------
 .block {
@@ -49,6 +77,10 @@ body {
     text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
+.block_myoverview .well {
+    background-color: darken(@pageColour, 2%);
+}
+
 .block_navigation .block_tree .fa[aria-hidden="true"],
 .block_settings .block_tree .fa[aria-hidden="true"] {
     display: inline-block;
@@ -63,34 +95,6 @@ body {
 .block_navigation .block_tree .tree_item.branch,
 .block_settings .block_tree .tree_item.branch {
     padding-left: 20px;
-}
-
-// breadcrumbs.less - mine
-// --------------------------------------------------
-.breadcrumb > li {
-    display: inline;
-    margin-top: 4px;
-}
-.breadcrumb > li > .divider {
-    color: @iconColor;
-}
-
-.breadcrumb {
-    border-radius: @shoelaceBorderRadius;
-    box-shadow: @shoelaceBoxShadow;
-    opacity: @shoelaceOpacity;
-    overflow: hidden;
-}
-
-li.breadcrumb-button {
-    float: right;
-    margin-top: 0;
-}
-
-li.breadcrumb-button .singlebutton div,
-li.breadcrumb-button .singlebutton div input {
-    float: right;
-    margin-bottom: 0;
 }
 
 // buttons.less
@@ -291,6 +295,17 @@ input {
     }
 }
 
+// Order here is important so that these are overridden by .fp-viewbar hover etc.
+.filemanager a,
+.file-picker a {
+    color: @textColor;
+}
+
+.filemanager a:hover,
+.file-picker a:hover {
+    color: lighten(@textColor, 2%);
+}
+
 .fp-toolbar {
     .fp-btn-add,
     .fp-btn-download,
@@ -299,6 +314,7 @@ input {
     .fp-tb-manage,
     .fp-tb-logout,
     .fp-tb-refresh {
+        background-color: @pageColour;
         border: 1px solid @textColor;
         border-bottom: 1px solid @textColor;
         border-radius: @shoelaceBorderRadius;
@@ -306,11 +322,53 @@ input {
     }
 }
 
+.fp-toolbar a:hover {
+    background-image: radial-gradient(ellipse at center, @bodyBackgroundAlt 60%, darken(@bodyBackgroundAlt, 10%) 100%);
+    background-color: darken(@bodyBackgroundAlt, 10%);
+    color: @themeTextColour;
+    .@{fa-css-prefix} {
+        color: inherit;
+    }
+}
+
+.fp-toolbar a:active {
+    background-image: radial-gradient(ellipse at center, @bodyBackgroundAlt 40%, darken(@bodyBackgroundAlt, 10%) 100%);
+    background-color: darken(@bodyBackgroundAlt, 10%);
+    color: @themeTextColour;
+    .@{fa-css-prefix} {
+        color: inherit;
+    }
+}
+
 .fp-viewbar {
+    background-color: @pageColour;
     border: 1px solid @textColor;
     border-bottom: 1px solid @textColor;
     border-radius: @shoelaceBorderRadius;
     box-shadow: 1px 1px 4px @textColor;
+}
+
+.fp-viewbar a {
+    border-right: 1px solid @textColor;
+}
+.fp-viewbar a.checked:hover,
+.fp-viewbar a:hover {
+    background-image: radial-gradient(ellipse at center, @bodyBackgroundAlt 60%, darken(@bodyBackgroundAlt, 10%) 100%);
+    background-color: darken(@bodyBackgroundAlt, 10%);
+    color: @themeTextColour;
+    .@{fa-css-prefix} {
+        color: inherit;
+    }
+}
+
+.fp-viewbar a.checked,
+.fp-viewbar a:active {
+    background-image: radial-gradient(ellipse at center, @bodyBackgroundAlt 40%, darken(@bodyBackgroundAlt, 10%) 100%);
+    background-color: darken(@bodyBackgroundAlt, 10%);
+    color: @themeTextColour;
+    .@{fa-css-prefix} {
+        color: inherit;
+    }
 }
 
 .filepicker-filelist,
@@ -357,8 +415,7 @@ input {
     color: @textColor;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
+input[type="radio"] {
     margin: 4px 0 0;
 }
 
@@ -531,8 +588,7 @@ table.generaltable {
         .dropdown-submenu a:hover,
         .dropdown-submenu a:active,
         .dropdown-menu > li > a:hover,
-        .dropdown-menu > li > a:focus,
-        {
+        .dropdown-menu > li > a:focus {
             background-image: none;
             color: @textColor;
         }

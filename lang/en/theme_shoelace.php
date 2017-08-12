@@ -119,7 +119,7 @@ $string['backgroundtextcolour'] = 'Background text colour';
 $string['backgroundtextcolourdesc'] = 'Set the colour for the background text around the page.';
 
 $string['seamless'] = 'Seamless';
-$string['seamlessdesc'] = 'Ignore all background settings and use page / text colours along with removing borders / shadows where needed.  Turn on for a clearer look.';
+$string['seamlessdesc'] = 'Ignore all background settings and use page / text colours along with removing borders / shadows where needed.  Turn on for a clearer look.  If a \'backgroundimage\' is added then transparency will be used as appropriate.';
 
 $string['pagecolour'] = 'Page colour';
 $string['pagecolourdesc'] = 'Set the colour for the page.';
