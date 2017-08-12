@@ -18,6 +18,12 @@
     }
 }
 
+.alert {
+    a {
+        color: inherit;
+    }
+}
+
 .alert-info a {
     color: @infoText;
 }
@@ -42,6 +48,27 @@
 // Redo with text colour added.
 .btn-primary {
     .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight, @themeTextColour);
+}
+
+// Warning appears are orange
+.btn-warning {
+    .buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight, @warningText);
+}
+// Danger and error appear as red
+.btn-danger {
+    .buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight, @white);
+}
+// Success appears as green
+.btn-success {
+    .buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight, @white);
+}
+// Info appears as a neutral blue
+.btn-info {
+    .buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight, @white);
+}
+// Inverse appears as dark gray
+.btn-inverse {
+    .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight, @white);
 }
 
 // code.less
@@ -87,9 +114,9 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-    background-color: @pageColour;
-    color: @textColor;
+    background-color: @bodyBackgroundAlt;
     border-radius: @shoelaceBorderRadius;
+    color: @themeTextColour;
 }
 
 textarea,
@@ -136,25 +163,6 @@ textarea,
     .box-shadow(none);
 }
 
-// navs.less
-// --------------------------------------------------
-.nav-header {
-    color: @textColor;
-}
-.nav > li > a:hover,
-.nav > li > a:focus {
-    background-color: @bodyBackgroundAlt;
-    color: @themeTextColour;
-}
-
-// Active state, and it's :hover/:focus to override normal :hover/:focus
-.nav-tabs > .active > a,
-.nav-tabs > .active > a:hover,
-.nav-tabs > .active > a:focus {
-    background-color: @bodyBackgroundAlt;
-    color: @themeTextColour;
-}
-
 // navbar.less
 // --------------------------------------------------
 .navbar .btn-navbar .icon-bar {
@@ -177,6 +185,33 @@ textarea,
         border-top-color: @linkColorHover;
         border-bottom-color: @linkColorHover;
     }
+}
+
+// navs.less
+// --------------------------------------------------
+.nav-header {
+    color: @textColor;
+}
+.nav > li > a:hover,
+.nav > li > a:focus {
+    background-color: @bodyBackgroundAlt;
+    color: @themeTextColour;
+}
+
+// Active state, and it's :hover/:focus to override normal :hover/:focus
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover,
+.nav-tabs > .active > a:focus {
+    background-color: @bodyBackgroundAlt;
+    color: @themeTextColour;
+}
+
+// Active state
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover,
+.nav-pills > .active > a:focus {
+    background-color: @bodyBackgroundAlt;
+    color: @themeTextColour;
 }
 
 // pagination.less
@@ -254,8 +289,7 @@ a:focus {
             &.muted {
                 color: darken(@themeTextColour, 5%);
             }
-            a,
-            div {
+            a {
                 color: inherit;
             }
             img {
@@ -299,11 +333,11 @@ h6 {
 }
 
 .muted {
-    color: darken(@textColor, 15%);
+    color: darken(@textColor, 5%);
 }
 a.muted:hover,
 a.muted:focus {
-    color: darken(@textColor, 20%);
+    color: darken(@textColor, 8%);
 }
 
 // wells.less

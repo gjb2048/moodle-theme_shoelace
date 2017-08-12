@@ -13,6 +13,29 @@ body {
     vertical-align: top;
 }
 
+#plugins-check-page,
+#plugins-control-panel {
+    .pluginupdateinfo {
+        color: @infoText;
+        a {
+            color: inherit;
+        }
+        &.maturity50 {
+            color: @errorText;
+            a {
+                color: inherit;
+            }
+        }
+        &.maturity100,
+        &.maturity150 {
+            color: @warningText;
+            a {
+                color: inherit;
+            }
+        }
+    }
+}
+
 // backup-restore.less
 // --------------------------------------------------
 .backup-restore .backup-section > h2.header,
@@ -157,6 +180,18 @@ input {
     .col_lastcourseaccess {
         padding: @shoelaceGap;
     }
+}
+
+.initialbar {
+    .letter {
+        color: @themeTextColour;
+    }
+    .letter:hover,
+    .letter.active {
+        background-color: lighten(@themeColour, 5%);
+        color: darken(@themeTextColour, 5%);
+    }
+
 }
 
 // course.less
@@ -440,6 +475,28 @@ div.backup-section + form,
 
 // grade.less
 // --------------------------------------------------
+/**
+ * Grader report.
+ */
+.path-grade-report {
+    .gradeparent {
+        tr .cell {
+            color: @themeTextColour;
+            a {
+                color: inherit;
+            }
+        }
+        tr:nth-of-type(even) .cell,
+        .floater .cell,
+        .avg {
+            color: @themeTextColour;
+            a {
+                color: inherit;
+            }
+        }
+    }
+}
+
 .gradetreebox td.colspan,
 .gradetreebox tr.category .cell {
     color: @themeTextColour;
@@ -456,13 +513,14 @@ div.backup-section + form,
 
 .path-grade-report-grader .gradeparent tr:nth-of-type(even) .cell {
     background-color: @pageColour;
+    color: inherit;
 }
 
 .path-grade-report-grader .gradeparent .floater {
     .cell:nth-of-type(odd),
     &.lastrow .cell.header {
+        background-color: @bodyBackgroundAlt;  // TODO: Need to think about this for seamless with page background image.
         color: @themeTextColour;
-        background-color: @bodyBackgroundAlt;
     }
     .cell:nth-of-type(even),
     &.heading .cell.header {
