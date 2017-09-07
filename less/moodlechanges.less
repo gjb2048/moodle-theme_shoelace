@@ -272,7 +272,6 @@ input {
     font-size: 0.8em;
 }
 
-// course.less.
 #frontpage-category-combo {
     .coursebox > .info > .coursename a {
         background-position: left 0.2em;
@@ -284,6 +283,82 @@ input {
     background-color: transparent;
     background-image: none;
     border-color: transparent;
+}
+
+#course-category-listings {
+    li {
+        > div {
+            &:hover {
+                color: @tableTextColour;
+                a {
+                    color: inherit;
+                }
+            }
+        }
+        &[data-selected='1'] {
+            > div {
+                color: @tableTextColour;
+                a {
+                    color: inherit;
+                }
+            }
+            > div:hover {
+                color: @tableTextColour;
+                a {
+                    color: inherit;
+                }
+            }
+        }
+    }
+
+    .listitem {
+        &.highlight {
+            color: @tableTextColour;
+            > div,
+            > div:hover,
+            &[data-selected='1'] > div {
+                color: @tableTextColour;
+                a {
+                    color: inherit;
+                }
+            }
+        }
+    }
+
+    #course-listing {
+        .listitem {
+            .categoryname {
+                color: inherit;
+            }
+        }
+    }
+    #category-listing {
+        .listitem {
+            &.highlight > div > .ba-checkbox {
+                color: @tableTextColour;
+            }
+            &[data-selected='1'] > div > .ba-checkbox {
+                background-color: inherit;
+                color: @tableTextColour;
+                a {
+                    color: inherit;
+                }
+            }
+        }
+        .course-count {
+            color: inherit;
+        }
+    }
+
+    .listing-pagination {
+        text-align: center;
+        .yui3-button {
+            background-color: @btnBackground;
+            &.active-page {
+                background-color: @btnBackgroundHighlight;
+            }
+        }
+    }
 }
 
 // debug.less
