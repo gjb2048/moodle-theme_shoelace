@@ -20,7 +20,7 @@
  * @package    theme
  * @subpackage shoelace
  * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

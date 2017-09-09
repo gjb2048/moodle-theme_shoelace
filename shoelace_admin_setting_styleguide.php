@@ -20,7 +20,7 @@
  * @package    theme
  * @subpackage shoelace
  * @copyright  &copy; 2016-onwards G J Barnard.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @license    PHP Code: http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  * @license    Source HTML Code: http://www.apache.org/licenses/LICENSE-2.0 Apache License v2.0:
  *
@@ -455,12 +455,13 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= "}";
         $return .= ".show-grid [class*=\"span\"] {";
         $return .= "background-color: #eee;";
-        $return .= "text-align: center;";
         $return .= "-webkit-border-radius: 3px;";
         $return .= "-moz-border-radius: 3px;";
         $return .= "border-radius: 3px;";
-        $return .= "min-height: 40px;";
+        $return .= "color: #653cae;";
         $return .= "line-height: 40px;";
+        $return .= "min-height: 40px;";
+        $return .= "text-align: center;";
         $return .= "}";
         $return .= ".show-grid [class*=\"span\"]:hover {";
         $return .= "background-color: #ddd;";
@@ -667,15 +668,16 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= "-------------------------------------------------- */";
         $return .= "/* Base class */";
         $return .= ".bs-docs-example {";
-        $return .= "position: relative;";
-        $return .= "margin: 15px 0;";
-        $return .= "padding: 39px 19px 14px;";
-        $return .= "*padding-top: 19px;";
         $return .= "background-color: #fff;";
         $return .= "border: 1px solid #ddd;";
         $return .= "-webkit-border-radius: 4px;";
         $return .= "-moz-border-radius: 4px;";
         $return .= "border-radius: 4px;";
+        $return .= "color: #653cae;";
+        $return .= "margin: 15px 0;";
+        $return .= "padding: 39px 19px 14px;";
+        $return .= "*padding-top: 19px;";
+        $return .= "position: relative;";
         $return .= "}";
         $return .= "/* Echo out a label for the example */";
         $return .= ".bs-docs-example:after {";
@@ -1158,6 +1160,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= "#forms .checkbox input[type=checkbox] {";
         $return .= "margin-left: 0;";
         $return .= "margin-right: 0;";
+        $return .= "margin-top: 4px;";
         $return .= "}";
         $return .= '.'.$this->name.' .thumbnail-container {';
         $return .= 'width: 100%;';
@@ -2563,21 +2566,21 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '<form class="bs-docs-example">';
         $return .= '<div class="input-prepend">';
         $return .= '<span class="add-on">@</span>';
-        $return .= '<input class="span2" id="prependedInput" type="text" placeholder="Username">';
+        $return .= '<input id="prependedInput" type="text" placeholder="Username">';
         $return .= '</div>';
         $return .= '<br>';
         $return .= '<div class="input-append">';
-        $return .= '<input class="span2" id="appendedInput" type="text">';
+        $return .= '<input id="appendedInput" type="text">';
         $return .= '<span class="add-on">.00</span>';
         $return .= '</div>';
         $return .= '</form>';
         $return .= '<pre class="prettyprint linenums">';
         $return .= '&lt;div class="input-prepend"&gt;'.PHP_EOL;
         $return .= '  &lt;span class="add-on"&gt;@&lt;/span&gt;'.PHP_EOL;
-        $return .= '  &lt;input class="span2" id="prependedInput" type="text" placeholder="Username"&gt;'.PHP_EOL;
+        $return .= '  &lt;input id="prependedInput" type="text" placeholder="Username"&gt;'.PHP_EOL;
         $return .= '&lt;/div&gt;'.PHP_EOL;
         $return .= '&lt;div class="input-append"&gt;'.PHP_EOL;
-        $return .= '  &lt;input class="span2" id="appendedInput" type="text"&gt;'.PHP_EOL;
+        $return .= '  &lt;input id="appendedInput" type="text"&gt;'.PHP_EOL;
         $return .= '  &lt;span class="add-on"&gt;.00&lt;/span&gt;'.PHP_EOL;
         $return .= '&lt;/div&gt;'.PHP_EOL;
         $return .= '</pre>';
@@ -2587,14 +2590,14 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '<form class="bs-docs-example form-inline">';
         $return .= '<div class="input-prepend input-append">';
         $return .= '<span class="add-on">$</span>';
-        $return .= '<input class="span2" id="appendedPrependedInput" type="text">';
+        $return .= '<input id="appendedPrependedInput" type="text">';
         $return .= '<span class="add-on">.00</span>';
         $return .= '</div>';
         $return .= '</form>';
         $return .= '<pre class="prettyprint linenums">';
         $return .= '&lt;div class="input-prepend input-append"&gt;'.PHP_EOL;
         $return .= '  &lt;span class="add-on"&gt;$&lt;/span&gt;'.PHP_EOL;
-        $return .= '  &lt;input class="span2" id="appendedPrependedInput" type="text"&gt;'.PHP_EOL;
+        $return .= '  &lt;input id="appendedPrependedInput" type="text"&gt;'.PHP_EOL;
         $return .= '  &lt;span class="add-on"&gt;.00&lt;/span&gt;'.PHP_EOL;
         $return .= '&lt;/div&gt;'.PHP_EOL;
         $return .= '</pre>';
@@ -2604,26 +2607,26 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= 'to an input.</p>';
         $return .= '<form class="bs-docs-example">';
         $return .= '<div class="input-append">';
-        $return .= '<input class="span2" id="appendedInputButton" type="text">';
+        $return .= '<input id="appendedInputButton" type="text">';
         $return .= '<button class="btn" type="button">Go!</button>';
         $return .= '</div>';
         $return .= '</form>';
         $return .= '<pre class="prettyprint linenums">';
         $return .= '&lt;div class="input-append"&gt;'.PHP_EOL;
-        $return .= '  &lt;input class="span2" id="appendedInputButton" type="text"&gt;'.PHP_EOL;
+        $return .= '  &lt;input id="appendedInputButton" type="text"&gt;'.PHP_EOL;
         $return .= '  &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;'.PHP_EOL;
         $return .= '&lt;/div&gt;'.PHP_EOL;
         $return .= '</pre>';
         $return .= '<form class="bs-docs-example">';
         $return .= '<div class="input-append">';
-        $return .= '<input class="span2" id="appendedInputButtons" type="text">';
+        $return .= '<input id="appendedInputButtons" type="text">';
         $return .= '<button class="btn" type="button">Search</button>';
         $return .= '<button class="btn" type="button">Options</button>';
         $return .= '</div>';
         $return .= '</form>';
         $return .= '<pre class="prettyprint linenums">';
         $return .= '&lt;div class="input-append"&gt;'.PHP_EOL;
-        $return .= '  &lt;input class="span2" id="appendedInputButtons" type="text"&gt;'.PHP_EOL;
+        $return .= '  &lt;input id="appendedInputButtons" type="text"&gt;'.PHP_EOL;
         $return .= '  &lt;button class="btn" type="button"&gt;Search&lt;/button&gt;'.PHP_EOL;
         $return .= '  &lt;button class="btn" type="button"&gt;Options&lt;/button&gt;'.PHP_EOL;
         $return .= '&lt;/div&gt;'.PHP_EOL;
@@ -2633,7 +2636,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '<p></p>';
         $return .= '<form class="bs-docs-example">';
         $return .= '<div class="input-append">';
-        $return .= '<input class="span2" id="appendedDropdownButton" type="text">';
+        $return .= '<input id="appendedDropdownButton" type="text">';
         $return .= '<div class="btn-group">';
         $return .= '<button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>';
         $return .= '<ul class="dropdown-menu">';
@@ -2648,7 +2651,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '</form>';
         $return .= '<pre class="prettyprint linenums">';
         $return .= '&lt;div class="input-append"&gt;'.PHP_EOL;
-        $return .= '  &lt;input class="span2" id="appendedDropdownButton" type="text"&gt;'.PHP_EOL;
+        $return .= '  &lt;input id="appendedDropdownButton" type="text"&gt;'.PHP_EOL;
         $return .= '  &lt;div class="btn-group"&gt;'.PHP_EOL;
         $return .= '    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;'.PHP_EOL;
         $return .= '      Action'.PHP_EOL;
@@ -2673,7 +2676,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '  <li><a href="#">Separated link</a></li>';
         $return .= '</ul>';
         $return .= '</div><!-- /btn-group -->';
-        $return .= '<input class="span2" id="prependedDropdownButton" type="text">';
+        $return .= '<input id="prependedDropdownButton" type="text">';
         $return .= '</div><!-- /input-prepend -->';
         $return .= '</form>';
         $return .= '<pre class="prettyprint linenums">';
@@ -2687,7 +2690,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '      ...'.PHP_EOL;
         $return .= '    &lt;/ul&gt;'.PHP_EOL;
         $return .= '  &lt;/div&gt;'.PHP_EOL;
-        $return .= '  &lt;input class="span2" id="prependedDropdownButton" type="text"&gt;'.PHP_EOL;
+        $return .= '  &lt;input id="prependedDropdownButton" type="text"&gt;'.PHP_EOL;
         $return .= '&lt;/div&gt;'.PHP_EOL;
         $return .= '</pre>';
 
@@ -2703,7 +2706,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '  <li><a href="#">Separated link</a></li>';
         $return .= '</ul>';
         $return .= '</div><!-- /btn-group -->';
-        $return .= '<input class="span2" id="appendedPrependedDropdownButton" type="text">';
+        $return .= '<input id="appendedPrependedDropdownButton" type="text">';
         $return .= '<div class="btn-group">';
         $return .= '<button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>';
         $return .= '<ul class="dropdown-menu">';
@@ -2727,7 +2730,7 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '      ...'.PHP_EOL;
         $return .= '    &lt;/ul&gt;'.PHP_EOL;
         $return .= '  &lt;/div&gt;'.PHP_EOL;
-        $return .= '  &lt;input class="span2" id="appendedPrependedDropdownButton" type="text"&gt;'.PHP_EOL;
+        $return .= '  &lt;input id="appendedPrependedDropdownButton" type="text"&gt;'.PHP_EOL;
         $return .= '  &lt;div class="btn-group"&gt;'.PHP_EOL;
         $return .= '    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;'.PHP_EOL;
         $return .= '      Action'.PHP_EOL;
@@ -2791,23 +2794,23 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= '<h4>Search form</h4>';
         $return .= '<form class="bs-docs-example form-search">';
         $return .= '<div class="input-append">';
-        $return .= '<input type="text" class="span10 search-query">';
+        $return .= '<input type="text" class="search-query">';
         $return .= '<button type="submit" class="btn">Search</button>';
         $return .= '</div>';
         $return .= '<div class="input-prepend">';
         $return .= '<button type="submit" class="btn">Search</button>';
-        $return .= '<input type="text" class="span10 search-query">';
+        $return .= '<input type="text" class="search-query">';
         $return .= '</div>';
         $return .= '</form>';
         $return .= '<pre class="prettyprint linenums">';
         $return .= '&lt;form class="form-search"&gt;'.PHP_EOL;
         $return .= '  &lt;div class="input-append"&gt;'.PHP_EOL;
-        $return .= '    &lt;input type="text" class="span2 search-query"&gt;'.PHP_EOL;
+        $return .= '    &lt;input type="text" class="search-query"&gt;'.PHP_EOL;
         $return .= '    &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;'.PHP_EOL;
         $return .= '  &lt;/div&gt;'.PHP_EOL;
         $return .= '  &lt;div class="input-prepend"&gt;'.PHP_EOL;
         $return .= '    &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;'.PHP_EOL;
-        $return .= '    &lt;input type="text" class="span2 search-query"&gt;'.PHP_EOL;
+        $return .= '    &lt;input type="text" class="search-query"&gt;'.PHP_EOL;
         $return .= '  &lt;/div&gt;'.PHP_EOL;
         $return .= '&lt;/form&gt;'.PHP_EOL;
         $return .= '</pre>';

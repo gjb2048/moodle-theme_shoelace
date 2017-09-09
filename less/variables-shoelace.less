@@ -122,8 +122,8 @@
 @inputBackground:               lighten(@wellBackground, 5%);
 @inputBorder:                   darken(@grayLighter, 20%);
 @inputBorderRadius:             @baseBorderRadius;
-@inputDisabledBackground:       @grayLighter;
-@formActionsBackground:         @bodyBackground;
+@inputDisabledBackground:       rgba(red(@grayLighter), green(@grayLighter), blue(@grayLighter), 0.4);
+@formActionsBackground:         @pageColour;
 @inputHeight:                   (@baseLineHeight + 10px); // base line-height + 8px vertical padding + 2px top/bottom border
 
 
@@ -297,7 +297,10 @@
 @shoelaceBoxShadow: 1px 1px 1px @grayLightish;
 @shoelaceOpacity: 0.9;
 @shoelaceGap: 6px;
+@modalBodyBackgroundColour: @pageColour;
+@modalBodyTextColour: @textColor;
 @pageColour: @white;
+@selectOptionBackgroundColour: @pageColour;
 @backgroundTextColour: #b8bce7;
 @backgroundTextColourHover: lighten(@backgroundTextColour, 5%);
 @tableTextColour: @themeTextColour;

@@ -4,6 +4,14 @@
     box-shadow: @shoelaceBoxShadow;
 }
 
+select option {
+    background-color: @selectOptionBackgroundColour;
+}
+
+.icon {
+    vertical-align: middle;
+}
+
 // Anti gravity.
 .antiGravity {
     background-color: rgba(red(@bodyBackgroundAlt), green(@bodyBackgroundAlt), blue(@bodyBackgroundAlt), 0.6);
@@ -36,13 +44,13 @@
 }
 
 // Attempt to solve overflowing table issue: https://moodle.org/mod/forum/discuss.php?d=279883 - related to: https://moodle.org/mod/forum/discuss.php?d=274915 - which might be too - code comes from: https://github.com/gjb2048/moodle-theme_shoehorn/issues/5
-table {
+/*table {
     th:first-child,
     td:first-child {
         word-break: break-word;
         word-wrap: break-word;
     }
-}
+}*/
 
 table.flexible,
 .generaltable {

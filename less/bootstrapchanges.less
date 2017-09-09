@@ -74,6 +74,7 @@
 // code.less
 code,
 pre {
+    background-color: @pageColour;
     color: @textColor;
 }
 
@@ -114,10 +115,10 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-    background-color: @pageColour;
+    background-color: inherit;
     border-color: @bodyBackgroundAlt;
     border-radius: @shoelaceBorderRadius;
-    color: @textColor;
+    color: inherit;
 }
 
 textarea,
@@ -151,15 +152,20 @@ textarea,
 }
 
 .modal-header {
-    color: @themeTextColour;
     background-color: @themeColour;
     border-bottom: 1px solid @bodyBackground;
     .border-radius(@borderRadiusSmall @borderRadiusSmall 0 0);
+    color: @themeTextColour;
+}
+
+.modal-body {
+    background-color: @modalBodyBackgroundColour;
+    color: @modalBodyTextColour;
 }
 
 .modal-footer {
-    background-color: @bodyBackground;
-    border-top: 1px solid darken(@bodyBackground, 5%);
+    background-color: @pageColour;
+    border-top: 1px solid darken(@pageColour, 5%);
     .border-radius(0 0 @borderRadiusSmall @borderRadiusSmall);
     .box-shadow(none);
 }
@@ -293,6 +299,9 @@ a:focus {
             a {
                 color: inherit;
             }
+        }
+        > tr > td,
+        > tr > th {
             img {
                 background-color: rgba(255, 255, 255, 0.8);
                 border-radius: @baseBorderRadius;

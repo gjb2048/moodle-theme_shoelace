@@ -7,10 +7,20 @@ body {
 
 // admin.less
 // --------------------------------------------------
-#page-admin-plugins #plugins-control-panel .pluginname .displayname img.icon {
-    padding-top: 2px;
-    padding-bottom: 2px;
-    vertical-align: top;
+#page-admin-plugins #plugins-control-panel {
+    .pluginname .displayname img.icon {
+        padding-bottom: 2px;
+        padding-top: 2px;
+        vertical-align: top;
+    }
+    .notes .requiredby,
+    .pluginname .componentname,
+    .version .versionnumber {
+        color: inherit;
+    }
+    .notes .label {
+        color: #fff;
+    }
 }
 
 #plugins-check-page,
@@ -191,7 +201,12 @@ input {
         background-color: lighten(@themeColour, 5%);
         color: darken(@themeTextColour, 5%);
     }
+}
 
+.inplaceeditable {
+    .quickeditlink .icon {
+        vertical-align: baseline;
+    }
 }
 
 // course.less
@@ -215,6 +230,40 @@ input {
     .sectionname > span a {
         color: inherit;
         font-style: inherit;
+    }
+}
+.editing .section .activity:hover,
+.editing .section .activity.action-menu-shown {
+    background-color: @themeColour;
+    color: @themeTextColour;
+    a {
+        color: inherit;
+    }
+    .menu a {
+        color: @textColor;
+        &:hover {
+            color: @themeTextColour;
+        }
+    }
+}
+.jsenabled.editing .section .activity:hover,
+.jsenabled.editing .section .activity.action-menu-shown {
+    .moodle-actionmenu[data-enhance] .toggle-display.textmenu .caret {
+        border-top-color: inherit;
+    }
+}
+
+.activity {
+//    .dimmed {
+//        img.activityicon {
+//            opacity: 0.5;
+//            filter: alpha(opacity=50);
+//        }
+//    }
+
+    .stealth:not(.dimmed) {
+        font-style: italic;
+        opacity: 1;
     }
 }
 
@@ -283,6 +332,11 @@ input {
     background-color: transparent;
     background-image: none;
     border-color: transparent;
+    padding: 0;
+}
+
+.path-course-view li.activity form.togglecompletion .btn {
+    margin-right: -1px;
 }
 
 #course-category-listings {
@@ -483,10 +537,12 @@ input {
 
 .filepicker-filelist,
 .filemanager-container {
+    background-color: inherit;
     border: 1px solid @textColor;
 }
 
 .filemanager .fp-navbar {
+    background-color: inherit;
     border-left: 1px solid @textColor;
     border-right: 1px solid @textColor;
     border-top: 1px solid @textColor;
@@ -546,6 +602,10 @@ table#form td.submit,
 div.backup-section + form,
 #fgroup_id_buttonar {
     background-color: @pageColour;
+}
+
+.fp-iconview .fp-filename-field .fp-filename {
+    background-color: transparent;
 }
 
 // grade.less

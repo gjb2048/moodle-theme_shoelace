@@ -110,7 +110,7 @@ $string['backgroundimage'] = 'Background image';
 $string['backgroundimagedesc'] = 'Set the background image around the page.';
 
 $string['backgroundimagestyle'] = 'Background image style';
-$string['backgroundimagestyledesc'] = 'Select the style for the background image.';
+$string['backgroundimagestyledesc'] = 'Select the style for the background image.  You may need to change the text and page colours to suit when \'Seamless\' is set.';
 $string['stylefixed'] = 'Fixed';
 $string['styletiled'] = 'Tiled';
 $string['stylestretch'] = 'Stretch';
@@ -122,7 +122,7 @@ $string['seamless'] = 'Seamless';
 $string['seamlessdesc'] = 'Ignore all background settings and use page / text colours along with removing borders / shadows where needed.  Turn on for a clearer look.  If a \'backgroundimage\' is added then transparency will be used as appropriate.';
 
 $string['pagecolour'] = 'Page colour';
-$string['pagecolourdesc'] = 'Set the colour for the page.';
+$string['pagecolourdesc'] = 'Set the colour for the page.  This is used on modals and dropdowns, so when using a background image with \'Seamless\' set, set this to be compatible with the text colour.';
 
 $string['textcolour'] = 'Text colour';
 $string['textcolourdesc'] = 'Set the colour for the text on the page.';
