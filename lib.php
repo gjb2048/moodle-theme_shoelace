@@ -194,6 +194,7 @@ function theme_shoelace_less_variables($theme) {
             if (!empty($backgroundimage)) {
                 $variables['bodyBackground'] = 'transparent';
                 $variables['dropdownBackground'] = 'rgba(red('.$pagecolour.'), green('.$pagecolour.'), blue('.$pagecolour.'), 0.75)';
+                $variables['dockPanelBackgroundColour'] = $pagecolour;
                 $variables['formActionsBackground'] = $pagecolour;
                 $variables['modalBodyBackgroundColour'] = $pagecolour;
                 $variables['pageColour'] = 'transparent';
