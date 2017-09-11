@@ -212,6 +212,12 @@ function theme_shoelace_less_variables($theme) {
         $variables['textColor'] = $textcolour;
     }
 
+    $fontbasesize = \theme_shoelace\toolbox::get_setting('fontbasesize');
+    if (!empty($fontbasesize)) {
+        $variables['baseFontSize'] = $fontbasesize.'px';
+        $variables['baseLineHeight'] = ($fontbasesize + 6).'px';
+    }
+
     $fontselect = \theme_shoelace\toolbox::get_setting('fontselect');
     if ((!empty($fontselect)) && ($fontselect == 3)) {
         $fontnameheading = \theme_shoelace\toolbox::get_setting('fontnameheading');

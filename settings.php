@@ -153,6 +153,13 @@ $ADMIN->add('theme_shoelace', $layoutsettings);
 // Look and feel settings.
 $lookandfeelsettings = new admin_settingpage('theme_shoelace_lookandfeel', get_string('lookandfeelheading', 'theme_shoelace'));
 if ($ADMIN->fulltree) {
+    global $CFG;
+    if (file_exists("{$CFG->dirroot}/theme/shoelace/shoelace_admin_setting_configinteger.php")) {
+        require_once($CFG->dirroot . '/theme/shoelace/shoelace_admin_setting_configinteger.php');
+    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/shoelace/shoelace_admin_setting_configinteger.php")) {
+        require_once($CFG->themedir . '/shoelace/shoelace_admin_setting_configinteger.php');
+    }
+
     $lookandfeelsettings->add(new admin_setting_heading('theme_shoelace_lookandfeelheading',
         get_string('lookandfeelsub', 'theme_shoelace'),
         format_text(get_string('lookandfeeldesc', 'theme_shoelace'), FORMAT_MARKDOWN)));
@@ -271,6 +278,18 @@ if ($ADMIN->fulltree) {
     $heading = get_string('fontheadingsub', 'theme_shoelace');
     $information = get_string('fontheadingdesc', 'theme_shoelace');
     $setting = new admin_setting_heading($name, $heading, $information);
+    $lookandfeelsettings->add($setting);
+
+    // Base font size.
+    $name = 'theme_shoelace/fontbasesize';
+    $title = get_string('fontbasesize', 'theme_shoelace');
+    $lower = 10;
+    $upper = 30;
+    $default = 14;
+    $description = get_string('fontbasesizedesc', 'theme_shoelace',
+        array('lower' => $lower, 'upper' => $upper));
+    $setting = new shoelace_admin_setting_configinteger($name, $title, $description, $default, $lower, $upper);
+    $setting->set_updatedcallback('theme_reset_all_caches');
     $lookandfeelsettings->add($setting);
 
     // Font selector.
@@ -445,13 +464,6 @@ if ($ADMIN->fulltree) {
         2 => new lang_string('yes')   // Yes.
     );
     $navbarsettings->add(new shoelace_admin_setting_configselect($name, $title, $description, $default, $choices));
-
-    global $CFG;
-    if (file_exists("{$CFG->dirroot}/theme/shoelace/shoelace_admin_setting_configinteger.php")) {
-        require_once($CFG->dirroot . '/theme/shoelace/shoelace_admin_setting_configinteger.php');
-    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/shoelace/shoelace_admin_setting_configinteger.php")) {
-        require_once($CFG->themedir . '/shoelace/shoelace_admin_setting_configinteger.php');
-    }
 
     // Navbar scroll up amount.
     $name = 'theme_shoelace/navbarscrollupamount';

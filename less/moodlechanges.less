@@ -103,7 +103,7 @@ li.breadcrumb-button .singlebutton div input {
     //.nav-header;
     display: block;
     padding: 3px 15px;
-    font-size: 11px;
+    font-size: @fontSizeLarge;
     font-weight: bold;
     line-height: @baseLineHeight;
     color: @textColor;
@@ -551,6 +551,17 @@ input {
 .filepicker-filelist .filepicker-container,
 .filemanager.fm-noitems .fm-empty-container {
     border: 2px dashed @textColor;
+}
+
+.filepicker-filelist .dndupload-target,
+.filemanager-container .dndupload-target {
+    background-color: @pageColour;
+    .box-shadow(0px 0 0 10px @pageColour);
+}
+
+.filepicker-filelist.dndupload-over .dndupload-target,
+.filemanager-container.dndupload-over .dndupload-target {
+    background-color: @pageColour;
 }
 
 // forms.less

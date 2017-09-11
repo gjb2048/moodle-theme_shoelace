@@ -206,9 +206,6 @@ class shoelace_admin_setting_styleguide extends admin_setting {
         $return .= "}";
         $return .= "/* Tweak navbar brand link to be super sleek";
         $return .= "-------------------------------------------------- */";
-        $return .= "body > .navbar {";
-        $return .= "font-size: 13px;";
-        $return .= "}";
         $return .= "/* Change the docs' brand */";
         $return .= "body > .navbar .brand {";
         $return .= "padding-right: 0;";
