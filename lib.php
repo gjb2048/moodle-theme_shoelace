@@ -167,6 +167,10 @@ function theme_shoelace_less_variables($theme) {
     if (!empty($themetextcolour)) {
         $variables['themeTextColour'] = $themetextcolour;
     }
+    $iconcolour = \theme_shoelace\toolbox::get_setting('iconcolour');
+    if (!empty($iconcolour)) {
+        $variables['iconColor'] = $iconcolour;
+    }
 
     $seamless = \theme_shoelace\toolbox::get_setting('seamless');
     $pagecolour = \theme_shoelace\toolbox::get_setting('pagecolour');
