@@ -1,0 +1,17 @@
+Ref: https://docs.moodle.org/dev/PHPUnit
+
+composer install --dev
+
+php admin/tool/phpunit/cli/init.php
+
+vendor/bin/phpunit theme_shoelace_corerenderer_testcase theme/shoelace/tests/corerenderer_test.php
+or
+vendor\bin\phpunit theme_shoelace_corerenderer_testcase theme/shoelace/tests/corerenderer_test.php
+
+vendor/bin/phpunit theme_shoelace_toolbox_testcase theme/shoelace/tests/toolbox_test.php
+or
+vendor\bin\phpunit theme_shoelace_toolbox_testcase theme/shoelace/tests/toolbox_test.php
+
+vendor/bin/phpunit --group theme_shoehorn
+or
+vendor\bin\phpunit --group theme_shoehorn

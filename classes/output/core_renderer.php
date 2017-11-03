@@ -261,6 +261,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             $data->course_content_header = '';
         }
         $data->main_content = $this->main_content();
+        $data->activity_navigation = $this->activity_navigation();
         if (empty($this->page->layout_options['nocoursefooter'])) {
             $data->course_content_footer = $this->course_content_footer();
         } else {
