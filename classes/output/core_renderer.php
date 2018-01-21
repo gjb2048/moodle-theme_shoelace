@@ -1113,7 +1113,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
             ($this->page->pagelayout == 'incourse') ||
             ($this->page->pagelayout == 'admin')) { // Go to bottom.
             $gotobottom = html_writer::tag('i', '',
-                array('class' => 'fa fa-arrow-circle-o-down slgotobottom', 'aria-hidden' => 'true'));
+                array('class' => 'far fa-arrow-alt-circle-down slgotobottom', 'aria-hidden' => 'true'));
             $url = new moodle_url($this->page->url);
             $url->set_anchor('page-footer');
             $menu->add($gotobottom, $url, get_string('gotobottom', 'theme_shoelace'), 10001);
@@ -1414,7 +1414,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
 
     public function anti_gravity() {
         $icon = html_writer::tag('i', '',
-            array('class' => 'fa fa-arrow-circle-o-up', 'aria-hidden' => 'true'));
+            array('class' => 'far fa-arrow-alt-circle-up', 'aria-hidden' => 'true'));
         $antigravity = html_writer::tag('span', $icon, array('class' => 'antiGravity', 'title' => get_string('antigravity',
             'theme_shoelace')));
 

@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.4.0.2
+  1. Update to FontAwesome 5.0.4 free: https://fontawesome.com/icons?m=free.
 
 Version 3.4.0.1
   1. Beta for Moodle 3.4 with user tour reset and activity navigation.

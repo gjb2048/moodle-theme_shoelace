@@ -40,7 +40,10 @@ $fontselect = \theme_shoelace\toolbox::get_config_setting('fontselect');
 if (!empty($fontselect)) {
     if (($fontselect == 1) || ($fontselect == 3)) {
         $THEME->sheets[] = 'font';
-        $THEME->sheets[] = 'font-awesome';
+        $THEME->sheets[] = 'fa-brands';
+        $THEME->sheets[] = 'fa-regular';
+        $THEME->sheets[] = 'fa-solid';
+        $THEME->sheets[] = 'fontawesome';
     }
 }
 
