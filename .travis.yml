@@ -25,7 +25,7 @@ matrix:
 env:
  global:
   - MOODLE_BRANCH=master
-  - IGNORE_PATHS=amd/build,amd/src/bootstrap.js,javascript/html5shiv.js,javascript/syntaxhighlighter_3_0_83/
+  - IGNORE_PATHS=amd/build,amd/src/bootstrap.js,amd/src/icon_system_fontawesome.js,javascript/html5shiv.js,javascript/syntaxhighlighter_3_0_83/
   # Ignore custom.css until CSSlint can be instructed to ignore lines for '[[setting:customcss]]'.
   - IGNORE_NAMES=*.txt,custom.css,font.css,font-awesome.css
 

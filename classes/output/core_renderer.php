@@ -177,7 +177,7 @@ class core_renderer extends \theme_bootstrapbase_core_renderer {
         $this->page->requires->js_call_amd('core/search-input', 'init', array($id));
 
         $searchicon = html_writer::tag('span', '',
-            array('class' => 'fa fa-search', 'aria-hidden' => 'true', 'title' => get_string('search', 'search')));
+            array('class' => 'fas fa-search', 'aria-hidden' => 'true', 'title' => get_string('search', 'search')));
         $searchicon = html_writer::tag('div', $searchicon, array('role' => 'button', 'tabindex' => 0));
         $formattrs = array('class' => 'search-input-form', 'action' => $CFG->wwwroot . '/search/index.php');
         $inputattrs = array('type' => 'text', 'name' => 'q', 'placeholder' => get_string('search', 'search'),

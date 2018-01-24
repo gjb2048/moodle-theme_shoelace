@@ -371,8 +371,25 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
         $iconmap = $this->get_updated_core_icon_map();
 
         // Change from core.
-        $iconmap['core:i/navigationitem'] = 'fa fa-chevron-right';
+        $iconmap['core:i/navigationitem'] = 'fas fa-chevron-right';
 
         return $iconmap;
+    }
+
+    public function get_amd_name() {
+        return 'theme_shoelace/icon_system_fontawesome';
+    }
+
+    public function render_pix_icon(\renderer_base $output, \pix_icon $icon) {
+        $subtype = '\pix_icon_fontawesome';
+        $subpix = new $subtype($icon);
+
+        $data = $subpix->export_for_template($output);
+
+        if (!$subpix->is_mapped()) {
+            $data['unmappedIcon'] = $icon->export_for_template($output);
+        }
+
+        return $output->render_from_template('theme_shoelace/pix_icon_fontawesome', $data);
     }
 }
