@@ -391,13 +391,13 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
                 $callback = 'get_fontawesome_icon_map';
 
                 if ($pluginsfunction = get_plugins_with_function($callback)) {
+                    $toolbox = \theme_shoelace\toolbox::get_instance();
                     foreach ($pluginsfunction as $plugintype => $plugins) {
                         foreach ($plugins as $pluginsubtype => $pluginfunction) {
-						error_log('1 '.print_r($plugintype, true).'2 '.print_r($plugins, true).'3 '.print_r($pluginsubtype, true).'4 '.print_r($pluginfunction, true));
-                            if (($plugintype == 'atto') && ($pluginsubtype == 'collapse')) {
-                                $pluginmap = $this->atto_collapse_get_fontawesome_icon_map();
-                            } else {
-                                $pluginmap = $pluginfunction();
+                            $pluginmap = $pluginfunction();
+                            // Convert map from FA 4 to 5.
+                            foreach ($pluginmap as $micon => $faicon) {
+                                $pluginmap[$micon] = $toolbox->get_fa5_from_fa4($faicon, true);
                             }
                             $this->map += $pluginmap;
                         }
@@ -424,11 +424,5 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
         }
 
         return $output->render_from_template('theme_shoelace/pix_icon_fontawesome', $data);
-    }
-
-    public function atto_collapse_get_fontawesome_icon_map() {
-        return [
-            'atto_collapse:icon' => 'fas fa-level-down-alt'
-        ];
     }
 }
