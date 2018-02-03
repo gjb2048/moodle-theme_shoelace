@@ -56,7 +56,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:b/document-edit' => 'fas fa-pencil-alt',
             'core:b/document-new' => 'far fa-file',
             'core:b/document-properties' => 'fa fa-info',
-            'core:b/edit-copy' => 'far fa-files',
+            'core:b/edit-copy' => 'far fa-file',
             'core:b/edit-delete' => 'fa fa-trash',
             'core:e/abbr' => 'fa fa-comment',
             'core:e/absolute' => 'fa fa-crosshairs',
@@ -93,7 +93,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:e/insert_col_after' => 'fa fa-columns',
             'core:e/insert_col_before' => 'fa fa-columns',
             'core:e/insert_date' => 'fas fa-calendar-alt',
-            'core:e/insert_edit_image' => 'far fa-picture',
+            'core:e/insert_edit_image' => 'fas fa-image',
             'core:e/insert_edit_link' => 'fa fa-link',
             'core:e/insert_edit_video' => 'fas fa-video',
             'core:e/insert_file' => 'fa fa-file',
@@ -110,7 +110,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:e/layers' => 'fa fa-window-restore',
             'core:e/layers_under' => 'fas fa-level-down-alt',
             'core:e/left_to_right' => 'fa fa-chevron-right',
-            'core:e/manage_files' => 'far fa-files',
+            'core:e/manage_files' => 'far fa-copy',
             'core:e/math' => 'fa fa-calculator',
             'core:e/merge_cells' => 'fa fa-compress',
             'core:e/new_document' => 'far fa-file',
@@ -204,7 +204,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:i/enrolusers' => 'fa fa-user-plus',
             'core:i/expired' => 'fa fa-exclamation text-warning',
             'core:i/export' => 'fa fa-download',
-            'core:i/files' => 'fa fa-file',
+            'core:i/files' => 'far fa-copy',
             'core:i/filter' => 'fa fa-filter',
             'core:i/flagged' => 'fa fa-flag',
             'core:i/folder' => 'fa fa-folder',
@@ -376,6 +376,40 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
         return $iconmap;
     }
 
+    /**
+     * Overridable function to get a mapping of all icons.
+     * Default is to do no mapping.
+     */
+    public function get_icon_name_map() {
+        if ($this->map === []) {
+            $cache = \cache::make('core', 'fontawesomeiconmapping');
+
+            $this->map = $cache->get('mapping');
+
+            if (empty($this->map)) {
+                $this->map = $this->get_core_icon_map();
+                $callback = 'get_fontawesome_icon_map';
+
+                if ($pluginsfunction = get_plugins_with_function($callback)) {
+                    foreach ($pluginsfunction as $plugintype => $plugins) {
+                        foreach ($plugins as $pluginsubtype => $pluginfunction) {
+						error_log('1 '.print_r($plugintype, true).'2 '.print_r($plugins, true).'3 '.print_r($pluginsubtype, true).'4 '.print_r($pluginfunction, true));
+                            if (($plugintype == 'atto') && ($pluginsubtype == 'collapse')) {
+                                $pluginmap = $this->atto_collapse_get_fontawesome_icon_map();
+                            } else {
+                                $pluginmap = $pluginfunction();
+                            }
+                            $this->map += $pluginmap;
+                        }
+                    }
+                }
+                $cache->set('mapping', $this->map);
+            }
+
+        }
+        return $this->map;
+    }
+
     public function get_amd_name() {
         return 'theme_shoelace/icon_system_fontawesome';
     }
@@ -383,7 +417,6 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
     public function render_pix_icon(\renderer_base $output, \pix_icon $icon) {
         $subtype = '\pix_icon_fontawesome';
         $subpix = new $subtype($icon);
-
         $data = $subpix->export_for_template($output);
 
         if (!$subpix->is_mapped()) {
@@ -391,5 +424,11 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
         }
 
         return $output->render_from_template('theme_shoelace/pix_icon_fontawesome', $data);
+    }
+
+    public function atto_collapse_get_fontawesome_icon_map() {
+        return [
+            'atto_collapse:icon' => 'fas fa-level-down-alt'
+        ];
     }
 }
