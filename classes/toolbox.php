@@ -994,7 +994,7 @@ class toolbox {
             'fa-deviantart' => 'fab fa-deviantart'
         );
 
-        if(isset($icons[$icontofind])) {
+        if (isset($icons[$icontofind])) {
             return $icons[$icontofind];
         } else {
             // Guess.
