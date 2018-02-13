@@ -35,7 +35,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
      */
     private $map = [];
 
-    protected function get_updated_core_icon_map() {
+    public function get_core_icon_map() {
         // Information on https://fontawesome.com/how-to-use/upgrading-from-4.
         return [
             'core:docs' => 'fa fa-info-circle',
@@ -237,7 +237,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:i/mnethost' => 'fas fa-external-link-alt',
             'core:i/moodle_host' => 'fas fa-graduation-cap',
             'core:i/move_2d' => 'fas fa-arrows-alt',
-            'core:i/navigationitem' => 'fa fa-fw',
+            'core:i/navigationitem' => 'fas fa-chevron-right',
             'core:i/ne_red_mark' => 'fas fa-times',
             'core:i/new' => 'fa fa-bolt',
             'core:i/news' => 'far fa-newspaper',
@@ -367,22 +367,13 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
         ];
     }
 
-    public function get_core_icon_map() {
-        $iconmap = $this->get_updated_core_icon_map();
-
-        // Change from core.
-        $iconmap['core:i/navigationitem'] = 'fas fa-chevron-right';
-
-        return $iconmap;
-    }
-
     /**
      * Overridable function to get a mapping of all icons.
      * Default is to do no mapping.
      */
     public function get_icon_name_map() {
         if ($this->map === []) {
-            $cache = \cache::make('core', 'fontawesomeiconmapping');
+            $cache = \cache::make('theme_shoelace', 'fontawesome5iconmapping');
 
             $this->map = $cache->get('mapping');
 

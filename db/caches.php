@@ -19,19 +19,19 @@
  *
  * @package    theme
  * @subpackage shoelace
- * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
+ * @copyright  &copy; 2018-onwards G J Barnard in respect to modifications of the Clean theme.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
  * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
-
-$plugin->version   = 2017110302;
-$plugin->requires  = 2017111300.00; // 3.4 (Build: 20171113).
-$plugin->component = 'theme_shoelace';
-$plugin->maturity = MATURITY_BETA;
-$plugin->release = '3.4.0.3';
-$plugin->dependencies = array(
-    'theme_bootstrapbase'  => 2017051500
+$definitions = array(
+    // Caches font awesome icons.
+    'fontawesome5iconmapping' => array(
+        'mode' => cache_store::MODE_APPLICATION,
+        'simplekeys' => true,
+        'simpledata' => true,
+        'staticacceleration' => true,
+        'staticaccelerationsize' => 1
+    )
 );

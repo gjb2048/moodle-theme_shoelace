@@ -1,5 +1,8 @@
 Version Information
 ===================
+Version 3.4.0.3
+  1. Fixes to FontAwesome 5 including cache issue on theme url switch.
+
 Version 3.4.0.2
   1. Update to FontAwesome 5.0.4 free: https://fontawesome.com/icons?m=free.
 
