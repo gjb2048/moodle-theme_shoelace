@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.4.0.4
+  1. Implement Privacy API.
 
 Version 3.4.0.3
   1. Fixes to FontAwesome 5 including cache issue on theme url switch.
