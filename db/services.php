@@ -15,23 +15,31 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Shoelace theme with the underlying Bootstrap theme.
+ * Shoelace theme.
  *
  * @package    theme
  * @subpackage shoelace
- * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
+ * @copyright  &copy; 2018-onwards G J Barnard in respect to modifications of the Bootstrap theme.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
- * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
+ * @author     Based on code originally written by Bas Brands, David Scotson and many other contributors.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
+$functions = array(
+    'theme_shoelace_output_load_fontawesome_icon_map' => array(
+        'classname' => 'theme_shoelace\output\external',
+        'methodname' => 'load_fontawesome_icon_map',
+        'description' => 'Load the mapping of names to icons',
+        'type' => 'read',
+        'loginrequired' => false,
+        'ajax' => true,
+    )
+);
 
-$plugin->version   = 2018052300;
-$plugin->requires  = 2018051700.00; // 3.5 (Build: 20180517).
-$plugin->component = 'theme_shoelace';
-$plugin->maturity = MATURITY_BETA;
-$plugin->release = '3.5.0.1';
-$plugin->dependencies = array(
-    'theme_bootstrapbase'  => 2017051500
+$services = array(
+        'Shoelace theme FontAwesome map' => array(
+                'functions' => array ('theme_shoelace_output_load_fontawesome_icon_map'),
+                'restrictedusers' => 0,
+                'enabled'=>1,
+        )
 );

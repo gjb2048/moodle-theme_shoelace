@@ -46,7 +46,7 @@ define(['core/icon_system', 'jquery', 'core/ajax', 'core/mustache', 'core/locals
             return $.when(this);
         }
 
-        var map = LocalStorage.get('core/iconmap-fontawesome');
+        var map = LocalStorage.get('theme_shoelace/iconmap-fontawesome');
         if (map) {
             map = JSON.parse(map);
         }
@@ -58,7 +58,7 @@ define(['core/icon_system', 'jquery', 'core/ajax', 'core/mustache', 'core/locals
 
         if (fetchMap === null) {
             fetchMap = Ajax.call([{
-                methodname: 'core_output_load_fontawesome_icon_map',
+                methodname: 'theme_shoelace_output_load_fontawesome_icon_map',
                 args: []
             }], true, false)[0];
         }
@@ -68,7 +68,7 @@ define(['core/icon_system', 'jquery', 'core/ajax', 'core/mustache', 'core/locals
             $.each(map, function(index, value) {
                 staticMap[value.component + '/' + value.pix] = value.to;
             });
-            LocalStorage.set('core/iconmap-fontawesome', JSON.stringify(staticMap));
+            LocalStorage.set('theme_shoelace/iconmap-fontawesome', JSON.stringify(staticMap));
             return this;
         }.bind(this));
     };
