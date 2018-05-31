@@ -25,6 +25,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+ defined('MOODLE_INTERNAL') || die;
+
 $functions = array(
     'theme_shoelace_output_load_fontawesome_icon_map' => array(
         'classname' => 'theme_shoelace\output\external',
@@ -32,7 +34,7 @@ $functions = array(
         'description' => 'Load the mapping of names to icons',
         'type' => 'read',
         'loginrequired' => false,
-        'ajax' => true,
+        'ajax' => true
     )
 );
 
@@ -40,6 +42,6 @@ $services = array(
         'Shoelace theme FontAwesome map' => array(
                 'functions' => array ('theme_shoelace_output_load_fontawesome_icon_map'),
                 'restrictedusers' => 0,
-                'enabled'=>1,
+                'enabled' => 1
         )
 );
