@@ -11,6 +11,16 @@
     border-radius: @baseBorderRadius;
 }
 
+.moodle-actionmenu[data-enhanced].show .menu a:hover,
+.moodle-actionmenu[data-enhanced].show .menu a:focus {
+    background-color: @dropdownLinkBackgroundHover;
+    color: @dropdownLinkColorHover;
+    i {
+        background-color: inherit;
+        color: inherit;
+    }
+}
+
 // course.less.
 #page-course-index .coursebox > .info > .coursename a {
     background-position: left 0.2em;

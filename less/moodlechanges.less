@@ -233,15 +233,17 @@ input {
     }
 }
 .editing .section .activity:hover,
+.editing .section .activity:focus,
 .editing .section .activity.action-menu-shown {
     background-color: @themeColour;
     color: @themeTextColour;
-    a {
+    a, i {
         color: inherit;
     }
     .menu a {
         color: @textColor;
-        &:hover {
+        &:hover, &:focus {
+            background-color: @themeColour;
             color: @themeTextColour;
         }
     }
