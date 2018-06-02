@@ -177,7 +177,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'theme:fp/view_list_active' => 'fa fa-list',
             'theme:fp/view_tree_active' => 'fa fa-folder',
             'core:i/assignroles' => 'fa fa-user-plus',
-            'core:i/backup' => 'far fa-file-zip',
+            'core:i/backup' => 'fas fa-file-archive',
             'core:i/badge' => 'fas fa-shield-alt',
             'core:i/calc' => 'fa fa-calculator',
             'core:i/calendar' => 'fas fa-calendar-alt',
@@ -355,6 +355,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:t/sort_desc' => 'fas fa-sort-down',
             'core:t/sort' => 'fa fa-sort',
             'core:t/stop' => 'fa fa-stop',
+            // Note: Does not work with blocks due to M.util.init_block_hider using M.util.image_url.  See: MDL-58848.
             'core:t/switch_minus' => 'fa fa-minus',
             'core:t/switch_plus' => 'fa fa-plus',
             'core:t/switch_whole' => 'far fa-square',
