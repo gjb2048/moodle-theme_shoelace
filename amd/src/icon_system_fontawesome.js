@@ -14,11 +14,13 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Competency rule points module.
+ * Shoelace theme with the underlying Bootstrap theme.
  *
- * @package    core
- * @copyright  2017 Damyon Wiese
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    theme
+ * @subpackage shoelace
+ * @copyright  &copy; 2018-onwards G J Barnard in respect to modifications of /lib/amd/src/icon_system_fontawesome.js.
+ * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
+ * @author     Based on code originally written by Damyon Wiese.
  */
 
 define(['core/icon_system', 'jquery', 'core/ajax', 'core/mustache', 'core/localstorage', 'core/url'],
