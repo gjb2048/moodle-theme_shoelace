@@ -1,5 +1,7 @@
 Version Information
 ===================
+Version 3.5.0.2
+
 Version 3.5.0.1
   1. M3.5 version from 3.4.0.4
   2. Add external web service to serve our updated FontAwesome icon system.
