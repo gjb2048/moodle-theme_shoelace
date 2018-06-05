@@ -1,6 +1,7 @@
 Version Information
 ===================
 Version 3.5.0.2
+  1. Fix home icon.
 
 Version 3.5.0.1
   1. M3.5 version from 3.4.0.4

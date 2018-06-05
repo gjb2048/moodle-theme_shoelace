@@ -218,6 +218,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:i/groups' => 'fa fa-user-circle',
             'core:i/groupv' => 'far fa-user-circle',
             'core:i/hide' => 'fa fa-eye',
+            'core:i/home' => 'fas fa-home',
             'core:i/hierarchylock' => 'fa fa-lock',
             'core:i/import' => 'fas fa-level-up-alt',
             'core:i/info' => 'fa fa-info',
