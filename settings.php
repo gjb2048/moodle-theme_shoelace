@@ -178,7 +178,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_shoelace/themetextcolour';
     $title = get_string('themetextcolour', 'theme_shoelace');
     $description = get_string('themetextcolourdesc', 'theme_shoelace');
-    $default = '#ffffff';
+    $default = '#000000';
     $previewconfig = null;
     $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
