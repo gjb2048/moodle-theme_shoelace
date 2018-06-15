@@ -341,6 +341,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:t/message' => 'fas fa-comment',
             'core:t/more' => 'fas fa-caret-down',
             'core:t/move' => 'fas fa-arrows-alt-v',
+            'core:t/online' => 'fa-circle',
             'core:t/passwordunmask-edit' => 'fas fa-pencil-alt',
             'core:t/passwordunmask-reveal' => 'fas fa-eye',
             'core:t/portfolioadd' => 'fas fa-plus',
