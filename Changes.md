@@ -5,6 +5,7 @@ Version 3.5.0.2
   2. Apply MDL-61778.
   3. Change default theme text colour.
   4. Fix Syntax Highlighter FireFox CSS class conflict.
+  5. Fix 'core:e/save' icon.
 
 Version 3.5.0.1
   1. M3.5 version from 3.4.0.4

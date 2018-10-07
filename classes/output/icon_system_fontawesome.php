@@ -131,7 +131,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:e/restore_last_draft' => 'fas fa-undo',
             'core:e/right_to_left' => 'fas fa-chevron-left',
             'core:e/row_props' => 'fas fa-info',
-            'core:e/save' => 'far fa-floppy',
+            'core:e/save' => 'far fa-save',
             'core:e/screenreader_helper' => 'fas fa-braille',
             'core:e/search' => 'fas fa-search',
             'core:e/select_all' => 'fas fa-arrows-alt-h',
