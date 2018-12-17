@@ -308,6 +308,7 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             'core:t/collapsed_empty' => 'far fa-plus-square',
             'core:t/collapsed_rtl' => 'fas fa-plus-square',
             'core:t/collapsed' => 'fas fa-plus-square',
+            'core:t/collapsedcaret' => 'fas fa-caret-right',
             'core:t/contextmenu' => 'fas fa-cog',
             'core:t/copy' => 'fas fa-copy',
             'core:t/delete' => 'fas fa-trash',
