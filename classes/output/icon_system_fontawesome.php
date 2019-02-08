@@ -418,6 +418,11 @@ class icon_system_fontawesome extends \core\output\icon_system_fontawesome {
             $data['unmappedIcon'] = $icon->export_for_template($output);
         }
 
+        // MDL-62680.
+        if (isset($icon->attributes['aria-hidden'])) {
+            $data['aria-hidden'] = $icon->attributes['aria-hidden'];
+        }
+
         return $output->render_from_template('theme_shoelace/pix_icon_fontawesome', $data);
     }
 }

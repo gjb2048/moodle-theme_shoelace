@@ -1,5 +1,9 @@
 Version Information
 ===================
+Version 3.6.0.1
+  1. M3.6 version from 3.5.0.2
+  2. Apply MDL-62680.
+
 Version 3.5.0.2
   1. Fix home icon.
   2. Apply MDL-61778.
